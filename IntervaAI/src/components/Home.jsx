@@ -1,8 +1,11 @@
+import CardFive from '../Repeaters/CardFive';
+import CardFour from '../Repeaters/CardFour';
 import CardOne from '../Repeaters/CardOne';
 import CardThree from '../Repeaters/CardThree';
 import CardTwo from '../Repeaters/CardTwo';
+import TestiCard from '../Repeaters/TestiCard';
 import Navbar from './Navbar'
-import { CirclePlay, Star } from 'lucide-react';
+import { CircleArrowOutUpRight, CirclePlay, Dot, Star } from 'lucide-react';
 
 const Home = () => {
   return (
@@ -80,7 +83,7 @@ const Home = () => {
 
             <div className="text-xl">How It Works</div>
             <div className="text-4xl my-3 w-80 font-bold">Simple Process, Powerful Results.</div>
-            <div className="text-xl">Get job-ready in just 4 easy steps - from choosing your role to mastering real inetrview scenarios. Crack that job, makes your preperation Simple, Smart and Effective</div>
+            <div className="text-xl">Get job-ready in just 4 easy steps - from choosing your role to mastering real inetrview scenarios. Interva.ai, makes your preperation Simple, Smart and Effective</div>
 
           </div>
           <div className="mt-24">
@@ -172,11 +175,104 @@ const Home = () => {
 
       </section>
 
-      <section></section>
+      <section className='flex flex-col m-20'>
+        <div className='text-center'>
 
-      <section></section>
+          <div>OUR BLOGS</div>
 
-      <section></section>
+          <div className='font-bold text-4xl mt-5'>Dive Into Our Top Career Insights</div>
+
+          <div className='text-xl text-center mt-5'>Explore expert guides and actionable tips to help you prepare smarter, inerview confidently,and land your dream job faster.</div>
+        </div>
+
+        <div className='my-20 flex justify-around'>
+
+          <CardFour
+            boxa="Interview Prep"
+            boxb="8 Mins Read"
+            title="Mastering AI-Powered Mock Interviews for Real Results"
+            desc="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati esse quae cumque facere consectetur ducimus fuga inventore necessitatibus dolore facilis. Vero ratione ipsam dicta culpa assumenda magnam pariatur maxime aut."
+            img="blackLogo.png" />
+
+          <div className='flex flex-col gap-2'>
+            <CardFive
+              boxa="Interview Prep"
+              boxb="8 Mins Read"
+              title="Method for Interview Success"
+              img="blackLogo.png" />
+
+            <CardFive
+              boxa="Interview Prep"
+              boxb="8 Mins Read"
+              title="Turning Feedback into Growth"
+              img="blackLogo.png" />
+
+            <div className='border-2 rounded-2xl p-5'>
+              <img src="blackLogo.png" alt="image" className={`rounded-xl h-20 w-100`} />
+              <div className='flex justify-between items-center w-100 p-5'>
+
+                <div className='flex gap-2'>
+                  <span className='border text-sm p-1'>Interview Prep</span>
+                  <span className='flex border text-sm p-1'><Dot />8 Mins Read</span>
+                </div>
+
+                <div><CircleArrowOutUpRight /></div>
+              </div>
+
+              <div className='text-xl mb-3 font-semibold'>Overcoming Interview Anxiety with AI Tools</div>
+              <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, rem?</div>
+            </div>
+          </div>
+        </div>
+
+
+      </section>
+
+      <section id='testimonials' className='flex flex-col m-20'>
+
+        <div className='text-center'>
+
+          <div>TESTIMONIALS</div>
+
+          <div className='font-bold text-4xl mt-5'>What Our Users Say</div>
+
+          <div className='text-xl text-center mt-5'>Real stories from professionals who boosted confidence, improved their interview skills and landed their dream jobs with Interva.ai</div>
+        </div>
+
+        <div className='flex gap-5 my-20'>
+
+          <TestiCard
+            name="Tanishk Sarathe"
+            comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dicta."
+            company="Google"
+            position="Software Engineer"
+          />
+          <TestiCard
+            name="Tanishk Sarathe"
+            comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dicta."
+            company="Google"
+            position="Software Engineer"
+          />
+          <TestiCard
+            name="Tanishk Sarathe"
+            comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dicta."
+            company="Google"
+            position="Software Engineer"
+          />
+
+        </div>
+
+      </section>
+
+      <section id='cta'>
+
+      
+
+      </section>
+
+      <section id='evrythingyouknow'></section>
+
+      <footer></footer>
 
     </div>
   )
