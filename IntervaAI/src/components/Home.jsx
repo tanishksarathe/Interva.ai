@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CardFive from '../Repeaters/CardFive';
 import CardFour from '../Repeaters/CardFour';
 import CardOne from '../Repeaters/CardOne';
@@ -5,12 +6,12 @@ import CardThree from '../Repeaters/CardThree';
 import CardTwo from '../Repeaters/CardTwo';
 import TestiCard from '../Repeaters/TestiCard';
 import Navbar from './Navbar'
-import { CircleArrowOutUpRight, CirclePlay, Dot, Star } from 'lucide-react';
+import { ArrowDownNarrowWide, ChevronUp, CircleArrowOutUpRight, CirclePlay, Dot, MailIcon, MapPin, PhoneForwarded, Star } from 'lucide-react';
 
 const Home = () => {
   return (
     <div>
-      <section>
+      <section  id='hero'>
         <Navbar />
       </section>
 
@@ -264,15 +265,106 @@ const Home = () => {
 
       </section>
 
-      <section id='cta'>
+      <section id='cta' className='flex flex-col m-20'>
 
-      
+        <div className='relative z-2'>
+          <img src="src/assets/image copy 8.png" alt="cta" className='w-270 h-80 rounded-2xl' />
+
+          <div className='text-4xl absolute top-12 right-20 font-bold text-white'>Unlock Your Dream Role - One Session Away</div>
+          <div className='text-xl absolute bottom-[20%] text-white right-20 font-light '>Join Intervaai's AI-Powered interview simulator and step into your next opportunity with confidence.</div>
+
+          <button className='px-5 py-3 border absolute text-white rounded-xl top-35 z-3 right-30'>Get Started</button>
+        </div>
 
       </section>
 
-      <section id='evrythingyouknow'></section>
+      <section id='evrythingyouknow' className='flex flex-col m-20'>
 
-      <footer></footer>
+        <div className='text-center m-20'>
+
+          <div>FAQs</div>
+
+          <div className='font-bold text-4xl mt-5'>Everything You Need to Know</div>
+
+          <div className='text-xl text-center mt-5'>Learn how Interva.ai help you prepare smarter</div>
+        </div>
+
+        <div>
+
+          <div className='flex flex-col'>
+            <div className='flex justify-between text-white bg-gray-800 p-4 rounded-t-2xl'>
+              <p className='text-2xl font-semibold'>Is my data and recording are private ?</p>
+              <button><ArrowDownNarrowWide color='white' /></button>
+            </div>
+            <p className='border bg-gray-400 p-4 text-xl font-light rounded-b-2xl mt-2'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, perspiciatis?
+            </p>
+          </div>
+
+        </div>
+
+
+
+      </section>
+
+      <footer className='flex flex-col mt-20 h-100vh bg-black border'>
+
+        <div className='flex justify-around my-auto p-10'>
+
+          <div className='text-white flex flex-col gap-5 w-100'>
+            <h1 className='font-bold text-4xl'>Interva.ai</h1>
+            <p className='flex gap-2'><MapPin />1800, Walt Disney World, Bay Lake, Orlando United States</p>
+            <p className='flex gap-2'><MailIcon />support@intervaai.com</p>
+            <p className='flex gap-2'><PhoneForwarded />(+91) 987654321</p>
+          </div>
+
+          <div className='text-white flex flex-col'>
+            <h4 className='text-2xl font-semibold mb-5'>Company</h4>
+            <ul className='text-md list-none font-light flex flex-col gap-2'>
+              <li>Contact Us</li>
+              <li>Blog</li>
+              <li>Pricing</li>
+              <li>Sign Up/Sign in</li>
+            </ul>
+          </div>
+
+          <div className='text-white'>
+            <h4 className='text-2xl font-semibold mb-5'>Quick Navigation</h4>
+            <ul className='text-md list-none font-light flex flex-col gap-2'>
+              <li>Home</li>
+              <li>Career Preparation</li>
+              <li>Learn & Grow</li>
+            </ul>
+          </div>
+
+          <div className='text-white'>
+            <h4 className='text-2xl font-semibold mb-5'>Tools</h4>
+            <ul className='text-md list-none font-light flex flex-col gap-2'>
+              <li>Career Vault</li>
+              <li>The prep Engine</li>
+              <li>Mock Interview</li>
+              <li>Smart Career Coach</li>
+              <li>Questions Hub</li>
+            </ul>
+          </div>
+
+        </div>
+
+
+        <hr className='text-white'/>
+
+        <div className='flex text-white mx-10 justify-between mt-5'>
+          <div>&copy; 2026 Intervaai. All rights reserved.</div>
+          <a href='#hero' className='flex gap-2'>Back to the top <ChevronUp /></a>
+        </div>
+
+        <div className='text-[10rem] text-center font-black opacity-10 text-white'>
+
+          INTERVA.AI
+
+        </div>
+
+      </footer>
 
     </div>
   )

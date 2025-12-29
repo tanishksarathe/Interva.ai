@@ -1,3 +1,4 @@
+import { Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -15,11 +16,11 @@ const Navbar = () => {
                 <Link to='/'>Home</Link>
                 <Link to='/about'>About</Link>
                 <Link to='/contact'>Contact</Link>
-                <Link to='#'>Extra</Link>
+                <Link to='/dashboard'>Dashboard</Link>
 
             </section>
             <section className='flex justify-center items-center gap-6' id='silo'>
-                <button className='py-2 px-3 border rounded-3xl border-y-indigo-500'>Premium</button>
+                <button className='py-2 flex gap-1 px-3 border rounded-3xl border-y-indigo-500'>Premium <Sparkles fill='indigo'/></button>
                 <button className='py-2 border-y-indigo-500 px-3 border rounded-3xl'>{(signIn)? "Log Out" :"Sign In"}</button>
             </section>
         </div>
