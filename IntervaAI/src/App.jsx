@@ -4,6 +4,12 @@ import Layout from "./Layout"
 import About from "./components/About"
 import Contact from "./components/Contact"
 import Dashboard from "./components/Dashboard"
+import Practice from "./components/Practice"
+import JobInternship from "./components/JobInternship"
+import ResumeAnalyze from "./components/ResumeAnalyze"
+import PremiumPayment from "./components/PremiumPayment"
+import MockInterview from "./components/MockInterview"
+import Resources from "./components/Resources"
 
 const routes = createBrowserRouter(
   [
@@ -20,10 +26,35 @@ const routes = createBrowserRouter(
       element: <Contact />
     },
     {
-      path: "/dashboard",
-      element: <Dashboard />
-    }
+      path: "dashboard",
+      element: <Dashboard />,
+    },
+    {
+      path: "/practice",
+      element: <Practice />
+    },
+    {
+      path: "jobsintern",
+      element: <JobInternship />
+    },
+    {
+      path: "resumea",
+      element: <ResumeAnalyze />
+    },
+    {
+      path: "prepay",
+      element: <PremiumPayment />
+    },
+    {
+      path: "mockint",
+      element: <MockInterview />
+    },
+    {
+      path: "resources",
+      element: <Resources />
+    },
   ]
+
 )
 
 function App() {
