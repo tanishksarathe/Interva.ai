@@ -10,6 +10,7 @@ import ResumeAnalyze from "./components/ResumeAnalyze"
 import PremiumPayment from "./components/PremiumPayment"
 import MockInterview from "./components/MockInterview"
 import Resources from "./components/Resources"
+import DashboardN from "./components/DashboardN"
 
 const routes = createBrowserRouter(
   [
@@ -26,33 +27,40 @@ const routes = createBrowserRouter(
       element: <Contact />
     },
     {
-      path: "dashboard",
-      element: <Dashboard />,
-    },
-    {
-      path: "/practice",
-      element: <Practice />
-    },
-    {
-      path: "jobsintern",
-      element: <JobInternship />
-    },
-    {
-      path: "resumea",
-      element: <ResumeAnalyze />
-    },
-    {
-      path: "prepay",
+      path: "/prepay",
       element: <PremiumPayment />
     },
     {
-      path: "mockint",
-      element: <MockInterview />
-    },
-    {
-      path: "resources",
-      element: <Resources />
-    },
+      path: "/dashboard",
+      element: <Dashboard />,
+      children: [
+        {
+          index:true,
+          element:<DashboardN/>
+        },
+        {
+          path: "practice",
+          element: <Practice />
+        },
+        {
+          path: "jobsintern",
+          element: <JobInternship />
+        },
+        {
+          path: "resumea",
+          element: <ResumeAnalyze />
+        },
+        {
+          path: "mockint",
+          element: <MockInterview />
+        },
+        {
+          path: "resources",
+          element: <Resources />
+        },
+      ]
+    }
+
   ]
 
 )
