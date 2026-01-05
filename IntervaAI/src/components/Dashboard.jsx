@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import logo from '../assets/whiteLogo2.png';
+import blackLogo from '../assets/blackLogo.png';
 
 const Dashboard = () => {
   const [menu, setMenu] = useState({
@@ -22,9 +24,9 @@ const Dashboard = () => {
   });
 
   return (
-    <>
-      <div className="flex justify-between mt-2">
-        <img src="whiteLogo.png" alt="logo" className="w-30 h-20" />
+    <div className="bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200"> 
+      <div className="flex justify-between pt-2">
+        <img src={logo} alt="logo" className="w-30 h-20" />
 
         <div className="text-4xl font-bold flex items-center">
           Welcome, Tanishk Sarathe User
@@ -134,11 +136,14 @@ const Dashboard = () => {
                 setMenu((prev) => ({ ...prev, profilers: false }))
               }   
             >
+              <div className="rounded-full bg-linear-to-tr from-purple-500 to-indigo-500 p-0.5">
+
               <img
-                src="blackLogo.png"
+                src={blackLogo}
                 alt="profile"
-                className="h-10 w-10 rounded-full border-white border cursor-pointer"
+                className="h-10 w-10 rounded-full cursor-pointer"
               />
+              </div>
 
               {menu.profilers && (
               <div className="border flex rounded-2xl pt-5 text-black absolute top-17 right-10 h-100 overflow-y-scroll">
@@ -148,7 +153,7 @@ const Dashboard = () => {
                   </h1>
 
                   <img
-                    src="blackLogo.png"
+                    src={blackLogo}
                     alt="Profile Icon"
                     className="h-25 w-25 my-5 rounded-full mx-auto"
                   />
@@ -246,7 +251,6 @@ const Dashboard = () => {
             )}
 
             </NavLink>
-
             
           </div>
         </div>
@@ -255,7 +259,7 @@ const Dashboard = () => {
       <div className="h-screen w-screen">
         <Outlet />
       </div>
-    </>
+    </div>
   );
 };
 

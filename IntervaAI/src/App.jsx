@@ -11,6 +11,7 @@ import PremiumPayment from "./components/PremiumPayment"
 import MockInterview from "./components/MockInterview"
 import Resources from "./components/Resources"
 import DashboardN from "./components/DashboardN"
+import { Toaster } from "react-hot-toast"
 
 const routes = createBrowserRouter(
   [
@@ -68,7 +69,8 @@ const routes = createBrowserRouter(
 function App() {
 
   return (
-    <>
+    <>  
+      <Toaster/>
       <RouterProvider router={routes}>
       </RouterProvider>
     </>

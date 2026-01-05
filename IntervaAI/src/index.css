@@ -1,5 +1,15 @@
 @import 'tailwindcss';
 
+:root {
+  --bgclr: linear-gradient(
+    to bottom right,
+    #fce7f3,
+    #dbeafe,
+    #e0e7ff
+  );
+}
+
+
 html{
     scroll-behavior: smooth;
 }
