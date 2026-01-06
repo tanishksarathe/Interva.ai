@@ -1,6 +1,6 @@
 import React from 'react'
 
-function JobInternship() {
+const JobInternship = () => {
   return (
     <div>
       <h1 className='font-fold text-4xl'>Jobs & Internship</h1>

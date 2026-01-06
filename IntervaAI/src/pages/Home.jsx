@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import CardFive from '../Repeaters/CardFive';
-import CardFour from '../Repeaters/CardFour';
-import CardOne from '../Repeaters/CardOne';
-import CardThree from '../Repeaters/CardThree';
-import CardTwo from '../Repeaters/CardTwo';
-import TestiCard from '../Repeaters/TestiCard';
+import CardFive from '../components/CardFive';
+import CardFour from '../components/CardFour';
+import CardOne from '../components/CardOne';
+import CardThree from '../components/CardThree';
+import CardTwo from '../components/CardTwo';
+import TestiCard from '../components/TestiCard';
 import Navbar from './Navbar'
 import { ArrowDownNarrowWide, ChevronUp, CircleArrowOutUpRight, CirclePlay, Dot, MailIcon, MapPin, PhoneForwarded, Star } from 'lucide-react';
 import Footer from './Footer';

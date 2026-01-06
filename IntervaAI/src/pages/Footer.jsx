@@ -1,7 +1,7 @@
 import { ChevronUp, MailIcon, MapPin, PhoneForwarded } from "lucide-react";
 import React from "react";
 
-function Footer() {
+const Footer = () => {
   return (
     <footer className="flex flex-col mt-20 h-100vh bg-black border">
       <div className="flex justify-around my-auto p-10">

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Resources() {
+const Resources = () => {
   return (
     <div>
       <h1 className='font-fold text-4xl'>Resources</h1>

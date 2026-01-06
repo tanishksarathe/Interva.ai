@@ -52,8 +52,8 @@ const Dashboard = () => {
                     to={"/dashboard"}
                     className={({ isActive }) =>
                       isActive
-                        ? "text-indigo-700 flex font-semibold gap-2 p-3 rounded-lg  hover:bg-indigo-300"
-                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300"
+                        ? "text-indigo-700 flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300 hover:transition-all hover:scale-[1.1]"
+                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300 hover:transition-all hover:scale-[1.1]"
                     }
                   >
                     <LayoutDashboard />
@@ -65,7 +65,7 @@ const Dashboard = () => {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white bg-indigo-700 flex font-semibold gap-2 rounded-lg p-3 hover:bg-indigo-300"
-                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300"
+                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300 hover:transition-all hover:scale-[1.1]"
                     }
                   >
                     <FileBracesCorner />
@@ -77,7 +77,7 @@ const Dashboard = () => {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white bg-indigo-700 flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300"
-                        : "rounded-lg flex font-semibold gap-2 p-3 hover:bg-indigo-300"
+                        : "rounded-lg flex font-semibold gap-2 p-3 hover:bg-indigo-300 hover:transition-all hover:scale-[1.1]"
                     }
                   >
                     <CalendarClock />
@@ -89,7 +89,7 @@ const Dashboard = () => {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white bg-indigo-700 flex font-semibold gap-2 p-3 rounded-lg  hover:bg-indigo-300"
-                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300"
+                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300 hover:transition-all hover:scale-[1.1]"
                     }
                   >
                     <MessagesSquare />
@@ -101,7 +101,7 @@ const Dashboard = () => {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white bg-indigo-700 flex font-semibold gap-2 p-3 rounded-lg  hover:bg-indigo-300"
-                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300"
+                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300 hover:transition-all hover:scale-[1.1]"
                     }
                   >
                     <SquareCode />
@@ -113,7 +113,7 @@ const Dashboard = () => {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white bg-indigo-700 flex font-semibold gap-2 p-3 rounded-lg  hover:bg-indigo-300"
-                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300"
+                        : "flex font-semibold gap-2 p-3 rounded-lg hover:bg-indigo-300 hover:transition-all hover:scale-[1.1]"
                     }
                   >
                     <GraduationCap />
@@ -256,7 +256,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="h-screen w-screen">
+      <div className="min-h-screen min-w-screen">
         <Outlet />
       </div>
     </div>

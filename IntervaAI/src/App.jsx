@@ -1,17 +1,22 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Home from "./components/Home"
-import Layout from "./Layout"
-import About from "./components/About"
-import Contact from "./components/Contact"
-import Dashboard from "./components/Dashboard"
-import Practice from "./components/Practice"
-import JobInternship from "./components/JobInternship"
-import ResumeAnalyze from "./components/ResumeAnalyze"
-import PremiumPayment from "./components/PremiumPayment"
-import MockInterview from "./components/MockInterview"
-import Resources from "./components/Resources"
-import DashboardN from "./components/DashboardN"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
+import Dashboard from "./pages/Dashboard"
+import Practice from "./pages/Practice"
+import JobInternship from "./pages/JobInternship"
+import ResumeAnalyze from "./pages/ResumeAnalyze"
+import PremiumPayment from "./pages/PremiumPayment"
+import MockInterview from "./pages/MockInterview"
+import Resources from "./pages/Resources"
+import DashboardN from "./pages/DashboardN"
 import { Toaster } from "react-hot-toast"
+import MachineCoding from "./pages/MachineCoding"
+import DataStructures from "./pages/DataStructures"
+import Communication from "./pages/Communication"
+import RapidFire from "./pages/RapidFire"
+import Aptitude from "./pages/Aptitude"
+import PracticeN from "./pages/PracticeN"
 
 const routes = createBrowserRouter(
   [
@@ -41,7 +46,37 @@ const routes = createBrowserRouter(
         },
         {
           path: "practice",
-          element: <Practice />
+          element: <Practice />,
+          children:[
+
+            {
+              index:true,
+              element:<PracticeN/>
+            },
+            {
+            path:"aptitude",
+            element:<Aptitude/>
+            },
+            {
+            path: "machinecod",
+            element:<MachineCoding/>
+            },
+            {
+            path:"dsa",
+            element:<DataStructures/>
+            },
+            {
+            path:"communication",
+            element:<Communication/>
+            },
+            {
+            path:"rapidfire",
+            element:<RapidFire/>
+            },
+            
+            
+
+          ]
         },
         {
           path: "jobsintern",

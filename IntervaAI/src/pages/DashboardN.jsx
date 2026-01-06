@@ -1,8 +1,8 @@
 import React from "react";
 
-function DashboardN() {
+const DashboardN = () => {
   return (
-    <div className="">
+    <div>
       <h1 className="ml-5 font-semibold text-sm mb-2 border-b border-b-indigo-700 w-fit">
         Your Interview Progress Overview
       </h1>
