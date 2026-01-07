@@ -11,7 +11,7 @@ import Footer from './Footer';
 
 const Home = () => {
   return (
-    <div className='bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200'>
+    <div className='bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200 scroll-smooth'>
       <section id='hero'>
         <Navbar />
       </section>

@@ -51,6 +51,7 @@ const ResumeAnalyze = () => {
       <div className="min-h-screen w-full flex flex-col items-center justify-start bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200 px-6 py-16">
         {/* Heading Section */}
         <div className="text-center max-w-3xl">
+
           <h1 className="text-4xl md:text-5xl font-semibold text-gray-800 leading-tight">
             Track Your Applications & <br />
             Resume Ratings

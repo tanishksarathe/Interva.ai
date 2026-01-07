@@ -26,7 +26,7 @@ const TextOnebyOneAnimation = (props) => {
   return (
     <>
       <div
-        className={`transition-all text-6xl font-bold text-center ease-in-out animate-${props.animation}`}
+        className={`transition-all text-6xl font-bold text-center ease-in-out animate-bounce`}
         style={{ color }}
       >
         {props.content[index]}

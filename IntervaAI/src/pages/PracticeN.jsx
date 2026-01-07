@@ -17,7 +17,7 @@ const PracticeN = () => {
         <div className="font-bold text-3xl my-8">
             What you'll build with each practice track
         </div>
-        <TextOnebyOneAnimation content={headerContent} animation="bounce" />
+        <TextOnebyOneAnimation content={headerContent}/>
         <div className="text-4xl leading-relaxed text-center font-semibold">
           Focused practice leads to real progress.
           Work through Aptitude, DSA, Machine Coding, Rapid Fire, and Communication to build interview-ready skills.
