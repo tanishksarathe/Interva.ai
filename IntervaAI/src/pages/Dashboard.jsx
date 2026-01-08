@@ -67,10 +67,10 @@ const Dashboard = () => {
 
   return (
     <div className="bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200">
-      <div className="flex justify-between z-9 top-0 pt-2 backdrop-blur-3xl">
+      <div className="flex justify-between pt-2 backdrop-blur-3xl">
         <img src={logo} alt="logo" className="w-30 h-20" />
         <div className="flex-1 ml-5 flex justify-start">{renderHeader()}</div>
-        <div className="bg-black px-5 gap-5 rounded-l-full text-white flex items-center z-10">
+        <div className="bg-black px-5 gap-5 rounded-l-full text-white flex items-center">
           <ul className="flex gap-3 font-semibold">
             <NavLink
               className={`flex gap-2 rounded-2xl justify-center items-center px-3`}
@@ -84,7 +84,7 @@ const Dashboard = () => {
               Activity
               {menu.activity && (
                 <div
-                  className={`w-70 absolute bg-white right-53 top-16 text-black border rounded-2xl p-4`}
+                  className={`w-70 z-9 absolute bg-white right-53 top-16 text-black border rounded-2xl p-4`}
                 >
                   <NavLink
                     to={"/dashboard"}
@@ -183,7 +183,7 @@ const Dashboard = () => {
               </div>
 
               {menu.profilers && (
-                <div className="flex rounded-2xl pt-5 text-white absolute top-17 right-10 h-100 overflow-y-scroll bg-black backdrop-blur-3xl">
+                <div className="flex z-9 rounded-2xl pt-5 text-white absolute top-17 right-10 h-100 overflow-y-scroll bg-black backdrop-blur-3xl">
                   <div className="flex flex-col px-3">
                     <h1 className="text-lg text-center font-bold px-5 pb-3 border-b border-b-indigo-700">
                       Profile Summary

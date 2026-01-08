@@ -8,7 +8,7 @@ const Practice = () => {
       <div className="min-h-screen w-full px-10 py-14">
 
         {/* Icon Rail */}
-        <div className="max-w-6xl mx-auto bg-white/60 backdrop-blur-xl rounded-2xl shadow-md px-4 py-3 flex items-center justify-between gap-2">
+        <div className="max-w-6xl mx-auto bg-white/60 rounded-2xl shadow-md px-4 z-1 py-3 flex items-center justify-between gap-2">
           {/* Active Item */}
           <NavLink to={'aptitude'}
             className={({isActive}) => isActive ? "text-purple-600 shadow-lg flex items-center gap-2 px-5 py-2 bg-white rounded-xl font-medium cursor-pointer transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-lg" :'flex items-center gap-2 px-5 py-2 rounded-xl font-medium cursor-pointer hover:text-purple-600 transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-lg hover:bg-white'}

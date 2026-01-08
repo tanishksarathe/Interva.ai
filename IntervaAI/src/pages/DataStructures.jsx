@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
+import { Cog } from "lucide-react";
+import ProblemCard from "../components/ProblemCard";
 
 const DataStructures = () => {
   const [custom, setCustom] = useState({
@@ -11,21 +13,42 @@ const DataStructures = () => {
 
   return (
     <>
-      <div className="flex border h-screen">
-        <div className="w-5/12 border"></div>
-        <div className="w-7/12 flex flex-col">
-          <div className="bg-[#1E1E1E] flex rounded-md w-full h-1/12 px-2">
+      <div className="flex h-screen">
+        
+        {/* Right Section Editor */}
+        <div className="w-7/12 flex flex-col p-2">
+          <div className="bg-[#1E1E1E] flex justify-around items-center rounded-md w-full p-4 h-1/12">
+            <div className="text-white font-semibold">
+              Your Coding Playground
+            </div>
+            <div>
+              <select
+                name="language"
+                value={custom.language}
+                className="text-sm w-50 appearance-auto bg-[#1E1E1E] text-white px-2 py-1 rounded-lg border border-slate-700 focus:outline-none focus:ring focus:ring-white"
+              >
+                <option value="" disabled hidden>
+                  --Select your language(Java Default)--
+                </option>
+                <option value="java">Java (Default)</option>
+                <option value="cpp">C++</option>
+                <option value="c">C</option>
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+                <option value="typescript">TypeScript</option>
+                <option value="go">Go</option>
+                <option value="rust">Rust</option>
+              </select>
+            </div>
 
-            <select name="language" value={custom.language}>
-              <option value="java">Java</option>
-              <option value="c++">C++</option>
-              <option value="java">Java</option>
-              <option value="java">Java</option>
-            </select>
+            <button className="text-white font-bold text-sm border rounded-xl bg-red-600 px-3 py-1">Run</button>
+            <button className="text-white font-bold text-sm border rounded-xl bg-green-600 px-3 py-1">Save</button>
 
-          
+            <div>
+              <Cog color="white" className="hover:rotate-20" />
+            </div>
           </div>
-          <div className="w-full h-11/12 pt-2 rounded-2xl">
+          <div className="w-full h-11/12 pt-2 z-0 rounded-2xl">
             <Editor
               height="100%"
               theme={custom.theme}
@@ -51,6 +74,13 @@ const DataStructures = () => {
             />
           </div>
         </div>
+        {/* Left Section Problem */}
+        <div className="w-5/12 flex justify-center items-center h-full">
+        
+        <ProblemCard no="5" mini="Longest Palindromic Substring" question="You have to find out the longest palindromic substring from the given string." difficulty="Medium" constraints="solve it with the space complexity O(1)"/>
+
+        </div>
+
       </div>
     </>
   );
