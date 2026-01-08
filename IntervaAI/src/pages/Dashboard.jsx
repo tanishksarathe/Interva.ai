@@ -67,7 +67,7 @@ const Dashboard = () => {
 
   return (
     <div className="bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200">
-      <div className="flex justify-between sticky z-9 top-0 pt-2 backdrop-blur-3xl">
+      <div className="flex justify-between z-9 top-0 pt-2 backdrop-blur-3xl">
         <img src={logo} alt="logo" className="w-30 h-20" />
         <div className="flex-1 ml-5 flex justify-start">{renderHeader()}</div>
         <div className="bg-black px-5 gap-5 rounded-l-full text-white flex items-center z-10">

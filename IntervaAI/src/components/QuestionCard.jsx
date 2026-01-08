@@ -1,6 +1,6 @@
 import { Flag, ChevronLeft, ChevronRight, Check } from "lucide-react";
 
-const Aptitude = () => {
+const QuestionCard = () => {
   return (
     <div className="w-full min-h-screen flex items-center justify-center p-8">
       {/* Main Card */}
@@ -135,4 +135,4 @@ const Option = ({ label, text, selected }) => {
   );
 };
 
-export default Aptitude;
+export default QuestionCard;
