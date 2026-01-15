@@ -3,7 +3,12 @@ import SkillCard from "../components/SkillCard";
 import { Brain, CirclePile, SquarePen } from "lucide-react";
 import InvertedCard from "../components/InvertedCard";
 import logo from "../assets/whiteLogo2.png";
+import TopicPage from "../components/TopicPage";
+import { useNavigate } from "react-router-dom";
 const Resources = () => {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="w-full text-gray-800">
@@ -34,7 +39,7 @@ const Resources = () => {
               Start Practicing Skills
             </button>
 
-            <button className="px-6 py-3 rounded-lg border border-indigo-600 text-gray-700 font-semibold hover:bg-indigo-600 hover:text-white transition">
+            <button onClick={() => (navigate('/dashboard/studymaterial'))} className="px-6 py-3 rounded-lg border border-indigo-600 text-gray-700 font-semibold hover:bg-indigo-600 hover:text-white transition">
               Explore Study Material →
             </button>
           </div>

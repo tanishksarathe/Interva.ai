@@ -7,6 +7,27 @@
     #dbeafe,
     #e0e7ff
   );
+
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  
+  --secondary: #1e293b;
+  --secondary-hover: #334155;
+
+  /* Backgrounds */
+  --bg-main: #0f172a;
+  --surface-card: rgba(30, 41, 59, 0.5); /* Glassmorphism effect */
+  
+  /* Text Colors */
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+  
+  /* Accents */
+  --accent-sparkle: #a5b4fc;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+
 }
 
 

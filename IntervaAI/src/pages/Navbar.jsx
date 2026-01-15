@@ -8,11 +8,13 @@ const Navbar = () => {
 
     const [signIn, setSignIn] = useState(false);
 
+    const navigate = useNavigate();
+
     return (
         <div className='flex justify-between items-center pr-10 font-semibold'>
-            <section className='' id='logoImage'>
+            <Link onClick={() => navigate('/')} id='logoImage'>
                 <img src={logo} alt="Logo" className='object-cover h-30' />
-            </section>
+            </Link>
             <section className='flex border p-4 w-2xl justify-evenly rounded-4xl bg-black/90 text-white shadow-2xl backdrop-blur-lg' id='links'>
 
                 <Link to='/'>Home</Link>

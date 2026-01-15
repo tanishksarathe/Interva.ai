@@ -13,12 +13,14 @@ import {
   UserRound,
 } from "lucide-react";
 import React, { useState } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation, Link, useNavigate } from "react-router-dom";
 import logo from "../assets/whiteLogo2.png";
 import blackLogo from "../assets/blackLogo.png";
 
 const Dashboard = () => {
   const location = useLocation();
+
+  const navigate = useNavigate();
 
   const [menu, setMenu] = useState({
     activity: false,
@@ -68,7 +70,11 @@ const Dashboard = () => {
   return (
     <div className="bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200">
       <div className="flex justify-between pt-2 backdrop-blur-3xl">
+        <Link onClick={() => navigate('/')}>
         <img src={logo} alt="logo" className="w-30 h-20" />
+        </Link>
+
+
         <div className="flex-1 ml-5 flex justify-start">{renderHeader()}</div>
         <div className="bg-black px-5 gap-5 rounded-l-full text-white flex items-center">
           <ul className="flex gap-3 font-semibold">
