@@ -6,11 +6,22 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+
+app.use("/auth", AuthRouter);
+// app.use("/public", PublicRouter);
+
 app.get("/", (req,res) => {
     console.log("Server Running")
     res.json({
         message:"My Backend is sending some messae, Say Hii!!"
     })
+})
+
+app.use((err, req, res, next)=>{
+    const errorMessage = err.message || "Internal Server Error";
+    const stausCode = err.statusCode || 500;
+
+    res.status(stausCode).json({message: errorMessage})
 })
 
 app.listen(PORT, () => {
