@@ -1,11 +1,12 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
+import { genToken } from "../utils/authToken.js";
 
 export const registrationController = async (req, res, next) => {
   try {
-      console.log("Check 3 :", req.body);
-      // get data from frontend
-      const { fullname, email, phone, password } = req.body;
+    console.log("Check 3 :", req.body);
+    // get data from frontend
+    const { fullname, email, phone, password } = req.body;
 
     // check if something not exists
 
@@ -79,6 +80,8 @@ export const loginController = async (req, res, next) => {
       return next(error);
     }
 
+    await genToken(existingUser, res);
+
     res
       .status(200)
       .json({ message: "User Login Successful", data: existingUser });
@@ -87,3 +90,5 @@ export const loginController = async (req, res, next) => {
     next(error);
   }
 };
+
+// Resume Response Controller

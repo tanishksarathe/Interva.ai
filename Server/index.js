@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import AuthRouter from "./src/routes/authRouter.js";
+import ServiceRouter from "./src/routes/serviceRoutes.js"
 import connectDB from "./src/config/db.js";
 import cors from "cors";
 
@@ -15,7 +16,10 @@ app.use(
 
 app.use(express.json());
 
+app.use("/uploads", express.static("uploads"));
+
 app.use("/auth", AuthRouter);
+app.use("/service", ServiceRouter);
 
 const PORT = process.env.PORT || 3000;
 

@@ -8,15 +8,56 @@ import {
 } from "lucide-react";
 import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
+import api from "../config/API";
 
 const ResumeAnalyze = () => {
   const max_file_size = 5 * 1024 * 1024;
 
+  const [company, setCompany] = useState("");
+
+  const [jobTitle, setJobTitle] = useState("");
+
   const fileReference = useRef(null);
+
+  const [loading, setLoading] = useState(false);
+
+  const [parsed, setParsed] = useState(null);
 
   const [file, setFile] = useState(null);
 
+  const [jobDescription, setJobDescription] = useState("");
+
   const [isDragging, setIsDragging] = useState(false);
+
+  const HandleAnalyze = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    try {
+      const formData = new FormData();
+
+      if (file != null && jobDescription != null) {
+        formData.append("resume", file);
+        console.log(file);
+        formData.append("jobDescription", jobDescription);
+        console.log(jobDescription);
+      }
+
+      console.log("Check 1 for resume : ", formData);
+
+      const response = await api.post("/service/resume-analyze", formData);
+
+      console.log(response.data);
+
+      toast.success("Resume Analyzed Successfully");
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.data?.message || "Unknown error while analysis");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -51,7 +92,6 @@ const ResumeAnalyze = () => {
       <div className="min-h-screen w-full flex flex-col items-center justify-start bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200 px-6 py-16">
         {/* Heading Section */}
         <div className="text-center max-w-3xl">
-
           <h1 className="text-4xl md:text-5xl font-semibold text-gray-800 leading-tight">
             Track Your Applications & <br />
             Resume Ratings
@@ -103,7 +143,7 @@ const ResumeAnalyze = () => {
               </div>
 
               <div>
-                <p>Netflix – Frontend Engineer</p>
+                <p>Netflix - Frontend Engineer</p>
                 <p className="text-gray-500">
                   Worked on scalable React architecture and collaborated with
                   cross-functional teams.
@@ -111,7 +151,7 @@ const ResumeAnalyze = () => {
               </div>
 
               <div>
-                <p>Adobe – UI Developer</p>
+                <p>Adobe - UI Developer</p>
                 <p className="text-gray-500">
                   Developed pixel-perfect interfaces following modern design
                   systems.
@@ -144,7 +184,8 @@ const ResumeAnalyze = () => {
                 </label>
                 <input
                   type="text"
-                  value="TechNova Solutions"
+                  value={company}
+                  onChange={(e)=> setCompany(e.target.value)}
                   className="w-full rounded-xl bg-white/80 backdrop-blur-md px-4 py-3 text-gray-700 shadow-sm focus:outline-none"
                 />
               </div>
@@ -156,8 +197,8 @@ const ResumeAnalyze = () => {
                 </label>
                 <input
                   type="text"
-                  value="Frontend Developer"
-                  // readOnly
+                  value={jobTitle}
+                  onChange={(e) => setJobTitle(e.target.value)}
                   className="w-full rounded-xl bg-blue-100/70 backdrop-blur-md px-4 py-3 text-gray-700 shadow-sm focus:outline-none"
                 />
               </div>
@@ -169,14 +210,11 @@ const ResumeAnalyze = () => {
                 </label>
                 <textarea
                   rows={5}
-                  // readOnly
+                  value={jobDescription}
+                  onChange={(e) => setJobDescription(e.target.value)}
+                  placeholder="Paste the Job Description here (e.g., Role, Responsibilities, and Required Technical Skills...)"
                   className="w-full rounded-xl bg-white/80 backdrop-blur-md px-4 py-3 text-gray-700 shadow-sm resize-none focus:outline-none"
-                >
-                  Familiarity with RESTful APIs and frontend build tools. Good
-                  understanding of responsive design and cross-browser
-                  compatibility. Strong problem-solving skills and attention to
-                  detail.
-                </textarea>
+                ></textarea>
               </div>
 
               {/* Upload Resume */}
@@ -238,7 +276,10 @@ const ResumeAnalyze = () => {
 
               {/* Submit Button */}
               <div className="pt-6">
-                <button className="w-full rounded-xl bg-linear-to-r from-indigo-500 to-purple-500 text-white py-3 font-semibold shadow-lg">
+                <button
+                  onClick={HandleAnalyze}
+                  className="w-full rounded-xl bg-linear-to-r from-indigo-500 to-purple-500 text-white py-3 font-semibold shadow-lg"
+                >
                   Analyse Resume
                 </button>
               </div>
@@ -405,6 +446,6 @@ const ResumeAnalyze = () => {
       </div>
     </>
   );
-}
+};
 
 export default ResumeAnalyze;
