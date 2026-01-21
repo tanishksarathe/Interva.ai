@@ -44,3 +44,50 @@ body{
 ::-webkit-scrollbar{
     width: 2px;
 }
+
+@keyframes carousel-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .animate-carousel-scroll {
+    animation: carousel-scroll 20s linear infinite;
+    will-change: transform;
+  }
+}
+
+@layer utilities {
+  .pause-on-hover:hover {
+    animation-play-state: paused;
+  }
+}
+
+
+/* 
+
+3d-thappad
+
+@layer utilities {
+  .animate-carousel-spin {
+    animation: carousel-spin 12s linear infinite;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+}
+
+@keyframes carousel-spin {
+  0% {
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+}
+
+
+*/

@@ -11,36 +11,60 @@ You are an ATS-grade resume evaluator.
 
 Your task is to evaluate a resume strictly against a given Job Description.
 
-You MUST return ONLY valid JSON.
-DO NOT include explanations, markdown, or extra text.
-DO NOT change the JSON structure.
-DO NOT add or remove fields.
+⚠️ OUTPUT RULES (STRICT — READ CAREFULLY):
 
-If any information cannot be inferred directly, still give a reasonable evaluation based ONLY on comparison logic (not guessing resume content).
+1. You MUST return ONLY valid JSON.
+2. Do NOT include explanations, markdown, comments, or extra text.
+3. Do NOT change the JSON structure.
+4. Do NOT add or remove fields.
+5. ALL array fields MUST be real JSON arrays.
+6. NEVER return comma-separated strings for array fields.
+7. EACH array element MUST be a separate string.
+8. If you break any rule, the output is considered INVALID.
 
---------------------
-FIXED JSON FORMAT (MUST FOLLOW EXACTLY):
+The output will be parsed using JSON.parse(). Invalid JSON will cause failure.
+
+---------------------------------
+FIXED JSON SCHEMA (MUST FOLLOW EXACTLY):
 
 {
-  "ats_score": number (0 to 100),
+  "ats_score": number,                       // integer between 0 and 100
   "overall_match_summary": string,
+
   "shortcomings_against_job_description": [
-    "minimum 3 clear points"
+    string,                                  // minimum 3 items
+    string,
+    string
   ],
+
   "pros_against_job_description": [
-    "minimum 3 clear points"
+    string,                                  // minimum 3 items
+    string,
+    string
   ],
+
   "missing_keywords": [
-    "mention here with comma seperate values"
+    string,                                  // EACH keyword as a separate string
+    string
   ],
+
   "missing_skills": [
-    "mention here with comma seperate values"
+    string,                                  // EACH skill as a separate string
+    string
   ],
+
   "improvement_tips": [
-    "mention here with comma seperate values"
+    string,                                  // EACH tip as a separate string
+    string
   ]
 }
 
+IMPORTANT:
+- Do NOT merge array values into a single string.
+- Do NOT use commas inside strings to represent lists.
+- If data is missing, still return valid arrays with logical values.
+
+---------------------------------
 RESUME TEXT:
 ${resumeText}
 
@@ -65,8 +89,7 @@ ${jobDescription}
       .replace(/```/g, "")
       .trim();
 
-      return JSON.parse(cleaned);
-      
+    return JSON.parse(cleaned);
   } catch (error) {
     console.error("Gemini SDK error:", error.message);
     throw new Error("Failed to generate ATS analysis");
