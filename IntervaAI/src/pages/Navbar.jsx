@@ -1,19 +1,19 @@
-import {
-  Sparkles,
-} from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/whiteLogo2.png";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
+import { useAuth } from "../config/AuthContext";
 import Login from "./Login&SignUp/Login";
 import Register from "./Login&SignUp/Register";
 
 const Navbar = () => {
   const [onClose, setOnClose] = useState(false);
 
-  const [signIn, setSignIn] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
 
-  const [login, setLogin] = useState(false);
+  const { setLogin, login } = useAuth();
 
   return (
     <>
@@ -34,41 +34,36 @@ const Navbar = () => {
           <button className="py-2 flex gap-1 px-3 border rounded-3xl border-y-indigo-500">
             Premium <Sparkles fill="indigo" />
           </button>
-          <button
-            onClick={() => setSignIn(true)}
-            className="py-2 border-y-indigo-500 px-3 border rounded-3xl"
-          >
-            Login/SignUp
-            {/* {signIn ? "Log Out" : "Login/SignUp"} */}
-          </button>
+          { !login &&
+            (<button 
+          onClick={() => setOpenLogin(true)}
+          className="py-2 border-y-indigo-500 px-3 border rounded-3xl">Login</button>
+            )}
+
+            { !login &&
+
+           <button 
+           onClick={() => setOpenRegister(true)}
+           className="py-2 border-y-indigo-500 px-3 border rounded-3xl">SignUp</button>
+          }
+           {
+            login &&
+             <button
+             onClick={() => {
+              setLogin(false)
+              // setUser("");
+              sessionStorage.removeItem("IntervaAI");
+             }}
+             className="py-2 border-y-indigo-500 px-3 border rounded-3xl">Logout</button>
+          }
         </section>
       </div>
 
-      {(signIn || login) && !onClose && (
-        <div className="backdrop-blur-sm flex justify-center items-center fixed h-screen w-screen top-0 z-10">
-          {signIn && !login && !onClose && (
-            <Register
-              onClose={onClose}
-              login={login}
-              setLogin={setLogin}
-              setOnClose={setOnClose}
-              signIn={signIn}
-              setSignIn={setSignIn}
-            />
-          )}
-          {/* Login */}
-          {!signIn && login && !onClose && (
-            <Login
-              login={login}
-              onClose={onClose}
-              setLogin={setLogin}
-              signIn={signIn}
-              setOnClose={setOnClose}
-              setSignIn={setSignIn}
-            />
-          )}
-        </div>
-      )}
+      <div>
+      {openRegister && <Register setOpenRegister={setOpenRegister} setOpenLogin={setOpenLogin}/>}
+
+        { openLogin && <Login setOpenRegister={setOpenRegister} setOpenLogin={setOpenLogin}/>}
+      </div>
     </>
   );
 };

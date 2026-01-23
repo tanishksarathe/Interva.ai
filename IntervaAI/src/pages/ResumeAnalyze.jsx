@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import api from "../config/API";
 import ResumeAnalysis from "../components/Resume Analysis/ResumeOutcomes";
-import resume from "../assets/resumeAssets/resume(1).jpg";
 
 const ResumeAnalyze = () => {
   const max_file_size = 5 * 1024 * 1024;
@@ -36,7 +35,15 @@ const ResumeAnalyze = () => {
 
   const HandleAnalyze = async (e) => {
     e.preventDefault();
+    if(!file || !jobDescription){
+      toast.error(`Please ${
 
+        (!jobDescription && ! file) ? "Enter Job Description and Upload your Resume" :
+        (!file) ? "Upload your Resume Also" : "Enter your Job Description Also"
+
+      }`)
+      return;
+    }
     setLoading(true);
 
     try {
@@ -176,6 +183,7 @@ const ResumeAnalyze = () => {
                 </label>
                 <textarea
                   rows={5}
+                  required
                   value={jobDescription}
                   onChange={(e) => setJobDescription(e.target.value)}
                   placeholder="Paste the Job Description here (e.g., Role, Responsibilities, and Required Technical Skills...)"
@@ -191,6 +199,7 @@ const ResumeAnalyze = () => {
 
                 <input
                   type="file"
+                  required
                   className="hidden"
                   ref={fileReference}
                   accept=".pdf,.doc"
@@ -258,7 +267,7 @@ const ResumeAnalyze = () => {
           <div className="flex w-full">
             {/* Left Resume Preview */}
 
-            {pdfPreviewUrl && (
+            {pdfPreviewUrl && show && (
               <iframe
                 src={pdfPreviewUrl}
                 className="w-100 h-120"

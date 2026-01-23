@@ -16,8 +16,12 @@ import React, { useState } from "react";
 import { NavLink, Outlet, useLocation, Link, useNavigate } from "react-router-dom";
 import logo from "../assets/whiteLogo2.png";
 import blackLogo from "../assets/blackLogo.png";
+import { useAuth } from "../config/AuthContext";
 
 const Dashboard = () => {
+
+  const {user} = useAuth();
+
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -61,7 +65,7 @@ const Dashboard = () => {
       default:
         return (
           <div className="text-4xl font-bold flex items-center">
-            Welcome, Tanishk Sarathe
+            Welcome, {user.data.fullname}
           </div>
         );
     }

@@ -1,129 +1,125 @@
-import { Lock, Mail, X } from "lucide-react";
+import { Lock, LogIn, Mail, RotateCcw, UserPlus, X } from "lucide-react";
 import React, { useState } from "react";
-import api from '../../config/API'
 import toast from "react-hot-toast";
+import api from '../../config/API'
+import { useAuth } from "../../config/AuthContext";
 
-const Login = ({ login, onClose, setOnClose, setLogin, setSignIn, signIn }) => {
-  const [loading, setLoading] = useState(false);
+const Login = ({ setOpenLogin, setOpenRegister }) => {
+  
+  const {user, setLogin, setUser} = useAuth();
 
   const [details, setDetails] = useState({
     email: "",
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
-
-    const {name, value} = e.target;
-
-    setDetails((prev) => ({...prev, [name]: value}))
-
+    const { name, value } = e.target;
+    setDetails((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleLogin = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
-      
       const response = await api.post("/auth/login", details);
 
       console.log(response.data);
+      sessionStorage.setItem("IntervaAI", JSON.stringify(response.data.data));
 
-      toast.success(response?.data?.message || "User Logged In");
+      setUser(response.data);
+      setLogin(!!user);
+      toast.success("User Logged in Succesfully");
+      setOpenLogin(false);
 
     } catch (error) {
-      console.log(error);
+      console.log(error?.response?.data?.message || "Unknown Error");
       toast.error(error?.response?.data?.message || "Unknown Error");
     }finally{
-      handleClearForm();
       setLoading(false);
     }
+  };
 
-  }
-
-  const handleClearForm = () => {
-    setDetails({
-      email:"",
-      password:"",
-    })
-  }
-
+  
   return (
     <>
-      <div>
-        <div className="relative w-full max-w-md rounded-2xl bg-white/70 backdrop-blur-lg shadow-2xl p-8">
-          {/* Close Button */}
+      <div className="fixed bg-black/80 inset-0 flex items-center justify-center">
+      
+        <div className="w-full max-w-md rounded-2xl bg-(--surface-card) backdrop-blur-xl border border-white/10 shadow-2xl p-8 animate-fade-in">
           <button
-            onClick={() => {
-              setOnClose(!onClose);
-              setSignIn(false);
-              setLogin(false);
-            }}
-            className="absolute top-4 right-4 text-indigo-600 hover:text-indigo-800 transition"
+            className="absolute text-white top-0 right-0 p-2"
+            onClick={() => setOpenLogin(false)}
           >
-            <X size={22} />
+            <X />
           </button>
 
           {/* Header */}
-          <h2 className="mb-6 text-center text-3xl font-bold text-indigo-700">
-            Welcome Back
-          </h2>
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-(--text-main)">
+              Welcome Back
+            </h2>
+            <p className="text-sm text-(--text-sub) mt-2">
+              Login to get started...
+            </p>
+          </div>
 
           {/* Form */}
-          <form className="space-y-5" onSubmit={handleLogin}>
+          <form className="space-y-5" onSubmit={handleSubmit}>
             {/* Email */}
-            <div>
-              <label className="text-sm font-medium text-gray-700">
-                Email Address
-              </label>
-              <div className="mt-1 flex items-center gap-2 rounded-lg border border-indigo-200 bg-white px-3 py-2 focus-within:ring-2 focus-within:ring-indigo-300">
-                <Mail className="text-indigo-500" size={18} />
-                <input
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  value={details.email}
-                  placeholder="example@email.com"
-                  className="w-full outline-none text-gray-700 placeholder-gray-400"
-                />
-              </div>
+            <div className="relative">
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-(--accent-sparkle) w-5 h-5" />
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="w-full pl-12 pr-4 py-3 rounded-xl bg-transparent border border-white/20 text-(--text-main) placeholder-(--text-sub) focus:outline-none focus:border-(--primary) transition"
+                name="email"
+                value={details.email}
+                onChange={handleChange}
+                disabled={loading}
+                required
+              />
             </div>
 
             {/* Password */}
-            <div>
-              <label className="text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <div className="mt-1 flex items-center gap-2 rounded-lg border border-indigo-200 bg-white px-3 py-2 focus-within:ring-2 focus-within:ring-indigo-300">
-                <Lock className="text-indigo-500" size={18} />
-                <input
-                  type="password"
-                  name="password"
-                  value={details.password}
-                  onChange={handleChange}
-                  placeholder="••••••••"
-                  className="w-full outline-none text-gray-700 placeholder-gray-400"
-                />
-              </div>
+            <div className="relative">
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-(--accent-sparkle) w-5 h-5" />
+              <input
+                type="password"
+                placeholder="Password"
+                className="w-full pl-12 pr-4 py-3 rounded-xl bg-transparent border border-white/20 text-(--text-main) placeholder-(--text-sub) focus:outline-none focus:border-(--primary) transition"
+                name="password"
+                value={details.password}
+                onChange={handleChange}
+                disabled={loading}
+                required
+              />
             </div>
 
-            {/* Login Button */}
-            <button
-              type="submit"
-              className="w-full rounded-lg bg-linear-to-r from-indigo-500 to-blue-500 py-2 font-semibold text-white hover:opacity-90 transition"
-            >
-              {loading ? "Logging in...." : "Login"}
-            </button>
+            {/* Buttons */}
+            <div className="flex gap-4 pt-4">
+              <button
+                type="submit"
+                className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-(--primary) hover:bg-(--primary-hover) text-white py-3 font-semibold transition transform hover:scale-[1.02] active:scale-95"
+              >
+                <LogIn className="w-5 h-5" />
+                {loading ? "Processing":"Login"}
+              </button>
+            </div>
           </form>
-          <div className="text-center mt-5">
-            Don't have an account?{" "}
+
+          <div className="text-sm mr-2 text-center text-(--text-sub)">
+            Don't have an account?
             <button
               onClick={() => {
-                setLogin(false);
-                setSignIn(true);
+                setOpenLogin(false);
+                setOpenRegister(true);
               }}
-              className="text-indigo-700"
+              className="ml-1 text-(--primary) hover:text-(--primary-hover) mt-2"
             >
-              SignUp
+              Signup
             </button>
           </div>
         </div>
