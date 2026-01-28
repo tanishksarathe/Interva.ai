@@ -17,6 +17,7 @@ export const genToken = async (user, res) => {
       secure: false,
       sameSite: "lax",
     });
+    
   } catch (error) {
     throw error;
   }

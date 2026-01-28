@@ -1,26 +1,38 @@
 import {
   Award,
   CalendarClock,
+  ChevronsDown,
   ClockCheck,
+  Code2,
   FileBracesCorner,
   FileCodeCorner,
   GraduationCap,
   LayoutDashboard,
+  Link2,
   MessagesSquare,
   Navigation,
   Sparkles,
   SquareCode,
   UserRound,
+  UserRoundPen,
 } from "lucide-react";
-import React, { useState } from "react";
-import { NavLink, Outlet, useLocation, Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import logo from "../assets/whiteLogo2.png";
 import blackLogo from "../assets/blackLogo.png";
 import { useAuth } from "../config/AuthContext";
+import EditProfileModal from "../components/ProfileComponents/EditProfileModal";
 
 const Dashboard = () => {
+  const { user } = useAuth();
 
-  const {user} = useAuth();
+  const [openEditModal, setOpenEditModal] = useState(false);
 
   const location = useLocation();
 
@@ -65,19 +77,22 @@ const Dashboard = () => {
       default:
         return (
           <div className="text-4xl font-bold flex items-center">
-            Welcome, {user.data.fullname}
+            Welcome, {user.fullname}
           </div>
         );
     }
   };
 
+  const handleEditProfile = () => {
+
+  }
+
   return (
     <div className="bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200">
       <div className="flex justify-between pt-2 backdrop-blur-3xl">
-        <Link onClick={() => navigate('/')}>
-        <img src={logo} alt="logo" className="w-30 h-20" />
+        <Link onClick={() => navigate("/")}>
+          <img src={logo} alt="logo" className="w-30 h-20" />
         </Link>
-
 
         <div className="flex-1 ml-5 flex justify-start">{renderHeader()}</div>
         <div className="bg-black px-5 gap-5 rounded-l-full text-white flex items-center">
@@ -193,105 +208,87 @@ const Dashboard = () => {
               </div>
 
               {menu.profilers && (
-                <div className="flex z-9 rounded-2xl pt-5 text-white absolute top-17 right-10 h-100 overflow-y-scroll bg-black backdrop-blur-3xl">
-                  <div className="flex flex-col px-3">
-                    <h1 className="text-lg text-center font-bold px-5 pb-3 border-b border-b-indigo-700">
-                      Profile Summary
-                    </h1>
+                <div className="flex z-9 rounded-2xl pt-5 text-white absolute top-17 right-10 h-100 overflow-y-scroll backdrop-blur-3xl">
+                  <div className="max-w-md w-full rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-xl p-6 text-white">
+                    {/* Header */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="w-14 h-14 rounded-full bg-indigo-600 flex items-center justify-center text-xl font-bold">
+                          RS
+                        </div>
 
-                    <img
-                      src={blackLogo}
-                      alt="Profile Icon"
-                      className="h-25 w-25 my-5 rounded-full mx-auto"
-                    />
-
-                    <h1 className="text-sm mb-1 text-center font-semibold px-5">
-                      Tanishk Sarathe
-                    </h1>
-
-                    <h1 className="text-sm pb-3 border-b text-center border-b-indigo-700 font-light px-5">
-                      Software Developer Engineer
-                    </h1>
-
-                    <ul className="text-[12px] space-y-2 pb-5 text-white pt-3 pl-5">
-                      <li className="flex gap-1">
-                        <UserRound size={15} />
-                        Role : Software Engineer
-                      </li>
-                      <li className="flex gap-1">
-                        <FileCodeCorner size={15} />
-                        Level : Full Stack Developer
-                      </li>
-                      <li className="flex gap-1">
-                        <Navigation size={15} />
-                        Location : Bengaluru, India
-                      </li>
-                      <li className="flex gap-1">
-                        <ClockCheck size={15} />
-                        Member Since : Jan 2026
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <h1 className="text-md font-bold pt-5 px-5 pb-3 border-b border-b-indigo-700">
-                      Skills
-                    </h1>
-
-                    <div className="w-55 m-3 text-white flex gap-2 text-[12px] cursor-default flex-wrap">
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        Reactjs
-                      </span>
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        Nodejs
-                      </span>
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        Expressjs
-                      </span>
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        Mongodb
-                      </span>
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        Java
-                      </span>
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        C
-                      </span>
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        C++
-                      </span>
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        Python
-                      </span>
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        SQL
-                      </span>
-                      <span className="rounded-full border px-2 py-1 text-white hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold">
-                        Next.js
-                      </span>
+                        <div>
+                          <h2 className="text-xl font-semibold">
+                            Rahul Sharma
+                          </h2>
+                          <p className="text-sm text-gray-400">Fresher</p>
+                        </div>
+                      </div>
+                      <div role="button" className="p-2 bg-white rounded-full"
+                      onClick={() => setOpenEditModal(true)}>
+                        <UserRoundPen color="black" />
+                      </div>
                     </div>
 
-                    <div>
-                      <h1 className="text-md font-bold text-center px-5 pb-3 border-b border-b-indigo-700">
-                        Achievements
-                      </h1>
+                    {/* Role */}
+                    <div className="mt-5">
+                      <p className="text-sm text-gray-400">Target Role</p>
+                      <p className="font-medium">
+                        Software Development Engineer ·{" "}
+                        <span className="text-indigo-400">Full Stack</span>
+                      </p>
+                    </div>
 
-                      <ul className="text-[12px] space-y-2 pb-5 w-55 text-white pt-3 ">
-                        <li className="flex gap-1">
-                          <Award size={20} />
-                          Won India's Biggest Hackathon, Smart India Hackathon
-                          2025
-                        </li>
-                        <li className="flex gap-1">
-                          <Award size={20} />
-                          Won India's Biggest Hackathon, Smart India Hackathon
-                          2025
-                        </li>
-                        <li className="flex gap-1">
-                          <Award size={20} />
-                          Won India's Biggest Hackathon, Smart India Hackathon
-                          2025
-                        </li>
-                      </ul>
+                    {/* Education */}
+                    <div className="mt-4">
+                      <p className="text-sm text-gray-400">Education</p>
+                      <p className="font-medium">B.Tech (CSE) · 2026</p>
+                    </div>
+
+                    {/* Skills */}
+                    <div className="mt-4">
+                      <p className="text-sm text-gray-400 mb-2">
+                        Programming Languages
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {["C++", "Java", "JavaScript"].map((lang) => (
+                          <span
+                            key={lang}
+                            className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 text-sm border border-indigo-500/20"
+                          >
+                            {lang}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Coding Profiles */}
+                    <div className="mt-6 flex gap-4">
+                      <a
+                        href="https://github.com/rahulsharma"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition border border-white/10"
+                      >
+                        <Link2 size={18} />
+                        <span className="text-sm">GitHub</span>
+                      </a>
+
+                      <a
+                        href="https://leetcode.com/rahul_codes"
+                        target="_blank"
+                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition border border-white/10"
+                      >
+                        <Code2 size={18} />
+                        <span className="text-sm">LeetCode</span>
+                      </a>
+                      <p
+                        href="https://leetcode.com/rahul_codes"
+                        target="_blank"
+                        className="flex items-center gap-2 px-4 py-2 rounded-xl transition"
+                      >
+                        <button className="text-sm flex gap-2 text-blue-700 hover:animate-pulse">View more <ChevronsDown /></button>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -300,7 +297,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-
+              {openEditModal && <EditProfileModal onClose={() => setOpenEditModal(false)}/>}
       <div className="min-h-screen min-w-screen">
         <Outlet />
       </div>

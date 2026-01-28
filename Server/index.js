@@ -1,25 +1,31 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 import AuthRouter from "./src/routes/authRouter.js";
+import userRouter from "./src/routes/userRouter.js"
 import ServiceRouter from "./src/routes/serviceRoutes.js"
 import connectDB from "./src/config/db.js";
-import cors from "cors";
 
 const app = express();
 
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
+    credentials:true,
   }),
 );
 
 app.use(express.json());
 
+app.use(cookieParser());
+
 app.use("/uploads", express.static("uploads"));
 
 app.use("/auth", AuthRouter);
 app.use("/service", ServiceRouter);
+app.use("/user", userRouter);
 
 const PORT = process.env.PORT || 3000;
 

@@ -1,12 +1,11 @@
 import { Lock, LogIn, Mail, RotateCcw, UserPlus, X } from "lucide-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import api from '../../config/API'
+import api from "../../config/API";
 import { useAuth } from "../../config/AuthContext";
 
 const Login = ({ setOpenLogin, setOpenRegister }) => {
-  
-  const {user, setLogin, setUser} = useAuth();
+  const { user, setLogin, setUser, login } = useAuth();
 
   const [details, setDetails] = useState({
     email: "",
@@ -26,28 +25,23 @@ const Login = ({ setOpenLogin, setOpenRegister }) => {
 
     try {
       const response = await api.post("/auth/login", details);
+      setUser(response.data.data);
 
-      console.log(response.data);
-      sessionStorage.setItem("IntervaAI", JSON.stringify(response.data.data));
-
-      setUser(response.data);
-      setLogin(!!user);
-      toast.success("User Logged in Succesfully");
+      setLogin(true);
       setOpenLogin(false);
-
+      sessionStorage.setItem("IntervaAI", JSON.stringify(response.data.data));
+      toast.success("User Logged in Succesfully");
     } catch (error) {
-      console.log(error?.response?.data?.message || "Unknown Error");
+      console.log(error);
       toast.error(error?.response?.data?.message || "Unknown Error");
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
 
-  
   return (
     <>
       <div className="fixed bg-black/80 inset-0 flex items-center justify-center">
-      
         <div className="w-full max-w-md rounded-2xl bg-(--surface-card) backdrop-blur-xl border border-white/10 shadow-2xl p-8 animate-fade-in">
           <button
             className="absolute text-white top-0 right-0 p-2"
@@ -105,7 +99,7 @@ const Login = ({ setOpenLogin, setOpenRegister }) => {
                 className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-(--primary) hover:bg-(--primary-hover) text-white py-3 font-semibold transition transform hover:scale-[1.02] active:scale-95"
               >
                 <LogIn className="w-5 h-5" />
-                {loading ? "Processing":"Login"}
+                {loading ? "Processing" : "Login"}
               </button>
             </div>
           </form>

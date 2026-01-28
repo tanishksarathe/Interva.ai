@@ -91,4 +91,11 @@ export const loginController = async (req, res, next) => {
   }
 };
 
-// Resume Response Controller
+export const logoutController = async (req,res,next) => {
+  try {
+    res.clearCookie("monaco");
+    res.status(200).json({ message: "Logout Successfully" });
+  } catch (error) {
+    next(error);
+  }
+};

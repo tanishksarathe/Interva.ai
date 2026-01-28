@@ -1,10 +1,17 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
 export const ContextFile = ({ children }) => {
-  const [user, setUser] = useState(sessionStorage.getItem("IntervaAI") || "");
+  const [user, setUser] = useState(
+    JSON.parse(sessionStorage.getItem("IntervaAI")) || "",
+  );
   const [login, setLogin] = useState(false);
+
+  useEffect(() => {
+    setLogin(!!user);
+  }, [user]);
+
   return (
     <>
       <AuthContext.Provider value={{ user, setUser, login, setLogin }}>

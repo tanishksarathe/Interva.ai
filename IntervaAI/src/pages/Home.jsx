@@ -32,7 +32,7 @@ const Home = () => {
 
       <section className="flex justify-center items-center flex-col h-lvh">
         <div className="mt-10 leading-normal text-3xl text-center font-semibold">
-          Are you ready <span className="text-4xl font-bold text-indigo-700">{user.data ? user.data.fullname : ""}</span> to
+          Are you ready <span className="text-4xl font-bold text-indigo-700">{user ? user.fullname : ""}</span> to
         </div>
         <div className="leading-normal text-5xl w-[60%] text-center font-bold">
           Ace Your Next Interview with <br /> AI-Powered Practice
