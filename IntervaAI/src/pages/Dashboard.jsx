@@ -28,6 +28,7 @@ import logo from "../assets/whiteLogo2.png";
 import blackLogo from "../assets/blackLogo.png";
 import { useAuth } from "../config/AuthContext";
 import EditProfileModal from "../components/ProfileComponents/EditProfileModal";
+import UserImage from "../assets/user/userimage.png";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -42,6 +43,8 @@ const Dashboard = () => {
     activity: false,
     profilers: false,
   });
+
+  console.log(user);
 
   const renderHeader = () => {
     switch (location.pathname) {
@@ -83,9 +86,7 @@ const Dashboard = () => {
     }
   };
 
-  const handleEditProfile = () => {
-
-  }
+  const handleEditProfile = () => {};
 
   return (
     <div className="bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200">
@@ -109,7 +110,7 @@ const Dashboard = () => {
               Activity
               {menu.activity && (
                 <div
-                  className={`w-70 z-9 absolute bg-white right-53 top-16 text-black border rounded-2xl p-4`}
+                  className={`w-70 z-10 absolute bg-white right-53 top-16 text-black border rounded-2xl p-4`}
                 >
                   <NavLink
                     to={"/dashboard"}
@@ -209,23 +210,29 @@ const Dashboard = () => {
 
               {menu.profilers && (
                 <div className="flex z-9 rounded-2xl pt-5 text-white absolute top-17 right-10 h-100 overflow-y-scroll backdrop-blur-3xl">
-                  <div className="max-w-md w-full rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-xl p-6 text-white">
+                  <div className="max-w-md w-full h-fit rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-xl p-6 text-white">
                     {/* Header */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-full bg-indigo-600 flex items-center justify-center text-xl font-bold">
-                          RS
+                        <div className="w-24 h-24 rounded-full flex items-center justify-center mb-4 relative">
+                          <img
+                            src={user?.photo?.url || UserImage}
+                            alt="avatar"
+                            className="object-cover rounded-full"
+                          />
                         </div>
-
                         <div>
                           <h2 className="text-xl font-semibold">
-                            Rahul Sharma
+                            {user.fullname}
                           </h2>
-                          <p className="text-sm text-gray-400">Fresher</p>
+                          <p className="text-sm text-gray-400">{user.careerStage === "fresher"? "Fresher" : user.careerStage === "student" ? "Student" : ""}</p>
                         </div>
                       </div>
-                      <div role="button" className="p-2 bg-white rounded-full"
-                      onClick={() => setOpenEditModal(true)}>
+                      <div
+                        role="button"
+                        className="p-2 bg-white rounded-full"
+                        onClick={() => setOpenEditModal(true)}
+                      >
                         <UserRoundPen color="black" />
                       </div>
                     </div>
@@ -234,15 +241,15 @@ const Dashboard = () => {
                     <div className="mt-5">
                       <p className="text-sm text-gray-400">Target Role</p>
                       <p className="font-medium">
-                        Software Development Engineer ·{" "}
-                        <span className="text-indigo-400">Full Stack</span>
+                         ·{" "}
+                        <span className="text-indigo-400">{user.targetRole}</span>
                       </p>
                     </div>
 
                     {/* Education */}
                     <div className="mt-4">
                       <p className="text-sm text-gray-400">Education</p>
-                      <p className="font-medium">B.Tech (CSE) · 2026</p>
+                      <p className="font-medium">{user.degree} ({user.branch}) · {user.passout}</p>
                     </div>
 
                     {/* Skills */}
@@ -251,7 +258,7 @@ const Dashboard = () => {
                         Programming Languages
                       </p>
                       <div className="flex flex-wrap gap-2">
-                        {["C++", "Java", "JavaScript"].map((lang) => (
+                        {user.programmingLanguages.map((lang) => (
                           <span
                             key={lang}
                             className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 text-sm border border-indigo-500/20"
@@ -265,7 +272,7 @@ const Dashboard = () => {
                     {/* Coding Profiles */}
                     <div className="mt-6 flex gap-4">
                       <a
-                        href="https://github.com/rahulsharma"
+                        href={user.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition border border-white/10"
@@ -275,7 +282,7 @@ const Dashboard = () => {
                       </a>
 
                       <a
-                        href="https://leetcode.com/rahul_codes"
+                        href={user.leetcode}
                         target="_blank"
                         className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition border border-white/10"
                       >
@@ -283,11 +290,11 @@ const Dashboard = () => {
                         <span className="text-sm">LeetCode</span>
                       </a>
                       <p
-                        href="https://leetcode.com/rahul_codes"
-                        target="_blank"
-                        className="flex items-center gap-2 px-4 py-2 rounded-xl transition"
+                      className="flex items-center gap-2 px-4 py-2 rounded-xl transition"
                       >
-                        <button className="text-sm flex gap-2 text-blue-700 hover:animate-pulse">View more <ChevronsDown /></button>
+                        <button className="text-sm flex gap-2 text-blue-700 hover:animate-pulse">
+                          View more <ChevronsDown />
+                        </button>
                       </p>
                     </div>
                   </div>
@@ -297,7 +304,9 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-              {openEditModal && <EditProfileModal onClose={() => setOpenEditModal(false)}/>}
+      {openEditModal && (
+        <EditProfileModal onClose={() => setOpenEditModal(false)} />
+      )}
       <div className="min-h-screen min-w-screen">
         <Outlet />
       </div>

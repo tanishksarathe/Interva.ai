@@ -3,30 +3,29 @@ import React, { useState } from "react";
 import UserImage from "../../assets/user/userimage.png";
 import { useAuth } from "../../config/AuthContext";
 import toast from "react-hot-toast";
+import api from "../../config/API";
 
 const EditProfileModal = ({ onClose }) => {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
 
   const [loading, setLoading] = useState(false);
-
-  const [photo, setPhoto] = useState("");
 
   const [preview, setPreview] = useState("");
 
   const [details, setDetails] = useState({
-    fullname: user.fullname,
-    email: user.email,
-    phone: user.phone,
-    careerStage: "",
-    targetRole: "",
-    degree: "",
-    branch: "",
-    passout: "",
-    github: "",
-    leetcode: "",
-    codechef: "",
-    hackerrank: "",
-    programmingLanguages: [],
+    fullname: user?.fullname,
+    email: user?.email,
+    phone: user?.phone,
+    careerStage: user?.careerStage || "",
+    targetRole: user?.targetRole || "",
+    degree: user?.degree || "",
+    branch: user?.branch || "",
+    passout: user?.passout || "",
+    github: user?.github || "",
+    leetcode: user?.leetcode || "",
+    codechef: user?.codechef || "",
+    hackerrank: user?.hackerrank || "",
+    programmingLanguages: user?.programmingLanguages || [],
   });
 
   const handleSave = async (e) => {
@@ -38,7 +37,7 @@ const EditProfileModal = ({ onClose }) => {
 
       const res = await api.put("/user/update", details);
 
-      console.log("Response Data : ", res.data);
+      console.log("Response Data : ", res.data.data);
 
       setUser(res.data.data);
 
@@ -59,7 +58,37 @@ const EditProfileModal = ({ onClose }) => {
     setDetails((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlePhotoChange = () => {};
+  const handlePhotoChange = async (e) => {
+    const file = e.target.files[0];
+
+    console.log("File from handle Photo Change : ", file);
+
+    const photoUrl = URL.createObjectURL(file);
+
+    setPreview(photoUrl);
+
+    console.log("Photo URL from handle photo change : ", photoUrl);
+
+    const form_data = new FormData();
+
+    form_data.append("image", file);
+
+    console.log("Form Data that has to be send to backend : ", form_data);
+
+    try {
+      const res = await api.patch("/user/update-profile-photo", form_data);
+
+      console.log("Response from handle photo change", res);
+
+      setUser(res.data.data);
+
+      sessionStorage.setItem("IntervaAI", JSON.stringify(res.data.data));
+
+      toast.success(res?.data?.message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="absolute justify-center items-center bg-black/90 max-h-[85vh] w-5xl overflow-y-auto mx-auto p-8 space-y-10 text-white rounded-2xl border border-white/10">
@@ -74,11 +103,11 @@ const EditProfileModal = ({ onClose }) => {
         {/* ================= PHOTO ================= */}
         <section>
           <h2 className="text-xl font-semibold mb-4">Profile Photo</h2>
-          <div className="w-24 h-24 rounded-full flex items-center justify-center mb-4 relative">
+          <div className="rounded-full h-20 w-20 flex p-1 items-center justify-center mb-4 relative">
             <img
-              src={preview || UserImage}
+              src={preview || user?.photo?.url || UserImage}
               alt="avatar"
-              className="object-cover rounded-full"
+              className="object-contain rounded-full"
             />
 
             <div className="bottom-2 left-[75%] border bg-white p-2 rounded-full group flex gap-3 absolute group">
@@ -292,7 +321,9 @@ const EditProfileModal = ({ onClose }) => {
               onChange={(e) =>
                 setDetails((prev) => ({
                   ...prev,
-                  [e.target.name]: [e.target.value.split(",")],
+                  [e.target.name]: e.target.value
+                    .split(",")
+                    .map(l => l.trim()),
                 }))
               }
               required

@@ -15,6 +15,11 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    role:{
+      type: String,
+      enum:["Student","admin"],
+      default:"student",
+    },
     password: {
       type: String,
       required: true,
@@ -22,57 +27,67 @@ const userSchema = mongoose.Schema(
     careerStage:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     targetRole:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     degree:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     branch:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     passout:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     github:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     leetcode:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     codechef:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     hackerrank:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     careerStage:{
       type: String,
       required:true,
-      default:""
+      default:"N/A"
     },
     programmingLanguages:{
       type:[String],
       required:true,
       default:[]
+    },
+    photo:{
+      url:{
+        type:String,
+        default:""
+      },
+      publicID:{
+        type:String,
+        default:""
+      }
     }
   },
   { timestamps: true }

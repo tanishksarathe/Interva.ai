@@ -1,4 +1,4 @@
-import { Lock, LogIn, Mail, RotateCcw, UserPlus, X } from "lucide-react";
+import { Eye, EyeOff, Loader, Lock, LogIn, Mail, RotateCcw, UserPlus, X } from "lucide-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import api from "../../config/API";
@@ -6,6 +6,8 @@ import { useAuth } from "../../config/AuthContext";
 
 const Login = ({ setOpenLogin, setOpenRegister }) => {
   const { user, setLogin, setUser, login } = useAuth();
+
+  const [show, setShow] = useState(false);
 
   const [details, setDetails] = useState({
     email: "",
@@ -78,18 +80,24 @@ const Login = ({ setOpenLogin, setOpenRegister }) => {
             </div>
 
             {/* Password */}
-            <div className="relative">
+            <div className="relative flex gap-3 items-center rounded-xl border border-white/20">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-(--accent-sparkle) w-5 h-5" />
               <input
-                type="password"
+                type={show? "text":"password"}
                 placeholder="Password"
-                className="w-full pl-12 pr-4 py-3 rounded-xl bg-transparent border border-white/20 text-(--text-main) placeholder-(--text-sub) focus:outline-none focus:border-(--primary) transition"
+                className="w-full pl-12 pr-4 py-3  bg-transparent text-(--text-main) placeholder-(--text-sub) focus:outline-none focus:border-(--primary) transition"
                 name="password"
                 value={details.password}
                 onChange={handleChange}
                 disabled={loading}
                 required
               />
+              <div onClick={() => setShow(!show)} className="px-4">
+                {show ? <Eye color="white" /> : <EyeOff color="white" />}
+              </div>
+            </div>
+            <div className="flex justify-end text-white text-sm">
+              <button type="button">Forgot Password?</button>
             </div>
 
             {/* Buttons */}
@@ -98,8 +106,7 @@ const Login = ({ setOpenLogin, setOpenRegister }) => {
                 type="submit"
                 className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-(--primary) hover:bg-(--primary-hover) text-white py-3 font-semibold transition transform hover:scale-[1.02] active:scale-95"
               >
-                <LogIn className="w-5 h-5" />
-                {loading ? "Processing" : "Login"}
+                {loading ? (<div className="flex gap-2"><span className="animate-spin transition-all"><Loader/> </span> Processing</div>) : (<span className="flex gap-2"><LogIn/> Login </span>)}
               </button>
             </div>
           </form>

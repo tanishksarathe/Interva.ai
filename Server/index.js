@@ -2,10 +2,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from "cors";
+import cloudinary from "./src/config/cloudinary.js";
 import cookieParser from "cookie-parser";
 import AuthRouter from "./src/routes/authRouter.js";
-import userRouter from "./src/routes/userRouter.js"
-import ServiceRouter from "./src/routes/serviceRoutes.js"
+import adminRouter from './src/routes/adminRouter.js'
+import userRouter from "./src/routes/userRouter.js";
+import ServiceRouter from "./src/routes/serviceRoutes.js";
 import connectDB from "./src/config/db.js";
 
 const app = express();
@@ -13,7 +15,7 @@ const app = express();
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
-    credentials:true,
+    credentials: true,
   }),
 );
 
@@ -21,11 +23,10 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-app.use("/uploads", express.static("uploads"));
-
 app.use("/auth", AuthRouter);
 app.use("/service", ServiceRouter);
 app.use("/user", userRouter);
+app.use("/admin", adminRouter);
 
 const PORT = process.env.PORT || 3000;
 
@@ -45,7 +46,13 @@ app.use((err, req, res, next) => {
   res.status(stausCode).json({ message: errorMessage });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`App is listening at : ${PORT}`);
   connectDB();
+  try {
+    const res = await cloudinary.api.ping();
+    console.log("Cloudinary ping", res);
+  } catch (error) {
+    console.error(error);
+  }
 });

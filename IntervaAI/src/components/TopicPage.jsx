@@ -9,12 +9,72 @@ import {
   MessageSquare,
   Database,
   CircleDashed,
+  Brain,
+  Layers,
+  Sparkles,
+  ArrowLeft,
 } from "lucide-react";
 
 export default function TopicPage(props) {
   props = props.content;
 
-  console.log(props.sections);
+  if (!props) {
+    return (
+      <div className="h-[80vh] flex items-center justify-center rounded-2xl bg-slate-800 border border-white/10 backdrop-blur-xl p-10">
+        <div className="max-w-xl text-center flex flex-col items-center gap-6">
+          {/* Icon */}
+          <div className="p-4 rounded-full bg-indigo-500 border border-indigo-400">
+            <Brain size={40} className="text-indigo-300" />
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-3xl font-bold text-indigo-300">
+            Structured Learning. One Topic at a Time.
+          </h1>
+
+          {/* Description */}
+          <p className="text-slate-400 leading-relaxed">
+            Choose any topic from the left panel to unlock
+            <span className="text-indigo-300 font-medium">
+              {" "}clear explanations, concepts, patterns
+            </span>
+            , and interview-focused insights — all organized
+            for focused preparation.
+          </p>
+
+          {/* Highlights */}
+          <div className="grid grid-cols-2 gap-4 mt-4 text-sm">
+            {[
+              {
+                icon: BookOpen,
+                text: "Concept-first explanations",
+              },
+              {
+                icon: Layers,
+                text: "Pattern-based coverage",
+              },
+              {
+                icon: Sparkles,
+                text: "Interview relevance",
+              },
+              {
+                icon: ArrowLeft,
+                text: "Pick a topic to begin",
+              },
+            ].map(({ icon: Icon, text }, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-3 rounded-xl bg-slate-900/60 px-4 py-3 border border-white/5"
+              >
+                <Icon size={18} className="text-indigo-300" />
+                <span className="text-slate-300">{text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-full bg-indigo-200 p-5 rounded-2xl py-8 space-y-6">
@@ -96,9 +156,9 @@ export default function TopicPage(props) {
           {props.sections[0].icon || ""}
         </div>
 
-        <div className="text-gray-700 text-sm leading-relaxed">
+        <pre className="text-gray-700 text-sm leading-relaxed">
           {props.sections[0].content.text}
-        </div>
+        </pre>
 
         {props.sections[0].extraAction?.label || ""}
       </div>{" "}
@@ -117,9 +177,9 @@ export default function TopicPage(props) {
           {props.sections[1].icon || ""}
         </div>
 
-        <div className="text-gray-700 text-sm leading-relaxed">
+        <pre className="text-gray-700 text-sm leading-relaxed">
           {props.sections[1].content.text}
-        </div>
+        </pre>
 
         {props.sections[1].extraAction?.label || ""}
       </div>{" "}
@@ -138,9 +198,9 @@ export default function TopicPage(props) {
           {props.sections[2].icon || ""}
         </div>
 
-        <div className="text-gray-700 text-sm leading-relaxed">
+        <pre className="text-gray-700 text-sm leading-relaxed">
           {props.sections[2].content.text}
-        </div>
+        </pre>
 
         {props.sections[2].extraAction?.label || ""}
       </div>{" "}
@@ -159,9 +219,9 @@ export default function TopicPage(props) {
           {props.sections[3].icon || ""}
         </div>
 
-        <div className="text-gray-700 text-sm leading-relaxed">
+        <pre className="text-gray-700 text-sm leading-relaxed">
           {props.sections[3].content.text}
-        </div>
+        </pre>
 
         {props.sections[3].extraAction?.label || ""}
       </div>{" "}
@@ -180,9 +240,9 @@ export default function TopicPage(props) {
           {props.sections[4].icon || ""}
         </div>
 
-        <div className="text-gray-700 text-sm leading-relaxed">
+        <pre className="text-gray-700 text-sm leading-relaxed">
           {props.sections[4].content.text}
-        </div>
+        </pre>
 
         {props.sections[4].extraAction?.label || ""}
       </div>{" "}
@@ -201,9 +261,9 @@ export default function TopicPage(props) {
           {props.sections[5].icon || ""}
         </div>
 
-        <div className="text-gray-700 text-sm leading-relaxed">
+        <pre className="text-gray-700 text-sm leading-relaxed">
           {props.sections[5].content.text}
-        </div>
+        </pre>
 
         {props.sections[5].extraAction?.label || ""}
       </div>{" "}
@@ -222,9 +282,9 @@ export default function TopicPage(props) {
           {props.sections[6].icon || ""}
         </div>
 
-        <div className="text-gray-700 text-sm leading-relaxed">
+        <pre className="text-gray-700 text-sm leading-relaxed">
           {props.sections[6].content.text}
-        </div>
+        </pre>
 
         {props.sections[6].extraAction?.label || ""}
       </div>{" "}
@@ -243,9 +303,9 @@ export default function TopicPage(props) {
           {props.sections[7].icon || ""}
         </div>
 
-        <div className="text-gray-700 text-sm leading-relaxed">
+        <pre className="text-gray-700 text-sm leading-relaxed">
           {props.sections[7].content.text}
-        </div>
+        </pre>
 
         {props.sections[7].extraAction?.label || ""}
       </div>

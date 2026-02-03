@@ -1,16 +1,29 @@
-import { Lock, Mail, Phone, RotateCcw, User, UserPlus, X } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  Loader,
+  Lock,
+  Mail,
+  Phone,
+  RotateCcw,
+  User,
+  UserPlus,
+  UserRoundPlus,
+  X,
+} from "lucide-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import api from '../../config/API'
+import api from "../../config/API";
 
 const Register = ({ setOpenRegister, setOpenLogin }) => {
-  
   const [details, setDetails] = useState({
-  fullname: "",
+    fullname: "",
     email: "",
     phone: "",
     password: "",
   });
+
+  const [show, setShow] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -30,11 +43,10 @@ const Register = ({ setOpenRegister, setOpenLogin }) => {
 
       toast.success("User Registered Succesfully");
       setOpenRegister(false);
-      
     } catch (error) {
       console.log(error?.response?.data?.message || "Unknown Error");
       toast.error(error?.response?.data?.message || "Unknown Error");
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -108,18 +120,21 @@ const Register = ({ setOpenRegister, setOpenLogin }) => {
             </div>
 
             {/* Password */}
-            <div className="relative">
+            <div className="relative flex gap-2 justify-center items-center border border-white/20 rounded-xl">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-(--accent-sparkle) w-5 h-5" />
               <input
-                type="password"
+                type={show ? "text" : "password"}
                 name="password"
                 onChange={handleChange}
                 value={details.password}
                 placeholder="Password"
-                className="w-full pl-12 pr-4 py-3 rounded-xl bg-transparent border border-white/20 text-(--text-main) placeholder-(--text-sub) focus:outline-none focus:border-(--primary) transition"
+                className="w-full pl-12 pr-4 py-3 bg-transparent text-(--text-main) placeholder-(--text-sub) focus:outline-none focus:border-(--primary) transition"
                 disabled={loading}
                 required
               />
+              <div onClick={() => setShow(!show)} className="px-4">
+                {show ? <Eye color="white" /> : <EyeOff color="white" />}
+              </div>
             </div>
 
             {/* Buttons */}
@@ -128,8 +143,18 @@ const Register = ({ setOpenRegister, setOpenLogin }) => {
                 type="submit"
                 className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-(--primary) hover:bg-(--primary-hover) text-white py-3 font-semibold transition transform hover:scale-[1.02] active:scale-95"
               >
-                <UserPlus className="w-5 h-5" />
-                {loading ? "Processing" : "Register"}
+                {loading ? (
+                  <div className="flex gap-2">
+                    <span className="animate-spin transition-all">
+                      <Loader />{" "}
+                    </span>{" "}
+                    Processing
+                  </div>
+                ) : (
+                  <span className="flex gap-2">
+                    <UserRoundPlus /> Register{" "}
+                  </span>
+                )}
               </button>
 
               <button

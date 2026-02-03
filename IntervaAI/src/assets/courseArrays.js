@@ -13,7 +13,7 @@ export const serviceBasedTopics = [
 
   "Stack (Using Array)",
   "Queue (Using Array)",
-
+  "Binary Search",
   "Pattern Printing",
   "Linear Traversal",
   "Frequency Counting",
@@ -84,7 +84,7 @@ export const productBasedPatterns = [
 ];
 
 export const reasoningFreeTopics = [
-  "Coding–Decoding",
+  "Coding-Decoding",
   "Blood Relations",
   "Direction Sense",
   "Series (Number & Alphabet)",
