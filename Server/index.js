@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import cloudinary from "./src/config/cloudinary.js";
 import cookieParser from "cookie-parser";
+import path from "path";
 import AuthRouter from "./src/routes/authRouter.js";
 import adminRouter from './src/routes/adminRouter.js'
 import userRouter from "./src/routes/userRouter.js";
@@ -20,6 +21,8 @@ app.use(
 );
 
 app.use(express.json());
+
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 app.use(cookieParser());
 

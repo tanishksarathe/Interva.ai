@@ -20,7 +20,7 @@ export default function TopicPage(props) {
 
   if (!props) {
     return (
-      <div className="h-[80vh] flex items-center justify-center rounded-2xl bg-slate-800 border border-white/10 backdrop-blur-xl p-10">
+      <div className="h-[80vh] flex items-center justify-center rounded-2xl bg-slate-800 border border-white/10 p-10">
         <div className="max-w-xl text-center flex flex-col items-center gap-6">
           {/* Icon */}
           <div className="p-4 rounded-full bg-indigo-500 border border-indigo-400">

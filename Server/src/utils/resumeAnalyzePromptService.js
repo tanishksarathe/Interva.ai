@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import OpenAI from "openai";
 
 export const resumeAnalyzeWithJD = async (resumeText, jobDescription) => {

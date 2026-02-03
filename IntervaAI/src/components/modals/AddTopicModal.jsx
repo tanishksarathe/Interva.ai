@@ -3,8 +3,6 @@ import React from 'react'
 
 const AddTopicModal = ({onClose}) => {
 
-
-
   return (
     <>
     <div className="fixed bg-black/80 inset-0 flex items-center justify-center overflow-y-auto text-white">
