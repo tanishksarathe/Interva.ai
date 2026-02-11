@@ -1,0 +1,314 @@
+[
+  {
+    "topic": "Blood Relations",
+    "subject": "Logical Reasoning",
+    "description": "A is the brother of B. B is the daughter of C. C is the mother of D. How is A related to D?",
+    "solution": [
+      "A is the brother of B, so A and B are siblings.",
+      "B is the daughter of C, so C is the parent of both B and A.",
+      "C is the mother of D, so D is also the child of C.",
+      "Therefore, A and D are children of the same mother.",
+      "So A is the brother of D."
+    ],
+    "rule": "Children of the same parent are siblings.",
+    "finalAnswer": "Brother",
+    "difficulty": "easy",
+    "estimatedTime": 60,
+    "keyconcepts": ["sibling relation", "family tree", "direct deduction"],
+    "approach": "Build the family tree step by step using the given relations.",
+    "hint": "Who are the children of C?"
+  },
+  {
+    "topic": "Blood Relations",
+    "subject": "Logical Reasoning",
+    "description": "If A + B means A is the father of B, A - B means A is the sister of B, and A × B means A is the husband of B, then what does P × Q + R mean?",
+    "solution": [
+      "P × Q means P is the husband of Q.",
+      "So P is male and Q is his wife.",
+      "Q + R means Q is the father of R.",
+      "So Q must be male and parent of R.",
+      "But earlier Q was identified as the wife of P, which means Q is female.",
+      "This creates a contradiction: Q cannot be both father (male) and wife (female).",
+      "Therefore, the relation is invalid or cannot be determined."
+    ],
+    "rule": "If decoded relations create gender or logical conflicts, the answer is 'cannot be determined.'",
+    "finalAnswer": "Cannot be determined",
+    "difficulty": "medium",
+    "estimatedTime": 90,
+    "keyconcepts": [
+      "coded relations",
+      "symbol decoding",
+      "logical consistency"
+    ],
+    "approach": "Decode each symbol and check for logical or gender conflicts.",
+    "hint": "Check whether Q’s role is consistent in both relations."
+  },
+  {
+    "topic": "Blood Relations",
+    "subject": "Logical Reasoning",
+    "description": "Introducing a man, a woman said, 'His wife is the only daughter of my father.' How is the man related to the woman?",
+    "solution": [
+      "The only daughter of the woman’s father is the woman herself.",
+      "So the statement becomes: 'His wife is me.'",
+      "Therefore, the man is the husband of the woman."
+    ],
+    "rule": "Father’s only daughter = self (if female speaker).",
+    "finalAnswer": "Husband",
+    "difficulty": "easy",
+    "estimatedTime": 60,
+    "keyconcepts": ["self-reference", "marital relation", "generation logic"],
+    "approach": "Identify the only daughter first, then apply the marital relation.",
+    "hint": "Who is the only daughter of her father?"
+  },
+  {
+    "topic": "Blood Relations",
+    "subject": "Logical Reasoning",
+    "description": "A man has three sons and each son has one sister. How many children does the man have in total?",
+    "solution": [
+      "The man has three sons.",
+      "Each son has one sister.",
+      "Since the question says 'one sister', it means all sons share the same sister.",
+      "So there is only one daughter in the family.",
+      "Total children = three sons + one daughter.",
+      "Therefore, the man has four children."
+    ],
+    "rule": "If multiple siblings share 'one sister', it refers to the same person.",
+    "finalAnswer": "4",
+    "difficulty": "easy",
+    "estimatedTime": 45,
+    "keyconcepts": [
+      "sibling counting",
+      "logical interpretation",
+      "family structure"
+    ],
+    "approach": "Check whether the sister is common or different for each son.",
+    "hint": "Do the sons share the same sister?"
+  },
+  {
+    "topic": "Blood Relations",
+    "subject": "Logical Reasoning",
+    "description": "P is the mother of Q. R is the father of P. S is the brother of P. How is S related to Q?",
+    "solution": [
+      "P is the mother of Q, so Q is the child of P.",
+      "S is the brother of P.",
+      "So S and P are siblings.",
+      "Therefore, S is the brother of Q’s mother.",
+      "The brother of one’s mother is called maternal uncle.",
+      "So S is Q’s maternal uncle."
+    ],
+    "rule": "Mother’s brother = maternal uncle.",
+    "finalAnswer": "Maternal uncle",
+    "difficulty": "medium",
+    "estimatedTime": 75,
+    "keyconcepts": ["uncle relation", "multi-step deduction", "family tree"],
+    "approach": "Build the relation chain starting from the child.",
+    "hint": "What is your mother’s brother called?"
+  },
+  {
+    "topic": "Blood Relations",
+    "subject": "Logical Reasoning",
+    "description": "If A is the father of B, and B is the father of C, how is A related to C?",
+    "solution": [
+      "A is the father of B.",
+      "B is the father of C.",
+      "So A is the father of C’s father.",
+      "The father of one’s father is called grandfather.",
+      "Therefore, A is C’s grandfather."
+    ],
+    "rule": "Father’s father = grandfather.",
+    "finalAnswer": "Grandfather",
+    "difficulty": "easy",
+    "estimatedTime": 45,
+    "keyconcepts": ["generation gap", "direct lineage", "family hierarchy"],
+    "approach": "Trace the lineage from child to parent step by step.",
+    "hint": "Who is your father’s father?"
+  },
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "Ravi walks 10 meters north, then turns right and walks 5 meters. He then turns right again and walks 10 meters. How far and in which direction is he from the starting point?",
+"solution": [
+"Ravi walks 10 m north.",
+"Turns right → faces east and walks 5 m.",
+"Turns right again → faces south and walks 10 m.",
+"Now he is 5 m east of the starting point."
+],
+"rule": "Track each movement and cancel opposite directions to find final position.",
+"finalAnswer": "5 meters east",
+"difficulty": "easy",
+"estimatedTime": 60,
+"keyconcepts": ["cardinal directions", "right turns", "net displacement"],
+"approach": "Draw a quick coordinate-style diagram.",
+"hint": "North and south movements cancel out."
+},
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "Aman walks 8 meters east, then turns left and walks 6 meters. He then turns left again and walks 8 meters. Where is he now relative to the starting point?",
+"solution": [
+"Aman walks 8 m east.",
+"Turns left → faces north and walks 6 m.",
+"Turns left again → faces west and walks 8 m.",
+"East and west movements cancel out.",
+"He is 6 m north of the starting point."
+],
+"rule": "Opposite direction movements cancel each other.",
+"finalAnswer": "6 meters north",
+"difficulty": "easy",
+"estimatedTime": 60,
+"keyconcepts": ["left turns", "direction cancellation", "position tracking"],
+"approach": "Track each direction step-by-step.",
+"hint": "Check which movements cancel."
+},
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "Karan walks 15 meters south, then turns left and walks 10 meters. He then turns right and walks 5 meters. Where is he relative to the starting point?",
+"solution": [
+"Karan walks 15 m south.",
+"Turns left from south → faces east and walks 10 m.",
+"Turns right from east → faces south and walks 5 m.",
+"Total south movement = 15 + 5 = 20 m.",
+"Final position: 10 m east and 20 m south."
+],
+"rule": "Add movements in the same direction and keep east-west and north-south separately.",
+"finalAnswer": "10 meters east and 20 meters south",
+"difficulty": "medium",
+"estimatedTime": 60,
+"keyconcepts": ["turn logic", "vector addition", "direction tracking"],
+"approach": "Separate horizontal and vertical movements.",
+"hint": "Combine same-direction movements."
+},
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "Neha walks 12 meters west, then turns right and walks 8 meters. She then turns right again and walks 12 meters. How far is she from the starting point?",
+"solution": [
+"Neha walks 12 m west.",
+"Turns right → faces north and walks 8 m.",
+"Turns right again → faces east and walks 12 m.",
+"West and east movements cancel out.",
+"She is 8 m north of the starting point."
+],
+"rule": "Cancel opposite directions to find net displacement.",
+"finalAnswer": "8 meters north",
+"difficulty": "easy",
+"estimatedTime": 60,
+"keyconcepts": ["right turns", "net movement", "direction cancellation"],
+"approach": "Check if horizontal or vertical movements cancel.",
+"hint": "East and west may cancel."
+},
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "A man starts from point A and walks 5 meters north. He then walks 7 meters east and then 5 meters south. How far is he from point A?",
+"solution": [
+"He walks 5 m north.",
+"Then 7 m east.",
+"Then 5 m south.",
+"North and south cancel out.",
+"He is 7 m east of point A."
+],
+"rule": "Cancel equal opposite movements.",
+"finalAnswer": "7 meters east",
+"difficulty": "easy",
+"estimatedTime": 60,
+"keyconcepts": ["net displacement", "direction cancellation", "basic movement"],
+"approach": "Compare north-south and east-west movements.",
+"hint": "Check vertical cancellation."
+},
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "Sita walks 10 meters south, turns left and walks 4 meters, then turns left again and walks 10 meters. Where is she from the starting point?",
+"solution": [
+"Sita walks 10 m south.",
+"Turns left from south → faces east and walks 4 m.",
+"Turns left from east → faces north and walks 10 m.",
+"North and south cancel.",
+"She is 4 m east of starting point."
+],
+"rule": "Track turns carefully and cancel opposite directions.",
+"finalAnswer": "4 meters east",
+"difficulty": "easy",
+"estimatedTime": 60,
+"keyconcepts": ["left turns", "direction logic", "position tracking"],
+"approach": "Follow turns step-by-step.",
+"hint": "South and north cancel."
+},
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "A boy walks 6 meters east, then turns right and walks 8 meters. He turns right again and walks 6 meters. How far is he from the starting point?",
+"solution": [
+"Walks 6 m east.",
+"Turns right → faces south and walks 8 m.",
+"Turns right again → faces west and walks 6 m.",
+"East and west cancel.",
+"He is 8 m south of start."
+],
+"rule": "Cancel equal opposite movements.",
+"finalAnswer": "8 meters south",
+"difficulty": "easy",
+"estimatedTime": 60,
+"keyconcepts": ["right turns", "direction cancellation", "net displacement"],
+"approach": "Cancel horizontal or vertical movements.",
+"hint": "Check east vs west."
+},
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "Rohit walks 9 meters north, then 12 meters east. What is his distance from the starting point?",
+"solution": [
+"He walks 9 m north and 12 m east.",
+"This forms a right triangle.",
+"Distance = √(9² + 12²).",
+"Distance = √(81 + 144) = √225 = 15 m."
+],
+"rule": "Use Pythagoras theorem when movements form a right triangle.",
+"finalAnswer": "15 meters",
+"difficulty": "medium",
+"estimatedTime": 60,
+"keyconcepts": ["pythagoras theorem", "right triangle", "distance calculation"],
+"approach": "Check if movements form perpendicular directions.",
+"hint": "Use a² + b² = c²."
+},
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "Meera walks 7 meters south, then 24 meters west. How far is she from the starting point?",
+"solution": [
+"She walks 7 m south and 24 m west.",
+"These form perpendicular sides.",
+"Distance = √(7² + 24²).",
+"Distance = √(49 + 576) = √625 = 25 m."
+],
+"rule": "Use Pythagoras theorem for perpendicular movements.",
+"finalAnswer": "25 meters",
+"difficulty": "medium",
+"estimatedTime": 60,
+"keyconcepts": ["right triangle", "pythagoras", "distance"],
+"approach": "Form a triangle with perpendicular directions.",
+"hint": "7-24-25 triangle."
+},
+{
+"topic": "Direction Sense",
+"subject": "Logical Reasoning",
+"description": "A man walks 10 meters east, then turns left and walks 5 meters. He then turns left and walks 10 meters. Finally, he turns right and walks 2 meters. Where is he now?",
+"solution": [
+"Walks 10 m east.",
+"Turns left → north and walks 5 m.",
+"Turns left → west and walks 10 m.",
+"East and west cancel.",
+"Turns right from west → north and walks 2 m.",
+"Total north movement = 5 + 2 = 7 m."
+],
+"rule": "Track turns step-by-step and sum movements in same direction.",
+"finalAnswer": "7 meters north",
+"difficulty": "medium",
+"estimatedTime": 60,
+"keyconcepts": ["turn logic", "direction addition", "position tracking"],
+"approach": "Write direction after each turn.",
+"hint": "Add north movements."
+}
+]

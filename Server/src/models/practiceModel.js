@@ -15,6 +15,14 @@ const practiceSchema = mongoose.Schema(
       required: true,
     },
     solution: {
+      type: [String],
+      required: true,
+    },
+    rule: {
+      type: String,
+      required: true,
+    },
+    finalAnswer: {
       type: String,
       required: true,
     },

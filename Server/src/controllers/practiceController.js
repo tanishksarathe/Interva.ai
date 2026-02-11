@@ -7,6 +7,8 @@ export const practiceTopicsPost = async (req, res, next) => {
     description,
     solution,
     hint,
+    rule,
+    finalAnswer,
     keyconcepts,
     approach,
     difficulty,
@@ -16,6 +18,8 @@ export const practiceTopicsPost = async (req, res, next) => {
   if (
     !topic ||
     !subject ||
+    !rule||
+    !finalAnswer||
     !description ||
     !solution ||
     !hint ||
@@ -35,6 +39,8 @@ export const practiceTopicsPost = async (req, res, next) => {
     description,
     solution,
     hint,
+    rule,
+    finalAnswer,
     keyconcepts,
     approach,
     difficulty,
