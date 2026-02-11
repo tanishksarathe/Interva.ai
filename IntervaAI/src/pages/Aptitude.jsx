@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Brain,
   Shuffle,
@@ -10,7 +10,10 @@ import {
   GitCompare,
   Shapes,
   Puzzle,
+  TimerIcon,
 } from "lucide-react";
+import api from "../config/API";
+import toast from "react-hot-toast";
 
 const topics = [
   { name: "Coding-Decoding", icon: Shuffle },
@@ -26,12 +29,33 @@ const topics = [
 ];
 
 const Aptitude = () => {
-
   const [selectedTopic, setSelectedTopic] = useState([]);
+
+  const [practo, setPracto] = useState([]);
+
+  const fetchPracticeTopic = async () => {
+    try {
+      const encoded = encodeURIComponent(selectedTopic);
+
+      console.log("Encoded", encoded);
+
+      const res = await api.get(`/user/get-practice-topic/${encoded}`);
+
+      console.log(res?.data?.data);
+
+      setPracto(res?.data?.data);
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Unknown Error");
+    }
+  };
+
+  useEffect(() => {
+    fetchPracticeTopic();
+  }, [selectedTopic]);
 
   return (
     <>
-      <div className="min-h-screen bg-[#0f172a] px-10 py-12 text-slate-100">
+      <div className="min-h-screen bg-[#0f172a] rounded-2xl px-10 py-12 text-slate-100">
         {/* Header */}
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-indigo-300">
@@ -80,6 +104,131 @@ const Aptitude = () => {
           </div>
         )}
       </div>
+
+      <div className="my-10">
+        <hr />
+      </div>
+
+      {practo && (
+        <div>
+  <div
+    className="min-h-screen py-10 px-4"
+    style={{ backgroundColor: "var(--color-background)" }}
+  >
+    <div className="max-w-5xl mx-auto space-y-10">
+      {practo.map((item) => (
+        <div
+          key={item?._id}
+          className="rounded-3xl shadow-lg overflow-hidden border"
+          style={{ 
+            backgroundColor: "var(--color-surface)",
+            borderColor: "var(--color-accent-soft)" 
+          }}
+        >
+          {/* TOP HEADER SECTION - Flex Layout */}
+          <div className="p-6 md:p-8 flex justify-between items-center border-b border-dashed border-gray-200">
+            <div className="space-y-1">
+              <h1 className="text-3xl font-extrabold tracking-tight" style={{ color: "var(--color-text-primary)" }}>
+                {item?.topic}
+              </h1>
+              <p className="text-sm font-medium uppercase tracking-wider opacity-70" style={{ color: "var(--color-text-secondary)" }}>
+                {item?.subject}
+              </p>
+            </div>
+
+            <div className="flex flex-col items-end gap-2">
+              <span
+                className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest ${
+                  item?.difficulty?.toLowerCase() === 'easy' 
+                  ? 'bg-green-100 text-green-700 border border-green-200' 
+                  : 'bg-orange-100 text-orange-700'
+                }`}
+              >
+                {item?.difficulty}
+              </span>
+              <div className="flex items-center justify-center gap-1 text-sm font-mono" style={{ color: "var(--color-text-secondary)" }}>
+                <span className="flex justify-center items-center"><TimerIcon size={20}/> {item?.estimatedTime}s </span>
+              </div>
+            </div>
+          </div>
+
+          {/* MAIN CONTENT - Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+            
+            {/* Left Column: Question & Concepts */}
+            <div className="p-6 md:p-8 md:col-span-2 space-y-8">
+              <section>
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-1 h-6 bg-blue-500 rounded-full"></div>
+                  <h2 className="text-xl font-bold" style={{ color: "var(--color-primary)" }}>Problem Description</h2>
+                </div>
+                <p className="text-lg leading-relaxed opacity-90" style={{ color: "var(--color-text-primary)" }}>
+                  {item?.description}
+                </p>
+              </section>
+
+              <section>
+                <h3 className="text-sm font-semibold mb-3 uppercase opacity-50">Key Concepts</h3>
+                <div className="flex flex-wrap gap-2">
+                  {item?.keyconcepts.map((concept, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs px-3 py-1.5 rounded-lg border font-medium capitalize"
+                      style={{
+                        backgroundColor: "var(--color-background)",
+                        borderColor: "var(--color-accent-soft)",
+                        color: "var(--color-text-primary)",
+                      }}
+                    >
+                      # {concept}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            </div>
+
+            {/* Right Column: Approach & Hints (Sidebar style) */}
+            <div className="p-6 md:p-8 bg-gray-50/50 space-y-8">
+              <section>
+                <h2 className="text-lg font-bold mb-3 flex items-center gap-2" style={{ color: "var(--color-primary)" }}>
+                  💡 Strategy
+                </h2>
+                <p className="text-sm leading-6" style={{ color: "var(--color-text-secondary)" }}>
+                  {item?.approach}
+                </p>
+              </section>
+
+              <section className="p-4 rounded-xl bg-yellow-50 border border-yellow-100">
+                <h2 className="text-sm font-bold mb-2 text-yellow-800 uppercase">Pro Hint</h2>
+                <div className="text-sm text-yellow-700 italic">
+                  "{item?.hint}"
+                </div>
+              </section>
+            </div>
+          </div>
+
+          {/* SOLUTION SECTION - Full Width Pre */}
+          <div className="p-6 md:p-8 border-t" style={{ backgroundColor: "var(--color-background)" }}>
+            <div className="flex items-center gap-2 mb-4">
+              <h2 className="text-xl font-bold" style={{ color: "var(--color-primary)" }}>Reference Solution</h2>
+            </div>
+            <p
+              className="text-sm p-6 rounded-2xl overflow-x-auto font-mono leading-relaxed shadow-inner w-full"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                color: "var(--color-text-primary)",
+                border: "1px solid var(--color-accent-soft)"
+              }}
+            >
+              {item?.solution}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+      )}
     </>
   );
 };

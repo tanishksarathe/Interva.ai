@@ -2,6 +2,7 @@ import express from "express";
 import { updateUserController, updateUserPhoto } from "../controllers/userController.js";
 import { protect } from "../middlewares/authMiddleware.js";
 import multer from "multer";
+import { retrievePracticeTopic } from "../controllers/practiceController.js";
 
 const router = express.Router();
 
@@ -14,5 +15,7 @@ router.patch(
   uploads.single("image"),
   updateUserPhoto,
 );
+
+router.get("/get-practice-topic/:topicName",protect,retrievePracticeTopic);
 
 export default router;
