@@ -2,7 +2,7 @@ import express from "express";
 import { updateUserController, updateUserPhoto } from "../controllers/userController.js";
 import { protect } from "../middlewares/authMiddleware.js";
 import multer from "multer";
-import { retrievePracticeTopic } from "../controllers/practiceController.js";
+import { retrievePracticeTopic, retrieveDSAPracticeTopic } from "../controllers/practiceController.js";
 
 const router = express.Router();
 
@@ -17,5 +17,6 @@ router.patch(
 );
 
 router.get("/get-practice-topic/:topicName",protect,retrievePracticeTopic);
+router.get("/get-practice-topic-dsa/:topicName",protect,retrieveDSAPracticeTopic);
 
 export default router;

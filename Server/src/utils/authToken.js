@@ -8,11 +8,11 @@ export const genToken = async (user, res) => {
     };
 
     const token = await jwt.sign(payload, process.env.JWT_SECRET_KEY, {
-      expiresIn: "1h",
+      expiresIn: "1d",
     });
 
     res.cookie("monaco", token, {
-      maxAge: 1000 * 60 * 60,
+      maxAge: 1000 * 60 * 60 * 60,
       httpOnly: true,
       secure: false,
       sameSite: "lax",

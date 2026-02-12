@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
 import { Cog } from "lucide-react";
 import ProblemCard from "../components/ProblemCard";
+import api from '../config/API'
 
 const DataStructures = () => {
   const [custom, setCustom] = useState({
@@ -11,10 +12,31 @@ const DataStructures = () => {
 
   const [code, setCode] = useState("");
 
+  const [selectedTopic, setSelectedTopic] = useState("Arrays");
+
+  const encoded = encodeURIComponent(selectedTopic)
+
+  const fetchDSAQuestions = async () => {
+    try {
+      const res = await api.get(
+        `/user/get-practice-topic-dsa/${encoded}`,
+      );
+
+      console.log("DSA",res?.data?.data);
+
+      setSelectedTopic(res?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDSAQuestions();
+  }, [selectedTopic]);
+
   return (
     <>
       <div className="flex h-screen">
-        
         {/* Right Section Editor */}
         <div className="w-7/12 flex flex-col p-2">
           <div className="bg-[#1E1E1E] flex justify-around items-center rounded-md w-full p-4 h-1/12">
@@ -41,8 +63,12 @@ const DataStructures = () => {
               </select>
             </div>
 
-            <button className="text-white font-bold text-sm border rounded-xl bg-red-600 px-3 py-1">Run</button>
-            <button className="text-white font-bold text-sm border rounded-xl bg-green-600 px-3 py-1">Save</button>
+            <button className="text-white font-bold text-sm border rounded-xl bg-red-600 px-3 py-1">
+              Run
+            </button>
+            <button className="text-white font-bold text-sm border rounded-xl bg-green-600 px-3 py-1">
+              Save
+            </button>
 
             <div>
               <Cog color="white" className="hover:rotate-20" />
@@ -76,11 +102,14 @@ const DataStructures = () => {
         </div>
         {/* Left Section Problem */}
         <div className="w-5/12 flex justify-center items-center h-full">
-        
-        <ProblemCard no="5" mini="Longest Palindromic Substring" question="You have to find out the longest palindromic substring from the given string." difficulty="Medium" constraints="solve it with the space complexity O(1)"/>
-
+          <ProblemCard
+            no="5"
+            mini="Longest Palindromic Substring"
+            question="You have to find out the longest palindromic substring from the given string."
+            difficulty="Medium"
+            constraints="solve it with the space complexity O(1)"
+          />
         </div>
-
       </div>
     </>
   );
