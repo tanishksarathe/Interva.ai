@@ -19,6 +19,7 @@ import Aptitude from "./pages/Aptitude";
 import PracticeN from "./pages/PracticeN";
 import TopicPage from "./components/TopicPage";
 import StudyMaterial from "./pages/StudyMaterial";
+import InterviewPage from "./pages/InterviewPage";
 
 const routes = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const routes = createBrowserRouter([
     path: "/contact",
     element: <Contact />,
   },
+    {
+        path: "/interview-page",
+        element: <InterviewPage />,
+      },
   {
     path: "/prepay",
     element: <PremiumPayment />,

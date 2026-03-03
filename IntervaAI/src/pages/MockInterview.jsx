@@ -1,7 +1,11 @@
 import { ArrowRight, Brain, Code2, Timer, Users } from "lucide-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const MockInterview = () => {
+  
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="min-h-screen w-full bg-slate-950 text-white scroll-smooth">
@@ -20,7 +24,9 @@ const MockInterview = () => {
           </p>
 
           <div className="mt-10 flex justify-center gap-4">
-            <button className="px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition flex items-center gap-2">
+            <button 
+            onClick={() => navigate('/interview-page')}
+            className="px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition flex items-center gap-2">
               Start a Mock Interview <ArrowRight size={18} />
             </button>
 

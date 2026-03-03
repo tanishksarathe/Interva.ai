@@ -1,9 +1,11 @@
 import fs from "fs";
 import { resumeAnalyzeWithJD } from "../utils/resumeAnalyzePromptService.js";
 import { createRequire } from "module";
+import { dsaEvaluateAI } from "../utils/dsaEvaluationService.js";
+import { interviewAnalysisHR } from "../utils/interviewAnalysis.js";
 
 const require = createRequire(import.meta.url);
-const {PDFParse} = require("pdf-parse");
+const { PDFParse } = require("pdf-parse");
 
 export const resumeAnalyzewithGemini = async (req, res, next) => {
   try {
@@ -29,9 +31,9 @@ export const resumeAnalyzewithGemini = async (req, res, next) => {
 
     // here we are extracting text
 
-    const pdfUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
-    
-    const parser = new PDFParse({url:pdfUrl});
+    const pdfUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+
+    const parser = new PDFParse({ url: pdfUrl });
 
     const pdfData = await parser.getText();
 
@@ -53,6 +55,52 @@ export const resumeAnalyzewithGemini = async (req, res, next) => {
     res.json(result);
   } catch (error) {
     console.log(error);
+    next(error);
+  }
+};
+
+export const dsaEvaluationController = async (req, res, next) => {
+  try {
+    const { question, code, language } = req.body;
+
+    if (!question || !code || !language) {
+      const error = new Error("All Fields Required");
+      error.statusCode = 400;
+      return next(error);
+    }
+
+    const result = await dsaEvaluateAI(question, code, language);
+    console.log("DSA Evaluation : ", result);
+
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const interviewAnalysis = async (req, res, next) => {
+  try {
+    const { transcript } = req.body;
+
+    const { role } = req.params;
+
+    console.log(role);
+
+    if (!transcript) {
+      const error = new Error("Transcript Required");
+      error.statusCode = 400;
+      return next(error);
+    }
+
+    console.log(transcript);
+    const response = await interviewAnalysisHR(transcript, role);
+
+    console.log(response);
+
+    res
+      .status(200)
+      .json({ message: "Mock Interview Analyzed", data: response });
+  } catch (error) {
     next(error);
   }
 };
