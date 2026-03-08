@@ -105,7 +105,6 @@ export const reasoningPremiumTopics = [
   "Statement & Assumptions",
   "Statement & Conclusions",
   "Cause & Effect",
-  "Critical Reasoning",
   "Data Sufficiency (Reasoning-based)",
   "Advanced Syllogism",
   "Logical Puzzles (Multi-variable, Time-bound)",

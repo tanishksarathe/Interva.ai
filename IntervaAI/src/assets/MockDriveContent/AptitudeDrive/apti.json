@@ -1,0 +1,1351 @@
+[
+  {
+    "question": "A, B, C, D, and E have five different cars (Audi, BMW, Honda, Ford, Tesla) and live in five different cities. A has Tesla but doesn't live in Delhi or Pune. B lives in Mumbai and has Audi. The person in Pune has Ford. D lives in Bangalore. E has BMW. In which city does the person with Tesla live?",
+    "options": ["Bangalore", "Chennai", "Delhi", "Pune"],
+    "correct_answer": "Chennai",
+    "topic": "advanced_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Seven friends attend classes from Monday to Sunday. Each likes a different sport. M likes Football and attends on Wednesday. N attends the day after M. O likes Cricket and attends on Friday. P attends immediately before O. Q likes Tennis and attends on the first day of the week. R attends on Sunday. Who likes Badminton if R likes Hockey and S likes Rugby?",
+    "options": ["N", "P", "Q", "S"],
+    "correct_answer": "N",
+    "topic": "advanced_puzzles",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Six people sit in two parallel rows. Row 1 (North): A, B, C. Row 2 (South): P, Q, R. A is at an end. P is opposite B. Q is at the middle. R is opposite C. If C is to the immediate right of B, who is opposite A?",
+    "options": ["P", "Q", "R", "None"],
+    "correct_answer": "Q",
+    "topic": "advanced_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Five boxes (1-5) are stacked. Each contains a different fruit. Box 3 is in the middle. Apple is in Box 5. Mango is immediately above Banana. Box 1 contains Orange. If Box 2 is immediately below Box 3, which fruit is in Box 4?",
+    "options": ["Mango", "Banana", "Grapes", "Orange"],
+    "correct_answer": "Mango",
+    "topic": "advanced_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Eight people A-H sit around a circular table. A is opposite E. B is to the right of A. F is between E and G. D is opposite G. H is to the left of E. Who is to the immediate right of C?",
+    "options": ["D", "G", "H", "B"],
+    "correct_answer": "B",
+    "topic": "advanced_puzzles",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In a family of six (P-U), there are two married couples. U is the doctor and father of R. Q is the housewife and grandmother of T. S is the manager and mother of P. P is an engineer. What is the profession of R if T is a student and R is a lawyer?",
+    "options": ["Engineer", "Lawyer", "Doctor", "Manager"],
+    "correct_answer": "Lawyer",
+    "topic": "advanced_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Six books (Math, Science, History, Art, Music, Law) are kept on a shelf. Math is to the left of Art. Law is between Music and Science. History is at the extreme right. Art is between Math and Music. Which book is third from the left?",
+    "options": ["Art", "Music", "Law", "Science"],
+    "correct_answer": "Music",
+    "topic": "advanced_puzzles",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Five cities A, B, C, D, and E are connected. A is 10km North of B. C is 10km East of B. D is 10km South of C. E is 10km West of D. What is the shortest distance between A and E?",
+    "options": ["10km", "20km", "0km", "14.14km"],
+    "correct_answer": "20km",
+    "topic": "advanced_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Three people X, Y, and Z speak three languages: Hindi, English, and French. X speaks Hindi and English. Y speaks English and French. Z speaks Hindi and French. Who can act as an interpreter between X and Y?",
+    "options": ["X only", "Y only", "Z only", "X or Y"],
+    "correct_answer": "X or Y",
+    "topic": "advanced_puzzles",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statements: I. Only a few apples are mangoes. II. All mangoes are grapes. \nConclusions: 1. Some grapes are not apples is a possibility. 2. All apples can be mangoes.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only 1 follows",
+    "topic": "advanced_syllogism",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statements: I. No coffee is tea. II. All tea is milk. III. Only a few milk is water. \nConclusions: 1. Some water being coffee is a possibility. 2. All milk can never be coffee.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Both 1 and 2 follow",
+    "topic": "advanced_syllogism",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statements: I. Some circles are squares. II. Only a few squares are triangles. III. No triangle is a hexagon. \nConclusions: 1. All squares can be triangles. 2. All triangles can be circles.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only 2 follows",
+    "topic": "advanced_syllogism",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statements: I. Only a few Red are Blue. II. Only a few Blue are Green. \nConclusions: 1. Some Red are not Blue. 2. Some Blue are not Green.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Both 1 and 2 follow",
+    "topic": "advanced_syllogism",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. All A are B. II. Some B are C. III. No C is D. \nConclusions: 1. Some B are not D. 2. Some A are C is a possibility.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Both 1 and 2 follow",
+    "topic": "advanced_syllogism",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. Only a few Keys are Locks. II. No Lock is Door. \nConclusions: 1. All Keys can be Doors. 2. Some Keys are not Doors.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only 2 follows",
+    "topic": "advanced_syllogism",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statements: I. Some pens are pencils. II. All pencils are erasers. III. Some erasers are cups. \nConclusions: 1. All pens can be erasers. 2. All cups can be pencils.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Both 1 and 2 follow",
+    "topic": "advanced_syllogism",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. Only a few cats are dogs. II. Only a few dogs are rats. III. Only a few rats are cats. \nConclusions: 1. All dogs can be cats. 2. All cats can be rats.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Both 1 and 2 follow",
+    "topic": "advanced_syllogism",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statements: I. No Sunday is Monday. II. No Monday is Tuesday. \nConclusions: 1. Some Sundays are Tuesdays. 2. No Sunday is Tuesday.",
+    "options": ["Only 1 follows", "Only 2 follows", "Either 1 or 2 follows", "Neither 1 nor 2 follows"],
+    "correct_answer": "Either 1 or 2 follows",
+    "topic": "advanced_syllogism",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. All Gold are Silver. II. Only a few Silver are Platinum. III. No Gold is Diamond. \nConclusions: 1. Some Silver are not Diamond. 2. All Platinum can be Gold.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Both 1 and 2 follow",
+    "topic": "advanced_syllogism",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "How many students are there in the class? I. Rohan's rank is 10th from the top. II. Rohan's rank is 25th from the bottom.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "Both I and II together are sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "How is J related to K? I. M is the sister of J and the daughter of K. II. J is the brother of M.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "Both I and II together are sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the code for 'apple' in a code language? I. 'apple is sweet' is written as 'ka pa ma'. II. 'orange is sour' is written as 'la pa ta'.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "Neither I nor II is sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who among P, Q, R, S and T is the tallest? I. Q is taller than P and S. II. R is taller than Q but shorter than T.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "Both I and II together are sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "On which day of the week was the exam held? I. The exam was held after Tuesday but before Saturday. II. The exam was held on an even-dated day of the month.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "Neither I nor II is sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which direction is city A with respect to city B? I. City A is to the North of city C. II. City C is to the West of city B.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "Both I and II together are sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the value of 'x'? I. x² = 25. II. x is a positive integer.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "Both I and II together are sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "How many sisters does Sunil have? I. Sunil's mother has three children. II. Sunil has only one brother.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "Both I and II together are sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Is 'n' an odd integer? I. n is a multiple of 3. II. (n + 1) is a multiple of 2.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "II alone is sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the area of a rectangle? I. The perimeter of the rectangle is 20 cm. II. The diagonal of the rectangle is √52 cm.",
+    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "correct_answer": "Both I and II together are sufficient",
+    "topic": "data_sufficiency",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statements: I. The prices of food grains have increased by 20%. II. There was a severe drought in the country last year.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "correct_answer": "Statement II is the cause and I is its effect",
+    "topic": "cause_effect",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statements: I. The government has increased the tax on luxury cars. II. Sale of luxury cars has seen a significant dip this quarter.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of independent causes"],
+    "correct_answer": "Statement I is the cause and II is its effect",
+    "topic": "cause_effect",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statements: I. Police has increased patrolling in the city during late hours. II. There has been a drop in the number of petty crimes in the city.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "correct_answer": "Statement I is the cause and II is its effect",
+    "topic": "cause_effect",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. The literacy rate in the district has been increasing for the last few years. II. The district administration has conducted extensive literacy programs for the last five years.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "correct_answer": "Statement II is the cause and I is its effect",
+    "topic": "cause_effect",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statements: I. Most of the steel producing companies in the country have made a huge profit. II. The government has drastically increased the import duty on steel.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "correct_answer": "Statement II is the cause and I is its effect",
+    "topic": "cause_effect",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. People have stopped using private vehicles for commuting to work. II. The prices of petrol and diesel have reached an all-time high.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of independent causes"],
+    "correct_answer": "Statement II is the cause and I is its effect",
+    "topic": "cause_effect",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statements: I. The quality of higher education in the country has been deteriorating. II. Many students are opting for foreign universities for their higher studies.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "correct_answer": "Statement I is the cause and II is its effect",
+    "topic": "cause_effect",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. The Reserve Bank of India has reduced the Repo Rate. II. Many banks have reduced their interest rates on home loans.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of independent causes"],
+    "correct_answer": "Statement I is the cause and II is its effect",
+    "topic": "cause_effect",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statements: I. The state government has decided to ban the use of plastic bags. II. The neighboring states have already banned the use of plastic bags.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "correct_answer": "Both statements are effects of some common cause",
+    "topic": "cause_effect",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statements: I. The price of gold has touched a new high in the international market. II. Demand for gold has remained steady in the domestic market.",
+    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of independent causes"],
+    "correct_answer": "Both statements are effects of independent causes",
+    "topic": "cause_effect",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statement: 'Buy pure butter of brand X to ensure the health of your family,' - An advertisement.\nAssumptions: I. Other brands do not provide pure butter. II. Health can be improved by consuming pure butter.",
+    "options": ["Only assumption I is implicit", "Only assumption II is implicit", "Either I or II is implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Only assumption II is implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statement: 'Please do not use the lift while leaving the building in case of fire,' - A notice.\nAssumptions: I. People usually use lifts. II. Lifts may stop functioning during a fire.",
+    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Both I and II are implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statement: 'The government has decided to provide financial aid to farmers affected by the drought.'\nAssumptions: I. The government has enough funds for the aid. II. The aid will help the farmers recover from the loss.",
+    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Both I and II are implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statement: 'The school authority decided to increase the tuition fee by 20% from the next session.'\nAssumptions: I. The parents may still enroll their children. II. The school needs more funds for better infrastructure.",
+    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Only I is implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statement: 'If you want to study management, join institute X.'\nAssumptions: I. Institute X provides good management education. II. People generally listen to such advice.",
+    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Both I and II are implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statement: 'The bridge was closed for repair work.'\nAssumptions: I. Repair work cannot be done while vehicles are moving. II. The bridge is currently in a dangerous condition.",
+    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Only I is implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statement: 'In spite of the heavy rain, the match continued.'\nAssumptions: I. Matches are usually cancelled when it rains. II. Rain does not affect the performance of the players.",
+    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Only I is implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statement: 'Double your money in 6 months - An advertisement.'\nAssumptions: I. The offer is not genuine. II. People want their money to grow.",
+    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Only II is implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statement: 'The company has decided to hire 500 new employees.'\nAssumptions: I. The company is expanding its operations. II. 500 qualified candidates will be available for the job.",
+    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Both I and II are implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statement: 'Use of mobile phones is strictly prohibited inside the examination hall.'\nAssumptions: I. Students possess mobile phones. II. Mobile phones can be used to cheat in exams.",
+    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "correct_answer": "Both I and II are implicit",
+    "topic": "statement_assumptions",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statement: Most people who quit smoking gain weight.\nConclusion: If one quits smoking, one will gain weight.",
+    "options": ["Conclusion follows", "Conclusion does not follow", "Partially follows", "None of these"],
+    "correct_answer": "Conclusion does not follow",
+    "topic": "statement_conclusion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statement: All students in my class are bright. Manish is not bright.\nConclusion: Manish is not a student of my class.",
+    "options": ["Conclusion follows", "Conclusion does not follow", "Probably true", "Data inadequate"],
+    "correct_answer": "Conclusion follows",
+    "topic": "statement_conclusion",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statement: Morning walks are good for health.\nConclusion: All healthy people go for morning walks.",
+    "options": ["Conclusion follows", "Conclusion does not follow", "Data inadequate", "Probably false"],
+    "correct_answer": "Conclusion does not follow",
+    "topic": "statement_conclusion",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statement: In a one-day cricket match, the total runs made by a team were 200. Out of these 160 runs were made by spinners.\nConclusions: I. 80% of the team consists of spinners. II. The opening batsmen were spinners.",
+    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "correct_answer": "Neither I nor II follows",
+    "topic": "statement_conclusion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statement: The T.V. staff has gone on an indefinite strike to protest against the dismissal of two of their colleagues.\nConclusions: I. The management should reinstate the dismissed employees. II. Strike is the only way to protest.",
+    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "correct_answer": "Neither I nor II follows",
+    "topic": "statement_conclusion",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statement: Vegetable prices are soaring in the market.\nConclusions: I. Vegetables are becoming a rare commodity. II. People cannot eat vegetables anymore.",
+    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "correct_answer": "Neither I nor II follows",
+    "topic": "statement_conclusion",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statement: Only good singers are invited to the conference. No one without sweet voice is a good singer.\nConclusions: I. All invited singers have sweet voices. II. Those who do not have sweet voices are not invited.",
+    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "correct_answer": "Both I and II follow",
+    "topic": "statement_conclusion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statement: Prime age groups are more prone to stress-related diseases.\nConclusion: Old people do not have stress.",
+    "options": ["Conclusion follows", "Conclusion does not follow", "Data inadequate", "Probably true"],
+    "correct_answer": "Conclusion does not follow",
+    "topic": "statement_conclusion",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statement: Population increase coupled with dwindling resources is going to be the scenario of many developing countries in days to come.\nConclusions: I. The population of developing countries will not continue to grow. II. It will be very difficult for the governments to manage the resources.",
+    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "correct_answer": "Only II follows",
+    "topic": "statement_conclusion",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statement: The percentage of the profits of the company has gone up by 15% during the last year.\nConclusions: I. The company is doing well. II. The company has a good management.",
+    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "correct_answer": "Only I follows",
+    "topic": "statement_conclusion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Input: 45 12 33 67 21. Step 1: 67 45 12 33 21. Step 2: 67 45 33 12 21. If the machine follows a descending order sorting, what will be the final step for Input: 10 50 30 40 20?",
+    "options": ["50 40 30 20 10", "10 20 30 40 50", "50 40 10 30 20", "40 50 30 20 10"],
+    "correct_answer": "50 40 30 20 10",
+    "topic": "input_output",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Input: 'cat 42 dog 15 ant 89'. Step 1: '89 cat 42 dog 15 ant'. If the rule is 'Highest number moves to front, followed by lowest word', what is Step 2?",
+    "options": ["89 ant cat 42 dog 15", "89 42 cat dog 15 ant", "89 ant 15 cat 42 dog", "15 ant 89 cat 42 dog"],
+    "correct_answer": "89 ant cat 42 dog 15",
+    "topic": "input_output",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In a machine input, Step 4 is 'apple 95 boy 82 cat 71'. Which step would be 'apple 95 boy 82 dog 10 cat 71' if the rule is descending numbers and ascending words?",
+    "options": ["Step 3", "Step 5", "Step 6", "Last Step"],
+    "correct_answer": "Step 5",
+    "topic": "input_output",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Input: 18 25 36 49. Step 1: 9 7 9 13. What is the logic behind Step 1?",
+    "options": ["Square root", "Sum of digits", "Subtraction by 10", "Divided by 2"],
+    "correct_answer": "Sum of digits",
+    "topic": "input_output",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Input: 'go for it 22 11 33'. Step 1: '33 go for it 22 11'. Step 2: '33 for go it 22 11'. How many steps are required to sort numbers descending and words alphabetically?",
+    "options": ["4", "5", "6", "3"],
+    "correct_answer": "6",
+    "topic": "input_output",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Input: 12 24 36 48. Step 1: 21 42 63 84. What is the transformation?",
+    "options": ["Adding 9", "Reversing digits", "Multiplying by 2", "Adding 10"],
+    "correct_answer": "Reversing digits",
+    "topic": "input_output",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Input: 'war 50 peace 20 love 30'. Step 1: '50 war peace 20 love 30'. Step 2: '50 love war peace 20 30'. What is the rule?",
+    "options": ["Number Descending, Word Ascending", "Number Ascending, Word Descending", "Word length", "Vowel count"],
+    "correct_answer": "Number Descending, Word Ascending",
+    "topic": "input_output",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Input: 7 14 21 28. Step 1: 49 196 441 784. What is Step 2 if the rule is 'Divide by 7'?",
+    "options": ["7 28 63 112", "1 2 3 4", "14 28 42 56", "42 189 434 777"],
+    "correct_answer": "7 28 63 112",
+    "topic": "input_output",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Input: 'all 12 best 18'. Step 1: '18 all 12 best'. Step 2: '18 all best 12'. Is the machine sorting words or numbers first?",
+    "options": ["Numbers (Desc)", "Words (Asc)", "Numbers (Asc)", "Words (Desc)"],
+    "correct_answer": "Numbers (Desc)",
+    "topic": "input_output",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If Step 2 of an input is '90 desk 15 house 22', what was the original input likely to be if the highest number always moves to the first position in each step?",
+    "options": ["desk 15 house 22 90", "15 90 desk house 22", "house 90 22 desk 15", "All of the above"],
+    "correct_answer": "All of the above",
+    "topic": "input_output",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If 1st January 2024 was a Monday, what day of the week was 1st January 2025? (Note: 2024 is a leap year)",
+    "options": ["Tuesday", "Wednesday", "Thursday", "Monday"],
+    "correct_answer": "Wednesday",
+    "topic": "scheduling_calendar",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What was the day of the week on 15th August 1947?",
+    "options": ["Wednesday", "Thursday", "Friday", "Saturday"],
+    "correct_answer": "Friday",
+    "topic": "scheduling_calendar",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "How many leap years are there in a period of 100 consecutive years?",
+    "options": ["24 or 25", "25 only", "24 only", "26"],
+    "correct_answer": "24 or 25",
+    "topic": "scheduling_calendar",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If today is Friday, what will be the day after 64 days?",
+    "options": ["Friday", "Saturday", "Sunday", "Monday"],
+    "correct_answer": "Sunday",
+    "topic": "scheduling_calendar",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "The calendar for the year 2007 will be the same for the year:",
+    "options": ["2014", "2016", "2017", "2018"],
+    "correct_answer": "2018",
+    "topic": "scheduling_calendar",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A, B, C, D, and E attend a workshop on five different days from Monday to Friday. B attends on Wednesday. A attends immediately after E. C attends on the last day. On which day does D attend?",
+    "options": ["Monday", "Tuesday", "Thursday", "Friday"],
+    "correct_answer": "Monday",
+    "topic": "scheduling_calendar",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Which of the following is not a leap year?",
+    "options": ["1200", "1600", "2000", "700"],
+    "correct_answer": "700",
+    "topic": "scheduling_calendar",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If the 3rd day of a month is Monday, which of the following will be the 5th day from the 21st of that month?",
+    "options": ["Wednesday", "Thursday", "Saturday", "Sunday"],
+    "correct_answer": "Wednesday",
+    "topic": "scheduling_calendar",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "On what dates of April 2001 did Wednesday fall?",
+    "options": ["4th, 11th, 18th, 25th", "5th, 12th, 19th, 26th", "1st, 8th, 15th, 22nd, 29th", "3rd, 10th, 17th, 24th"],
+    "correct_answer": "4th, 11th, 18th, 25th",
+    "topic": "scheduling_calendar",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A birthday falls on 29th February 1896. When will the next birthday be celebrated?",
+    "options": ["29 Feb 1897", "29 Feb 1900", "29 Feb 1904", "29 Feb 1898"],
+    "correct_answer": "29 Feb 1904",
+    "topic": "scheduling_calendar",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A, B, C, D, E, and F are sitting in a row facing North. C is sitting between A and E. D is not at the end. B is sitting at the immediate right of E. F is not at the right end but sitting at the 6th position from the right. Who is to the immediate left of C?",
+    "options": ["A", "E", "D", "B"],
+    "correct_answer": "A",
+    "topic": "seating_arrangement",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Five friends P, Q, R, S, and T are sitting around a circular table facing the center. R is to the immediate left of Q. P is between S and T. S is to the immediate left of R. Who is sitting to the immediate right of Q?",
+    "options": ["T", "S", "R", "P"],
+    "correct_answer": "T",
+    "topic": "seating_arrangement",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Six persons L, M, N, O, P, and Q are sitting in a linear row facing North. P sits third to the left of M. M sits at one of the extreme ends. Q sits second to the right of P. O and N are immediate neighbors of each other. N does not sit at any of the extreme ends. Who sits to the immediate left of L?",
+    "options": ["P", "Q", "N", "No one"],
+    "correct_answer": "Q",
+    "topic": "seating_arrangement",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Eight people A, B, C, D, E, F, G, and H are sitting around a circular table facing the center. B is third to the right of A, who is third to the right of C. F is second to the right of E, who is not an immediate neighbor of B. D is second to the left of H. Who sits second to the left of G?",
+    "options": ["A", "B", "C", "D"],
+    "correct_answer": "B",
+    "topic": "seating_arrangement",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Seven people J, K, L, M, N, O, and P are sitting in a row facing North. J sits in the middle of the row. M and N sit at the extreme ends. K sits third to the left of N. L sits between M and O. Who sits to the immediate right of J?",
+    "options": ["P", "K", "L", "O"],
+    "correct_answer": "K",
+    "topic": "seating_arrangement",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Six friends A, B, C, D, E, and F are sitting around a hexagonal table, each at one corner and facing the center. A is second to the left of F. B is an immediate neighbor of C and D. E is second to the left of D. Which of the following is sitting opposite to A?",
+    "options": ["B", "C", "D", "E"],
+    "correct_answer": "D",
+    "topic": "seating_arrangement",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In a row of five buildings, P, Q, R, S, and T, P is to the right of Q and S is to the left of R and P. Q is to the right of S. Which building is in the middle?",
+    "options": ["P", "Q", "R", "S"],
+    "correct_answer": "P",
+    "topic": "seating_arrangement",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A, B, C, and D are playing cards sitting around a square table. A is sitting to the left of B. D is sitting to the right of C. Who are the partners sitting opposite to each other?",
+    "options": ["A and B", "C and D", "A and C", "A and D"],
+    "correct_answer": "A and C",
+    "topic": "seating_arrangement",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Six people are sitting in two parallel rows. Row 1: X, Y, Z facing South. Row 2: P, Q, R facing North. X is opposite to Q. P is at the extreme left end of his row. R is the neighbor of Q. Who is facing P?",
+    "options": ["X", "Y", "Z", "Cannot be determined"],
+    "correct_answer": "Z",
+    "topic": "seating_arrangement",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Four girls A, B, C, D and four boys E, F, G, H are sitting around a circular table facing the center. No two boys or two girls are sitting next to each other. A is sitting to the immediate left of E. H is between B and C. F is sitting opposite to E. Who is sitting opposite to A?",
+    "options": ["B", "C", "D", "G"],
+    "correct_answer": "C",
+    "topic": "seating_arrangement",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Seven people—A, B, C, D, E, F, and G—live on separate floors of a 7-floor building. The ground floor is 1 and the top floor is 7. A lives on an even-numbered floor. Only three people live between A and G. B lives immediately above G. How many people live between B and A?",
+    "options": ["One", "Two", "Three", "Four"],
+    "correct_answer": "Two",
+    "topic": "floor_box_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "There are eight boxes—P, Q, R, S, T, U, V, and W—placed one above the other. Box S is kept third from the bottom. Only two boxes are kept between S and Q. Box U is kept immediately below Q. How many boxes are kept between U and S?",
+    "options": ["None", "One", "Two", "Three"],
+    "correct_answer": "One",
+    "topic": "floor_box_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In a 6-floor building, P lives on the bottom floor. R lives on the floor immediately below T. T lives on an even-numbered floor. S lives on floor number 5. If Q lives on floor 2, on which floor does R live?",
+    "options": ["Floor 3", "Floor 4", "Floor 1", "Floor 6"],
+    "correct_answer": "Floor 3",
+    "topic": "floor_box_puzzles",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Seven boxes are stacked. Box A is immediately above Box B. Box C is at the bottom. Box D is exactly between A and E. If Box F is the 2nd from the top and Box E is 3rd from the top, which box is at the top?",
+    "options": ["Box G", "Box A", "Box B", "Box D"],
+    "correct_answer": "Box G",
+    "topic": "floor_box_puzzles",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Five people (J, K, L, M, N) are sitting in a row. K is to the left of L but to the right of J. M is to the right of L but to the left of N. Who is sitting in the exact middle?",
+    "options": ["K", "L", "M", "J"],
+    "correct_answer": "L",
+    "topic": "logical_puzzles",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A, B, C, D, and E are five rods. A is longer than B but shorter than C. D is shorter than B but longer than E. Which rod is the shortest?",
+    "options": ["Rod A", "Rod B", "Rod D", "Rod E"],
+    "correct_answer": "Rod E",
+    "topic": "logical_puzzles",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Six friends P, Q, R, S, T, and U are sitting around a circular table facing the center. R is between P and Q. U is between T and S. S is to the immediate left of Q. Who is to the immediate left of R?",
+    "options": ["P", "Q", "S", "T"],
+    "correct_answer": "P",
+    "topic": "logical_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "There are five boxes of different weights. Box 1 is heavier than Box 2 and Box 3. Box 4 is heavier than Box 1 but lighter than Box 5. Which box is the third heaviest?",
+    "options": ["Box 1", "Box 4", "Box 5", "Box 2"],
+    "correct_answer": "Box 1",
+    "topic": "floor_box_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Ten people are sitting in two parallel rows. In row 1, A, B, C, D, and E are facing North. In row 2, P, Q, R, S, and T are facing South. B sits second to the right of A. P sits opposite to B. Who sits to the immediate left of P?",
+    "options": ["Q", "R", "T", "Cannot be determined"],
+    "correct_answer": "Cannot be determined",
+    "topic": "logical_puzzles",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In a 5-floor building, E lives on the top floor. B lives on the floor exactly between A and C. D lives on the ground floor. If A lives on floor 2, on which floor does C live?",
+    "options": ["Floor 3", "Floor 4", "Floor 5", "Floor 1"],
+    "correct_answer": "Floor 4",
+    "topic": "floor_box_puzzles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Which of the following diagrams best represents the relationship between: Men, Fathers, Doctors?",
+    "options": ["One circle inside another, and a third overlapping both", "Three separate circles", "Two intersecting circles inside a large one", "One circle inside another, both separate from the third"],
+    "correct_answer": "One circle inside another, and a third overlapping both",
+    "topic": "venn_diagram",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In a group of 50 people, 30 like tea and 25 like coffee. If 10 like both, how many like neither?",
+    "options": ["5", "10", "15", "20"],
+    "correct_answer": "5",
+    "topic": "venn_diagram",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Identify the diagram that represents the relationship: Hospital, Nurse, Patient.",
+    "options": ["Two separate circles inside one large circle", "Three separate circles", "Three concentric circles", "Three intersecting circles"],
+    "correct_answer": "Two separate circles inside one large circle",
+    "topic": "venn_diagram",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In a class of 100 students, 60 passed in Math, 50 passed in Science, and 30 passed in both. How many students failed in both subjects?",
+    "options": ["10", "20", "30", "40"],
+    "correct_answer": "20",
+    "topic": "venn_diagram",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Which diagram represents the relationship: Mammals, Cows, Crows?",
+    "options": ["One circle inside another, third one separate", "Three concentric circles", "Three intersecting circles", "Two intersecting circles inside one large circle"],
+    "correct_answer": "One circle inside another, third one separate",
+    "topic": "venn_diagram",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In a 3-set Venn diagram (A, B, C), if 15 are in A only, 10 in B only, 5 in C only, 2 in all three, and 0 in any other intersections, what is the total number of elements?",
+    "options": ["30", "32", "35", "40"],
+    "correct_answer": "32",
+    "topic": "venn_diagram",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Which diagram represents: Sun, Planets, Earth?",
+    "options": ["One circle inside another, third one separate", "Three separate circles", "Three concentric circles", "Two intersecting circles inside a large one"],
+    "correct_answer": "One circle inside another, third one separate",
+    "topic": "venn_diagram",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In a survey of 60 people, 25 read magazine A, 26 read magazine B, and 26 read magazine C. 9 read A and C, 11 read A and B, 8 read B and C, and 3 read all three. How many read none of the magazines?",
+    "options": ["8", "10", "12", "15"],
+    "correct_answer": "8",
+    "topic": "venn_diagram",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Which of the following represents the relationship: Proficient, English, Hindi?",
+    "options": ["Two intersecting circles inside a large one", "Three separate circles", "One circle inside another, third one separate", "Three concentric circles"],
+    "correct_answer": "Two intersecting circles inside a large one",
+    "topic": "venn_diagram",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In a town of 500 people, 285 read Newspaper A and 212 read Newspaper B. 127 read both. How many read neither?",
+    "options": ["130", "150", "110", "127"],
+    "correct_answer": "130",
+    "topic": "venn_diagram",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. All bags are pockets. II. All pockets are pouches. \nConclusions: 1. All bags are pouches. 2. All pouches are bags.",
+    "options": ["Only conclusion 1 follows", "Only conclusion 2 follows", "Either 1 or 2 follows", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only conclusion 1 follows",
+    "topic": "syllogism",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statements: I. Some cars are towns. II. Some towns are flowers. \nConclusions: 1. No car is flower. 2. Some cars are flowers.",
+    "options": ["Only conclusion 1 follows", "Only conclusion 2 follows", "Either 1 or 2 follows", "Neither 1 nor 2 follows"],
+    "correct_answer": "Either 1 or 2 follows",
+    "topic": "syllogism",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. All plants are trees. II. No tree is a green. \nConclusions: 1. Some plants are green. 2. No plant is green.",
+    "options": ["Only conclusion 1 follows", "Only conclusion 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only conclusion 2 follows",
+    "topic": "syllogism",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statements: I. Some actors are singers. II. All singers are dancers. \nConclusions: 1. Some actors are dancers. 2. No singer is actor.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only 1 follows",
+    "topic": "syllogism",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statements: I. All doors are floors. II. Some floors are tiles. \nConclusions: 1. Some doors are tiles. 2. Some tiles are floors.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only 2 follows",
+    "topic": "syllogism",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. All goats are flowers. II. No flower is fruit. \nConclusions: 1. No goat is fruit. 2. Some flowers are goats.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Both 1 and 2 follow",
+    "topic": "syllogism",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. All fans are bulbs. II. All bulbs are tube lights. III. Some tube lights are new. \nConclusions: 1. All fans are tube lights. 2. Some bulbs are new.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only 1 follows",
+    "topic": "syllogism",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Statements: I. Some pearls are shells. II. All shells are boxes. \nConclusions: 1. Some pearls are boxes. 2. No box is pearl.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only 1 follows",
+    "topic": "syllogism",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Statements: I. No pen is a pencil. II. No pencil is an eraser. \nConclusions: 1. No pen is an eraser. 2. Some erasers are pens.",
+    "options": ["Only 1 follows", "Only 2 follows", "Either 1 or 2 follows", "Neither 1 nor 2 follows"],
+    "correct_answer": "Neither 1 nor 2 follows",
+    "topic": "syllogism",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Statements: I. All red are blue. II. All blue are white. \nConclusions: 1. Some white are red. 2. All white are red.",
+    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "correct_answer": "Only 1 follows",
+    "topic": "syllogism",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In a row of 40 students, A is 13th from the left end. What is his rank from the right end?",
+    "options": ["27", "28", "29", "30"],
+    "correct_answer": "28",
+    "topic": "ordering_ranking",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In a queue, Amrita is 10th from the front while Mukul is 25th from the behind and Mamta is just in the middle of the two. If there be 50 persons in the queue, what position does Mamta occupy from the front?",
+    "options": ["18th", "19th", "20th", "21st"],
+    "correct_answer": "18th",
+    "topic": "ordering_ranking",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Among P, Q, R, S and T, each having a different weight, R is heavier than only P. S is lighter than Q and heavier than T. Who among them is the heaviest?",
+    "options": ["Q", "S", "T", "P"],
+    "correct_answer": "Q",
+    "topic": "ordering_ranking",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In a row of boys, if A who is 10th from the left and B who is 9th from the right interchange their positions, A becomes 15th from the left. How many boys are there in the row?",
+    "options": ["23", "27", "28", "31"],
+    "correct_answer": "23",
+    "topic": "ordering_ranking",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Five children are sitting in a row. S is sitting next to P but not T. K is sitting next to R who is sitting on the extreme left and T is not sitting next to K. Who are sitting adjacent to S?",
+    "options": ["P and T", "P and K", "R and P", "Only P"],
+    "correct_answer": "P and K",
+    "topic": "ordering_ranking",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In a class of 35 students, Karuna is placed 7th from the bottom whereas Surendra is placed 9th from the top. Mohan is placed exactly in between the two. What is Karuna's position from Mohan?",
+    "options": ["9th", "10th", "11th", "13th"],
+    "correct_answer": "10th",
+    "topic": "ordering_ranking",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Suresh is 7 ranks ahead of Ashok in a class of 39. If Ashok's rank is 17th from the last, what is Suresh's rank from the start?",
+    "options": ["14th", "15th", "16th", "17th"],
+    "correct_answer": "16th",
+    "topic": "ordering_ranking",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If you are 9th person in a queue starting from either end, how many persons are there in the queue?",
+    "options": ["17", "18", "19", "20"],
+    "correct_answer": "17",
+    "topic": "ordering_ranking",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In a row of trees, one tree is the 7th from either end of the row. How many trees are there in the row?",
+    "options": ["11", "13", "14", "15"],
+    "correct_answer": "13",
+    "topic": "ordering_ranking",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Manoj and Sachin are ranked 7th and 11th respectively from the top in a class of 31 students. What will be their respective ranks from the bottom in the class?",
+    "options": [
+      "20th and 24th",
+      "24th and 20th",
+      "25th and 21st",
+      "26th and 22nd"
+    ],
+    "correct_answer": "25th and 21st",
+    "topic": "ordering_ranking",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Choose the word which is least like the others in the group.",
+    "options": ["Zebra", "Lion", "Tiger", "Horse"],
+    "correct_answer": "Horse",
+    "topic": "classification",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Find the odd one out among the given numbers.",
+    "options": ["27", "64", "125", "144"],
+    "correct_answer": "144",
+    "topic": "classification",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Which of the following is the odd one out?",
+    "options": ["Cumin", "Groundnut", "Cinnamon", "Pepper"],
+    "correct_answer": "Groundnut",
+    "topic": "classification",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Find the odd pair of words.",
+    "options": [
+      "Painter : Gallery",
+      "Actor : Stage",
+      "Mason : Wall",
+      "Farmer : Field"
+    ],
+    "correct_answer": "Mason : Wall",
+    "topic": "classification",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Find the odd one out from the following alphabet groups.",
+    "options": ["BD", "IK", "PN", "SU"],
+    "correct_answer": "PN",
+    "topic": "classification",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Choose the number which is different from others in the group.",
+    "options": ["13", "17", "23", "27"],
+    "correct_answer": "27",
+    "topic": "classification",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Find the odd one out.",
+    "options": ["Google", "Firefox", "Internet Explorer", "Chrome"],
+    "correct_answer": "Google",
+    "topic": "classification",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Identify the odd one out from the group.",
+    "options": ["Square", "Triangle", "Rectangle", "Circle"],
+    "correct_answer": "Circle",
+    "topic": "classification",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Choose the odd numeral pair.",
+    "options": ["12 - 96", "13 - 117", "15 - 120", "16 - 128"],
+    "correct_answer": "13 - 117",
+    "topic": "classification",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Find the odd one out.",
+    "options": ["Hangar", "Dock", "Garage", "Platform"],
+    "correct_answer": "Platform",
+    "topic": "classification",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "'Moon' is to 'Satellite' as 'Earth' is to ____?",
+    "options": ["Sun", "Solar System", "Planet", "Asteroid"],
+    "correct_answer": "Planet",
+    "topic": "analogy",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Choose the pair that has the same relationship: LIGHT : BLIND",
+    "options": [
+      "SPEECH : DUMB",
+      "LANGUAGE : DEAF",
+      "TONGUE : SOUND",
+      "VOICE : VIBRATION"
+    ],
+    "correct_answer": "SPEECH : DUMB",
+    "topic": "analogy",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Complete the analogy: 16 : 56 :: 32 : ____?",
+    "options": ["96", "112", "118", "128"],
+    "correct_answer": "112",
+    "topic": "analogy",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Complete the analogy: DRIVE : LICENCE :: BREATHE : ____?",
+    "options": ["OXYGEN", "ATMOSPHERE", "LIFE", "AIR"],
+    "correct_answer": "OXYGEN",
+    "topic": "analogy",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Complete the analogy: 8 : 81 :: 64 : ____?",
+    "options": ["125", "137", "525", "625"],
+    "correct_answer": "625",
+    "topic": "analogy",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Choose the best alternative: Newspaper : Editor :: Play : ____?",
+    "options": ["Actor", "Director", "Writer", "Scenario"],
+    "correct_answer": "Director",
+    "topic": "analogy",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Complete the analogy: AFKP : ZUPK :: BGLQ : ____?",
+    "options": ["YUQL", "XTOJ", "YTOJ", "ZUPK"],
+    "correct_answer": "YTOJ",
+    "topic": "analogy",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Complete the analogy: 42 : 56 :: 72 : ____?",
+    "options": ["81", "90", "92", "100"],
+    "correct_answer": "90",
+    "topic": "analogy",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Complete the analogy: PALE : LEAP :: POSH : ____?",
+    "options": ["SHOP", "HOPS", "OHPS", "POSH"],
+    "correct_answer": "SHOP",
+    "topic": "analogy",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Choose the missing term: Safe : Secure :: Protect : ____?",
+    "options": ["Lock", "Guard", "Sure", "Conserve"],
+    "correct_answer": "Guard",
+    "topic": "analogy",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In a certain code, 'COMPUTER' is written as 'RFUVQNPC'. How is 'MEDICINE' written in that code?",
+    "options": ["EOJDJEFM", "EOJDEJFM", "MFEJDJOE", "EOJDJFME"],
+    "correct_answer": "EOJDJEFM",
+    "topic": "coding decoding",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If in a code language, 'COULD' is written as 'BNTKC' and 'MARGIN' is written as 'LZQFHM', how will 'MOULDING' be written in that code?",
+    "options": ["LNTKCHMF", "LNKTCHMF", "LNTKCMHF", "LNTKHCMF"],
+    "correct_answer": "LNTKCHMF",
+    "topic": "coding decoding",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In a certain code language, '3A, 2B, 7C' means 'Truth is Eternal'; '7C, 9E, 8D' means 'Enmity is not Eternal'. Which digit represents 'is'?",
+    "options": ["3", "2", "7", "8"],
+    "correct_answer": "7",
+    "topic": "coding decoding",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If 'ROSE' is coded as 6821, 'CHAIR' is coded as 73456 and 'PREACH' is coded as 961473, what is the code for 'SEARCH'?",
+    "options": ["246173", "214673", "214763", "216473"],
+    "correct_answer": "214673",
+    "topic": "coding decoding",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In a code, 'TIGER' is written as 'SHFDQ'. How is 'HORSE' written in that code?",
+    "options": ["GNRQD", "GNQR D", "GRNQD", "GMQRD"],
+    "correct_answer": "GNRQD",
+    "topic": "coding decoding",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If 'PAINT' is coded as 74128 and 'EXCEL' is coded as 93596, then how would you code 'ACCEPT'?",
+    "options": ["455978", "544978", "455968", "735961"],
+    "correct_answer": "455978",
+    "topic": "coding decoding",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In a certain code, 'TRIPPLE' is written as 'SQHOOKD'. How is 'DISPOSE' written in that code?",
+    "options": ["CHRONRD", "CHRONRE", "CHRNRD", "CHRONOR"],
+    "correct_answer": "CHRONRD",
+    "topic": "coding decoding",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If 'sky' is 'star', 'star' is 'cloud', 'cloud' is 'earth', 'earth' is 'tree' and 'tree' is 'book', then where do the birds fly?",
+    "options": ["Cloud", "Sky", "Star", "Earth"],
+    "correct_answer": "Star",
+    "topic": "coding decoding",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In a certain code, 'PAGES' is written as 'RDIHU'. How is 'WRITE' written in that code?",
+    "options": ["YUKWG", "YVLVG", "YULVH", "ZVLVG"],
+    "correct_answer": "YVLVG",
+    "topic": "coding decoding",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If 'Z = 52' and 'ACT = 48', then 'BAT' will be equal to:",
+    "options": ["39", "41", "44", "46"],
+    "correct_answer": "46",
+    "topic": "coding decoding",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Pointing to a photograph, a man said, 'I have no brother or sister but that man's father is my father's son.' Whose photograph was it?",
+    "options": ["His own", "His son", "His father", "His nephew"],
+    "correct_answer": "His son",
+    "topic": "blood relations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If A is the brother of B; B is the sister of C; and C is the father of D, how is D related to A?",
+    "options": ["Brother", "Sister", "Nephew or Niece", "Uncle"],
+    "correct_answer": "Nephew or Niece",
+    "topic": "blood relations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A and B are married couple. X and Y are brothers. X is the brother of A. How is Y related to B?",
+    "options": ["Brother-in-law", "Brother", "Son-in-law", "Cousin"],
+    "correct_answer": "Brother-in-law",
+    "topic": "blood relations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Introducing a boy, a girl said, 'He is the son of the daughter of the father of my uncle.' How is the boy related to the girl?",
+    "options": ["Brother", "Nephew", "Uncle", "Son-in-law"],
+    "correct_answer": "Brother",
+    "topic": "blood relations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "P is the mother of K; K is the sister of D; D is the father of J. How is P related to J?",
+    "options": ["Mother", "Grandmother", "Aunt", "Data Inadequate"],
+    "correct_answer": "Grandmother",
+    "topic": "blood relations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Looking at a portrait of a man, Harsh said, 'His mother is the wife of my father's son. Brothers and sisters I have none.' At whose portrait was Harsh looking?",
+    "options": ["His son", "His cousin", "His uncle", "His nephew"],
+    "correct_answer": "His son",
+    "topic": "blood relations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If 'A + B' means A is the daughter of B; 'A - B' means A is the husband of B; 'A * B' means A is the brother of B. If P + Q - R, which of the following is true?",
+    "options": [
+      "R is the mother of P",
+      "R is the sister-in-law of P",
+      "R is the aunt of P",
+      "R is the mother-in-law of P"
+    ],
+    "correct_answer": "R is the mother of P",
+    "topic": "blood relations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Pointing to a lady, a man said, 'The son of her only brother is the brother of my wife.' How is the lady related to the man?",
+    "options": [
+      "Mother's sister",
+      "Grandmother",
+      "Sister of father-in-law",
+      "Maternal Aunt"
+    ],
+    "correct_answer": "Sister of father-in-law",
+    "topic": "blood relations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A is B's sister. C is B's mother. D is C's father. E is D's mother. Then, how is A related to D?",
+    "options": ["Grandmother", "Grandfather", "Daughter", "Granddaughter"],
+    "correct_answer": "Granddaughter",
+    "topic": "blood relations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Q is the son of P, X is the daughter of Q, R is the mother of X, and S is the brother of R. How is P related to S?",
+    "options": ["Father", "Brother", "Father-in-law", "None of these"],
+    "correct_answer": "None of these",
+    "topic": "blood relations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A man starts from a point and walks 2 km towards North, turns towards his right and walks 2 km, turns right again and walks. What is the direction now he is facing?",
+    "options": ["South", "East", "North", "West"],
+    "correct_answer": "South",
+    "topic": "direction sense",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Starting from the point X, Jayant walked 15 m towards West. He turned left and walked 20 m. He then turned left and walked 15 m. After this he turned to his right and walked 12 m. How far and in which direction is now Jayant from X?",
+    "options": ["32 m, South", "47 m, East", "42 m, North", "27 m, South"],
+    "correct_answer": "32 m, South",
+    "topic": "direction sense",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "One morning after sunrise, Suresh was standing facing a pole. The shadow of the pole fell exactly to his right. To which direction was he facing?",
+    "options": ["East", "West", "North", "South"],
+    "correct_answer": "South",
+    "topic": "direction sense",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A child is looking for his father. He went 90 m in the East before turning to his right. He went 20 m before turning to his right again to look for his father at his uncle's place 30 m from this point. His father was not there. From here he went 100 m to the North before meeting his father in a street. How far did the son meet his father from the starting point?",
+    "options": ["80 m", "100 m", "140 m", "260 m"],
+    "correct_answer": "100 m",
+    "topic": "direction sense",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Kailash faces towards North. Turning to his right, he walks 25 m. He then turns to his left and walks 30 m. Next, he moves 25 m to his right. He then turns to his right again and walks 55 m. Finally, he turns to the right and moves 40 m. In which direction is he now from his starting point?",
+    "options": ["South-West", "South", "North-West", "South-East"],
+    "correct_answer": "South-East",
+    "topic": "direction sense",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If South-East becomes North, North-East becomes West and so on. What will West become?",
+    "options": ["North-East", "North-West", "South-East", "South-West"],
+    "correct_answer": "South-East",
+    "topic": "direction sense",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A village Q is to the North of village P. Village R is in the East of village Q. Village S is to the West of village P. In which direction is village S with respect to village R?",
+    "options": ["South-East", "South-West", "North-East", "North-West"],
+    "correct_answer": "South-West",
+    "topic": "direction sense",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A man is facing North-West. He turns 90 degrees in the clockwise direction and then 135 degrees in the anti-clockwise direction. Which direction is he facing now?",
+    "options": ["East", "West", "North", "South"],
+    "correct_answer": "West",
+    "topic": "direction sense",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "One evening before sunset Rekha and Hema were talking to each other face to face. If Hema's shadow was exactly to the right of Hema, which direction was Rekha facing?",
+    "options": ["North", "South", "East", "West"],
+    "correct_answer": "North",
+    "topic": "direction sense",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Rahul put his timepiece on the table in such a way that at 6 P.M. hour hand points to North. In which direction the minute hand will point at 9:15 P.M.?",
+    "options": ["South", "North", "West", "East"],
+    "correct_answer": "West",
+    "topic": "direction sense",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Which number should come next in the series: 7, 10, 8, 11, 9, 12, ...?",
+    "options": ["7", "10", "12", "13"],
+    "correct_answer": "10",
+    "topic": "series",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Find the missing number in the sequence: 2, 5, 11, 23, 47, ...?",
+    "options": ["71", "95", "101", "110"],
+    "correct_answer": "95",
+    "topic": "series",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Complete the series: 1, 4, 27, 16, 125, 36, ...?",
+    "options": ["49", "64", "216", "343"],
+    "correct_answer": "343",
+    "topic": "series",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Find the next term in the series: SCD, TEF, UGH, ____?",
+    "options": ["VIJ", "VJK", "IJT", "WKL"],
+    "correct_answer": "VIJ",
+    "topic": "series",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Find the missing term: FAG, GAF, HAI, IAH, ____?",
+    "options": ["JAK", "HAL", "HAK", "JAI"],
+    "correct_answer": "JAK",
+    "topic": "series",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the next number in the series: 4, 12, 36, 108, ...?",
+    "options": ["144", "216", "304", "324"],
+    "correct_answer": "324",
+    "topic": "series",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In the series 2, 6, 18, 54, ..., what is the 8th term?",
+    "options": ["4374", "13122", "1458", "39366"],
+    "correct_answer": "4374",
+    "topic": "series",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Find the missing number: 10, 14, 26, 42, 70, ...?",
+    "options": ["100", "102", "106", "114"],
+    "correct_answer": "114",
+    "topic": "series",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Find the next term: ELFA, GLHA, ILJA, ____, MLNA",
+    "options": ["OLPA", "KLMA", "LLMA", "KLLA"],
+    "correct_answer": "KLLA",
+    "topic": "series",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Look at this series: 3, 4, 7, 8, 11, 12, ... What number should come next?",
+    "options": ["7", "10", "14", "15"],
+    "correct_answer": "15",
+    "topic": "series",
+    "difficulty": "Easy"
+  }
+]
+

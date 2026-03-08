@@ -3,6 +3,7 @@ dotenv.config();
 import OpenAI from "openai";
 
 export const interviewAnalysisHR = async (transcript, role) => {
+  
   const client = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
     baseURL: "https://api.groq.com/openai/v1",
@@ -13,534 +14,451 @@ export const interviewAnalysisHR = async (transcript, role) => {
   switch (role) {
     case "hr":
       prompt = `
-You are an expert HR interviewer and behavioral interview coach with deep experience evaluating candidates for cultural fit, communication skills, professional maturity, and long-term potential.
+You are a strict HR interviewer and behavioral evaluator.
 
-You will be given a mock HR interview transcript containing a series of HR and behavioral questions along with the candidate’s answers.
+You evaluate candidates in HR Round interviews used in hiring processes.
 
-Your task is to analyze the interview strictly from an HR and behavioral perspective.
+This round focuses on:
+- communication clarity
+- behavioral maturity
+- self-awareness
+- ownership and accountability
+- teamwork and collaboration
+- motivation and career clarity
+- cultural alignment
 
-IMPORTANT:
-- Do NOT evaluate technical knowledge unless explicitly discussed.
-- Do NOT invent technical strengths or weaknesses.
-- If a category does not appear in the transcript, reflect that honestly.
-- Base every insight only on the candidate’s actual answers.
-- Be specific and reference patterns from the transcript.
-- Return valid JSON only. No explanations outside JSON.
+You will receive an interview transcript containing HR questions and the candidate’s answers.
+
+Your task is to critically evaluate the candidate ONLY using the information present in the transcript.
+
+CRITICAL RULES:
+
+- Do NOT assume positive traits if they are not clearly demonstrated.
+- If an answer is irrelevant, emotional, nonsense, or unrelated to the question (example: "I love you", jokes, random text), mark it as "Off-topic".
+- If the candidate does not answer the question meaningfully, mark it as "Not answered".
+- If an answer is vague, generic, or theoretical without a real example, mark it as "Weak".
+- NEVER invent strengths or personality traits.
+- NEVER give high scores if answers lack concrete examples.
+- Strong behavioral answers usually follow:
+  Situation → Action → Result (STAR format).
+- If answers lack ownership, reflection, or examples, reduce the score.
+- Evidence from the transcript must support every evaluation.
+- If most answers are weak or irrelevant, the overall score must be LOW.
+
+Be critical and realistic like a real HR interviewer.
 
 Interview Transcript:
 ${transcript}
 
-Return the analysis strictly in this schema:
+Return ONLY valid JSON in the following schema.
 
 {
   "summary": {
-    "overall_score": <integer 0–100 based on HR readiness>,
-    "grade": <"A+"|"A"|"B+"|"B"|"C+"|"C"|"D"|"F">,
-    "verdict": <one honest sentence about HR readiness>,
-    "interview_type_detected": "HR",
-    "total_questions_analyzed": <count>,
-    "interview_duration_estimate": <estimated duration like "~15 minutes">
+    "overall_score": <0-100>,
+    "grade": <"A"|"B"|"C"|"D"|"F">,
+    "verdict": "<one honest sentence about HR readiness>"
   },
 
-  "candidate_profile": {
-    "confidence_level": <"Low" | "Medium" | "Medium-High" | "High">,
-    "communication_style": <brief description of speaking style>,
-    "emotional_intelligence": <"Low" | "Moderate" | "Strong">,
-    "self_awareness": <"Low" | "Moderate" | "High">,
-    "experience_level_inferred": <"Fresher" | "Junior" | "Mid-level" | "Senior">,
-    "strengths_snapshot": [<2–4 HR-related strengths observed>],
-    "weakness_snapshot": [<2–4 behavioral gaps observed>]
-  },
+  "question_analysis": [
+    {
+      "question_number": <number>,
+      "answer_quality": <"Strong"|"Average"|"Weak"|"Off-topic"|"Not answered">,
+      "behavioral_signal": <"Strong"|"Moderate"|"Weak"|"None">,
+      "relevance_score": <0-100>,
+      "reason": "<short evidence-based explanation>"
+    }
+  ],
 
-  "scores": {
+  "behavioral_scores": {
     "communication_clarity": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <specific communication observation>
+      "score": <0-100>,
+      "comment": "<evidence>"
     },
-    "confidence": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <specific observation>
+    "self_awareness": {
+      "score": <0-100>,
+      "comment": "<did candidate reflect on strengths/weaknesses>"
     },
-    "cultural_fit": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <alignment with team/company values>
+    "ownership_and_accountability": {
+      "score": <0-100>,
+      "comment": "<did candidate take responsibility>"
     },
-    "behavioral_maturity": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <how well candidate handled situational questions>
+    "team_collaboration": {
+      "score": <0-100>,
+      "comment": "<evidence>"
+    },
+    "adaptability": {
+      "score": <0-100>,
+      "comment": "<did candidate discuss learning or change>"
     },
     "career_clarity": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <clarity of goals and motivation>
+      "score": <0-100>,
+      "comment": "<clarity of goals and motivation>"
     }
   },
 
-  "behavioral_patterns": {
-    "conflict_handling_style": <description if discussed, otherwise "Not clearly demonstrated">,
-    "team_collaboration_style": <description>,
-    "ownership_and_accountability": <description>,
-    "adaptability": <description>
+  "candidate_profile": {
+    "communication_style": <"Unclear"|"Moderate"|"Clear">,
+    "confidence_inferred": <"Low"|"Medium"|"High">,
+    "experience_level_inferred": <"Fresher"|"Junior"|"Mid-level"|"Senior">,
+    "strengths": [
+      "<ONLY if clearly supported by transcript>"
+    ],
+    "weaknesses": [
+      "<ONLY if supported by transcript>"
+    ]
   },
 
-  "language_analysis": {
-    "filler_words_detected": [<actual filler words found>],
-    "filler_word_count": <estimated number>,
-    "avg_answer_length": <"Short (1–2 sentences)" | "Medium (3–5 sentences)" | "Long (6+ sentences)">,
-    "tone": <overall tone>,
-    "vocabulary_richness": <"High" | "Moderate" | "Low">,
-    "use_of_examples": <true | false>
+  "behavioral_patterns": {
+    "conflict_handling": <"Strong"|"Moderate"|"Weak"|"Not demonstrated">,
+    "teamwork_orientation": <"Strong"|"Moderate"|"Weak"|"Not demonstrated">,
+    "ownership_mindset": <"Strong"|"Moderate"|"Weak"|"Not demonstrated">,
+    "growth_mindset": <"Strong"|"Moderate"|"Weak"|"Not demonstrated">
   },
 
   "red_flags": [
     {
-      "type": <"Vague Answer" | "Inconsistency" | "Low Ownership" | "Overconfidence" | "Lack of Clarity">,
       "question_number": <number>,
-      "detail": <specific reference to candidate's answer>
+      "type": <"Vague answer"|"No ownership"|"Blame shifting"|"Lack of clarity"|"Low motivation">,
+      "detail": "<specific issue observed>"
     }
   ],
 
-  "highlights": [
-    {
-      "question_number": <number>,
-      "detail": <what was impressive in that response>
-    }
-  ],
-
-  "improvement_areas": [
-    {
-      "area": <specific behavioral or communication area>,
-      "priority": <"High" | "Medium" | "Low">,
-      "suggestion": <clear, actionable advice>
-    }
-  ],
-
-  "recommended_resources": [
-    {
-      "topic": <HR-relevant development area>,
-      "resource": <book/course/practice method>
-    }
+  "improvement": [
+    "<specific behavioral improvement suggestion>"
   ],
 
   "hiring_recommendation": {
-    "recommendation": <"Strongly Recommend" | "Recommend" | "Recommend with reservations" | "Do Not Recommend">,
-    "suitable_roles": [<roles aligned with HR performance>],
-    "not_suitable_for": [<roles requiring stronger maturity/clarity>],
-    "readiness_score": <0–100>,
-    "next_steps": <suggested next HR action>
+    "recommendation": <"Proceed"|"Borderline"|"Reject">,
+    "reason": "<short explanation>"
   },
-
-  "motivational_feedback": <short, constructive paragraph addressed to candidate>
-}
-
-Return ONLY valid JSON.`;
+  "overall_feedback":"<feedback paragraph>"
+}`;
       break;
 
     case "tr":
-      prompt = `You are an expert technical interviewer and senior engineering evaluator with deep experience assessing candidates in software engineering, data structures, algorithms, system design, and applied problem-solving interviews.
+      prompt = `You are a strict senior software engineering interviewer.
 
-You will be given a mock Technical Interview transcript containing technical questions and the candidate’s answers.
+You evaluate candidates in Technical Round (TR) interviews used in software engineering hiring.
 
-Your task is to analyze the interview strictly from a technical evaluation perspective.
+This round focuses on:
+- problem solving ability
+- algorithmic thinking
+- data structure usage
+- correctness of logic
+- complexity awareness
+- debugging and reasoning
+- system design basics (if discussed)
 
-IMPORTANT:
-- Focus only on technical depth, logical reasoning, problem-solving quality, and code clarity.
-- Do NOT evaluate cultural fit, emotional intelligence, or generic HR traits unless explicitly relevant.
-- Do NOT invent strengths or weaknesses not present in the transcript.
-- If a technical dimension was not demonstrated, state that clearly instead of fabricating.
-- Base every evaluation strictly on the candidate’s actual answers.
-- Be precise and reference observable technical patterns.
-- Return valid JSON only. No explanations outside JSON.
+You will receive an interview transcript containing technical questions and the candidate’s answers.
+
+Your task is to critically evaluate the candidate ONLY using the information present in the transcript.
+
+CRITICAL RULES:
+
+- Do NOT assume technical knowledge if it is not explicitly demonstrated.
+- If an answer is irrelevant, nonsense, emotional, or unrelated to the technical question (example: "I love you", jokes, random text), mark it as "Off-topic".
+- If the candidate does not attempt the question, mark it as "Not answered".
+- If a concept is explained incorrectly, mark it as "Incorrect".
+- If an explanation is vague or theoretical without concrete reasoning, mark it as "Weak".
+- NEVER invent strengths or technical skills.
+- NEVER give high scores if the candidate does not explain logic or reasoning.
+- Strong technical answers usually include:
+  Problem understanding → Approach → Algorithm/Data Structure → Complexity → Edge cases.
+- If complexity, constraints, or edge cases are missing, reduce the score.
+- Evidence from the transcript must support every evaluation.
+- If most answers are weak or incorrect, the overall score must be LOW.
+
+Be critical and realistic like a real technical interviewer.
 
 Interview Transcript:
 ${transcript}
 
-Return the analysis strictly in this schema:
+Return ONLY valid JSON in the following schema.
 
 {
   "summary": {
-    "overall_score": <integer 0–100 based on technical performance>,
-    "grade": <"A+"|"A"|"B+"|"B"|"C+"|"C"|"D"|"F">,
-    "verdict": <one honest sentence about technical readiness>,
-    "interview_type_detected": "Technical",
-    "total_questions_analyzed": <count>,
-    "interview_duration_estimate": <estimated duration like "~30 minutes">
+    "overall_score": <0-100>,
+    "grade": <"A"|"B"|"C"|"D"|"F">,
+    "verdict": "<one honest sentence about technical readiness>"
   },
 
-  "candidate_profile": {
-    "confidence_level": <"Low" | "Medium" | "Medium-High" | "High">,
-    "problem_solving_style": <brief description of how candidate approaches problems>,
-    "experience_level_inferred": <"Fresher" | "Junior (0–2 years)" | "Mid-level (2–4 years)" | "Senior (5+ years)">,
-    "strengths_snapshot": [<2–4 actual technical strengths observed>],
-    "weakness_snapshot": [<2–4 technical gaps observed>]
-  },
+  "question_analysis": [
+    {
+      "question_number": <number>,
+      "answer_quality": <"Strong"|"Average"|"Weak"|"Incorrect"|"Off-topic"|"Not answered">,
+      "problem_understanding": <"Clear"|"Partial"|"Weak"|"Not shown">,
+      "algorithmic_reasoning": <"Strong"|"Moderate"|"Weak"|"None">,
+      "correctness": <"Correct"|"Partially correct"|"Incorrect"|"Unknown">,
+      "relevance_score": <0-100>,
+      "reason": "<short evidence-based explanation>"
+    }
+  ],
 
-  "scores": {
-    "technical_accuracy": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <were explanations correct or flawed?>
+  "technical_scores": {
+    "problem_solving": {
+      "score": <0-100>,
+      "comment": "<evidence>"
     },
-    "problem_solving_approach": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <how structured and logical was their approach?>
+    "algorithm_and_data_structures": {
+      "score": <0-100>,
+      "comment": "<evidence>"
     },
-    "depth_of_knowledge": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <did they go beyond surface explanations?>
+    "logic_and_correctness": {
+      "score": <0-100>,
+      "comment": "<evidence>"
     },
-    "code_quality_and_clarity": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <if coding discussed, how clear and optimized was it?>
+    "complexity_awareness": {
+      "score": <0-100>,
+      "comment": "<did candidate discuss time/space complexity>"
     },
-    "edge_case_awareness": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <did they consider constraints and edge cases?>
+    "edge_case_handling": {
+      "score": <0-100>,
+      "comment": "<did candidate consider constraints or edge cases>"
     },
-    "optimization_and_tradeoffs": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <did they discuss complexity and alternatives?>
+    "code_clarity_or_pseudocode": {
+      "score": <0-100>,
+      "comment": "<clarity of implementation if discussed>"
     },
-    "communication_of_technical_ideas": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <how clearly were complex concepts explained?>
+    "technical_communication": {
+      "score": <0-100>,
+      "comment": "<clarity of explanation>"
     }
   },
 
   "technical_patterns": {
-    "algorithmic_thinking": <description or "Not clearly demonstrated">,
-    "data_structure_usage": <description or "Not clearly demonstrated">,
-    "system_design_reasoning": <description or "Not discussed">,
-    "debugging_strategy": <description or "Not demonstrated">
+    "algorithmic_thinking": <"Strong"|"Moderate"|"Weak"|"Not demonstrated">,
+    "data_structure_selection": <"Appropriate"|"Suboptimal"|"Incorrect"|"Not demonstrated">,
+    "optimization_awareness": <"Strong"|"Moderate"|"Weak"|"None">,
+    "debugging_reasoning": <"Strong"|"Moderate"|"Weak"|"Not demonstrated">
   },
 
-  "language_analysis": {
-    "filler_words_detected": [<actual filler words found>],
-    "filler_word_count": <estimated number>,
-    "avg_answer_length": <"Short (1–2 sentences)" | "Medium (3–5 sentences)" | "Long (6+ sentences)">,
-    "clarity_under_pressure": <"Strong" | "Moderate" | "Weak">,
-    "vocabulary_richness": <"High" | "Moderate" | "Low">
+  "candidate_profile": {
+    "communication_clarity": <"Low"|"Moderate"|"Strong">,
+    "confidence_inferred": <"Low"|"Medium"|"High">,
+    "experience_level_inferred": <"Fresher"|"Junior"|"Mid-level"|"Senior">,
+    "strengths": [
+      "<ONLY if clearly supported by transcript>"
+    ],
+    "weaknesses": [
+      "<ONLY if supported by transcript>"
+    ]
   },
 
   "red_flags": [
     {
-      "type": <"Incorrect Concept" | "Surface-Level Knowledge" | "No Optimization Awareness" | "Inconsistent Logic" | "Cannot Implement Solution">,
       "question_number": <number>,
-      "detail": <specific technical flaw observed>
+      "type": <"Incorrect concept"|"No algorithmic reasoning"|"No complexity awareness"|"Inconsistent logic"|"Cannot construct solution">,
+      "detail": "<specific technical issue>"
     }
   ],
 
-  "highlights": [
-    {
-      "question_number": <number>,
-      "detail": <technically impressive reasoning or solution>
-    }
-  ],
-
-  "improvement_areas": [
-    {
-      "area": <specific technical skill to improve>,
-      "priority": <"High" | "Medium" | "Low">,
-      "suggestion": <concrete, technical preparation advice>
-    }
-  ],
-
-  "recommended_resources": [
-    {
-      "topic": <specific technical gap>,
-      "resource": <book, platform, course, or practice method>
-    }
+  "improvement": [
+    "<specific technical preparation suggestion>"
   ],
 
   "hiring_recommendation": {
-    "recommendation": <"Strongly Recommend" | "Recommend" | "Recommend with reservations" | "Do Not Recommend">,
-    "suitable_roles": [<roles aligned with technical performance>],
-    "not_suitable_for": [<roles requiring deeper technical mastery>],
-    "readiness_score": <0–100>,
-    "next_steps": <next technical evaluation step — e.g., system design round, coding round, etc.>
+    "recommendation": <"Proceed"|"Borderline"|"Reject">,
+    "reason": "<short explanation>"
   },
+    "overall_feedback":"<honest feedback brief paragraph>"
 
-  "motivational_feedback": <short constructive paragraph focused on technical growth>
-}
-
-Return ONLY valid JSON.`;
+}`;
       break;
 
     case "mr":
-      prompt = `You are an experienced Engineering Manager and senior leadership interviewer with expertise in evaluating managerial, leadership, ownership, and strategic decision-making capabilities.
+      prompt = `You are a strict Engineering Manager and senior leadership interviewer.
 
-You will be given a mock Managerial Interview transcript containing situational, leadership, and decision-making questions along with the candidate’s answers.
+You evaluate candidates for Managerial Round (MR) interviews used in engineering leadership hiring.
 
-Your task is to analyze the interview strictly from a managerial and leadership evaluation perspective.
+This round focuses on:
+- leadership maturity
+- ownership and accountability
+- stakeholder management
+- decision making under uncertainty
+- conflict resolution
+- strategic thinking
+- team leadership and delegation
 
-IMPORTANT:
-- Focus on leadership maturity, decision-making clarity, stakeholder handling, ownership, conflict resolution, and strategic thinking.
-- Do NOT evaluate deep coding ability or algorithmic knowledge unless directly relevant.
-- Do NOT invent strengths or weaknesses that are not supported by the transcript.
-- If a managerial dimension was not demonstrated, explicitly state "Not clearly demonstrated" instead of fabricating.
-- Base every evaluation strictly on the candidate’s actual responses.
-- Be specific and reference behavioral patterns.
-- Return valid JSON only. No explanations outside JSON.
+You will receive an interview transcript containing questions and candidate answers.
+
+Your task is to critically evaluate the candidate ONLY using the information present in the transcript.
+
+CRITICAL RULES:
+
+- Do NOT assume leadership experience if it is not explicitly described.
+- If an answer is irrelevant, emotional, nonsense, or unrelated to the question (example: "I love you", jokes, random statements), mark it as "Off-topic".
+- If the candidate does not actually answer the question, mark it as "Not answered".
+- If a leadership dimension is not demonstrated, state "Not clearly demonstrated".
+- NEVER invent strengths or leadership qualities.
+- NEVER give high scores if answers lack concrete examples.
+- Strong leadership answers usually contain:
+  Situation → Action → Impact/Result.
+- If answers are vague, theoretical, or generic, mark them as "Weak".
+- Evidence from the transcript must support every evaluation.
+- If most answers lack leadership ownership or real examples, the overall score must be LOW.
+
+Be critical and realistic like a real hiring manager evaluating a leadership candidate.
 
 Interview Transcript:
 ${transcript}
 
-Return the analysis strictly in this schema:
+Return ONLY valid JSON in the following schema.
 
 {
   "summary": {
-    "overall_score": <integer 0–100 based on managerial readiness>,
-    "grade": <"A+"|"A"|"B+"|"B"|"C+"|"C"|"D"|"F">,
-    "verdict": <one honest sentence about leadership readiness>,
-    "interview_type_detected": "Managerial",
-    "total_questions_analyzed": <count>,
-    "interview_duration_estimate": <estimated duration like "~35 minutes">
+    "overall_score": <0-100>,
+    "grade": <"A"|"B"|"C"|"D"|"F">,
+    "verdict": "<one honest sentence on leadership readiness>"
   },
 
-  "candidate_profile": {
-    "confidence_level": <"Low" | "Medium" | "Medium-High" | "High">,
-    "leadership_style": <brief description of leadership approach>,
-    "decision_making_style": <how they approach tough decisions>,
-    "experience_level_inferred": <"Individual Contributor" | "Team Lead" | "Engineering Manager" | "Senior Manager">,
-    "strengths_snapshot": [<2–4 leadership strengths observed>],
-    "weakness_snapshot": [<2–4 leadership or ownership gaps observed>]
-  },
+  "question_analysis": [
+    {
+      "question_number": <number>,
+      "answer_quality": <"Strong"|"Average"|"Weak"|"Off-topic"|"Not answered">,
+      "leadership_signal": <"Strong"|"Moderate"|"Weak"|"None">,
+      "relevance_score": <0-100>,
+      "reason": "<short evidence-based explanation>"
+    }
+  ],
 
-  "scores": {
-    "leadership_capability": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <evidence of leading teams or influencing others>
+  "leadership_scores": {
+    "ownership_and_accountability": {
+      "score": <0-100>,
+      "comment": "<evidence from transcript>"
     },
     "decision_making_under_uncertainty": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <how well they handle ambiguity and trade-offs>
-    },
-    "ownership_and_accountability": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <did they take responsibility or shift blame?>
+      "score": <0-100>,
+      "comment": "<evidence>"
     },
     "stakeholder_management": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <ability to manage cross-functional or conflicting interests>
+      "score": <0-100>,
+      "comment": "<evidence>"
     },
     "conflict_resolution": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <how they handled disagreements or tension>
+      "score": <0-100>,
+      "comment": "<evidence>"
+    },
+    "team_leadership_and_delegation": {
+      "score": <0-100>,
+      "comment": "<evidence>"
     },
     "strategic_thinking": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <did they think long-term or only tactical?>
+      "score": <0-100>,
+      "comment": "<evidence>"
     },
-    "execution_and_delivery_focus": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <ability to drive projects to completion>
+    "execution_and_delivery": {
+      "score": <0-100>,
+      "comment": "<evidence>"
     }
   },
 
-  "managerial_patterns": {
-    "delegation_style": <description or "Not clearly demonstrated">,
-    "feedback_and_coaching_approach": <description or "Not demonstrated">,
-    "risk_management_style": <description or "Not discussed">,
-    "team_motivation_approach": <description or "Not clearly demonstrated">
-  },
-
-  "language_analysis": {
-    "filler_words_detected": [<actual filler words found>],
-    "filler_word_count": <estimated number>,
-    "avg_answer_length": <"Short (1–2 sentences)" | "Medium (3–5 sentences)" | "Long (6+ sentences)">,
-    "clarity_under_pressure": <"Strong" | "Moderate" | "Weak">,
-    "executive_presence": <"Strong" | "Moderate" | "Weak">
+  "candidate_profile": {
+    "communication_clarity": <"Low"|"Moderate"|"Strong">,
+    "confidence_inferred": <"Low"|"Medium"|"High">,
+    "leadership_level_inferred": <"Individual Contributor"|"Team Lead"|"Engineering Manager"|"Senior Manager">,
+    "strengths": [
+      "<ONLY if clearly supported by transcript>"
+    ],
+    "weaknesses": [
+      "<ONLY if supported by transcript>"
+    ]
   },
 
   "red_flags": [
     {
-      "type": <"Blame Shifting" | "Micromanagement Tendency" | "Lack of Ownership" | "No Clear Decision Framework" | "Avoids Conflict">,
       "question_number": <number>,
-      "detail": <specific managerial concern observed>
+      "type": <"Blame shifting"|"No ownership"|"Avoids conflict"|"No decision framework"|"Micromanagement tendency">,
+      "detail": "<what exactly was observed>"
     }
   ],
 
-  "highlights": [
-    {
-      "question_number": <number>,
-      "detail": <strong leadership or strategic moment observed>
-    }
-  ],
-
-  "improvement_areas": [
-    {
-      "area": <specific managerial skill to improve>,
-      "priority": <"High" | "Medium" | "Low">,
-      "suggestion": <concrete leadership development advice>
-    }
-  ],
-
-  "recommended_resources": [
-    {
-      "topic": <specific leadership gap>,
-      "resource": <book, leadership framework, or practice method>
-    }
+  "improvement": [
+    "<specific leadership improvement suggestion>"
   ],
 
   "hiring_recommendation": {
-    "recommendation": <"Strongly Recommend" | "Recommend" | "Recommend with reservations" | "Do Not Recommend">,
-    "suitable_roles": [<managerial roles aligned with performance>],
-    "not_suitable_for": [<roles requiring stronger leadership maturity>],
-    "readiness_score": <0–100>,
-    "next_steps": <next step such as skip-level round, strategic case round, etc.>
+    "recommendation": <"Proceed"|"Borderline"|"Reject">,
+    "reason": "<short explanation>"
   },
-
-  "motivational_feedback": <constructive paragraph focused on leadership growth>
-}
-
-Return ONLY valid JSON.`;
+  "overall_feedback":"<honest feedback>"
+}`;
       break;
 
     default:
-      prompt = `You are an experienced interviewer evaluating candidates in a general/basic interview round.
+      prompt = `
+      You are a strict interview evaluator.
 
-This round assesses overall communication clarity, foundational knowledge, role alignment, logical thinking, and professional readiness.
+You will receive a transcript of a mock interview containing questions and candidate answers.
 
-You will be given a mock Basic Interview transcript containing general questions (such as introduction, strengths, weaknesses, project explanations, motivation, and role interest) along with the candidate’s answers.
+Your job is to evaluate the answers ONLY based on what is actually written in the transcript.
 
-Your task is to analyze the interview from a balanced, foundational evaluation perspective.
+CRITICAL RULES:
+- Do NOT assume effort or intelligence.
+- If an answer is irrelevant, nonsense, emotional, or unrelated to the question (e.g., "I love you", jokes, random text), mark it as "Off-topic".
+- If an answer does not address the question, mark it as "Not answered".
+- If information is missing, say "Not clearly demonstrated".
+- NEVER invent strengths.
+- NEVER give high scores if answers are weak, irrelevant, or missing.
+- Scores must reflect the REAL quality of answers.
+- Evidence from the transcript must support your conclusions.
+- If most answers are weak or irrelevant, the overall score must be LOW.
 
-IMPORTANT:
-- Focus on clarity, structure, relevance, confidence, and depth appropriate to the candidate’s level.
-- Do NOT over-evaluate deep technical complexity unless explicitly discussed.
-- Do NOT evaluate advanced leadership strategy unless clearly demonstrated.
-- Do NOT invent strengths or weaknesses not supported by the transcript.
-- If a dimension was not demonstrated, state "Not clearly demonstrated".
-- Base all insights strictly on the candidate’s actual answers.
-- Be specific and reference observable response patterns.
-- Return valid JSON only. No explanations outside JSON.
+Be critical and realistic like a real interviewer.
 
 Interview Transcript:
 ${transcript}
 
-Return the analysis strictly in this schema:
+Return ONLY valid JSON in the following schema.
 
 {
   "summary": {
-    "overall_score": <integer 0–100 based on overall interview performance>,
-    "grade": <"A+"|"A"|"B+"|"B"|"C+"|"C"|"D"|"F">,
-    "verdict": <one honest sentence summarizing overall readiness>,
-    "interview_type_detected": "Basic",
-    "total_questions_analyzed": <count>,
-    "interview_duration_estimate": <estimated duration like "~20 minutes">
+    "overall_score": <0-100>,
+    "grade": <"A"|"B"|"C"|"D"|"F">,
+    "verdict": "<one honest sentence>"
   },
+
+  "question_analysis": [
+    {
+      "question_number": <number>,
+      "answer_quality": <"Good"|"Average"|"Weak"|"Off-topic"|"Not answered">,
+      "relevance_score": <0-100>,
+      "clarity_score": <0-100>,
+      "reason": "<short evidence-based explanation>"
+    }
+  ],
 
   "candidate_profile": {
-    "confidence_level": <"Low" | "Medium" | "Medium-High" | "High">,
-    "communication_style": <brief description of speaking style>,
-    "professional_maturity": <"Low" | "Moderate" | "Strong">,
-    "experience_level_inferred": <"Fresher" | "Junior" | "Mid-level">,
-    "strengths_snapshot": [<2–4 strengths observed in answers>],
-    "weakness_snapshot": [<2–4 gaps or areas lacking clarity>]
-  },
-
-  "scores": {
-    "communication_clarity": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <specific observation about structure and clarity>
-    },
-    "relevance_of_answers": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <were answers directly addressing the questions?>
-    },
-    "foundational_knowledge": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <did the candidate demonstrate basic understanding of concepts/projects discussed?>
-    },
-    "confidence_and_delivery": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <how composed and confident did they sound?>
-    },
-    "career_direction_clarity": {
-      "score": <0–100>,
-      "max": 100,
-      "comment": <how clear and realistic were their goals and motivations?>
-    }
-  },
-
-  "response_patterns": {
-    "answer_structure": <"Well-structured" | "Somewhat structured" | "Unstructured">,
-    "use_of_examples": <true | false>,
-    "depth_level": <"Surface-level" | "Moderate depth" | "Strong depth">,
-    "consistency_across_answers": <"Consistent" | "Some inconsistencies observed" | "Inconsistent">
-  },
-
-  "language_analysis": {
-    "filler_words_detected": [<actual filler words found>],
-    "filler_word_count": <estimated number>,
-    "avg_answer_length": <"Short (1–2 sentences)" | "Medium (3–5 sentences)" | "Long (6+ sentences)">,
-    "tone": <overall tone such as "Professional", "Nervous but sincere", "Confident and composed">,
-    "vocabulary_richness": <"High" | "Moderate" | "Low">
+    "communication_clarity": <"Low"|"Moderate"|"Strong">,
+    "confidence_inferred": <"Low"|"Medium"|"High">,
+    "experience_level_inferred": <"Fresher"|"Junior"|"Mid-level">,
+    "strengths": [
+      "<ONLY if clearly visible in transcript>"
+    ],
+    "weaknesses": [
+      "<ONLY if supported by transcript>"
+    ]
   },
 
   "red_flags": [
     {
-      "type": <"Vague Answer" | "Off-topic" | "Lack of Clarity" | "Inconsistency" | "Overconfidence">,
       "question_number": <number>,
-      "detail": <specific concern observed>
+      "type": <"Off-topic"|"Not answered"|"Vague"|"Inconsistent">,
+      "detail": "<what exactly went wrong>"
     }
   ],
 
-  "highlights": [
-    {
-      "question_number": <number>,
-      "detail": <particularly strong response moment>
-    }
-  ],
-
-  "improvement_areas": [
-    {
-      "area": <specific communication or foundational improvement area>,
-      "priority": <"High" | "Medium" | "Low">,
-      "suggestion": <clear, actionable advice>
-    }
-  ],
-
-  "recommended_resources": [
-    {
-      "topic": <specific improvement area>,
-      "resource": <book, platform, or practice method>
-    }
+  "improvement": [
+    "<specific actionable suggestion>"
   ],
 
   "hiring_recommendation": {
-    "recommendation": <"Strongly Recommend" | "Recommend" | "Recommend with reservations" | "Do Not Recommend">,
-    "suitable_roles": [<roles aligned with demonstrated level>],
-    "not_suitable_for": [<roles requiring higher maturity or expertise>],
-    "readiness_score": <0–100>,
-    "next_steps": <suggested next interview step>
+    "recommendation": <"Proceed"|"Borderline"|"Reject">,
+    "reason": "<short explanation>"
   },
 
-  "motivational_feedback": <short constructive paragraph focused on overall growth>
+  "overall_feedback":"<honest feedback brief paragraph>"
 }
-
-Return ONLY valid JSON.`;
+      `;
       break;
   }
 

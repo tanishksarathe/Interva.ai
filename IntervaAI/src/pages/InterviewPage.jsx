@@ -25,7 +25,7 @@ const InterviewPage = () => {
   const [started, setStarted] = useState(false);
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
-  const [interviewQuestions, setInterviewQuestions] = useState("");
+  const [interviewQuestions, setInterviewQuestions] = useState([]);
 
   //   console.log(interviewQuestions);
 
@@ -108,7 +108,7 @@ const InterviewPage = () => {
     };
 
     recognitionRef.current = recognition;
-  }, [currentIndex]);
+  }, [currentIndex, interviewQuestions]);
 
   const speak = (text, callback) => {
     speechSynthesis.cancel();
@@ -172,11 +172,12 @@ const InterviewPage = () => {
 
   const fetchAnalyzedMock = async (transcript) => {
     try {
-      const res = await api.post(`/service/interview-analysis/${role}`, { transcript }); // it always wants req.body so direct sending data may be unappropriate, so sending it after wrapping it into an object will be appropriate..
+      const res = await api.post(`/service/interview-analysis/${role}`, {
+        transcript,
+      }); // it always wants req.body so direct sending data may be unappropriate, so sending it after wrapping it into an object will be appropriate..
       console.log("Analyzed Response : ", res);
 
       setAnalyzedResponse(res?.data?.data);
-
     } catch (error) {
       toast.error(
         error?.response?.data?.message || "Error Analyzing Mock Interview",
@@ -334,7 +335,7 @@ const InterviewPage = () => {
 
                 <button
                   onClick={startInterview}
-                  disabled={interviewQuestions === ""}
+                  disabled={!interviewQuestions.length}
                   className="px-10 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 transition transform disabled:cursor-not-allowed hover:scale-105 shadow-xl font-semibold"
                 >
                   Start Interview
@@ -370,8 +371,10 @@ const InterviewPage = () => {
         </div>
       </div>
 
-      {!started && analyzedResponse != null && (
-        <InterviewAnalysis content={analyzedResponse} role={role} />
+      {analyzedResponse != null && (
+        <>
+          <InterviewAnalysis content={analyzedResponse} role={role} />
+        </>
       )}
     </>
   );

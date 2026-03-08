@@ -85,16 +85,6 @@ const MockInterview = () => {
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <div className="bg-blue-500/20 rounded-lg p-2">
-                        <div className="text-sm">💻</div>
-                      </div>
-                      <div className="flex-1 text-sm text-slate-200">
-                        Machine Coding
-                        <span className="text-slate-400 ml-2">· 30 mins</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-3">
                       <div className="bg-green-500/20 rounded-lg p-2">
                         <div className="text-sm">🧠</div>
                       </div>
@@ -123,7 +113,9 @@ const MockInterview = () => {
 
                 {/* Inverted Floating Action Card */}
                 <div className="absolute -bottom-10 -right-3 bg-white text-slate-900 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-4 rounded-2xl font-medium">
+                  <button
+                  onClick={()=> navigate('/interview-gauntlet')} 
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-4 rounded-2xl font-medium">
                     Enter Interview Simulation →
                   </button>
                 </div>

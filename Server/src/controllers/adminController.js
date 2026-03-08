@@ -1,3 +1,4 @@
+import { InterviewQuestion } from "../models/interviewModel.js";
 import { Topic } from "../models/topicModel.js";
 
 export const insertTopicsInBank = async (req, res, next) => {
@@ -33,8 +34,29 @@ export const insertTopicsInBank = async (req, res, next) => {
   res.status(200).json({ message: "Topic Added" });
 };
 
-export const retrieveTopicsFromBank = async (req, res, next) => {
+export const retrieveTopicsFromBank = async (req, res, next) => {};
 
-    
+export const postInterviewQuestions = async (req, res, next) => {
 
+  try {
+    const { question, options, correct_answer, topic, difficulty } = req.body;
+    if (!question || !options || !correct_answer || !topic || !difficulty) {
+      const error = new Error("All Fields Required");
+      error.statusCode = 401;
+      return next(error);
+    }
+
+    const addedQuestions = await InterviewQuestion.create({
+      question,
+      options,
+      correct_answer,
+      topic,
+      difficulty,
+    });
+
+    res.status(201).json({message:"Questions Added Successfully"})
+
+  } catch (error) {
+    next(error);
+  }
 };

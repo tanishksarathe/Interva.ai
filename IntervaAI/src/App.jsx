@@ -20,6 +20,7 @@ import PracticeN from "./pages/PracticeN";
 import TopicPage from "./components/TopicPage";
 import StudyMaterial from "./pages/StudyMaterial";
 import InterviewPage from "./pages/InterviewPage";
+import InterviewGauntlet from "./pages/InterviewGauntlet";
 
 const routes = createBrowserRouter([
   {
@@ -31,13 +32,21 @@ const routes = createBrowserRouter([
     element: <About />,
   },
   {
+    path: "/dashboard/studymaterial",
+    element: <StudyMaterial />,
+  },
+  {
+    path: "/interview-gauntlet",
+    element: <InterviewGauntlet />,
+  },
+  {
     path: "/contact",
     element: <Contact />,
   },
-    {
-        path: "/interview-page",
-        element: <InterviewPage />,
-      },
+  {
+    path: "/interview-page",
+    element: <InterviewPage />,
+  },
   {
     path: "/prepay",
     element: <PremiumPayment />,
@@ -95,10 +104,6 @@ const routes = createBrowserRouter([
       {
         path: "resources",
         element: <Resources />,
-      },
-      {
-        path: "studymaterial",
-        element: <StudyMaterial />,
       },
     ],
   },

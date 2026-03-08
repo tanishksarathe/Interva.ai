@@ -70,265 +70,289 @@ const StudyMaterial = () => {
 
   return (
     <>
-      <div className="flex flex-col p-5">
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col justify-center">
-            <h1 className="text-3xl font-bold mb-2">Study Material</h1>
-            <h6 className="mb-2">
-              Here you will going to have proper topic wise study material for
-              evrything what yo need
-            </h6>
+      <div className="flex flex-col h-screen bg-slate-50 overflow-hidden font-sans antialiased">
+        {/* ================= HEADER SECTION ================= */}
+        <header className="flex flex-wrap justify-between items-center px-8 py-6 bg-white border-b border-slate-200">
+          <div className="space-y-1">
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+              Study Material
+            </h1>
+            <p className="text-slate-500 text-sm max-w-md">
+              Explore structured learning paths designed to take you from
+              fundamentals to advanced concepts.
+            </p>
           </div>
 
-          {/* Correction Here */}
-
           {user.role !== "admin" && (
-            <div>
-              <button
-                onClick={() => setOpenAddTopicModal(true)}
-                className="flex gap-2 justify-center shadow-black shadow-2xs items-center border px-3 py-2 rounded-2xl bg-indigo-600 text-white font-semibold"
-              >
-                <CirclePlus size={20} /> Add Topic
-              </button>
-            </div>
+            <button
+              onClick={() => setOpenAddTopicModal(true)}
+              className="flex gap-2 items-center px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-lg shadow-indigo-100 active:scale-95"
+            >
+              <CirclePlus size={20} />
+              <span>Add Topic</span>
+            </button>
           )}
-        </div>
-        <hr />
-        <div className="flex h-488 overflow-y-scroll">
-          {/* Left Side Bar */}
+        </header>
 
-          <div className="border w-1/4 overflow-y-scroll rounded-2xl mt-10 mr-5">
-            <div className="flex justify-center flex-col p-5 text-2xl font-bold">
-              <h1 className="flex justify-between text-lg">
-                Aptitude & Reasoning{" "}
-                <button
-                  onClick={() =>
-                    setToggle((prev) => ({ ...prev, apti: !prev.apti }))
-                  }
+        {/* ================= MAIN CONTENT LAYOUT ================= */}
+        <main className="flex flex-1 overflow-hidden">
+          {/* LEFT SIDEBAR: Navigation Selector */}
+          <aside className="w-1/4 min-w-[320px] bg-white border-r border-slate-200 overflow-y-auto custom-scrollbar p-6 space-y-4">
+            {/* 1. APTITUDE & REASONING SECTION */}
+            <section className="rounded-2xl border border-slate-100 bg-slate-50/50 overflow-hidden">
+              <button
+                onClick={() =>
+                  setToggle((prev) => ({ ...prev, apti: !prev.apti }))
+                }
+                className="flex w-full justify-between items-center p-4 hover:bg-slate-100 transition-colors"
+              >
+                <span className="font-bold text-slate-800 text-sm uppercase tracking-wider">
+                  Aptitude & Reasoning
+                </span>
+                <div
+                  className={`transition-transform duration-300 ${toggle.apti ? "rotate-180" : ""}`}
                 >
-                  {toggle.apti ? <ChevronUp /> : <ChevronDown />}
-                </button>
-              </h1>
+                  <ChevronDown size={18} className="text-slate-400" />
+                </div>
+              </button>
+
               {toggle.apti && (
-                <div className="w-3/4 m-3 text-black flex gap-2 text-sm cursor-default transition-all duration-100 scroll-smooth flex-col">
-                  {reasoningFreeTopics.map((item, idx) => (
-                    <span
-                      key={idx}
-                      onClick={() => setTopic(item)}
-                      className="rounded-full border px-2 py-1 text-black hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                <div className="px-4 pb-4 space-y-6">
+                  {/* Free Topics */}
+                  <div className="flex flex-wrap gap-2">
+                    {reasoningFreeTopics.map((item, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setTopic(item)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                          topic === item
+                            ? "bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-100"
+                            : "bg-white border-slate-200 text-slate-600 hover:border-indigo-400"
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Premium Tier */}
+                  <div className="pt-4 border-t border-slate-100">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-[10px] font-black uppercase text-indigo-500 tracking-widest">
+                        Premium Tier
+                      </span>
+                      <Sparkles
+                        size={14}
+                        className="text-indigo-500"
+                        fill="currentColor"
+                      />
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {reasoningPremiumTopics.map((item, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setTopic(item)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                            topic === item
+                              ? "bg-indigo-600 border-indigo-600 text-white"
+                              : "bg-indigo-50/50 border-indigo-100 text-indigo-700 hover:bg-indigo-100"
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
-            </div>
-            {/* Premium Topics */}
-            {toggle.apti && (
-              <div className="flex justify-center flex-col p-5 text-2xl font-bold">
-                <h1 className="flex justify-between text-lg">
-                  Aptitude & Reasoning (Premium Tier{" "}
-                  <Sparkles size={20} color="indigo" fill="indigo" />)
-                </h1>
-                <div className="w-3/4 m-3 text-black flex gap-2 text-sm cursor-default flex-col">
-                  {reasoningPremiumTopics.map((item, idx) => (
-                    <span
-                      key={idx}
-                      onClick={() => setTopic(item)}
-                      className="rounded-full border px-2 py-1 text-black hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-            <hr />
-            <div className="flex justify-center flex-col p-5 text-2xl font-bold">
-              <h1 className="flex justify-between text-lg">
-                Data Structures & Algorithms (Patterns & Concepts)
-                <button
-                  onClick={() =>
-                    setToggle((prev) => ({ ...prev, dsa: !prev.dsa }))
-                  }
+            </section>
+
+            {/* 2. DSA SECTION */}
+            <section className="rounded-2xl border border-slate-100 bg-slate-50/50 overflow-hidden">
+              <button
+                onClick={() =>
+                  setToggle((prev) => ({ ...prev, dsa: !prev.dsa }))
+                }
+                className="flex w-full justify-between items-center p-4 hover:bg-slate-100 transition-colors"
+              >
+                <span className="font-bold text-slate-800 text-sm uppercase tracking-wider text-left">
+                  DSA Patterns & Concepts
+                </span>
+                <div
+                  className={`transition-transform duration-300 ${toggle.dsa ? "rotate-180" : ""}`}
                 >
-                  {toggle.dsa ? <ChevronUp /> : <ChevronDown />}
-                </button>
-              </h1>
+                  <ChevronDown size={18} className="text-slate-400" />
+                </div>
+              </button>
 
               {toggle.dsa && (
-                <div className="w-3/4 m-3 text-black flex gap-2 text-sm cursor-default flex-col">
-                  {serviceBasedTopics.map((item, idx) => (
-                    <span
-                      key={idx}
-                      onClick={() => setTopic(item)}
-                      className="rounded-full border px-2 py-1 text-black hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                <div className="px-4 pb-4 space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    {serviceBasedTopics.map((item, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setTopic(item)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                          topic === item
+                            ? "bg-indigo-600 border-indigo-600 text-white"
+                            : "bg-white border-slate-200 text-slate-600 hover:border-indigo-400"
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-[10px] font-black uppercase text-indigo-500 tracking-widest">
+                        Product Based Patterns
+                      </span>
+                      <Sparkles
+                        size={14}
+                        className="text-indigo-500"
+                        fill="currentColor"
+                      />
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {productBasedPatterns.map((item, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setTopic(item)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                            topic === item
+                              ? "bg-indigo-600 border-indigo-600 text-white"
+                              : "bg-indigo-50/50 border-indigo-100 text-indigo-700 hover:bg-indigo-100"
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
-            </div>
-            {/* Premium Topics */}
-            {toggle.dsa && (
-              <div className="flex justify-center flex-col p-5 text-2xl font-bold">
-                <h1 className="flex items-center text-lg">
-                  Data Structures & Algorithms (Patterns & Concepts Premium Tier{" "}
-                  <Sparkles size={20} color="indigo" fill="indigo" />)
-                </h1>
-                <div className="w-3/4 m-3 text-black flex gap-2 text-sm cursor-default flex-col">
-                  {productBasedPatterns.map((item, idx) => (
-                    <span
-                      key={idx}
-                      onClick={() => setTopic(item)}
-                      className="rounded-full border px-2 py-1 text-black hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-            <hr />
-            <div className="flex justify-center flex-col p-5 text-2xl font-bold">
-              <h1 className="flex justify-between text-lg">
-                Interview Oriented Theory Syllabus
-                <button
-                  onClick={() =>
-                    setToggle((prev) => ({
-                      ...prev,
-                      fundamentals: !prev.fundamentals,
-                    }))
-                  }
+            </section>
+
+            {/* 3. INTERVIEW THEORY SECTION */}
+            <section className="rounded-2xl border border-slate-100 bg-slate-50/50 overflow-hidden">
+              <button
+                onClick={() =>
+                  setToggle((prev) => ({
+                    ...prev,
+                    fundamentals: !prev.fundamentals,
+                  }))
+                }
+                className="flex w-full justify-between items-center p-4 hover:bg-slate-100 transition-colors"
+              >
+                <span className="font-bold text-slate-800 text-sm uppercase tracking-wider">
+                  Interview Theory
+                </span>
+                <div
+                  className={`transition-transform duration-300 ${toggle.fundamentals ? "rotate-180" : ""}`}
                 >
-                  {toggle.fundamentals ? <ChevronUp /> : <ChevronDown />}
-                </button>
-              </h1>
+                  <ChevronDown size={18} className="text-slate-400" />
+                </div>
+              </button>
+
               {toggle.fundamentals && (
-                <div className="w-3/4 m-3 text-black flex gap-2 text-sm cursor-default flex-col">
+                <div className="px-4 pb-4">
                   {[
-                    {
-                      topic: "Networking",
-                      array: computerNetworkingTopics,
-                    },
+                    { topic: "Networking", array: computerNetworkingTopics },
                     {
                       topic: "Operating Systems",
                       array: operatingSystemTopics,
                     },
-                    {
-                      topic: "Database Management Systems",
-                      array: dbmsTopics,
-                    },
-                    {
-                      topic: "Cloud Computing",
-                      array: cloudComputingTopics,
-                    },
-                    {
-                      topic: "Artificial Intelligence & Machine Learning",
-                      array: aiMlTopics,
-                    },
-                  ].map((i, id) => (
-                    <div key={id} className="flex flex-col gap-2 my-5">
-                      <h2 className="font-semibold text-xl">{i.topic}</h2>
-                      {i.array.map((item, idx) => (
-                        <span
-                          key={idx}
-                          onClick={() => setTopic(item)}
-                          className="rounded-full border px-2 py-1 text-black hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold"
-                        >
-                          {item}
-                        </span>
-                      ))}
+                    { topic: "DBMS", array: dbmsTopics },
+                    { topic: "Cloud Computing", array: cloudComputingTopics },
+                    { topic: "AI & ML", array: aiMlTopics },
+                  ].map((group, id) => (
+                    <div key={id} className="mb-6 last:mb-0">
+                      <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2 border-b border-slate-100 pb-1">
+                        {group.topic}
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {group.array.map((item, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setTopic(item)}
+                            className={`px-2.5 py-1 rounded-md text-[11px] font-bold border transition-all ${
+                              topic === item
+                                ? "bg-indigo-600 border-indigo-600 text-white"
+                                : "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
+                            }`}
+                          >
+                            {item}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
-            </div>
-            <hr />
-            <div className="flex justify-center flex-col p-5 text-2xl font-bold">
-              <h1 className="flex justify-between text-lg">
-                Full Stack Development Syllabus
-                <button
-                  onClick={() =>
-                    setToggle((prev) => ({ ...prev, web: !prev.web }))
-                  }
+            </section>
+
+            {/* 4. FULL STACK SECTION */}
+            <section className="rounded-2xl border border-slate-100 bg-slate-50/50 overflow-hidden">
+              <button
+                onClick={() =>
+                  setToggle((prev) => ({ ...prev, web: !prev.web }))
+                }
+                className="flex w-full justify-between items-center p-4 hover:bg-slate-100 transition-colors"
+              >
+                <span className="font-bold text-slate-800 text-sm uppercase tracking-wider">
+                  Full Stack Development
+                </span>
+                <div
+                  className={`transition-transform duration-300 ${toggle.web ? "rotate-180" : ""}`}
                 >
-                  {toggle.web ? <ChevronUp /> : <ChevronDown />}
-                </button>
-              </h1>
+                  <ChevronDown size={18} className="text-slate-400" />
+                </div>
+              </button>
 
               {toggle.web && (
-                <div className="w-3/4 m-3 text-black flex gap-2 text-sm cursor-default flex-col">
+                <div className="px-4 pb-4">
                   {[
-                    {
-                      topic: "Full Stack Developer Skills",
-                      array: fullStackDeveloperSkills,
-                    },
-                    {
-                      topic: "Web Fundamentals",
-                      array: webFundamentals,
-                    },
-                    {
-                      topic: "JavaScript",
-                      array: javascriptTopics,
-                    },
-                    {
-                      topic: "Machine Coding Skills",
-                      array: machineCodingSkills,
-                    },
-                    {
-                      topic: "Git & Github",
-                      array: gitAndGithubTopics,
-                    },
-                    {
-                      topic: "Auth & Security Skills",
-                      array: authAndSecurityTopics,
-                    },
-                    {
-                      topic: "React JS",
-                      array: reactTopics,
-                    },
-                    {
-                      topic: "Node JS",
-                      array: nodeJsTopics,
-                    },
-                    {
-                      topic: "Express JS",
-                      array: expressJsTopics,
-                    },
-                    {
-                      topic: "MongoDB",
-                      array: mongoDbTopics,
-                    },
-                    {
-                      topic: "SQL",
-                      array: sqlInterviewTopics,
-                    },
-                  ].map((i, id) => (
-                    <div key={id} className="flex flex-col gap-2 my-5">
-                      <h2 className="font-semibold text-xl">{i.topic}</h2>
-                      {i.array.map((item, idx) => (
-                        <span
-                          key={idx}
-                          onClick={() => setTopic(item)}
-                          className="rounded-full border px-2 py-1 text-black hover:text-white border-indigo-800 hover:bg-indigo-700 font-semibold"
-                        >
-                          {item}
-                        </span>
-                      ))}
+                    { topic: "Skills", array: fullStackDeveloperSkills },
+                    { topic: "Web Core", array: webFundamentals },
+                    { topic: "JavaScript", array: javascriptTopics },
+                    { topic: "Frontend", array: reactTopics },
+                    { topic: "Backend", array: nodeJsTopics },
+                  ].map((group, id) => (
+                    <div key={id} className="mb-6 last:mb-0">
+                      <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2 border-b border-slate-100 pb-1">
+                        {group.topic}
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {group.array.map((item, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setTopic(item)}
+                            className={`px-2.5 py-1 rounded-md text-[11px] font-bold border transition-all ${
+                              topic === item
+                                ? "bg-indigo-600 border-indigo-600 text-white"
+                                : "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
+                            }`}
+                          >
+                            {item}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
-            </div>
-          </div>
+            </section>
+          </aside>
 
-          {/* Right Side Bar */}
-          <div className="w-3/4 h-fit mr-2 ml-2 mt-2">
-            <TopicPage content={studyMap[topic]} />
-          </div>
-        </div>
+          {/* RIGHT SIDEBAR: Main Content Area */}
+          <article className="flex-1 bg-white overflow-y-auto p-4 md:p-8 lg:p-12">
+            <div className="max-w-4xl mx-auto">
+              {/* The current topic page renders here */}
+              <TopicPage content={studyMap[topic]} />
+            </div>
+          </article>
+        </main>
       </div>
       {openAddTopicModal && (
         <AddTopicModal onClose={() => setOpenAddTopicModal(false)} />
@@ -338,3 +362,5 @@ const StudyMaterial = () => {
 };
 
 export default StudyMaterial;
+
+

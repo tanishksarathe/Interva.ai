@@ -3,6 +3,7 @@ import { resumeAnalyzeWithJD } from "../utils/resumeAnalyzePromptService.js";
 import { createRequire } from "module";
 import { dsaEvaluateAI } from "../utils/dsaEvaluationService.js";
 import { interviewAnalysisHR } from "../utils/interviewAnalysis.js";
+import { formatTranscript } from "../utils/helper.js";
 
 const require = createRequire(import.meta.url);
 const { PDFParse } = require("pdf-parse");
@@ -84,16 +85,17 @@ export const interviewAnalysis = async (req, res, next) => {
 
     const { role } = req.params;
 
-    console.log(role);
-
     if (!transcript) {
       const error = new Error("Transcript Required");
       error.statusCode = 400;
       return next(error);
     }
 
-    console.log(transcript);
-    const response = await interviewAnalysisHR(transcript, role);
+    const formattedTranscript = await formatTranscript(transcript);
+
+    console.log("Formatted Response : ", formattedTranscript);
+
+    const response = await interviewAnalysisHR(formattedTranscript, role);
 
     console.log(response);
 
