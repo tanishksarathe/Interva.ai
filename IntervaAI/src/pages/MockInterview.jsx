@@ -1,10 +1,14 @@
 import { ArrowRight, Brain, Code2, Timer, Users } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import StartDriveModal from "../components/modals/StartDriveModal";
 
 const MockInterview = () => {
-  
   const navigate = useNavigate();
+
+  const [openStartModel, setOpenStartModel] = useState(false);
+
+  const [selectedLevel, setSelectedLevel] = useState(null);
 
   return (
     <>
@@ -24,9 +28,10 @@ const MockInterview = () => {
           </p>
 
           <div className="mt-10 flex justify-center gap-4">
-            <button 
-            onClick={() => navigate('/interview-page')}
-            className="px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition flex items-center gap-2">
+            <button
+              onClick={() => navigate("/interview-page")}
+              className="px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition flex items-center gap-2"
+            >
               Start a Mock Interview <ArrowRight size={18} />
             </button>
 
@@ -66,7 +71,9 @@ const MockInterview = () => {
                         Full-Cycle Mock Interview
                       </h3>
 
-                      <span className={`inline-block bg-${item.color}-500/20 text-${item.color}-400 text-xs font-medium px-3 py-1 rounded-full`}>
+                      <span
+                        className={`inline-block bg-${item.color}-500/20 text-${item.color}-400 text-xs font-medium px-3 py-1 rounded-full`}
+                      >
                         {item.level}
                       </span>
                     </div>
@@ -114,8 +121,12 @@ const MockInterview = () => {
                 {/* Inverted Floating Action Card */}
                 <div className="absolute -bottom-10 -right-3 bg-white text-slate-900 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                   <button
-                  onClick={()=> navigate('/interview-gauntlet')} 
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-4 rounded-2xl font-medium">
+                    onClick={() => {
+                      setOpenStartModel(true);
+                      setSelectedLevel(item.level);
+                    }}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-4 rounded-2xl font-medium"
+                  >
                     Enter Interview Simulation →
                   </button>
                 </div>
@@ -207,6 +218,12 @@ const MockInterview = () => {
           </button>
         </section>
       </div>
+      {openStartModel && (
+        <StartDriveModal
+          toughnes={selectedLevel}
+          onClose={() => setOpenStartModel(false)}
+        />
+      )}
     </>
   );
 };

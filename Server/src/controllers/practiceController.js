@@ -78,21 +78,19 @@ export const practiceDSATopicsPost = async (req, res, next) => {
     const {
       title,
       difficulty,
-      expectedOutput,
       constraints,
       companies,
       question,
-      stdin,
+      testCases,
     } = req.body;
 
     if (
       !title ||
       !difficulty ||
-      !expectedOutput ||
+      !testCases ||
       !constraints ||
       !companies ||
-      !question ||
-      !stdin
+      !question
     ) {
       const error = new Error("All Fields Required");
       error.statusCode = 400;
@@ -102,12 +100,13 @@ export const practiceDSATopicsPost = async (req, res, next) => {
     const newDSAQues = await DSA.create({
       title,
       difficulty,
-      expectedOutput,
       constraints,
       companies,
       question,
-      stdin,
+      testCases,
     });
+
+    console.log(newDSAQues);
 
     res.status(200).json({ message: "DSA Question Added" });
   } catch (error) {

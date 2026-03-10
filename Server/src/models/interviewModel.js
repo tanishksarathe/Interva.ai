@@ -1,37 +1,51 @@
 import mongoose from "mongoose";
 
-const interviewQuestionSchema = mongoose.Schema({
-  question: {
-    type: String,
-    required: true,
+const interviewQuestionSchema = mongoose.Schema(
+  {
+    question: {
+      type: String,
+      required: true,
+    },
+    options: {
+      type: [String],
+      required: true,
+      default: [],
+    },
+    correct_answer: {
+      type: String,
+      required: true,
+    },
+    topic: {
+      type: String,
+      required: true,
+    },
+    difficulty: {
+      type: String,
+      enum: ["Easy", "Medium", "Hard"],
+      required: true,
+    },
   },
-  options: {
-    type: [String],
-    required: true,
-    default: [],
+  {
+    timestamps: true,
   },
-  correct_answer: {
-    type: String,
-    required: true,
-  },
-  topic: {
-    type: String,
-    required: true,
-  },
-  difficulty: {
-    type: String,
-    enum: ["Easy", "Medium", "Hard"],
-    required: true,
-  },
-});
+);
 
-export const InterviewQuestion = mongoose.model("InterviewQuestion", interviewQuestionSchema);
+export const InterviewQuestion = mongoose.model(
+  "InterviewQuestion",
+  interviewQuestionSchema,
+);
 
 const aptiTestSchema = mongoose.Schema(
   {
     topics: {
-      type: [String],
-      required: true,
+      dsa: {
+        type: [String],
+        required: true,
+      },
+      apti: {
+        type: [String],
+        required: true,
+      },
     },
     difficulty: {
       type: String,
@@ -40,10 +54,20 @@ const aptiTestSchema = mongoose.Schema(
     },
     ques_ans: [interviewQuestionSchema],
     timelimit: {
-      type: Number,
+      dsa: {
+        type: Number,
+      },
+      apti: {
+        type: Number,
+      },
     },
     maxMarks: {
-      type: Number,
+      dsa: {
+        type: Number,
+      },
+      apti: {
+        type: Number,
+      },
     },
   },
   {
@@ -52,4 +76,3 @@ const aptiTestSchema = mongoose.Schema(
 );
 
 export const AptiTest = mongoose.model("AptiTest", aptiTestSchema);
-

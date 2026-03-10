@@ -21,6 +21,7 @@ import TopicPage from "./components/TopicPage";
 import StudyMaterial from "./pages/StudyMaterial";
 import InterviewPage from "./pages/InterviewPage";
 import InterviewGauntlet from "./pages/InterviewGauntlet";
+import StartDriveModal from "./components/modals/StartDriveModal";
 
 const routes = createBrowserRouter([
   {
