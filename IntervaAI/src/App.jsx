@@ -22,6 +22,7 @@ import StudyMaterial from "./pages/StudyMaterial";
 import InterviewPage from "./pages/InterviewPage";
 import InterviewGauntlet from "./pages/InterviewGauntlet";
 import StartDriveModal from "./components/modals/StartDriveModal";
+import PreviousTestsPage from "./components/modals/PreviousTestsPage";
 
 const routes = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const routes = createBrowserRouter([
     element: <StudyMaterial />,
   },
   {
-    path: "/interview-gauntlet",
+    path: "/interview-gauntlet/:id",
     element: <InterviewGauntlet />,
   },
   {
@@ -47,6 +48,10 @@ const routes = createBrowserRouter([
   {
     path: "/interview-page",
     element: <InterviewPage />,
+  },
+  {
+    path: "/previous-tests",
+    element: <PreviousTestsPage />,
   },
   {
     path: "/prepay",

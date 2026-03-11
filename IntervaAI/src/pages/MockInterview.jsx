@@ -2,6 +2,7 @@ import { ArrowRight, Brain, Code2, Timer, Users } from "lucide-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StartDriveModal from "../components/modals/StartDriveModal";
+import api from "../config/API";
 
 const MockInterview = () => {
   const navigate = useNavigate();
@@ -35,8 +36,19 @@ const MockInterview = () => {
               Start a Mock Interview <ArrowRight size={18} />
             </button>
 
-            <button className="px-6 py-3 rounded-lg border border-slate-700 text-slate-300 hover:bg-slate-900 transition">
+            <button
+              type="button"
+              className="px-6 py-3 rounded-lg border border-slate-700 text-slate-300 hover:bg-slate-900 transition"
+            >
               Learn How It Works
+            </button>
+
+            <button
+              type="button"
+              onClick={() => navigate("/previous-tests")}
+              className="px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition flex items-center gap-2"
+            >
+              Previously Created Tests <ArrowRight size={18} />
             </button>
           </div>
         </section>
@@ -175,20 +187,12 @@ const MockInterview = () => {
 
               <div className="flex-1">
                 <div className="text-indigo-400 font-semibold mb-2">2</div>
-                <h4 className="font-medium">Machine Coding</h4>
-                <p className="text-xs text-slate-400 mt-1">
-                  Code structure & logic
-                </p>
-              </div>
-
-              <div className="flex-1">
-                <div className="text-indigo-400 font-semibold mb-2">3</div>
                 <h4 className="font-medium">Aptitude & Reasoning</h4>
                 <p className="text-xs text-slate-400 mt-1">Speed & accuracy</p>
               </div>
 
               <div className="flex-1">
-                <div className="text-indigo-400 font-semibold mb-2">4</div>
+                <div className="text-indigo-400 font-semibold mb-2">3</div>
                 <h4 className="font-medium">HR / Managerial</h4>
                 <p className="text-xs text-slate-400 mt-1">
                   Communication & culture fit

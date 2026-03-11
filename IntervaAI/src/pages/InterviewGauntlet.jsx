@@ -14,13 +14,36 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css";
 import StartDriveModal from "../components/modals/StartDriveModal";
+import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import api from "../config/API";
 
 const InterviewGauntlet = () => {
+  const { id } = useParams();
+
+  const [assesement, setAssesement] = useState(null);
+
+  const fetchAssesement = async () => {
+    try {
+      const res = await api.get(`/user/get-live-test/${id}`);
+      console.log(res?.data?.data);
+      setAssesement(res?.data?.data);
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Unknown Error");
+    }
+  };
+
   const [activeRound, setActiveRound] = useState(0);
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: false });
   }, []);
+
+  useEffect(() => {
+    fetchAssesement();
+  }, [id]);
+
+  console.log("Assesement : ", assesement);
 
   const rounds = [
     {
@@ -78,7 +101,7 @@ const InterviewGauntlet = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-slate-950 text-slate-200 p-6 md:p-12 font-sans selection:bg-indigo-500/30">
+      <div className="min-h-screen bg-slate-950 text-slate-200 p-6 md:p-12 font-sans selection:bg-indigo-500/30 overflow-hidden">
         {/* ================= PROGRESS TIMELINE ================= */}
         <div className="max-w-6xl mx-auto mb-16" data-aos="fade-down">
           <div className="relative flex justify-between items-center px-4 md:px-20">
@@ -234,7 +257,6 @@ const InterviewGauntlet = () => {
           </div>
         </main>
       </div>
-
     </>
   );
 };

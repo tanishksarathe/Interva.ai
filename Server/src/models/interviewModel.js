@@ -46,18 +46,39 @@ const aptiTestSchema = mongoose.Schema(
         type: [String],
         required: true,
       },
+      hr: {
+        type: [String],
+      },
     },
     difficulty: {
       type: String,
       enum: ["Easy", "Medium", "Hard"],
       required: true,
     },
-    ques_ans: [interviewQuestionSchema],
+    ques_bank: {
+      dsa: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "DSA",
+          required: true,
+        },
+      ],
+      apti: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "InterviewQuestion",
+          required: true,
+        },
+      ],
+    },
     timelimit: {
       dsa: {
         type: Number,
       },
       apti: {
+        type: Number,
+      },
+      hr: {
         type: Number,
       },
     },
@@ -66,6 +87,9 @@ const aptiTestSchema = mongoose.Schema(
         type: Number,
       },
       apti: {
+        type: Number,
+      },
+      hr: {
         type: Number,
       },
     },

@@ -58,8 +58,7 @@ advanced_puzzles>
 
 ALLOWED_DSA_TOPICS:
 
-<programming_fundamentals |
-time_and_space_complexity |
+<
 arrays |
 strings |
 mathematics_and_number_theory |
@@ -70,21 +69,14 @@ backtracking |
 stack |
 queue |
 linked_list |
-hashing |
 two_pointer_technique |
 sliding_window |
 prefix_sum |
 binary_search |
-binary_search_on_answer |
+hashing |
 trees |
 graphs |
-greedy_algorithms |
-dynamic_programming |
-heaps_priority_queue |
-bit_manipulation |
-monotonic_stack_queue |
-fast_and_slow_pointers |
-simulation_implementation_problems>
+>
 
 OUTPUT FORMAT (STRICT JSON):
 
@@ -120,3 +112,17 @@ ${jobDescription}`;
     throw new Error("Failed to generate ATS analysis");
   }
 };
+
+
+
+/*
+greedy_algorithms |
+dynamic_programming |
+heaps_priority_queue |
+bit_manipulation |
+monotonic_stack_queue |
+fast_and_slow_pointers |
+simulation_implementation_problems
+programming_fundamentals |
+time_and_space_complexity |
+*/

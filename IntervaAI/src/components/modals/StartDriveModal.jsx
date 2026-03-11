@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import toast from "react-hot-toast";
 import api from "../../config/API";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const StartDriveModal = ({
   onClose,
@@ -49,14 +49,14 @@ const StartDriveModal = ({
     },
   ];
 
-  const handleSubmit = async () => {
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const res = await api.post("/interview/test-generator", details);
+      console.log("Generated Test : ", res?.data?.data?._id);
+      toast.success(res?.data?.message || "Test Created");
 
-      console.log("Generated Test : ", res?.data?.data);
-
-      navigate("/interview-gauntlet");
+      navigate(`/interview-gauntlet/${res?.data?.data?._id}`);
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.message || "Unknown Error");
@@ -67,7 +67,7 @@ const StartDriveModal = ({
     <>
       <div className="fixed inset-0 z-100 flex items-center justify-center backdrop-blur-2xl">
         {/* MODAL CONTAINER */}
-          <button onClick={onClose} className="p-5 absolute top-0 right-0">
+          <button type="button" onClick={onClose} className="p-5 absolute top-0 right-0">
             <X color="white" size={20} />
           </button>
         <div className="relative w-full h-[90vh] overflow-y-auto max-w-2xl bg-slate-900 border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
@@ -101,6 +101,7 @@ const StartDriveModal = ({
                   {difficultyLevels.map((level) => (
                     <button
                       key={level.label}
+                      type="button"
                       onClick={() =>
                         setDetails((prev) => ({
                           ...prev,
@@ -121,7 +122,7 @@ const StartDriveModal = ({
                       >
                         {level.label}
                       </p>
-                      <p className="text-[10px] text-slate-500 leading-tight mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <p className={`text-[10px] text-slate-500 leading-tight mt-1 opacity-0 group-hover:opacity-100 ${details.toughness === level.label ? "opacity-100" : ""} transition-opacity`}>
                         {level.desc}
                       </p>
                     </button>
