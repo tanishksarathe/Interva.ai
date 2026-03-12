@@ -138,9 +138,7 @@ export const getLiveTest = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const liveTest = await AptiTest.findById(id)
-      .populate("ques_bank.dsa")
-      .populate("ques_bank.apti");
+    const liveTest = await AptiTest.findById(id);
 
     if (!liveTest) {
       const error = new Error("Test not found");
@@ -151,6 +149,71 @@ export const getLiveTest = async (req, res, next) => {
     res.status(200).json({
       message: "Fetched Live Test",
       data: liveTest,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getLiveQuestions = async (req, res, next) => {
+  try {
+    const details = req.body;
+
+    console.log("Details received in getLiveQuestions controller: ", details);
+
+    let response;
+
+    switch (details.type) {
+      case "apti":
+        response = await InterviewQuestion.find({
+          _id: { $in: details.questionIds },
+        }).select("-correct_answer");
+        console.log(response);
+        break;
+
+      case "dsa":
+        response = await DSA.find({ _id: { $in: details.questionIds } });
+        console.log(response);
+        break;
+
+      default:
+        const error = new Error("Invalid question type");
+        error.statusCode = 400;
+        return next(error);
+    }
+
+    res.status(200).json({
+      message: "Fetched Live Questions",
+      data: response,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const evaluateAptiAnswers = async (req, res, next) => {
+  try {
+    const { answers, testId } = req.body;
+    console.log("Received answers for evaluation: ", answers);
+
+    const result = await InterviewQuestion.find({
+      _id: { $in: Object.keys(answers) },
+    });
+
+    console.log("Correct answers from DB: ", result);
+
+    let score = 0;
+
+    result.forEach((question) => {
+      const qId = question._id.toString();
+      if (answers[qId] === question.correct_answer) {
+        score++;
+      }
+    });
+
+    res.status(200).json({
+      message: "Answers evaluated",
+      score,
     });
   } catch (error) {
     next(error);

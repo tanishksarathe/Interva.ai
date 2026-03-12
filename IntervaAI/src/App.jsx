@@ -21,8 +21,9 @@ import TopicPage from "./components/TopicPage";
 import StudyMaterial from "./pages/StudyMaterial";
 import InterviewPage from "./pages/InterviewPage";
 import InterviewGauntlet from "./pages/InterviewGauntlet";
-import StartDriveModal from "./components/modals/StartDriveModal";
+// import StartDriveModal from "./components/modals/StartDriveModal";
 import PreviousTestsPage from "./components/modals/PreviousTestsPage";
+import AptitudeTest from "./MockInterviewEnvironment.jsx/AptitudeTest";
 
 const routes = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const routes = createBrowserRouter([
   {
     path: "/interview-gauntlet/:id",
     element: <InterviewGauntlet />,
+  },
+  {
+    path: "/aptitude-test",
+    element: <AptitudeTest />,
   },
   {
     path: "/contact",

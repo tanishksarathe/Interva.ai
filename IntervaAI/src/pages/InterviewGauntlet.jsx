@@ -14,7 +14,7 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css";
 import StartDriveModal from "../components/modals/StartDriveModal";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import api from "../config/API";
 
@@ -23,10 +23,11 @@ const InterviewGauntlet = () => {
 
   const [assesement, setAssesement] = useState(null);
 
+  const navigate = useNavigate();
+
   const fetchAssesement = async () => {
     try {
       const res = await api.get(`/user/get-live-test/${id}`);
-      console.log(res?.data?.data);
       setAssesement(res?.data?.data);
     } catch (error) {
       toast.error(error?.response?.data?.message || "Unknown Error");
@@ -34,6 +35,38 @@ const InterviewGauntlet = () => {
   };
 
   const [activeRound, setActiveRound] = useState(0);
+
+  const handleTestStart = () => {
+    let details;
+
+    switch (activeRound) {
+      case 0:
+        details = {
+          questionIds: assesement?.ques_bank?.apti,
+          type: "apti",
+          testId:assesement._id,
+        };
+
+        navigate("/aptitude-test", { state: { details } });
+        break;
+      case 1:
+        details = {
+          questionIds: assesement?.ques_bank?.dsa,
+          type: "dsa",
+          testId:assesement._id,
+        };
+        navigate("/dashboard/practice/dsa", { state: { details } });
+
+        break;
+
+        case 2:   
+        navigate('/interview-page');
+
+      default:
+        toast.error("HR Round is not yet implemented. Stay tuned!");
+        break;
+    }
+  };
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: false });
@@ -52,10 +85,10 @@ const InterviewGauntlet = () => {
       subtitle: "Logical Deduction & Quantitative Analysis",
       icon: <BrainCircuit className="w-8 h-8" />,
       color: "emerald",
-      marks: 50,
-      duration: "45 Minutes",
+      marks: assesement?.maxMarks?.apti,
+      duration: `${assesement?.timelimit?.apti} Minutes`,
       rules: [
-        "Negative marking of 0.25 for every wrong answer.",
+        // "Negative marking of 0.25 for every wrong answer.",
         "Calculators are strictly prohibited.",
         "Once a section is submitted, you cannot go back.",
         "Keep your webcam active throughout the session.",
@@ -69,8 +102,8 @@ const InterviewGauntlet = () => {
       subtitle: "Algorithmic Efficiency & Problem Solving",
       icon: <Code2 className="w-8 h-8" />,
       color: "indigo",
-      marks: 100,
-      duration: "90 Minutes",
+      marks: assesement?.maxMarks?.dsa,
+      duration: `${assesement?.timelimit?.dsa} Minutes`,
       rules: [
         "Plagiarism results in immediate disqualification.",
         "Only three language switches allowed (C++, Java, Python).",
@@ -86,8 +119,8 @@ const InterviewGauntlet = () => {
       subtitle: "Culture Fit & Soft Skills Evaluation",
       icon: <UserCheck className="w-8 h-8" />,
       color: "rose",
-      marks: "Qualitative",
-      duration: "30 Minutes",
+      marks: assesement?.maxMarks?.hr,
+      duration: `${assesement?.timelimit?.hr} Minutes`,
       rules: [
         "Professional attire is recommended.",
         "Join the meeting link 5 minutes prior.",
@@ -218,6 +251,92 @@ const InterviewGauntlet = () => {
                 ))}
               </ul>
             </div>
+
+            <div
+              className="p-8 bg-slate-900/50 border border-slate-800 rounded-2xl backdrop-blur-sm"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              {/* Header Section */}
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-indigo-500/10 rounded-lg">
+                    <BrainCircuit className="text-indigo-500 w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white tracking-tight">
+                      {activeRound === 0
+                        ? "Aptitude & Reasoning"
+                        : activeRound === 1
+                          ? "DSA Mastery Round"
+                          : "HR Behavioral Round"}
+                    </h3>
+                    <p className="text-slate-500 text-sm">
+                      Review your question set and topics
+                    </p>
+                  </div>
+                </div>
+
+                {/* Total Questions Badge - ques_bank.apti.length */}
+                <div className="flex flex-col items-end">
+                  <span className="text-slate-400 text-xs uppercase tracking-widest font-semibold">
+                    Total Questions
+                  </span>
+                  <span className="text-3xl font-black text-indigo-400">
+                    {activeRound === 0
+                      ? assesement?.ques_bank?.apti?.length
+                      : activeRound === 1
+                        ? assesement?.ques_bank?.dsa?.length
+                        : assesement?.ques_bank?.hr?.length}
+                  </span>
+                </div>
+              </div>
+
+              <hr className="border-slate-800 mb-8" />
+
+              {/* Topics Section */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="h-1 w-8 bg-indigo-500 rounded-full"></div>
+                  <h4 className="text-slate-300 font-semibold uppercase text-xs tracking-wider">
+                    Included Topics
+                  </h4>
+                </div>
+
+                <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {(activeRound === 0
+                    ? assesement?.topics?.apti
+                    : activeRound === 1
+                      ? assesement?.topics?.dsa
+                      : assesement?.topics?.hr
+                  )?.map((topic, i) => (
+                    <li
+                      key={i}
+                      className="group flex items-center gap-4 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300"
+                    >
+                      {/* Index Circle */}
+                      <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-[12px] font-bold text-indigo-400 border border-slate-700 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                        {i + 1}
+                      </span>
+
+                      {/* Topic Name - formatting underscores to spaces */}
+                      <span className="text-slate-300 text-sm font-medium capitalize">
+                        {topic.replace(/_/g, " ")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Footer info from your data */}
+              <div className="mt-8 pt-4 border-t border-slate-800/50 flex justify-between items-center text-[10px] text-slate-600 uppercase tracking-widest">
+                <span>ID: {assesement?._id}</span>
+                <span>
+                  Last Updated:{" "}
+                  {new Date(assesement?.updatedAt).toLocaleDateString()}
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Right Content: CTA & Iconography */}
@@ -240,6 +359,8 @@ const InterviewGauntlet = () => {
             </div>
 
             <button
+              type="button"
+              onClick={handleTestStart}
               data-aos="fade-up"
               data-aos-anchor-placement="bottom-bottom"
               className="w-full py-6 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-[2rem] text-white font-black text-xl flex items-center justify-center gap-3 shadow-[0_20px_50px_rgba(79,70,229,0.3)] hover:shadow-indigo-500/50 hover:-translate-y-1 transition-all active:scale-95 group"
