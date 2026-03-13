@@ -13,6 +13,7 @@ import "aos/dist/aos.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import api from "../config/API";
+import AssessmentTimer from "../components/AssessmentTimer";
 
 const AptitudeTest = () => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -39,8 +40,7 @@ const AptitudeTest = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       const res = await api.post("/user/evaluate-answers", {
         answers: selectedAnswers,
@@ -76,6 +76,7 @@ const AptitudeTest = () => {
       <div className="min-h-screen bg-[#0f172a] text-slate-300 font-sans selection:bg-indigo-500/30">
         {/* Top Sticky Header */}
         <div className="sticky top-0 z-50 bg-[#0f172a]/80 backdrop-blur-md border-b border-slate-800 px-6 py-4">
+         
           <div className="flex justify-between items-center w-full">
             <div className="flex items-center gap-4">
               <div className="p-2 bg-indigo-500/10 rounded-lg border border-indigo-500/20">
@@ -112,6 +113,12 @@ const AptitudeTest = () => {
 
         {/* Main Content Area - Full Width */}
         <main className="w-full px-4 md:px-12 py-10">
+           <div>
+            <AssessmentTimer
+              limitInMinutes={details?.timelimit}
+              onTimeUp={handleSubmit}
+            />
+          </div>
           <div className="grid grid-cols-1 gap-12">
             {questionsData?.map((q, index) => (
               <div
@@ -236,7 +243,7 @@ const AptitudeTest = () => {
                   </span>
                   <div className="flex items-baseline justify-center gap-1">
                     <span className="text-5xl font-black text-emerald-400">
-                      {result?.score || 0}
+                      {result}
                     </span>
                     <span className="text-slate-500 font-bold">PTS</span>
                   </div>

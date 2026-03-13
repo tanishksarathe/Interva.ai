@@ -1,5 +1,5 @@
 import fs from "fs";
-import { resumeAnalyzeWithJD } from "../utils/resumeAnalyzePromptService.js";
+import { anyLanguageToJavascriptConvertor, resumeAnalyzeWithJD } from "../utils/resumeAnalyzePromptService.js";
 import { createRequire } from "module";
 import { dsaEvaluateAI } from "../utils/dsaEvaluationService.js";
 import { interviewAnalysisHR } from "../utils/interviewAnalysis.js";
@@ -102,6 +102,34 @@ export const interviewAnalysis = async (req, res, next) => {
     res
       .status(200)
       .json({ message: "Mock Interview Analyzed", data: response });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const convertIntoJavaScript = async (req, res, next) => {
+  try {
+    const  custom  = req.body;
+
+    console.log("Custom Object Received : ", custom);
+
+    if (!custom) {
+      const error = new Error("Custom Object Required");
+      error.statusCode = 400;
+      return next(error);
+    }
+
+    const result = await anyLanguageToJavascriptConvertor(
+      custom.code,
+      custom.language,
+    );
+
+    console.log("Conversion Result : ", result);
+
+    res
+      .status(200)
+      .json({ message: "Code Converted to JavaScript", data: result });
+
   } catch (error) {
     next(error);
   }

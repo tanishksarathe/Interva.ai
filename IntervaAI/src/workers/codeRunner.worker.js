@@ -1,44 +1,46 @@
-// Actual Sandbox that runs my code 
-
 self.onmessage = function (e) {
-  const { code, testCases } = e.data
+  const { code, testCases } = e.data;
 
-  let solveFunction
+  console.log("Code Received in Worker : ", code);
+  console.log("Test Cases Received in Worker : ", testCases);
+
+  let solveFunction;
 
   try {
-    // compile user code
-    const fn = new Function(code + "; return solve")
-    solveFunction = fn()
+    const fn = new Function(code + "; return solve");
+    solveFunction = fn();
   } catch (err) {
     self.postMessage({
       type: "COMPILATION_ERROR",
       message: err.message
-    })
-    return
+    });
+    return;
   }
 
-  const results = []
+  const results = [];
 
   for (const tc of testCases) {
     try {
-      const output = solveFunction(tc.input)
+      console.log("Executing test case with input: ", tc.input);
+      let output = solveFunction(tc.input);
 
       results.push({
         input: tc.input,
         expected: tc.ex_output,
-        output: String(output),
-        passed: String(output) === String(tc.ex_output)
-      })
+        output: output,
+        passed: JSON.stringify(output) === JSON.stringify(tc.ex_output),
+      });
+
     } catch (err) {
       results.push({
         input: tc.input,
-        error: "Runtime Error"
-      })
+        error: err.message || "Runtime Error"
+      });
     }
   }
 
   self.postMessage({
     type: "RESULT",
     results
-  })
-}
+  });
+};

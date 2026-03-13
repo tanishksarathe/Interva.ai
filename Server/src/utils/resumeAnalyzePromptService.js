@@ -97,3 +97,51 @@ ${jobDescription}
     throw new Error("Failed to generate ATS analysis");
   }
 };
+
+
+export const anyLanguageToJavascriptConvertor = async (code, sourceLanguage) => {
+  const client = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+    baseURL: "https://api.groq.com/openai/v1",
+  });
+
+const prompt = `
+You are a strict code transpiler.
+
+Your task is to convert the given ${sourceLanguage} function into equivalent JavaScript (ES6+).
+
+STRICT RULES (must follow exactly):
+
+1. Output ONLY valid JavaScript code.
+2. Do NOT include explanations, markdown, comments, or any extra text.
+3. Do NOT wrap the code in markdown blocks.
+4. Do NOT add any extra functions, classes, or boilerplate.
+5. Do NOT add main functions, input handling, or Web Worker logic.
+6. Convert ONLY the logic inside the function.
+7. The resulting code MUST define a function named "solve".
+8. Preserve the exact logic and behavior of the original code.
+9. The output must be directly executable JavaScript.
+10. Return ONLY the function implementation.
+
+Source Code:
+${code}
+`;
+
+  try {
+    console.log("Reached to the promt stage");
+
+    const response = await client.responses.create({
+      model: "llama-3.1-8b-instant",
+      input: prompt,
+    });
+
+    console.log("Final Output by groq : ", response.output_text);
+
+    const actual = response.output_text;
+
+    return actual;
+  } catch (error) {
+    console.error("Gemini SDK error:", error.message);
+    throw new Error("Failed to generate ATS analysis");
+  }
+};

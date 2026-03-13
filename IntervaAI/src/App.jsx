@@ -24,6 +24,7 @@ import InterviewGauntlet from "./pages/InterviewGauntlet";
 // import StartDriveModal from "./components/modals/StartDriveModal";
 import PreviousTestsPage from "./components/modals/PreviousTestsPage";
 import AptitudeTest from "./MockInterviewEnvironment.jsx/AptitudeTest";
+import DSAExamination from "./MockInterviewEnvironment.jsx/DSAExamination";
 
 const routes = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const routes = createBrowserRouter([
   {
     path: "/aptitude-test",
     element: <AptitudeTest />,
+  },
+  {
+    path: "/dsa-test",
+    element: <DSAExamination />,
   },
   {
     path: "/contact",

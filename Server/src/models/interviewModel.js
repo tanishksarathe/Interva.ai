@@ -37,6 +37,11 @@ export const InterviewQuestion = mongoose.model(
 
 const aptiTestSchema = mongoose.Schema(
   {
+    userId:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User",
+      required:true
+    },
     topics: {
       dsa: {
         type: [String],
@@ -54,6 +59,11 @@ const aptiTestSchema = mongoose.Schema(
       type: String,
       enum: ["Easy", "Medium", "Hard"],
       required: true,
+    },
+    activeRound: {
+      type: Number,
+      enum: [0, 1, 2], // 0 for Aptitude, 1 for DSA, 2 for HR
+      default: 0,
     },
     ques_bank: {
       dsa: [

@@ -84,10 +84,10 @@ const DataStructures = () => {
     },
   ];
 
-  const [count, setCount] = useState(0);
-
+  
   const [codeOut, setCodeOut] = useState();
-
+  
+  const [count, setCount] = useState(0);
   const [custom, setCustom] = useState({
     language: "java",
     theme: "vs-dark",

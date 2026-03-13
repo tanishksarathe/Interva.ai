@@ -6,6 +6,8 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
   try {
     const { toughness, jobdesc } = req.body;
 
+    const currentUser = req.user;
+
     if (!toughness || !jobdesc) {
       const error = new Error("All Fields Required");
       error.statusCode = 401;
@@ -109,6 +111,7 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
     };
 
     const newTest = await AptiTest.create({
+      userId: currentUser._id,
       topics,
       difficulty: diff,
       ques_bank,
@@ -125,10 +128,21 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
 };
 
 export const getAllPreviouslymadeTests = async (req, res, next) => {
-  try {
-    const allTests = await AptiTest.find();
+  const currentUser = req.user;
 
-    res.json({ message: "All Tests Fetched", data: allTests });
+  try {
+    await AptiTest.updateMany(
+      { userId: currentUser._id },
+      { $set: { activeRound: 0 } },
+    );
+
+    // Step 2: fetch updated tests
+    const updatedTests = await AptiTest.find({ userId: currentUser._id });
+
+    res.json({
+      message: "All Tests Fetched",
+      data: updatedTests,
+    });
   } catch (error) {
     next(error);
   }
@@ -200,6 +214,13 @@ export const evaluateAptiAnswers = async (req, res, next) => {
       _id: { $in: Object.keys(answers) },
     });
 
+    const roundUpdate = await AptiTest.findByIdAndUpdate(
+      testId,
+      { $inc: { activeRound: 1 } },
+      { new: true },
+    );
+    console.log("Updated Test after incrementing activeRound: ", roundUpdate);
+
     console.log("Correct answers from DB: ", result);
 
     let score = 0;
@@ -219,3 +240,4 @@ export const evaluateAptiAnswers = async (req, res, next) => {
     next(error);
   }
 };
+

@@ -25,16 +25,19 @@ const InterviewGauntlet = () => {
 
   const navigate = useNavigate();
 
+    const [activeRound, setActiveRound] = useState(0);
+
   const fetchAssesement = async () => {
     try {
       const res = await api.get(`/user/get-live-test/${id}`);
       setAssesement(res?.data?.data);
+      setActiveRound(res?.data?.data?.activeRound);
+      console.log("Active Round from API: ", res?.data?.data?.activeRound);
     } catch (error) {
       toast.error(error?.response?.data?.message || "Unknown Error");
     }
   };
 
-  const [activeRound, setActiveRound] = useState(0);
 
   const handleTestStart = () => {
     let details;
@@ -45,6 +48,7 @@ const InterviewGauntlet = () => {
           questionIds: assesement?.ques_bank?.apti,
           type: "apti",
           testId:assesement._id,
+          timelimit: assesement?.timelimit?.apti,
         };
 
         navigate("/aptitude-test", { state: { details } });
@@ -54,16 +58,21 @@ const InterviewGauntlet = () => {
           questionIds: assesement?.ques_bank?.dsa,
           type: "dsa",
           testId:assesement._id,
+          timelimit: assesement?.timelimit?.dsa,
         };
-        navigate("/dashboard/practice/dsa", { state: { details } });
+        navigate("/dsa-test", { state: { details } });
 
         break;
 
-        case 2:   
+        case 2:
+        details = {
+          testId:assesement._id,
+          timelimit: assesement?.timelimit?.hr,
+        };
         navigate('/interview-page');
-
+        break;
       default:
-        toast.error("HR Round is not yet implemented. Stay tuned!");
+        toast.error("There is no active round. Stay tuned!");
         break;
     }
   };
@@ -152,7 +161,7 @@ const InterviewGauntlet = () => {
                 className="relative z-10 flex flex-col items-center group"
               >
                 <button
-                  onClick={() => setActiveRound(idx)}
+                  // onClick={() => setActiveRound(idx)}
                   className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 border-4 ${
                     idx <= activeRound
                       ? "bg-slate-900 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.5)] scale-110"
