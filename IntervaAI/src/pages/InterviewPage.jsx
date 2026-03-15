@@ -8,6 +8,8 @@ import {
 import InterviewAnalysis from "../components/Resume Analysis/InterviewAnalysis.jsx";
 import toast from "react-hot-toast";
 import api from "../config/API.jsx";
+import { useLocation } from "react-router-dom";
+import AssessmentTimer from "../components/AssessmentTimer.jsx";
 
 const InterviewPage = () => {
   const interviewOptions = [
@@ -30,6 +32,46 @@ const InterviewPage = () => {
   //   console.log(interviewQuestions);
 
   const recognitionRef = useRef(null);
+  const currentIndexRef = useRef(0);
+  const questionsRef = useRef([]);
+  // interview Simulation material
+
+  const location = useLocation();
+
+  const { details } = location.state || {};
+
+  const [simulation, setSimulation] = useState(details?.simulation || false);
+
+  if (simulation) {
+    const [finalDetails, setFinalDetails] = useState({
+      score: 0,
+      timeTaken: 0,
+      round: "hr",
+      testId: details.testId,
+      feedback: "",
+      totalQues: interviewQuestions.length,
+    });
+  }
+  const [startTime, setStartTime] = useState(null);
+
+  useEffect(() => {
+    setStartTime(Date.now());
+  }, []);
+
+  const [interviewTypeForSimulation, setInterviewTypeForSimulation] =
+    useState(null);
+
+  useEffect(() => {
+    if (details && simulation) {
+      let interviewQs =
+        interviewOptions.find((item) => item.role === details.type) ||
+        interviewOptions[0];
+
+      setInterviewTypeForSimulation(interviewQs.name);
+
+      setInterviewQuestions(interviewQs.val || []);
+    }
+  }, [details]);
 
   useEffect(() => {
     const loadVoices = () => {
@@ -49,6 +91,11 @@ const InterviewPage = () => {
   }, []);
 
   //   console.log(voices);
+
+  useEffect(() => {
+    currentIndexRef.current = currentIndex;
+    questionsRef.current = interviewQuestions;
+  }, [currentIndex, interviewQuestions]);
 
   // Setup Speech Recognition once
   useEffect(() => {
@@ -90,25 +137,24 @@ const InterviewPage = () => {
     };
 
     recognition.onend = () => {
-      if (finalTranscript.trim() !== "") {
-        setConversation((prev) => [
-          ...prev,
-          {
-            question: interviewQuestions[currentIndex],
-            answer: finalTranscript.trim(),
-          },
-        ]);
+      // Use the REF here, not the state variable
+      const currentQ = questionsRef.current[currentIndexRef.current];
 
+      if (finalTranscript.trim() !== "") {
+        const answer = finalTranscript.trim();
+        finalTranscript = ""; // Reset local variable
+
+        setConversation((prev) => [...prev, { question: currentQ, answer }]);
         setStatus("processing");
 
-        setTimeout(() => {
-          goToNextQuestion();
-        }, 800);
+        // Delay moving to next question
+        setTimeout(() => goToNextQuestion(), 800);
       }
     };
 
     recognitionRef.current = recognition;
-  }, [currentIndex, interviewQuestions]);
+    // Empty dependency array ensures this listener is only created ONCE
+  }, []);
 
   const speak = (text, callback) => {
     speechSynthesis.cancel();
@@ -186,6 +232,32 @@ const InterviewPage = () => {
     }
   };
 
+  const handleFinalSubmit = async (e) => {
+    e.preventDefault();
+
+    const endTime = Date.now();
+
+    const durationMs = endTime - startTime;
+
+    const durationMinutes = Math.floor(durationMs / 60000);
+
+    console.log("Duration:", durationMinutes);
+
+    try {
+      const detailSubmitted = {
+        ...finalDetails,
+        timeTaken: durationMinutes,
+        score: analyzedResponse?.summary?.overall_score || 0,
+      };
+
+      const res = await api.patch("/user/interview-summary", detailSubmitted);
+      console.log("Final submission response: ", res?.data?.data);
+      toast.success("Final details submitted successfully");
+    } catch (error) {
+      toast.error("Error submitting final details");
+    }
+  };
+
   return (
     <>
       <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-6">
@@ -212,6 +284,13 @@ const InterviewPage = () => {
                   {conversation.length} / {interviewQuestions.length} Questions
                 </p>
               </div>
+
+              {simulation && (
+                <AssessmentTimer
+                  limitInMinutes={details?.timelimit}
+                  onTimeUp={handleFinalSubmit}
+                />
+              )}
 
               {!started && (
                 <>
@@ -256,9 +335,12 @@ const InterviewPage = () => {
                           }
                         }}
                         required
+                        disabled={simulation} // Disable if it's a simulation
                       >
                         <option value="" disabled selected>
-                          Choose a round...
+                          {simulation
+                            ? interviewTypeForSimulation
+                            : "--Select Interview Type--"}
                         </option>
                         {interviewOptions.map((item, index) => (
                           <option
@@ -315,6 +397,34 @@ const InterviewPage = () => {
                   Restart Interview
                 </button>
               )}
+
+              {simulation &&
+                analyzedResponse != null &&
+                (toast.success(
+                  "Simulation completed! You can see the analysis below and give your valuable feedback to us.Please submit the round to save your performance details.",
+                ),
+                (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handleFinalSubmit}
+                      className="w-full mt-6 py-2 rounded-xl bg-green-500 hover:bg-green-600 transition"
+                    >
+                      Submit Round
+                    </button>
+                    <textarea
+                      name="feedback"
+                      value={finalDetails.feedback}
+                      onChange={(e) =>
+                        setFinalDetails((prev) => ({
+                          ...prev,
+                          feedback: e.target.value,
+                        }))
+                      }
+                      placeholder="Please give us your valuable feedback..."
+                    ></textarea>
+                  </>
+                ))}
             </div>
           </div>
 

@@ -209,6 +209,33 @@ export const getLiveQuestions = async (req, res, next) => {
   }
 };
 
+export const updateRoundsAfterDSA = async (req, res, next) => {
+  try {
+    const { testId } = req.params;
+
+    const test = await AptiTest.findById(testId);
+
+    if (!test) {
+      const error = new Error("Test not found");
+      error.statusCode = 404;
+      return next(error);
+    }
+
+    const updatedTest = await AptiTest.findByIdAndUpdate(
+      testId,
+      { $inc: { activeRound: 1 } },
+      { new: true },
+    );
+
+    res.status(200).json({
+      message: "Round Updated",
+      data: updatedTest,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const evaluateAptiAnswers = async (req, res, next) => {
   try {
     const { answers, testId } = req.body;
@@ -249,6 +276,7 @@ export const createInterviewSummary = async (req, res, next) => {
   try {
     const currentUser = req.user;
     const detailSubmitted = req.body;
+
     console.log("Details received for interview summary: ", detailSubmitted);
 
     if (!detailSubmitted) {
@@ -291,6 +319,7 @@ export const createInterviewSummary = async (req, res, next) => {
 
     if (existingSummary) {
       // on update phase
+      console.log("If Block");
 
       if (detailSubmitted.round === "dsa") {
         // score calculation logic for dsa can be more complex based on test cases passed.
@@ -334,8 +363,8 @@ export const createInterviewSummary = async (req, res, next) => {
 
         overallPercentile =
           ((score.dsa.score +
-            (existingSummary.scores.apti || 0) +
-            (existingSummary.scores.hr || 0)) *
+            (existingSummary.scores?.apti || 0) +
+            (existingSummary.scores?.hr || 0)) *
             100) /
           (currentTest.maxMarks.dsa +
             currentTest.maxMarks.apti +
@@ -360,9 +389,15 @@ export const createInterviewSummary = async (req, res, next) => {
         timeAnalysis = {
           ...existingSummary.timeAnalysis,
           totalTimeTaken:
-            (existingSummary.timeAnalysis?.totalTimeTaken || 0) +
+            (existingSummary.timeAnalysis?.dsaTime || 0) +
+            (existingSummary.timeAnalysis?.aptiTime || 0) +
             detailSubmitted.timeTaken,
           dsaTime: detailSubmitted.timeTaken,
+          avgTimePerSection:
+            (existingSummary.timeAnalysis.hrTime +
+              existingSummary.timeAnalysis.aptiTime +
+              detailSubmitted.timeTaken) /
+            3,
         };
 
         scoredifference =
@@ -379,7 +414,7 @@ export const createInterviewSummary = async (req, res, next) => {
         };
 
         existingSummary = await InterviewSummary.findOneAndUpdate(
-          { testId: detailSubmitted.testId },
+          { testId: detailSubmitted.testId, userId: currentUser._id },
           {
             $set: {
               userId: currentUser._id,
@@ -398,10 +433,23 @@ export const createInterviewSummary = async (req, res, next) => {
           { new: true },
         );
       } else if (detailSubmitted.round === "hr") {
+        const hrSummary = await updateHRInterviewSummary(
+          detailSubmitted,
+          existingSummary,
+          currentTest,
+        );
+
+        existingSummary = await InterviewSummary.findOneAndUpdate(
+          { testId: detailSubmitted.testId, userId: currentUser._id },
+          {
+            $set: hrSummary,
+          },
+          { new: true },
+        );
       }
     } else {
       // payload
-
+      console.log("Else Block");
       // basically for apti
 
       score = {
@@ -434,6 +482,7 @@ export const createInterviewSummary = async (req, res, next) => {
       timeAnalysis = {
         totalTimeTaken: detailSubmitted.timeTaken,
         aptiTime: detailSubmitted.timeTaken,
+        avgTimePerSection: detailSubmitted.timeTaken / 3,
       };
 
       scoredifference = overallPercentile;
@@ -471,5 +520,99 @@ export const createInterviewSummary = async (req, res, next) => {
       .json({ message: "Progress Updated", data: existingSummary });
   } catch (error) {
     next(error);
+  }
+};
+
+const updateHRInterviewSummary = async (
+  detailSubmitted,
+  existingSummary,
+  currentTest,
+) => {
+  try {
+    // payloads
+
+    let hrScore = (detailSubmitted.score * currentTest.maxMarks.hr) / 100 || 0;
+
+    // tooked out score
+    let score = {
+      hr: hrScore,
+    };
+
+    let overallPercentile =
+      ((score.hr +
+        (existingSummary.scores?.apti || 0) +
+        (existingSummary.scores?.dsa?.score || 0)) *
+        100) /
+      (currentTest.maxMarks.dsa +
+        currentTest.maxMarks.apti +
+        currentTest.maxMarks.hr);
+
+    let maxScores = {
+      ...existingSummary.maxScores,
+      hr: currentTest.maxMarks.hr,
+    };
+
+    // pending
+    let performance = {
+      ...existingSummary.performance,
+      hr: {
+        totalQuestions: detailSubmitted.totalQues,
+        correct: (detailSubmitted.score * detailSubmitted.totalQues) / 100 || 0,
+        wrong:
+          detailSubmitted.totalQues -
+            (detailSubmitted.score * detailSubmitted.totalQues) / 100 || 0,
+        accuracy:
+          detailSubmitted.totalQues > 0
+            ? (hrScore / detailSubmitted.totalQues) * 100
+            : 0,
+      },
+    };
+    let timeAnalysis = {
+      ...existingSummary.timeAnalysis,
+      totalTimeTaken:
+        (existingSummary.timeAnalysis?.dsaTime || 0) +
+        (existingSummary.timeAnalysis?.aptiTime || 0) +
+        detailSubmitted.timeTaken,
+      hrTime: detailSubmitted.timeTaken,
+      avgTimePerSection:
+        (existingSummary.timeAnalysis.dsaTime +
+          existingSummary.timeAnalysis.aptiTime +
+          detailSubmitted.timeTaken) /
+        3,
+    };
+
+    let scoredifference =
+      overallPercentile - (existingSummary.overallPercentile || 0);
+
+    let improvement = {
+      scoreDiff: scoredifference,
+      hrDiff:
+        scoredifference == 0
+          ? "Constant"
+          : scoredifference > 0
+            ? "Improving"
+            : "Declining",
+    };
+
+    const hrSummary = {
+      userId: existingSummary.userId,
+      testId: existingSummary.testId,
+      attemptStatus: "completed",
+      feedback: detailSubmitted.feedback,
+      scores: {
+        ...existingSummary.scores,
+        ...score,
+      },
+      attemptCount: existingSummary.attemptCount + 1,
+
+      overallPercentile,
+      maxScores,
+      performance,
+      improvement,
+    };
+
+    return hrSummary;
+  } catch (error) {
+    throw error;
   }
 };

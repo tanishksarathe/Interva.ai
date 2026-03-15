@@ -67,9 +67,11 @@ const InterviewGauntlet = () => {
         case 2:
         details = {
           testId:assesement._id,
+          type: "hr",
           timelimit: assesement?.timelimit?.hr,
+          simulation:true,
         };
-        navigate('/interview-page');
+        navigate('/interview-page', { state: { details } });
         break;
       default:
         toast.error("There is no active round. Stay tuned!");

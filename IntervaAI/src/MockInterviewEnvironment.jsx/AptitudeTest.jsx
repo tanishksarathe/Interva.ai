@@ -24,11 +24,18 @@ const AptitudeTest = () => {
 
   const { details } = location?.state || {};
 
-  const [detailSubmitted, setDetailSubmitted] = useState({
-    timeTaken: 0,
+  const [finalDetails, setFinalDetails] = useState({
+    timeTaken: null,
     testId: details?.testId || null,
     round: "apti",
+    score: null,
   });
+
+  const [startTime, setStartTime] = useState(null);
+
+  useEffect(() => {
+    setStartTime(Date.now());
+  }, []);
 
   const [result, setResults] = useState(null);
 
@@ -48,6 +55,18 @@ const AptitudeTest = () => {
   };
 
   const handleSubmit = async () => {
+    const endTime = Date.now();
+
+    const durationMs = endTime - startTime;
+
+    const durationMinutes = Math.floor(durationMs / 60000);
+
+    console.log("Duration:", durationMinutes);
+
+    setFinalDetails((prev) => ({ ...prev, timeTaken: durationMinutes }));
+
+    console.log("Final details being submitted: ", finalDetails);
+
     try {
       const res = await api.post("/user/evaluate-answers", {
         answers: selectedAnswers,
@@ -57,11 +76,17 @@ const AptitudeTest = () => {
       //   console.log("Evaluation Result: ", res?.data?.score);
 
       // here we can also update the interview summary with the feedback and overall percentile and other details that we want to show in the interview summary page and then we can redirect the user to the interview summary page after submission of the test or we can show a modal with the score and a button to redirect to the interview summary page
-      setDetailSubmitted((prev) => ({
+      setFinalDetails((prev) => ({
         ...prev,
         score: res?.data?.score,
       }));
-      
+
+      const detailSubmitted = {
+        ...finalDetails,
+        score: res?.data?.score,
+        timeTaken: durationMinutes,
+      }
+
       const response = await api.patch(
         "/user/interview-summary",
         detailSubmitted,
@@ -71,7 +96,7 @@ const AptitudeTest = () => {
 
       console.log("Test ID sent for evaluation: ", details?.testId);
 
-      //   toast.success("Answers submitted successfully!");
+      toast.success("Answers submitted successfully!");
     } catch (error) {
       toast.error("Failed to submit answers. Please try again later.");
     }

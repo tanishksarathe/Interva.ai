@@ -9,7 +9,7 @@ import {
   retrievePracticeTopic,
   retrieveDSAPracticeTopic,
 } from "../controllers/practiceController.js";
-import { getAllPreviouslymadeTests, getLiveQuestions, getLiveTest, evaluateAptiAnswers, createInterviewSummary } from "../controllers/interviewController.js";
+import { getAllPreviouslymadeTests, getLiveQuestions, getLiveTest, updateRoundsAfterDSA, evaluateAptiAnswers, createInterviewSummary } from "../controllers/interviewController.js";
 
 const router = express.Router();
 
@@ -34,5 +34,6 @@ router.get("/get-live-test/:id", protect, getLiveTest);
 router.post("/get-live-questions", protect, getLiveQuestions);
 router.post("/evaluate-answers", protect, evaluateAptiAnswers);
 router.patch("/interview-summary", protect, createInterviewSummary);
+router.patch("/update-round-after-dsa/:testId", protect, updateRoundsAfterDSA);
 
 export default router;

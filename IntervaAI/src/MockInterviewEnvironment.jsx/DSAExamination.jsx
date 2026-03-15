@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import ProblemCard from "../components/ProblemCard";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import api from "../config/API";
 import toast from "react-hot-toast";
 import { runUserCode } from "../utils/runCode.js";
@@ -20,6 +20,8 @@ import AssessmentTimer from "../components/AssessmentTimer.jsx";
 
 const DSAExamination = () => {
   const location = useLocation();
+
+  const navigate = useNavigate();
 
   const { details } = location?.state || {};
 
@@ -33,10 +35,10 @@ const DSAExamination = () => {
 
   const [result, setResult] = useState(null);
 
-  const [detailSubmitted, setDetailSubmitted] = useState({
+  const [finalDetails, setFinalDetails] = useState({
     testId: details?.testId,
     round: "dsa",
-    timeTaken: 0,
+    timeTaken: null,
   });
 
   const [startTime, setStartTime] = useState(null);
@@ -150,19 +152,11 @@ All the best!`;
       return;
     }
 
-    const endTime = Date.now();
-
-    const durationMs = endTime - startTime;
-
-    const durationMinutes = Math.floor(durationMs / 60000);
-
-    console.log("Duration:", durationMinutes);
-
     try {
       // let totaltestCases = testCaseResult?.results?.length || 0;
       // let passedTestCases = testCaseResult?.results?.filter(tc => tc.passed)?.length || 0;
 
-      setDetailSubmitted((prev) => ({
+      setFinalDetails((prev) => ({
         ...prev,
         [questions[count]?._id]: { code: custom?.code, testCaseResult },
       }));
@@ -174,26 +168,53 @@ All the best!`;
       toast.error("Submission failed. Please try again.");
     }
   };
-  console.log("Details submitted so far: ", detailSubmitted);
+  console.log("Details submitted so far: ", finalDetails);
+
+  const updateRounds = async()=>{
+    try {
+      const res = await api.patch(`/user/update-round-after-dsa/${details?.testId}`);
+    } catch (error) {
+      toast.error("Round update failed. Please try again.");
+    }
+  }
+
 
   const HandleFinalSubmit = async (e) => {
     e.preventDefault();
 
-    if (!detailSubmitted || Object.keys(detailSubmitted).length <= 2) {
+    if (!finalDetails || Object.keys(finalDetails).length <= 2) {
       toast.error(
         "Please attempt at least one question before final submission.",
       );
       return;
     }
 
-    console.log("Final details being submitted: ", detailSubmitted);
+    const endTime = Date.now();
+
+    const durationMs = endTime - startTime;
+
+    const durationMinutes = Math.floor(durationMs / 60000);
+
+    console.log("Duration:", durationMinutes);
+
+    setFinalDetails((prev) => ({...prev, timeTaken:durationMinutes}));
+
+    console.log("Final details being submitted: ", finalDetails);
 
     try {
+
+    await updateRounds();
+
+      const detailSubmitted = {
+        ...finalDetails,
+         timeTaken: durationMinutes,
+       };
+
       const res = await api.patch("/user/interview-summary", detailSubmitted);
 
       console.log("Final submission response: ", res?.data?.data);
 
-      // setResult(res?.data?.data?.overallPercentile);
+      setResult(res?.data?.data?.scores?.dsa?.score);
 
       toast.success("Final code submitted for evaluation!");
     } catch (error) {
@@ -430,7 +451,7 @@ All the best!`;
       </div>
       {result !== null && (
         <>
-          {/* <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
             <div
               data-aos="zoom-in"
               className="relative w-full max-w-md overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/90 shadow-2xl"
@@ -483,7 +504,7 @@ All the best!`;
               <div className="absolute -left-16 -top-16 h-32 w-32 bg-indigo-500/10 blur-[50px]" />
               <div className="absolute -right-16 -bottom-16 h-32 w-32 bg-emerald-500/10 blur-[50px]" />
             </div>
-          </div> */}
+          </div>
         </>
       )}
     </>
