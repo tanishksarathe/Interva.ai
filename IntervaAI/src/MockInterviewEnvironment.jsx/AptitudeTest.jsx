@@ -18,14 +18,21 @@ import AssessmentTimer from "../components/AssessmentTimer";
 const AptitudeTest = () => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
 
+  const location = useLocation();
+
   const [questionsData, setQuestionsData] = useState([]);
+
+  const { details } = location?.state || {};
+
+  const [detailSubmitted, setDetailSubmitted] = useState({
+    timeTaken: 0,
+    testId: details?.testId || null,
+    round: "apti",
+  });
 
   const [result, setResults] = useState(null);
 
   const navigate = useNavigate();
-
-  const location = useLocation();
-  const { details } = location?.state || {};
 
   const fetchQuestionsAptitude = async () => {
     console.log("Received details in AptitudeTest component: ", details);
@@ -48,6 +55,19 @@ const AptitudeTest = () => {
       });
       setResults(res?.data?.score);
       //   console.log("Evaluation Result: ", res?.data?.score);
+
+      // here we can also update the interview summary with the feedback and overall percentile and other details that we want to show in the interview summary page and then we can redirect the user to the interview summary page after submission of the test or we can show a modal with the score and a button to redirect to the interview summary page
+      setDetailSubmitted((prev) => ({
+        ...prev,
+        score: res?.data?.score,
+      }));
+      
+      const response = await api.patch(
+        "/user/interview-summary",
+        detailSubmitted,
+      );
+
+      console.log("Interview summary update response: ", response?.data?.data);
 
       console.log("Test ID sent for evaluation: ", details?.testId);
 
@@ -76,7 +96,6 @@ const AptitudeTest = () => {
       <div className="min-h-screen bg-[#0f172a] text-slate-300 font-sans selection:bg-indigo-500/30">
         {/* Top Sticky Header */}
         <div className="sticky top-0 z-50 bg-[#0f172a]/80 backdrop-blur-md border-b border-slate-800 px-6 py-4">
-         
           <div className="flex justify-between items-center w-full">
             <div className="flex items-center gap-4">
               <div className="p-2 bg-indigo-500/10 rounded-lg border border-indigo-500/20">
@@ -113,7 +132,7 @@ const AptitudeTest = () => {
 
         {/* Main Content Area - Full Width */}
         <main className="w-full px-4 md:px-12 py-10">
-           <div>
+          <div>
             <AssessmentTimer
               limitInMinutes={details?.timelimit}
               onTimeUp={handleSubmit}

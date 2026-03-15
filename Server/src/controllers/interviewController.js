@@ -1,5 +1,9 @@
 import DSA from "../models/dsaModel.js";
-import { AptiTest, InterviewQuestion } from "../models/interviewModel.js";
+import {
+  AptiTest,
+  InterviewQuestion,
+  InterviewSummary,
+} from "../models/interviewModel.js";
 import { topicsAnalyzeWithJD } from "../utils/jobDescriptionParserService.js";
 
 export const mockTestGeneratorEngine = async (req, res, next) => {
@@ -119,7 +123,7 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
       maxMarks,
     });
 
-    console.log(newTest);
+    console.log("New Test : ", newTest);
 
     res.status(201).json({ message: "Simulation Locked", data: newTest });
   } catch (error) {
@@ -241,3 +245,231 @@ export const evaluateAptiAnswers = async (req, res, next) => {
   }
 };
 
+export const createInterviewSummary = async (req, res, next) => {
+  try {
+    const currentUser = req.user;
+    const detailSubmitted = req.body;
+    console.log("Details received for interview summary: ", detailSubmitted);
+
+    if (!detailSubmitted) {
+      const error = new Error("No details submitted");
+      error.statusCode = 400;
+      return next(error);
+    }
+
+    const currentTest = await AptiTest.findById(detailSubmitted.testId);
+
+    if (!currentTest) {
+      const error = new Error("Test not found");
+      error.statusCode = 404;
+      return next(error);
+    }
+
+    console.log("CurrentTest Detail : ", currentTest);
+
+    let existingSummary = await InterviewSummary.findOne({
+      testId: detailSubmitted.testId,
+      userId: currentUser._id,
+    });
+
+    console.log("Existing Summary for the test: ", existingSummary);
+    // payloads here
+
+    let score;
+
+    let overallPercentile;
+
+    let maxScores;
+
+    let performance;
+
+    let timeAnalysis;
+
+    let scoredifference;
+
+    let improvement;
+
+    if (existingSummary) {
+      // on update phase
+
+      if (detailSubmitted.round === "dsa") {
+        // score calculation logic for dsa can be more complex based on test cases passed.
+        let totalTestCases = 0;
+        let passedTestCases = 0;
+        let codeArray = [];
+
+        Object.entries(detailSubmitted).forEach(([key, value]) => {
+          if (key === "testId" || key === "round" || key === "timeTaken")
+            return;
+
+          const results = value?.testCaseResult?.results || [];
+
+          totalTestCases += results.length;
+
+          results.forEach((test) => {
+            if (test.passed) {
+              passedTestCases++;
+            }
+          });
+
+          // 👇 questionId + code store karna
+          codeArray.push({
+            questionId: key,
+            codeSubmitted: value.code,
+          });
+        });
+
+        let dsaScore =
+          totalTestCases > 0
+            ? (passedTestCases / totalTestCases) * currentTest.maxMarks.dsa
+            : 0;
+
+        // tooked out score
+        score = {
+          dsa: {
+            score: dsaScore,
+            code: codeArray,
+          },
+        };
+
+        overallPercentile =
+          ((score.dsa.score +
+            (existingSummary.scores.apti || 0) +
+            (existingSummary.scores.hr || 0)) *
+            100) /
+          (currentTest.maxMarks.dsa +
+            currentTest.maxMarks.apti +
+            currentTest.maxMarks.hr);
+
+        maxScores = {
+          ...existingSummary.maxScores,
+          dsa: currentTest.maxMarks.dsa,
+        };
+
+        // pending
+        performance = {
+          ...existingSummary.performance,
+          dsa: {
+            totalQuestions: codeArray.length,
+            correct: passedTestCases,
+            wrong: totalTestCases - passedTestCases,
+            accuracy:
+              totalTestCases > 0 ? (passedTestCases / totalTestCases) * 100 : 0,
+          },
+        };
+        timeAnalysis = {
+          ...existingSummary.timeAnalysis,
+          totalTimeTaken:
+            (existingSummary.timeAnalysis?.totalTimeTaken || 0) +
+            detailSubmitted.timeTaken,
+          dsaTime: detailSubmitted.timeTaken,
+        };
+
+        scoredifference =
+          overallPercentile - (existingSummary.overallPercentile || 0);
+
+        improvement = {
+          scoreDiff: scoredifference,
+          dsaDiff:
+            scoredifference == 0
+              ? "Constant"
+              : scoredifference > 0
+                ? "Improving"
+                : "Declining",
+        };
+
+        existingSummary = await InterviewSummary.findOneAndUpdate(
+          { testId: detailSubmitted.testId },
+          {
+            $set: {
+              userId: currentUser._id,
+              attemptStatus: "in-progress",
+              scores: {
+                ...existingSummary.scores,
+                ...score,
+              },
+              overallPercentile,
+              maxScores,
+              performance,
+              timeAnalysis,
+              improvement,
+            },
+          },
+          { new: true },
+        );
+      } else if (detailSubmitted.round === "hr") {
+      }
+    } else {
+      // payload
+
+      // basically for apti
+
+      score = {
+        apti: detailSubmitted.score,
+      };
+
+      overallPercentile =
+        (score.apti * 100) /
+        (currentTest.maxMarks.dsa +
+          currentTest.maxMarks.apti +
+          currentTest.maxMarks.hr);
+
+      maxScores = {
+        apti: currentTest.maxMarks.apti,
+      };
+
+      // pending
+      performance = {
+        apti: {
+          totalQuestions: currentTest.ques_bank.apti.length,
+          correct: score.apti,
+          wrong: currentTest.ques_bank.apti.length - score.apti,
+          accuracy:
+            currentTest.ques_bank.apti.length > 0
+              ? (score.apti / currentTest.ques_bank.apti.length) * 100
+              : 0,
+        },
+      };
+
+      timeAnalysis = {
+        totalTimeTaken: detailSubmitted.timeTaken,
+        aptiTime: detailSubmitted.timeTaken,
+      };
+
+      scoredifference = overallPercentile;
+
+      improvement = {
+        scoreDiff: scoredifference,
+        aptiDiff:
+          scoredifference == 0
+            ? "Constant"
+            : scoredifference > 0
+              ? "Improving"
+              : "Declining",
+      };
+
+      const newSummary = await InterviewSummary.create({
+        userId: currentUser._id,
+        testId: currentTest._id,
+        attemptStatus: "in-progress",
+        difficulty: currentTest.difficulty,
+        scores: score,
+        overallPercentile,
+        maxScores,
+        performance,
+        timeAnalysis,
+        improvement,
+      });
+
+      existingSummary = newSummary;
+    }
+
+    console.log("New Summary Created: ", existingSummary);
+
+    res
+      .status(200)
+      .json({ message: "Progress Updated", data: existingSummary });
+  } catch (error) {
+    next(error);
+  }
+};

@@ -1,5 +1,13 @@
 import { Editor } from "@monaco-editor/react";
-import { AlignLeft, ArrowRight, Cog, FlaskConical } from "lucide-react";
+import {
+  AlignLeft,
+  ArrowRight,
+  CheckCircle2,
+  Cog,
+  FlaskConical,
+  ShieldCheck,
+  Trophy,
+} from "lucide-react";
 import React, { useEffect, useState } from "react";
 import ProblemCard from "../components/ProblemCard";
 import { useLocation } from "react-router-dom";
@@ -8,6 +16,7 @@ import toast from "react-hot-toast";
 import { runUserCode } from "../utils/runCode.js";
 import { validateUserCode } from "../utils/codeValidator.js";
 import ResultPanel from "../components/modals/ResultPanel.jsx";
+import AssessmentTimer from "../components/AssessmentTimer.jsx";
 
 const DSAExamination = () => {
   const location = useLocation();
@@ -23,6 +32,18 @@ const DSAExamination = () => {
   const [loading, setLoading] = useState(false);
 
   const [result, setResult] = useState(null);
+
+  const [detailSubmitted, setDetailSubmitted] = useState({
+    testId: details?.testId,
+    round: "dsa",
+    timeTaken: 0,
+  });
+
+  const [startTime, setStartTime] = useState(null);
+
+  useEffect(() => {
+    setStartTime(Date.now());
+  }, []);
 
   const [count, setCount] = useState(0);
 
@@ -119,10 +140,67 @@ All the best!`;
     }));
   };
 
-  const HandleFinalSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!testCaseResult) {
+      toast.error(
+        "Please run your code against the test cases before submitting.",
+      );
+      return;
+    }
+
+    const endTime = Date.now();
+
+    const durationMs = endTime - startTime;
+
+    const durationMinutes = Math.floor(durationMs / 60000);
+
+    console.log("Duration:", durationMinutes);
+
+    try {
+      // let totaltestCases = testCaseResult?.results?.length || 0;
+      // let passedTestCases = testCaseResult?.results?.filter(tc => tc.passed)?.length || 0;
+
+      setDetailSubmitted((prev) => ({
+        ...prev,
+        [questions[count]?._id]: { code: custom?.code, testCaseResult },
+      }));
+
+      toast.success(
+        "Code submitted for current question! You can proceed to next one.",
+      );
+    } catch (error) {
+      toast.error("Submission failed. Please try again.");
+    }
+  };
+  console.log("Details submitted so far: ", detailSubmitted);
+
+  const HandleFinalSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!detailSubmitted || Object.keys(detailSubmitted).length <= 2) {
+      toast.error(
+        "Please attempt at least one question before final submission.",
+      );
+      return;
+    }
+
+    console.log("Final details being submitted: ", detailSubmitted);
+
+    try {
+      const res = await api.patch("/user/interview-summary", detailSubmitted);
+
+      console.log("Final submission response: ", res?.data?.data);
+
+      // setResult(res?.data?.data?.overallPercentile);
+
+      toast.success("Final code submitted for evaluation!");
+    } catch (error) {
+      toast.error("Final submission failed. Please try again.");
+    }
+
     // Logic to submit the final code for evaluation
-    toast.success("Final code submitted for evaluation!");
   };
 
   useEffect(() => {
@@ -131,6 +209,12 @@ All the best!`;
 
   return (
     <>
+      <div>
+        <AssessmentTimer
+          limitInMinutes={details?.timelimit}
+          onTimeUp={HandleFinalSubmit}
+        />
+      </div>
       <div className="h-screen w-full bg-[#0f172a] flex overflow-hidden font-sans text-slate-400">
         {/* Left Section: Problem Card (More compact width to balance scaling) */}
         <div className="w-[38%] h-full border-r border-slate-800/60 bg-slate-950/40 overflow-y-auto flex flex-col">
@@ -238,13 +322,18 @@ All the best!`;
             {/* Action Buttons - Smaller padding & text */}
             <div className="flex items-center gap-2">
               <button
+                type="button"
                 onClick={executeCode}
                 className="flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-black uppercase tracking-wider transition-all shadow-lg shadow-emerald-900/10 active:scale-95"
               >
                 <div className="w-0 h-0 border-y-[3px] border-y-transparent border-l-[5px] border-l-white" />
                 Run
               </button>
-              <button className="px-3 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700 text-slate-400 text-[10px] font-black uppercase tracking-wider transition-all border border-slate-700">
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className="px-3 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700 text-slate-400 text-[10px] font-black uppercase tracking-wider transition-all border border-slate-700"
+              >
                 Submit Code
               </button>
               <button
@@ -341,21 +430,18 @@ All the best!`;
       </div>
       {result !== null && (
         <>
-          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
+          {/* <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
             <div
               data-aos="zoom-in"
               className="relative w-full max-w-md overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/90 shadow-2xl"
             >
-              {/* Top Decorative Banner */}
               <div className="h-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500" />
 
               <div className="p-8 md:p-10 text-center">
-                {/* Success Icon */}
                 <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/10 border border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
                   <Trophy className="h-10 w-10 text-emerald-500" />
                 </div>
 
-                {/* Header */}
                 <h2 className="text-2xl font-black text-white tracking-tight mb-2">
                   Assessment Completed!
                 </h2>
@@ -363,7 +449,6 @@ All the best!`;
                   Great effort! Your performance has been recorded.
                 </p>
 
-                {/* Score Display Card */}
                 <div className="mb-10 rounded-2xl bg-slate-800/50 border border-slate-700/50 p-6 backdrop-blur-sm">
                   <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-2">
                     Your Final Score
@@ -376,7 +461,6 @@ All the best!`;
                   </div>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="space-y-4">
                   <button
                     onClick={() =>
@@ -396,11 +480,10 @@ All the best!`;
                 </div>
               </div>
 
-              {/* Background Subtle Glow */}
               <div className="absolute -left-16 -top-16 h-32 w-32 bg-indigo-500/10 blur-[50px]" />
               <div className="absolute -right-16 -bottom-16 h-32 w-32 bg-emerald-500/10 blur-[50px]" />
             </div>
-          </div>
+          </div> */}
         </>
       )}
     </>
