@@ -25,7 +25,7 @@ const InterviewGauntlet = () => {
 
   const navigate = useNavigate();
 
-    const [activeRound, setActiveRound] = useState(0);
+  const [activeRound, setActiveRound] = useState(0);
 
   const fetchAssesement = async () => {
     try {
@@ -38,7 +38,6 @@ const InterviewGauntlet = () => {
     }
   };
 
-
   const handleTestStart = () => {
     let details;
 
@@ -47,7 +46,7 @@ const InterviewGauntlet = () => {
         details = {
           questionIds: assesement?.ques_bank?.apti,
           type: "apti",
-          testId:assesement._id,
+          testId: assesement._id,
           timelimit: assesement?.timelimit?.apti,
         };
 
@@ -57,21 +56,21 @@ const InterviewGauntlet = () => {
         details = {
           questionIds: assesement?.ques_bank?.dsa,
           type: "dsa",
-          testId:assesement._id,
+          testId: assesement._id,
           timelimit: assesement?.timelimit?.dsa,
         };
         navigate("/dsa-test", { state: { details } });
 
         break;
 
-        case 2:
+      case 2:
         details = {
-          testId:assesement._id,
-          type: "hr",
+          testId: assesement._id,
+          type: "basic",
           timelimit: assesement?.timelimit?.hr,
-          simulation:true,
+          simulation: true,
         };
-        navigate('/interview-page', { state: { details } });
+        navigate("/interview-page", { state: { details } });
         break;
       default:
         toast.error("There is no active round. Stay tuned!");

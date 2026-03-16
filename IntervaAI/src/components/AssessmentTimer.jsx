@@ -33,7 +33,7 @@ const AssessmentTimer = ({ limitInMinutes, onTimeUp }) => {
   const isUrgent = timeLeft < 120;
 
   return (
-    <div className="fixed top-20 right-8 z-[60] flex flex-col items-center gap-2">
+    <div className="z-[60] flex flex-col items-center gap-2">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -529,6 +529,12 @@ const updateHRInterviewSummary = async (
   currentTest,
 ) => {
   try {
+    const updatedTest = await AptiTest.findByIdAndUpdate(
+      detailSubmitted.testId,
+      { $inc: { activeRound: 1 } },
+      { new: true },
+    );
+
     // payloads
 
     let hrScore = (detailSubmitted.score * currentTest.maxMarks.hr) / 100 || 0;
@@ -607,6 +613,7 @@ const updateHRInterviewSummary = async (
 
       overallPercentile,
       maxScores,
+      timeAnalysis,
       performance,
       improvement,
     };
