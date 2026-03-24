@@ -504,7 +504,7 @@ import {
 import InterviewAnalysis from "../components/Resume Analysis/InterviewAnalysis.jsx";
 import toast from "react-hot-toast";
 import api from "../config/API.jsx";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AssessmentTimer from "../components/AssessmentTimer.jsx";
 
 const interviewOptions = [
@@ -515,6 +515,9 @@ const interviewOptions = [
 ];
 
 const InterviewPage = () => {
+
+  const navigate = useNavigate();
+
   const location = useLocation();
   const { details } = location.state || {};
   const isSimulation = details?.simulation || false;
@@ -597,7 +600,7 @@ const InterviewPage = () => {
   // ─── Load voices ──────────────────────────────────────────────────────────
   useEffect(() => {
     const loadVoices = () => {
-      const available = speechSynthesis.getVoices();
+      const available = speechSynthesis?.getVoices();
       setVoices(available);
       const engVoice = available.find((v) => v.lang.startsWith("en"));
       if (engVoice) setSelectedVoice(engVoice);
@@ -782,6 +785,9 @@ const InterviewPage = () => {
   // ─── Start interview ───────────────────────────────────────────────────────
   const startInterview = useCallback(() => {
     if (!questionsRef.current.length) return;
+
+      speechSynthesis.resume();
+
     setStarted(true);
     setCurrentIndex(0);
     speakText("Nice to meet you. Let's begin your interview.", () => {
@@ -857,7 +863,10 @@ const InterviewPage = () => {
     const durationMinutes = Math.floor((Date.now() - startTime) / 60000);
 
     try {
-      const detailSubmitted = { ...finalDetails, timeTaken: durationMinutes };
+      const detailSubmitted = { ...finalDetails, timeTaken: durationMinutes, totalQues: interviewQuestions?.length, score:analyzedResponse?.summary?.overall_score };
+
+      console.log("HR before submitting : ", detailSubmitted);
+
       const res = await api.patch("/user/interview-summary", detailSubmitted);
       console.log("Submission response:", res?.data?.data);
       toast.success("Round submitted successfully!");
@@ -902,7 +911,7 @@ const InterviewPage = () => {
               </div>
 
               {/* Timer (simulation only) */}
-              {isSimulation && (
+              {isSimulation && started && (
                 <AssessmentTimer
                   limitInMinutes={details?.timelimit}
                   onTimeUp={handleFinalSubmit}

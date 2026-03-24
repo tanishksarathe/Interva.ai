@@ -393,10 +393,11 @@ export const createInterviewSummary = async (req, res, next) => {
             (existingSummary.timeAnalysis?.aptiTime || 0) +
             detailSubmitted.timeTaken,
           dsaTime: detailSubmitted.timeTaken,
+
           avgTimePerSection:
-            (existingSummary.timeAnalysis.hrTime +
-              existingSummary.timeAnalysis.aptiTime +
-              detailSubmitted.timeTaken) /
+            ((existingSummary.timeAnalysis?.dsaTime || 0) +
+              (existingSummary.timeAnalysis?.aptiTime || 0) +
+              (detailSubmitted.timeTaken || 0)) /
             3,
         };
 
@@ -432,7 +433,7 @@ export const createInterviewSummary = async (req, res, next) => {
           },
           { new: true },
         );
-      } else if (detailSubmitted.round === "hr") {
+      } else if (["hr", "basic"].includes(detailSubmitted.round)) {
         const hrSummary = await updateHRInterviewSummary(
           detailSubmitted,
           existingSummary,
@@ -442,7 +443,10 @@ export const createInterviewSummary = async (req, res, next) => {
         existingSummary = await InterviewSummary.findOneAndUpdate(
           { testId: detailSubmitted.testId, userId: currentUser._id },
           {
-            $set: hrSummary,
+            $set: {
+              ...hrSummary,
+              updatedAt: new Date(),
+            },
           },
           { new: true },
         );
@@ -580,6 +584,7 @@ const updateHRInterviewSummary = async (
         (existingSummary.timeAnalysis?.aptiTime || 0) +
         detailSubmitted.timeTaken,
       hrTime: detailSubmitted.timeTaken,
+      
       avgTimePerSection:
         (existingSummary.timeAnalysis.dsaTime +
           existingSummary.timeAnalysis.aptiTime +
