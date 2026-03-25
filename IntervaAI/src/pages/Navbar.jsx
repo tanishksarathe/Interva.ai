@@ -11,6 +11,8 @@ import api from '../config/API'
 const Navbar = () => {
   const [onClose, setOnClose] = useState(false);
 
+  const navigate = useNavigate();
+
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
 
@@ -42,7 +44,9 @@ const Navbar = () => {
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
-          <Link to="/dashboard">Dashboard</Link>
+          <button onClick={login ? () => navigate("/dashboard") : () => setOpenLogin(true)}>
+            Dashboard
+          </button>
         </section>
         <section className="flex justify-center items-center gap-6" id="silo">
           <button className="py-2 flex gap-1 px-3 border rounded-3xl border-y-indigo-500">

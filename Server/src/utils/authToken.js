@@ -14,7 +14,7 @@ export const genToken = async (user, res) => {
     res.cookie("monaco", token, {
       maxAge: 1000 * 60 * 60 * 60,
       httpOnly: true,
-      secure: false,
+      secure: true, // true in production
       sameSite: "lax",
     });
     
