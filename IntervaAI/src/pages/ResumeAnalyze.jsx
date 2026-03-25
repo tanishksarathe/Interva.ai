@@ -61,7 +61,7 @@ const ResumeAnalyze = () => {
       const response = await api.post("/service/resume-analyze", formData);
 
       console.log(response.data);
-      setParsed(response.data);
+      setParsed(response?.data);
       setShow(true);
       toast.success("Resume Analyzed Successfully");
     } catch (error) {
@@ -102,7 +102,7 @@ const ResumeAnalyze = () => {
 
   const pdfPreviewUrl = file ? URL.createObjectURL(file) : null;
 
-  const arr = [1, 3, 4, 5, 6, 7, 8, 1, 3, 4, 5, 6, 7, 8];
+  const arr = [1, 3, 4, 5, 6, 7, 8, 1, 3, 4, 5, 6, 7, 8,1, 3, 4, 5, 6, 7, 8, 1, 3, 4, 5, 6, 7, 8];
 
   return (
     <>

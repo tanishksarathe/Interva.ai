@@ -55,6 +55,7 @@ const AptitudeTest = () => {
   };
 
   const handleSubmit = async () => {
+
     const endTime = Date.now();
 
     const durationMs = endTime - startTime;
@@ -62,10 +63,6 @@ const AptitudeTest = () => {
     const durationMinutes = Math.floor(durationMs / 60000);
 
     console.log("Duration:", durationMinutes);
-
-    setFinalDetails((prev) => ({ ...prev, timeTaken: durationMinutes }));
-
-    console.log("Final details being submitted: ", finalDetails);
 
     try {
       const res = await api.post("/user/evaluate-answers", {
@@ -76,10 +73,6 @@ const AptitudeTest = () => {
       //   console.log("Evaluation Result: ", res?.data?.score);
 
       // here we can also update the interview summary with the feedback and overall percentile and other details that we want to show in the interview summary page and then we can redirect the user to the interview summary page after submission of the test or we can show a modal with the score and a button to redirect to the interview summary page
-      setFinalDetails((prev) => ({
-        ...prev,
-        score: res?.data?.score,
-      }));
 
       const detailSubmitted = {
         ...finalDetails,
@@ -157,7 +150,7 @@ const AptitudeTest = () => {
 
         {/* Main Content Area - Full Width */}
         <main className="w-full px-4 md:px-12 py-10">
-          <div>
+          <div className="fixed top-20 right-2">
             <AssessmentTimer
               limitInMinutes={details?.timelimit}
               onTimeUp={handleSubmit}

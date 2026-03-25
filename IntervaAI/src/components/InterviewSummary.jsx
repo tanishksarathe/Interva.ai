@@ -15,10 +15,18 @@ import {
   CheckCircle2,
   XCircle,
 } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
+const InterviewSummary = () => {
+  const { state } = useLocation();
 
-const InterviewSummary = ({ user, summary }) => {
-    // Helpers for formatting
+  const user = state?.user;
+
+  const summary = state?.summary;
+
+  const conversation = state?.conversation;
+
+  // Helpers for formatting
   const formatDate = (dateStr) =>
     new Date(dateStr).toLocaleDateString("en-IN", {
       day: "numeric",
@@ -29,19 +37,19 @@ const InterviewSummary = ({ user, summary }) => {
   const stats = [
     {
       label: "Overall Percentile",
-      value: `${summary.overallPercentile.toFixed(1)}%`,
+      value: `${summary?.overallPercentile?.toFixed(1)}%`,
       icon: Award,
       color: "text-indigo-400",
     },
     {
       label: "Total Time",
-      value: `${summary.timeAnalysis.totalTimeTaken}m`,
+      value: `${summary?.timeAnalysis.totalTimeTaken}m`,
       icon: Clock,
       color: "text-amber-400",
     },
     {
       label: "Difficulty",
-      value: summary.difficulty,
+      value: summary?.difficulty,
       icon: BrainCircuit,
       color: "text-emerald-400",
     },
@@ -53,15 +61,16 @@ const InterviewSummary = ({ user, summary }) => {
       <div className="max-w-5xl mx-auto bg-slate-900/50 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl print:border-none print:shadow-none">
         {/* Header / Banner */}
         <div className="relative bg-gradient-to-r from-indigo-600 to-violet-700 p-8 md:p-12">
-          <div className="absolute top-0 right-0 p-8 opacity-10">
+          <div className="absolute top-0 flex right-0 p-8 opacity-10">
             <Award size={160} />
+            <div className="text-8xl text-black">{summary?.grade}</div>
           </div>
 
           <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
             <div className="relative">
               <img
-                src={user.photo.url}
-                alt={user.fullname}
+                src={user?.photo?.url}
+                alt={user?.fullname}
                 className="w-32 h-32 rounded-2xl object-cover border-4 border-white/20 shadow-2xl"
               />
               <div className="absolute -bottom-2 -right-2 bg-emerald-500 p-1.5 rounded-lg shadow-lg">
@@ -71,18 +80,18 @@ const InterviewSummary = ({ user, summary }) => {
 
             <div className="text-center md:text-left space-y-2">
               <h1 className="text-4xl font-black text-white tracking-tight">
-                {user.fullname}
+                {user?.fullname}
               </h1>
               <p className="text-indigo-100 font-medium tracking-wide flex items-center justify-center md:justify-start gap-2">
-                <GraduationCap size={18} /> {user.degree} • {user.branch} (
-                {user.passout})
+                <GraduationCap size={18} /> {user?.degree} • {user?.branch} (
+                {user?.passout})
               </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
                 <span className="flex items-center gap-1.5 text-xs text-indigo-100/80 bg-white/10 px-3 py-1 rounded-full backdrop-blur-md">
-                  <Mail size={12} /> {user.email}
+                  <Mail size={12} /> {user?.email}
                 </span>
                 <span className="flex items-center gap-1.5 text-xs text-indigo-100/80 bg-white/10 px-3 py-1 rounded-full backdrop-blur-md">
-                  <Phone size={12} /> {user.phone}
+                  <Phone size={12} /> {user?.phone}
                 </span>
               </div>
             </div>
@@ -91,7 +100,7 @@ const InterviewSummary = ({ user, summary }) => {
 
         {/* Quick Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 border-b border-slate-800">
-          {stats.map((stat, i) => (
+          {stats?.map((stat, i) => (
             <div
               key={i}
               className="flex items-center gap-4 p-6 border-r border-slate-800 last:border-r-0"
@@ -120,24 +129,24 @@ const InterviewSummary = ({ user, summary }) => {
               {[
                 {
                   name: "DSA Engineering",
-                  score: summary.scores.dsa.score,
-                  max: summary.maxScores.dsa,
+                  score: summary?.scores?.dsa?.score,
+                  max: summary?.maxScores?.dsa,
                   icon: Code2,
-                  perf: summary.performance.dsa,
+                  perf: summary?.performance?.dsa,
                 },
                 {
                   name: "Aptitude Logic",
-                  score: summary.scores.apti,
-                  max: summary.maxScores.apti,
+                  score: summary?.scores?.apti,
+                  max: summary?.maxScores?.apti,
                   icon: BrainCircuit,
-                  perf: summary.performance.apti,
+                  perf: summary?.performance?.apti,
                 },
                 {
                   name: "HR & Behavior",
-                  score: summary.scores.hr,
-                  max: summary.maxScores.hr,
+                  score: summary?.scores?.hr,
+                  max: summary?.maxScores?.hr,
                   icon: Users,
-                  perf: summary.performance.hr,
+                  perf: summary?.performance?.hr,
                 },
               ].map((item, i) => (
                 <div
@@ -147,23 +156,23 @@ const InterviewSummary = ({ user, summary }) => {
                   <div className="flex justify-between items-start mb-4">
                     <item.icon className="text-slate-500" size={20} />
                     <span className="text-[10px] font-bold text-slate-500 bg-slate-900 px-2 py-1 rounded">
-                      ACCURACY: {item.perf.accuracy}%
+                      ACCURACY: {item?.perf?.accuracy}%
                     </span>
                   </div>
-                  <h4 className="font-bold text-white mb-1">{item.name}</h4>
+                  <h4 className="font-bold text-white mb-1">{item?.name}</h4>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-3xl font-black text-indigo-400">
-                      {item.score}
+                      {item?.score}
                     </span>
                     <span className="text-slate-600 font-bold text-sm">
-                      / {item.max}
+                      / {item?.max}
                     </span>
                   </div>
                   {/* Mini Progress Bar */}
                   <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-indigo-500 rounded-full"
-                      style={{ width: `${(item.score / item.max) * 100}%` }}
+                      style={{ width: `${(item?.score / item?.max) * 100}%` }}
                     />
                   </div>
                 </div>
@@ -182,30 +191,30 @@ const InterviewSummary = ({ user, summary }) => {
                 {[
                   {
                     label: "DSA Problems",
-                    time: summary.timeAnalysis.dsaTime,
+                    time: summary?.timeAnalysis?.dsaTime,
                     color: "bg-indigo-500",
                   },
                   {
                     label: "Aptitude",
-                    time: summary.timeAnalysis.aptiTime,
+                    time: summary?.timeAnalysis?.aptiTime,
                     color: "bg-amber-500",
                   },
                   {
                     label: "HR Interview",
-                    time: summary.timeAnalysis.hrTime,
+                    time: summary?.timeAnalysis?.hrTime,
                     color: "bg-emerald-500",
                   },
                 ].map((t, i) => (
                   <div key={i} className="space-y-1">
                     <div className="flex justify-between text-[10px] font-bold uppercase">
-                      <span className="text-slate-400">{t.label}</span>
-                      <span className="text-slate-300">{t.time} min</span>
+                      <span className="text-slate-400">{t?.label}</span>
+                      <span className="text-slate-300">{t?.time} min</span>
                     </div>
                     <div className="h-1 w-full bg-slate-800 rounded-full">
                       <div
-                        className={`h-full ${t.color} rounded-full`}
+                        className={`h-full ${t?.color} rounded-full`}
                         style={{
-                          width: `${(t.time / summary.timeAnalysis.totalTimeTaken) * 100}%`,
+                          width: `${(t?.time / summary?.timeAnalysis?.totalTimeTaken) * 100}%`,
                         }}
                       />
                     </div>
@@ -223,11 +232,11 @@ const InterviewSummary = ({ user, summary }) => {
                 Interva AI Feedback
               </h3>
               <p className="text-slate-300 italic leading-relaxed font-medium">
-                "{summary.feedback}"
+                "{summary?.feedback}"
               </p>
               <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-emerald-500 uppercase">
                 <ArrowUpRight size={14} /> Performance: Stable (
-                {summary.improvement.hrDiff})
+                {summary?.improvement?.hrDiff})
               </div>
             </section>
           </div>
@@ -252,8 +261,64 @@ const InterviewSummary = ({ user, summary }) => {
                     </span>
                   </div>
                   <pre className="p-5 overflow-x-auto text-[11px] font-mono leading-relaxed text-slate-400 bg-[#0d1117]">
-                    {codeObj.codeSubmitted}
+                    {codeObj?.codeSubmitted}
                   </pre>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Behavioral Transcript Section */}
+          <section className="space-y-8 pt-12 border-t border-slate-800/50 print:border-slate-200 print:pt-8">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <h3 className="text-sm font-black uppercase tracking-[0.2em] text-indigo-500 border-l-4 border-indigo-500 pl-4">
+                  Behavioral Insights
+                </h3>
+                <p className="text-[10px] text-slate-500 font-bold uppercase pl-5 tracking-widest">
+                  Verbal Response Transcript • {conversation?.length} Questions
+                </p>
+              </div>
+              <div className="hidden md:block p-2 bg-slate-800/50 rounded-lg border border-slate-700 print:hidden">
+                <Users size={18} className="text-slate-500" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6">
+              {conversation?.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group relative bg-slate-900/30 border border-slate-800 rounded-2xl overflow-hidden transition-all hover:border-slate-700 print:bg-white print:border-slate-200 print:shadow-none"
+                >
+                  {/* Question Header */}
+                  <div className="bg-slate-900/80 px-6 py-4 border-b border-slate-800 flex items-start gap-4 print:bg-slate-50 print:border-slate-200">
+                    <span className="text-xs font-black text-indigo-500 bg-indigo-500/10 px-2 py-1 rounded-md border border-indigo-500/20 print:bg-white">
+                      Q{idx + 1}
+                    </span>
+                    <p className="text-[13px] font-bold text-slate-200 leading-snug pt-1 print:text-slate-900">
+                      {item?.question}
+                    </p>
+                  </div>
+
+                  {/* Answer Content */}
+                  <div className="p-6 relative">
+                    <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-slate-800 rounded-full print:bg-slate-200" />
+                    <div className="pl-6 space-y-2">
+                      <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-full bg-emerald-500" />
+                        Candidate Response
+                      </span>
+                      <p
+                        className={`text-[12px] leading-relaxed italic ${
+                          item?.answer === "no comments"
+                            ? "text-slate-600"
+                            : "text-slate-300 print:text-slate-800 font-medium"
+                        }`}
+                      >
+                        "{item?.answer}"
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -263,8 +328,8 @@ const InterviewSummary = ({ user, summary }) => {
         {/* Footer */}
         <div className="bg-slate-950/80 p-6 border-t border-slate-800 text-center">
           <p className="text-[9px] text-slate-600 font-black uppercase tracking-[0.3em]">
-            Report Generated on {formatDate(summary.createdAt.$date)} • Interva
-            AI Verification Engine
+            Report Generated on {formatDate(summary?.createdAt?.$date)} •
+            Interva AI Verification Engine
           </p>
         </div>
       </div>

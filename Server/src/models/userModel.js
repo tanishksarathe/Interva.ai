@@ -69,6 +69,10 @@ const userSchema = mongoose.Schema(
       required:true,
       default:"N/A"
     },
+    resume_score:{
+      type: Number,
+      default: 0,
+    },
     careerStage:{
       type: String,
       required:true,

@@ -17,6 +17,7 @@ import { runUserCode } from "../utils/runCode.js";
 import { validateUserCode } from "../utils/codeValidator.js";
 import ResultPanel from "../components/modals/ResultPanel.jsx";
 import AssessmentTimer from "../components/AssessmentTimer.jsx";
+import { DndContext } from "@dnd-kit/core";
 
 const DSAExamination = () => {
   const location = useLocation();
@@ -34,6 +35,8 @@ const DSAExamination = () => {
   const [loading, setLoading] = useState(false);
 
   const [result, setResult] = useState(null);
+
+  const [timerPosition, setTimerPosition] = useState({ x: 0, y: 0 });
 
   const [finalDetails, setFinalDetails] = useState({
     testId: details?.testId,
@@ -170,14 +173,15 @@ All the best!`;
   };
   console.log("Details submitted so far: ", finalDetails);
 
-  const updateRounds = async()=>{
+  const updateRounds = async () => {
     try {
-      const res = await api.patch(`/user/update-round-after-dsa/${details?.testId}`);
+      const res = await api.patch(
+        `/user/update-round-after-dsa/${details?.testId}`,
+      );
     } catch (error) {
       toast.error("Round update failed. Please try again.");
     }
-  }
-
+  };
 
   const HandleFinalSubmit = async (e) => {
     e.preventDefault();
@@ -197,18 +201,17 @@ All the best!`;
 
     console.log("Duration:", durationMinutes);
 
-    setFinalDetails((prev) => ({...prev, timeTaken:durationMinutes}));
+    setFinalDetails((prev) => ({ ...prev, timeTaken: durationMinutes }));
 
     console.log("Final details being submitted: ", finalDetails);
 
     try {
-
-    await updateRounds();
+      await updateRounds();
 
       const detailSubmitted = {
         ...finalDetails,
-         timeTaken: durationMinutes,
-       };
+        timeTaken: durationMinutes,
+      };
 
       const res = await api.patch("/user/interview-summary", detailSubmitted);
 
@@ -230,12 +233,31 @@ All the best!`;
 
   return (
     <>
-      <div>
-        <AssessmentTimer
-          limitInMinutes={details?.timelimit}
-          onTimeUp={HandleFinalSubmit}
-        />
-      </div>
+      <DndContext
+        onDragEnd={(event) => {
+          const { delta } = event;
+
+          setTimerPosition((prev) => ({
+            x: prev.x + delta.x,
+            y: prev.y + delta.y,
+          }));
+        }}
+      >
+        <div
+          style={{
+            position: "fixed",
+            top: 160,
+            right: 20,
+            transform: `translate(${timerPosition.x}px, ${timerPosition.y}px)`,
+            zIndex: 100,
+          }}
+        >
+          <AssessmentTimer
+            limitInMinutes={details?.timelimit}
+            onTimeUp={HandleFinalSubmit}
+          />
+        </div>
+      </DndContext>
       <div className="h-screen w-full bg-[#0f172a] flex overflow-hidden font-sans text-slate-400">
         {/* Left Section: Problem Card (More compact width to balance scaling) */}
         <div className="w-[38%] h-full border-r border-slate-800/60 bg-slate-950/40 overflow-y-auto flex flex-col">

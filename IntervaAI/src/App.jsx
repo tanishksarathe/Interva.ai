@@ -25,6 +25,7 @@ import InterviewGauntlet from "./pages/InterviewGauntlet";
 import PreviousTestsPage from "./components/modals/PreviousTestsPage";
 import AptitudeTest from "./MockInterviewEnvironment.jsx/AptitudeTest";
 import DSAExamination from "./MockInterviewEnvironment.jsx/DSAExamination";
+import InterviewSummary from "./components/InterviewSummary";
 
 
 const routes = createBrowserRouter([
@@ -39,6 +40,10 @@ const routes = createBrowserRouter([
   {
     path: "/dashboard/studymaterial",
     element: <StudyMaterial />,
+  },
+  {
+    path: "/interview-report",
+    element: <InterviewSummary />,
   },
   {
     path: "/interview-gauntlet/:id",

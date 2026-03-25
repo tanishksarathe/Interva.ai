@@ -1,9 +1,13 @@
 import fs from "fs";
-import { anyLanguageToJavascriptConvertor, resumeAnalyzeWithJD } from "../utils/resumeAnalyzePromptService.js";
+import {
+  anyLanguageToJavascriptConvertor,
+  resumeAnalyzeWithJD,
+} from "../utils/resumeAnalyzePromptService.js";
 import { createRequire } from "module";
 import { dsaEvaluateAI } from "../utils/dsaEvaluationService.js";
 import { interviewAnalysisHR } from "../utils/interviewAnalysis.js";
 import { formatTranscript } from "../utils/helper.js";
+import User from "../models/userModel.js";
 
 const require = createRequire(import.meta.url);
 const { PDFParse } = require("pdf-parse");
@@ -49,9 +53,13 @@ export const resumeAnalyzewithGemini = async (req, res, next) => {
 
     const result = await resumeAnalyzeWithJD(resumeText, jd);
 
-    console.log("Result collected at controller", result);
-
     fs.unlinkSync(req.file.path);
+
+    await User.findByIdAndUpdate(
+      req.user._id,
+      { $set: { resume_score: result.ats_score || 0 } },
+      { new: true },
+    );
 
     res.json(result);
   } catch (error) {
@@ -109,7 +117,7 @@ export const interviewAnalysis = async (req, res, next) => {
 
 export const convertIntoJavaScript = async (req, res, next) => {
   try {
-    const  custom  = req.body;
+    const custom = req.body;
 
     console.log("Custom Object Received : ", custom);
 
@@ -129,7 +137,6 @@ export const convertIntoJavaScript = async (req, res, next) => {
     res
       .status(200)
       .json({ message: "Code Converted to JavaScript", data: result });
-
   } catch (error) {
     next(error);
   }

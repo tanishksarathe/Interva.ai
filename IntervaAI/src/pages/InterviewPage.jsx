@@ -506,6 +506,7 @@ import toast from "react-hot-toast";
 import api from "../config/API.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import AssessmentTimer from "../components/AssessmentTimer.jsx";
+import { useAuth } from "../config/AuthContext.jsx";
 
 const interviewOptions = [
   { name: "Basic Interview", val: BasicInterviewQuestions, role: "basic" },
@@ -515,8 +516,9 @@ const interviewOptions = [
 ];
 
 const InterviewPage = () => {
-
   const navigate = useNavigate();
+
+  const { user } = useAuth();
 
   const location = useLocation();
   const { details } = location.state || {};
@@ -786,7 +788,7 @@ const InterviewPage = () => {
   const startInterview = useCallback(() => {
     if (!questionsRef.current.length) return;
 
-      speechSynthesis.resume();
+    speechSynthesis.resume();
 
     setStarted(true);
     setCurrentIndex(0);
@@ -863,7 +865,12 @@ const InterviewPage = () => {
     const durationMinutes = Math.floor((Date.now() - startTime) / 60000);
 
     try {
-      const detailSubmitted = { ...finalDetails, timeTaken: durationMinutes, totalQues: interviewQuestions?.length, score:analyzedResponse?.summary?.overall_score };
+      const detailSubmitted = {
+        ...finalDetails,
+        timeTaken: durationMinutes,
+        totalQues: interviewQuestions?.length,
+        score: analyzedResponse?.summary?.overall_score,
+      };
 
       console.log("HR before submitting : ", detailSubmitted);
 
@@ -871,8 +878,7 @@ const InterviewPage = () => {
       console.log("Submission response:", res?.data?.data);
       toast.success("Round submitted successfully!");
 
-      navigate(`/interview-gauntlet/${details.testId}`);
-
+      navigate(`/interview-report`, { state: {user:user, summary:res?.data?.data, conversation:conversation} });
     } catch (error) {
       toast.error("Error submitting round details.");
       console.error(error);
@@ -885,6 +891,8 @@ const InterviewPage = () => {
     : 0;
 
   // ─── Render ───────────────────────────────────────────────────────────────
+
+
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-6">

@@ -434,6 +434,9 @@ export const createInterviewSummary = async (req, res, next) => {
           { new: true },
         );
       } else if (["hr", "basic"].includes(detailSubmitted.round)) {
+
+        console.log("Else if block")
+
         const hrSummary = await updateHRInterviewSummary(
           detailSubmitted,
           existingSummary,
@@ -532,12 +535,21 @@ const updateHRInterviewSummary = async (
   existingSummary,
   currentTest,
 ) => {
+
+  console.log("Update Interview Summary method")
+
   try {
+  
+  
+
     const updatedTest = await AptiTest.findByIdAndUpdate(
       detailSubmitted.testId,
       { $inc: { activeRound: 1 } },
       { new: true },
     );
+
+
+    console.log("Finally Updating the HR round details")
 
     // payloads
 
@@ -584,7 +596,7 @@ const updateHRInterviewSummary = async (
         (existingSummary.timeAnalysis?.aptiTime || 0) +
         detailSubmitted.timeTaken,
       hrTime: detailSubmitted.timeTaken,
-      
+
       avgTimePerSection:
         (existingSummary.timeAnalysis.dsaTime +
           existingSummary.timeAnalysis.aptiTime +
@@ -609,7 +621,7 @@ const updateHRInterviewSummary = async (
       userId: existingSummary.userId,
       testId: existingSummary.testId,
       attemptStatus: "completed",
-      feedback: detailSubmitted.feedback,
+      feedback: detailSubmitted.feedback.trim(),
       scores: {
         ...existingSummary.scores,
         ...score,
@@ -628,3 +640,29 @@ const updateHRInterviewSummary = async (
     throw error;
   }
 };
+
+
+export const getInterviewReports = async(req, res, next) =>{
+
+  try {
+
+    const currentUser = req.user._id;
+
+    const response = await InterviewSummary.find({ userId:currentUser }).sort({ createdAt: -1 });
+
+    if(!response || response.length === 0){
+      const error = new Error("No interview summary found for the user");
+      error.statusCode = 404;
+      return next(error);
+    }
+
+    res.status(200).json({
+      message : "Interview summary fetched successfully",
+      data : response,
+    });
+
+  } catch (error) {
+    next(error);
+  }
+
+}
