@@ -15,7 +15,7 @@ export const genToken = async (user, res) => {
       maxAge: 1000 * 60 * 60 * 60,
       httpOnly: true,
       secure: true, // true in production
-      sameSite: "lax",
+      sameSite: "none",
     });
     
   } catch (error) {
