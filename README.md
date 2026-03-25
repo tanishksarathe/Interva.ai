@@ -441,7 +441,7 @@ VITE_API_URL=http://localhost:5000
 npm run dev
 ```
 
-Frontend will be available at `http://localhost:5173`
+Frontend will be available at `https://intervaai.netlify.app/`
 
 ---
 
