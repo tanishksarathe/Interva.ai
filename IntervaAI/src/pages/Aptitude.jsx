@@ -41,7 +41,7 @@ const Aptitude = () => {
 
       console.log("Encoded", encoded);
 
-      const res = await api.get(`/user/get-practice-topic/${encoded}`);
+      const res = await api.get(`${import.meta.env.VITE_GET_PRACTICE_TOPICS}/${encoded}`);
 
       console.log(res?.data?.data);
 

@@ -89,7 +89,7 @@ All the best!`;
 
   const fetchDSAQuestions = async () => {
     try {
-      const res = await api.post(`/user/get-live-questions`, details);
+      const res = await api.post(`${import.meta.env.VITE_GET_LIVE_QUESTIONS}`, details);
       setQuestions(res?.data?.data);
     } catch (error) {
       console.log(error);
@@ -102,7 +102,7 @@ All the best!`;
     let userCode;
     try {
       if (custom?.language !== "javascript") {
-        const res = await api.post("/service/convert-javascript", custom);
+        const res = await api.post(import.meta.env.VITE_CONVERT_JAVASCRIPT, custom);
         userCode = res?.data?.data;
       } else {
         userCode = custom?.code;
@@ -176,7 +176,7 @@ All the best!`;
   const updateRounds = async () => {
     try {
       const res = await api.patch(
-        `/user/update-round-after-dsa/${details?.testId}`,
+        `${import.meta.env.VITE_UPDATE_ROUND_DSA}/${details?.testId}`,
       );
     } catch (error) {
       toast.error("Round update failed. Please try again.");
@@ -213,7 +213,7 @@ All the best!`;
         timeTaken: durationMinutes,
       };
 
-      const res = await api.patch("/user/interview-summary", detailSubmitted);
+      const res = await api.patch(import.meta.env.VITE_INTERVIEW_SUMMARY, detailSubmitted);
 
       console.log("Final submission response: ", res?.data?.data);
 

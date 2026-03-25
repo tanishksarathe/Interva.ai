@@ -26,7 +26,7 @@ const Login = ({ setOpenLogin, setOpenRegister }) => {
     setLoading(true);
 
     try {
-      const response = await api.post("/auth/login", details);
+      const response = await api.post(import.meta.env.VITE_LOGIN, details);
       setUser(response.data.data);
 
       setLogin(true);

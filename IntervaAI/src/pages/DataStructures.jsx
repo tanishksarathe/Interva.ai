@@ -101,7 +101,7 @@ const DataStructures = () => {
 
   const fetchDSAQuestions = async () => {
     try {
-      const res = await api.get(`/user/get-practice-topic-dsa/${encoded}`);
+      const res = await api.get(`${import.meta.env.VITE_PRACTICE_TOPICS_DSA}/${encoded}`);
 
       console.log("DSA", res?.data?.data);
 
@@ -114,7 +114,7 @@ const DataStructures = () => {
   const handleRun = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post("/service/evaluate-dsa", custom);
+      const res = await api.post(import.meta.env.VITE_EVALUATE_DSA, custom);
 
       console.log(res?.data);
 

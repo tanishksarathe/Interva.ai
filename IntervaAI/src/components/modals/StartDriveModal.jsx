@@ -52,7 +52,7 @@ const StartDriveModal = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post("/interview/test-generator", details);
+      const res = await api.post(import.meta.env.VITE_TEST_GENERATE, details);
       console.log("Generated Test : ", res?.data?.data?._id);
       toast.success(res?.data?.message || "Test Created");
 

@@ -29,7 +29,7 @@ const InterviewGauntlet = () => {
 
   const fetchAssesement = async () => {
     try {
-      const res = await api.get(`/user/get-live-test/${id}`);
+      const res = await api.get(`${import.meta.env.VITE_GET_LIVE_TEST}/${id}`);
       setAssesement(res?.data?.data);
       setActiveRound(res?.data?.data?.activeRound);
       console.log("Active Round from API: ", res?.data?.data?.activeRound);

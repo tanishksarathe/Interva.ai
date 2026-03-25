@@ -58,7 +58,7 @@ const ResumeAnalyze = () => {
 
       console.log("Check 1 for resume : ", formData);
 
-      const response = await api.post("/service/resume-analyze", formData);
+      const response = await api.post(import.meta.env.VITE_RESUME_ANALYZE, formData);
 
       console.log(response.data);
       setParsed(response?.data);

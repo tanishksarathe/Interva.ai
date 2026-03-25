@@ -45,7 +45,7 @@ const AptitudeTest = () => {
     console.log("Received details in AptitudeTest component: ", details);
 
     try {
-      const res = await api.post("/user/get-live-questions", details);
+      const res = await api.post(import.meta.env.VITE_GET_LIVE_QUESTIONS, details);
       //   console.log(res?.data?.data);
       setQuestionsData(res?.data?.data);
       //   toast.success("Successfully Fetched All Questions");
@@ -65,7 +65,7 @@ const AptitudeTest = () => {
     console.log("Duration:", durationMinutes);
 
     try {
-      const res = await api.post("/user/evaluate-answers", {
+      const res = await api.post(import.meta.env.VITE_USER_EVALUATE_ANSWERS, {
         answers: selectedAnswers,
         testId: details.testId, // may be
       });
@@ -81,7 +81,7 @@ const AptitudeTest = () => {
       }
 
       const response = await api.patch(
-        "/user/interview-summary",
+        import.meta.env.VITE_INTERVIEW_SUMMARY,
         detailSubmitted,
       );
 

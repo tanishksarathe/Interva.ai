@@ -35,7 +35,7 @@ const EditProfileModal = ({ onClose }) => {
     try {
       console.log("Details before sending to backend : ", details);
 
-      const res = await api.put("/user/update", details);
+      const res = await api.put(import.meta.env.VITE_UPDATE_PROFILE, details);
 
       console.log("Response Data : ", res.data.data);
 
@@ -76,7 +76,7 @@ const EditProfileModal = ({ onClose }) => {
     console.log("Form Data that has to be send to backend : ", form_data);
 
     try {
-      const res = await api.patch("/user/update-profile-photo", form_data);
+      const res = await api.patch(import.meta.env.VITE_UPDATE_PHOTO, form_data);
 
       console.log("Response from handle photo change", res);
 

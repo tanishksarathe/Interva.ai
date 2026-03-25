@@ -43,7 +43,7 @@ const DashboardN = () => {
 
   const fetchALLInterviewSummaries = async () => {
     try {
-      const response = await api.get("/interview/interview-report");
+      const response = await api.get(import.meta.env.VITE_INTERVIEW_REPORT);
       setDetails(response?.data?.data);
     } catch (error) {
       console.log(error);

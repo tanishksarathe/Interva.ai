@@ -37,7 +37,7 @@ const Register = ({ setOpenRegister, setOpenLogin }) => {
     setLoading(true);
 
     try {
-      const response = await api.post("/auth/register", details);
+      const response = await api.post(import.meta.env.VITE_REGISTER, details);
 
       console.log(response.data);
 

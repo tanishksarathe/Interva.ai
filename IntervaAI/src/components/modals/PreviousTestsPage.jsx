@@ -47,7 +47,7 @@ const PreviousTestsPage = () => {
 
   const fetchPreviousTests = async () => {
     try {
-      const response = await api.get("/user/all-previous-tests");
+      const response = await api.get(import.meta.env.VITE_ALL_PREV_TESTS);
       console.log(response?.data?.data);
       setPrevious(response?.data?.data);
     } catch (error) {
