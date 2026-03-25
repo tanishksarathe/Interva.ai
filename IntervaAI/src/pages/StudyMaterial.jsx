@@ -32,8 +32,16 @@ import {
   directionSense,
   logicalPuzzlesEasy,
   orderingRanking,
+  percentages,
+  permutationsAndCombinations,
+  probability,
+  profitAndLoss,
+  progressions,
+  quadraticEquations,
+  ratioAndProportion,
   seriesAlphabetsNumbers,
   syllogismBasic,
+  timeAndDistance,
   vennDiagram,
 } from "../assets/study";
 import { useAuth } from "../config/AuthContext";
@@ -58,6 +66,14 @@ const StudyMaterial = () => {
     "Syllogism (Basic)": syllogismBasic,
     "Venn Diagrams (2-set & 3-set)": vennDiagram,
     "Logical Puzzles (Easy)": logicalPuzzlesEasy,
+    "Permutations and Combinations": permutationsAndCombinations,
+    "Probability": probability,
+    "Quadratic Equations": quadraticEquations,
+    "Progressions (AP, GP, HP)": progressions,
+    "Time and Distance": timeAndDistance,
+    "Percentages": percentages,
+    "Profit and Loss": profitAndLoss,
+    "Ratio and Proportion": ratioAndProportion,
   };
 
   const [toggle, setToggle] = useState({

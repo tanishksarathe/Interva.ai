@@ -8,8 +8,7 @@ export const topicsAnalyzeWithJD = async (jobDescription) => {
     baseURL: "https://api.groq.com/openai/v1",
   });
 
-  const prompt = 
-`You are an expert technical recruiter and interview designer.
+  const prompt = `You are an expert technical recruiter and interview designer.
 
 You will receive a JOB DESCRIPTION.
 
@@ -36,8 +35,10 @@ STRICT RULES:
 ALLOWED_APTITUDE_TOPICS:
 
 <series |
+time_and_distance |percentages |profit_and_loss |ratio_and_proportion |
 direction_sense |
 blood_relations |
+permutations_combinations |probability | quadratic_equations |progressions |
 coding_decoding |
 analogy |
 classification |
@@ -112,8 +113,6 @@ ${jobDescription}`;
     throw new Error("Failed to generate ATS analysis");
   }
 };
-
-
 
 /*
 greedy_algorithms |

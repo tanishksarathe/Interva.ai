@@ -1,5 +1,865 @@
 [
   {
+    "question": "A car travels 240 km in 4 hours. What is its average speed?",
+    "options": ["50 km/h", "60 km/h", "70 km/h", "80 km/h"],
+    "correct_answer": "60 km/h",
+    "topic": "time_and_distance",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A cyclist covers 90 km at a speed of 15 km/h. How long does the journey take?",
+    "options": ["4 hours", "5 hours", "6 hours", "7 hours"],
+    "correct_answer": "6 hours",
+    "topic": "time_and_distance",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A person walks at 5 km/h and covers a distance in 3 hours. What is the distance?",
+    "options": ["10 km", "12 km", "15 km", "18 km"],
+    "correct_answer": "15 km",
+    "topic": "time_and_distance",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A train travels at 80 km/h. How far does it travel in 2.5 hours?",
+    "options": ["160 km", "180 km", "200 km", "220 km"],
+    "correct_answer": "200 km",
+    "topic": "time_and_distance",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Two cities are 300 km apart. A bus takes 5 hours to complete the journey. What is its speed?",
+    "options": ["50 km/h", "60 km/h", "65 km/h", "70 km/h"],
+    "correct_answer": "60 km/h",
+    "topic": "time_and_distance",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A train 300 m long passes a stationary pole in 15 seconds. What is the speed of the train in km/h?",
+    "options": ["60 km/h", "66 km/h", "72 km/h", "78 km/h"],
+    "correct_answer": "72 km/h",
+    "topic": "time_and_distance",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Person A walks from P to Q at 4 km/h and returns at 6 km/h. What is the average speed for the entire journey?",
+    "options": ["4.5 km/h", "4.8 km/h", "5 km/h", "5.2 km/h"],
+    "correct_answer": "4.8 km/h",
+    "topic": "time_and_distance",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Two trains start at the same time from cities A and B, 560 km apart, and travel toward each other at 70 km/h and 50 km/h. After how many hours do they meet?",
+    "options": ["4 h 30 min", "4 h 40 min", "5 h", "3 h 30 min"],
+    "correct_answer": "4 h 40 min",
+    "topic": "time_and_distance",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A man covers half the distance at 20 km/h and the other half at 30 km/h. What is his average speed for the whole journey?",
+    "options": ["24 km/h", "25 km/h", "26 km/h", "27 km/h"],
+    "correct_answer": "24 km/h",
+    "topic": "time_and_distance",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A thief runs at 10 km/h and a policeman chases at 12 km/h. If the thief has a 200 m head start, how long will it take the policeman to catch the thief?",
+    "options": ["4 min", "5 min", "6 min", "8 min"],
+    "correct_answer": "6 min",
+    "topic": "time_and_distance",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A train overtakes two persons walking in the same direction at 2 km/h and 4 km/h and passes them in 9 seconds and 10 seconds respectively. What is the length of the train?",
+    "options": ["45 m", "50 m", "54 m", "60 m"],
+    "correct_answer": "50 m",
+    "topic": "time_and_distance",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A boat goes 30 km upstream and 44 km downstream in 10 hours. It also goes 40 km upstream and 55 km downstream in 13 hours. Find the speed of the boat in still water.",
+    "options": ["6 km/h", "7 km/h", "8 km/h", "9 km/h"],
+    "correct_answer": "8 km/h",
+    "topic": "time_and_distance",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Two trains, each 200 m long, run on parallel tracks. When running in the same direction, the faster train passes the slower one in 40 seconds. When running in opposite directions, they pass each other in 10 seconds. Find the speeds of the two trains.",
+    "options": [
+      "25 m/s and 15 m/s",
+      "30 m/s and 10 m/s",
+      "25 m/s and 5 m/s",
+      "20 m/s and 10 m/s"
+    ],
+    "correct_answer": "25 m/s and 15 m/s",
+    "topic": "time_and_distance",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Three runners A, B, and C start simultaneously from the same point on a circular track of 1200 m. A runs at 12 m/s, B at 8 m/s, and C at 6 m/s. After how many seconds will all three meet again at the starting point?",
+    "options": ["400 s", "500 s", "600 s", "1200 s"],
+    "correct_answer": "600 s",
+    "topic": "time_and_distance",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A car and a truck start from the same point. The truck leaves at 7:00 AM at 40 km/h and the car leaves at 9:00 AM at 60 km/h. At what time does the car overtake the truck?",
+    "options": ["12:00 PM", "1:00 PM", "12:30 PM", "11:00 AM"],
+    "correct_answer": "1:00 PM",
+    "topic": "time_and_distance",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is 25% of 200?",
+    "options": ["40", "50", "55", "60"],
+    "correct_answer": "50",
+    "topic": "percentages",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A student scored 72 out of 120 in an exam. What is the percentage score?",
+    "options": ["55%", "60%", "65%", "70%"],
+    "correct_answer": "60%",
+    "topic": "percentages",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A price increases from ₹400 to ₹500. What is the percentage increase?",
+    "options": ["20%", "25%", "30%", "33%"],
+    "correct_answer": "25%",
+    "topic": "percentages",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If 40% of a number is 80, what is the number?",
+    "options": ["160", "180", "200", "220"],
+    "correct_answer": "200",
+    "topic": "percentages",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "30% of 150 is how much more than 20% of 100?",
+    "options": ["15", "20", "25", "30"],
+    "correct_answer": "25",
+    "topic": "percentages",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In an election, candidate A received 55% of the total votes and won by 3,000 votes. How many total votes were cast?",
+    "options": ["25,000", "28,000", "30,000", "35,000"],
+    "correct_answer": "30,000",
+    "topic": "percentages",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A shopkeeper marks the price of an article 40% above cost price and offers a 20% discount. What is the net profit or loss percentage?",
+    "options": ["10% profit", "12% profit", "10% loss", "12% loss"],
+    "correct_answer": "12% profit",
+    "topic": "percentages",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "The population of a town increases by 10% every year. If the current population is 12,100, what was it 2 years ago?",
+    "options": ["9,000", "10,000", "10,800", "11,000"],
+    "correct_answer": "10,000",
+    "topic": "percentages",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If A's salary is 20% more than B's, by what percent is B's salary less than A's?",
+    "options": ["15%", "16.67%", "20%", "25%"],
+    "correct_answer": "16.67%",
+    "topic": "percentages",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A mixture of 80 litres contains milk and water in the ratio 3:1. How much water must be added so that milk becomes 60% of the total mixture?",
+    "options": ["10 L", "12 L", "13.33 L", "15 L"],
+    "correct_answer": "13.33 L",
+    "topic": "percentages",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Two successive discounts of 20% and 15% are equal to a single discount of what percentage?",
+    "options": ["30%", "32%", "35%", "38%"],
+    "correct_answer": "32%",
+    "topic": "percentages",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A's income is 30% more than B's. B's income is 25% more than C's. By what percentage is A's income more than C's?",
+    "options": ["55%", "57.5%", "62.5%", "65%"],
+    "correct_answer": "62.5%",
+    "topic": "percentages",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In a college, 60% of students are boys. 50% of boys and 40% of girls passed an exam. What percentage of students passed the exam?",
+    "options": ["42%", "44%", "46%", "48%"],
+    "correct_answer": "46%",
+    "topic": "percentages",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A shopkeeper increases the price by 25%, but his sales volume drops by 20%. What is the net effect on his revenue?",
+    "options": ["0% change", "5% increase", "5% decrease", "10% increase"],
+    "correct_answer": "0% change",
+    "topic": "percentages",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In three successive years, the percentage increases in the price of an article are 10%, 20%, and 25%. The price at the end of the third year is ₹X. What was the original price if X = 3300?",
+    "options": ["₹1,900", "₹2,000", "₹2,100", "₹2,200"],
+    "correct_answer": "₹2,000",
+    "topic": "percentages",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A book is bought for ₹80 and sold for ₹100. What is the profit percentage?",
+    "options": ["20%", "22%", "25%", "28%"],
+    "correct_answer": "25%",
+    "topic": "profit_and_loss",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A toy is sold for ₹90 at a loss of 10%. What is the cost price?",
+    "options": ["₹95", "₹100", "₹105", "₹110"],
+    "correct_answer": "₹100",
+    "topic": "profit_and_loss",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "An article is bought for ₹500 and sold at a 20% profit. What is the selling price?",
+    "options": ["₹580", "₹590", "₹600", "₹610"],
+    "correct_answer": "₹600",
+    "topic": "profit_and_loss",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A trader buys 10 pens for ₹80 and sells each pen for ₹10. What is the profit or loss percentage?",
+    "options": ["15% profit", "20% profit", "25% profit", "10% loss"],
+    "correct_answer": "25% profit",
+    "topic": "profit_and_loss",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If the cost price is ₹150 and the loss is ₹30, what is the loss percentage?",
+    "options": ["15%", "18%", "20%", "25%"],
+    "correct_answer": "20%",
+    "topic": "profit_and_loss",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A shopkeeper marks goods at 40% above cost price and allows a 25% discount. What is the net profit percentage?",
+    "options": ["3%", "5%", "7%", "10%"],
+    "correct_answer": "5%",
+    "topic": "profit_and_loss",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "By selling an article for ₹144, a person gains as much as he loses by selling it for ₹96. What is the cost price?",
+    "options": ["₹110", "₹115", "₹120", "₹125"],
+    "correct_answer": "₹120",
+    "topic": "profit_and_loss",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A sells goods to B at a 10% profit. B sells to C at a 10% loss. What is the net profit/loss to A and B combined if A bought the goods for ₹1000?",
+    "options": ["No net change", "₹11 loss", "₹11 profit", "₹10 profit"],
+    "correct_answer": "₹11 loss",
+    "topic": "profit_and_loss",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A dealer buys an article for ₹700, spends ₹100 on repairs, and sells it for ₹880. What is his profit percentage?",
+    "options": ["8%", "10%", "11%", "12%"],
+    "correct_answer": "10%",
+    "topic": "profit_and_loss",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A vendor bought oranges at 6 for ₹10 and sold them at 4 for ₹10. What is the profit or loss percentage?",
+    "options": ["33.3% loss", "33.3% profit", "50% profit", "50% loss"],
+    "correct_answer": "50% profit",
+    "topic": "profit_and_loss",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A merchant mixes two types of rice costing ₹20/kg and ₹30/kg in a 3:2 ratio. He sells the mixture at ₹28/kg. What is his profit percentage?",
+    "options": ["8%", "10%", "12%", "15%"],
+    "correct_answer": "12%",
+    "topic": "profit_and_loss",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A dishonest shopkeeper uses a 900 g weight instead of 1 kg. He also claims 10% profit on cost price. What is his actual profit percentage?",
+    "options": ["18.9%", "20%", "22.2%", "25%"],
+    "correct_answer": "22.2%",
+    "topic": "profit_and_loss",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If goods are sold at 2/3rd of the cost price, find the loss percentage.",
+    "options": ["25%", "30%", "33.33%", "40%"],
+    "correct_answer": "33.33%",
+    "topic": "profit_and_loss",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A person sells two watches for ₹990 each. On one he gains 10% and on the other he loses 10%. What is the overall gain or loss?",
+    "options": ["1% gain", "1% loss", "No gain/loss", "2% loss"],
+    "correct_answer": "1% loss",
+    "topic": "profit_and_loss",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A trader marks his goods 30% above cost price and allows a discount. He still makes a 4% profit. What discount does he give?",
+    "options": ["16%", "18%", "20%", "22%"],
+    "correct_answer": "20%",
+    "topic": "profit_and_loss",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Divide ₹720 among A, B, and C in the ratio 3:4:5. How much does B get?",
+    "options": ["₹180", "₹240", "₹280", "₹300"],
+    "correct_answer": "₹240",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If the ratio of boys to girls in a class is 5:3 and the total students is 80, how many girls are there?",
+    "options": ["25", "28", "30", "32"],
+    "correct_answer": "30",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "The ratio of two numbers is 2:3 and their sum is 50. What is the larger number?",
+    "options": ["20", "25", "30", "35"],
+    "correct_answer": "30",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If 4 workers can complete a task in 12 days, how many days would 6 workers take?",
+    "options": ["6 days", "7 days", "8 days", "9 days"],
+    "correct_answer": "8 days",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A map uses a scale of 1:50000. If two cities are 4 cm apart on the map, what is the actual distance?",
+    "options": ["1 km", "1.5 km", "2 km", "2.5 km"],
+    "correct_answer": "2 km",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "The salaries of A, B, and C are in the ratio 2:3:5. If the increments are 15%, 10%, and 20% respectively, what will be the new ratio of their salaries?",
+    "options": ["3:3:6", "23:33:60", "2:3:5", "23:30:60"],
+    "correct_answer": "23:33:60",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A and B together have ₹1,500. If 4/15 of A's amount is equal to 2/5 of B's amount, how much does A have?",
+    "options": ["₹900", "₹950", "₹1,000", "₹1,050"],
+    "correct_answer": "₹1,000",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Two numbers are in the ratio 3:5. If 6 is added to each, the ratio becomes 2:3. What are the numbers?",
+    "options": ["18 and 30", "24 and 40", "15 and 25", "12 and 20"],
+    "correct_answer": "18 and 30",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Gold and silver are mixed in the ratio 7:3. If the total weight of the alloy is 100 kg, and gold costs ₹3000/kg and silver costs ₹500/kg, what is the cost of the alloy?",
+    "options": ["₹2,25,000", "₹2,40,000", "₹2,15,000", "₹2,60,000"],
+    "correct_answer": "₹2,25,000",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "The ratio of ages of father to son 5 years ago was 4:1. If the present sum of their ages is 50, what is the present age of the son?",
+    "options": ["9", "10", "11", "12"],
+    "correct_answer": "10",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A, B, and C invest in a business in the ratio 3:4:6. They agree to give 5% of total profit to charity. The remaining profit is divided proportionally. If B's share is ₹7,600, what is the total profit?",
+    "options": ["₹26,000", "₹28,000", "₹30,000", "₹32,000"],
+    "correct_answer": "₹30,000",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A mixture contains milk and water in the ratio 5:2. If 7 litres of water is added, the ratio becomes 5:3. How many litres of milk is in the original mixture?",
+    "options": ["25 L", "30 L", "35 L", "40 L"],
+    "correct_answer": "35 L",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If a:b = 3:4 and b:c = 6:7, what is a:b:c?",
+    "options": ["9:12:14", "3:4:7", "18:24:28", "6:8:7"],
+    "correct_answer": "9:12:14",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A, B, and C start a business with investments of ₹5000, ₹6000, and ₹8000. After 4 months, A adds ₹2000; after 6 months, B withdraws ₹2000. At the end of the year, the total profit is ₹41,000. What is B's share?",
+    "options": ["₹11,400", "₹12,000", "₹12,600", "₹13,200"],
+    "correct_answer": "₹12,000",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "The incomes of A, B, and C are in the ratio 7:9:12. Their expenditures are in the ratio 8:9:15. If A's savings is 1/4 of his income, find the ratio of their savings.",
+    "options": ["56:99:48", "56:81:48", "14:27:15", "7:9:8"],
+    "correct_answer": "56:99:48",
+    "topic": "ratio_and_proportion",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "How many ways can 3 books be arranged on a shelf?",
+    "options": ["3", "6", "9", "12"],
+    "correct_answer": "6",
+    "topic": "permutations_combinations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From a group of 5 people, how many ways can a committee of 2 be selected?",
+    "options": ["8", "10", "12", "20"],
+    "correct_answer": "10",
+    "topic": "permutations_combinations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "How many 2-digit numbers can be formed using digits 1, 2, 3, 4 without repetition?",
+    "options": ["8", "10", "12", "16"],
+    "correct_answer": "12",
+    "topic": "permutations_combinations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In how many ways can the letters of the word 'ACT' be arranged?",
+    "options": ["3", "4", "6", "8"],
+    "correct_answer": "6",
+    "topic": "permutations_combinations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "How many ways can 4 students be seated in a row?",
+    "options": ["12", "16", "24", "48"],
+    "correct_answer": "24",
+    "topic": "permutations_combinations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In how many ways can the letters of the word 'BANANA' be arranged?",
+    "options": ["36", "60", "120", "180"],
+    "correct_answer": "60",
+    "topic": "permutations_combinations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A team of 5 is to be selected from 6 men and 4 women such that exactly 2 women are in the team. In how many ways can this be done?",
+    "options": ["90", "100", "120", "150"],
+    "correct_answer": "120",
+    "topic": "permutations_combinations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "How many 4-digit even numbers can be formed using digits 1, 2, 3, 4, 5, 6 without repetition?",
+    "options": ["120", "156", "180", "200"],
+    "correct_answer": "180",
+    "topic": "permutations_combinations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "8 friends are to be seated at a circular table. In how many ways can this be arranged?",
+    "options": ["2520", "5040", "8!", "720"],
+    "correct_answer": "5040",
+    "topic": "permutations_combinations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "How many ways can 3 prizes be given to 5 students if each student can get at most one prize?",
+    "options": ["10", "20", "60", "120"],
+    "correct_answer": "60",
+    "topic": "permutations_combinations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "How many 5-letter words can be formed using the letters of the word 'EQUATION' such that each word contains exactly 3 vowels?",
+    "options": ["720", "1440", "2880", "3600"],
+    "correct_answer": "2880",
+    "topic": "permutations_combinations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In how many ways can 10 different books be divided between two students such that each gets at least 1 book?",
+    "options": ["1022", "1023", "1024", "512"],
+    "correct_answer": "1022",
+    "topic": "permutations_combinations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A bag contains 4 red, 3 green, and 2 blue balls. In how many ways can 5 balls be selected such that at least one ball of each colour is included?",
+    "options": ["72", "84", "96", "108"],
+    "correct_answer": "96",
+    "topic": "permutations_combinations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "How many diagonals does a 12-sided polygon have?",
+    "options": ["54", "60", "66", "72"],
+    "correct_answer": "54",
+    "topic": "permutations_combinations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In how many ways can the letters of the word 'PERMUTATION' be arranged so that vowels always come together?",
+    "options": ["24480", "23040", "25920", "20160"],
+    "correct_answer": "25920",
+    "topic": "permutations_combinations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A fair coin is tossed once. What is the probability of getting heads?",
+    "options": ["1/4", "1/3", "1/2", "2/3"],
+    "correct_answer": "1/2",
+    "topic": "probability",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A die is rolled. What is the probability of getting a number greater than 4?",
+    "options": ["1/3", "1/2", "2/3", "1/6"],
+    "correct_answer": "1/3",
+    "topic": "probability",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A bag contains 5 red and 3 blue balls. What is the probability of drawing a red ball?",
+    "options": ["3/8", "5/8", "5/3", "3/5"],
+    "correct_answer": "5/8",
+    "topic": "probability",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A card is drawn from a standard deck of 52 cards. What is the probability that it is a king?",
+    "options": ["1/13", "1/52", "4/52", "1/4"],
+    "correct_answer": "1/13",
+    "topic": "probability",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Two coins are tossed. What is the probability of getting exactly one head?",
+    "options": ["1/4", "1/2", "3/4", "1"],
+    "correct_answer": "1/2",
+    "topic": "probability",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A bag contains 4 white, 5 red, and 6 black balls. Two balls are drawn at random. What is the probability that both are red?",
+    "options": ["2/21", "4/21", "2/7", "1/3"],
+    "correct_answer": "2/21",
+    "topic": "probability",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From a group of 5 men and 3 women, a committee of 4 is selected. What is the probability that the committee has exactly 2 women?",
+    "options": ["3/7", "30/70", "3/14", "15/35"],
+    "correct_answer": "30/70",
+    "topic": "probability",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A and B throw a dice alternately. A wins if he gets a 6, B wins if she gets a 5 or 6. A starts first. What is the probability of A winning?",
+    "options": ["5/17", "6/17", "30/61", "1/3"],
+    "correct_answer": "30/61",
+    "topic": "probability",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Two dice are thrown. What is the probability that the sum of the numbers is a prime number?",
+    "options": ["5/12", "7/18", "5/18", "7/12"],
+    "correct_answer": "5/12",
+    "topic": "probability",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A card is drawn from a deck of 52. Given that it is red, what is the probability it is a heart?",
+    "options": ["1/4", "1/2", "1/26", "2/13"],
+    "correct_answer": "1/2",
+    "topic": "probability",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Three boxes contain: Box 1 — 3 red, 2 blue; Box 2 — 2 red, 3 blue; Box 3 — 1 red, 4 blue. A box is chosen at random and one ball is drawn. The ball is red. What is the probability it came from Box 1?",
+    "options": ["3/10", "9/25", "1/3", "6/20"],
+    "correct_answer": "9/25",
+    "topic": "probability",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "5 cards are drawn from a deck of 52. What is the probability of getting exactly 3 aces?",
+    "options": ["1128/54145", "94/54145", "1128/270725", "188/270725"],
+    "correct_answer": "1128/54145",
+    "topic": "probability",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A biased coin shows heads with probability 2/3. If it is tossed 4 times, what is the probability of getting exactly 2 heads?",
+    "options": ["8/27", "8/81", "24/81", "4/27"],
+    "correct_answer": "24/81",
+    "topic": "probability",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "There are 4 white and 6 black balls. Balls are drawn one by one without replacement until a white ball is drawn. What is the probability that exactly 3 draws are needed?",
+    "options": ["1/5", "2/15", "8/75", "4/15"],
+    "correct_answer": "2/15",
+    "topic": "probability",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Two players A and B alternate drawing a card from a shuffled deck (without replacement). The first to draw an ace wins. A draws first. What is the probability that A wins?",
+    "options": ["4/8", "32/51", "20/51", "13/27"],
+    "correct_answer": "32/51",
+    "topic": "probability",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What are the roots of the equation x² - 5x + 6 = 0?",
+    "options": ["2, 3", "1, 6", "-2, -3", "3, 4"],
+    "correct_answer": "2, 3",
+    "topic": "quadratic_equations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "For the equation x² - 4x + 4 = 0, what type of roots does it have?",
+    "options": [
+      "Two distinct real roots",
+      "Two equal real roots",
+      "No real roots",
+      "Irrational roots"
+    ],
+    "correct_answer": "Two equal real roots",
+    "topic": "quadratic_equations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Find the value of the discriminant for 2x² + 5x + 3 = 0.",
+    "options": ["1", "3", "7", "25"],
+    "correct_answer": "1",
+    "topic": "quadratic_equations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "One root of x² - 7x + k = 0 is 3. Find k.",
+    "options": ["10", "12", "15", "18"],
+    "correct_answer": "12",
+    "topic": "quadratic_equations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the sum of roots of the quadratic equation 3x² - 9x + 6 = 0?",
+    "options": ["2", "3", "6", "9"],
+    "correct_answer": "3",
+    "topic": "quadratic_equations",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If the roots of 2x² + px + q = 0 are 3 and -4, find p + q.",
+    "options": ["-14", "-10", "10", "14"],
+    "correct_answer": "-14",
+    "topic": "quadratic_equations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "For what value of k will the equation kx² - 5x + k = 0 have real and equal roots?",
+    "options": ["k = ±5/2", "k = ±2/5", "k = ±5", "k = ±2"],
+    "correct_answer": "k = ±5/2",
+    "topic": "quadratic_equations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "The product of two consecutive odd numbers is 195. Which quadratic equation represents this?",
+    "options": [
+      "x² + 2x - 195 = 0",
+      "x² - 2x - 195 = 0",
+      "x² + 2x + 195 = 0",
+      "x² - 2x + 195 = 0"
+    ],
+    "correct_answer": "x² + 2x - 195 = 0",
+    "topic": "quadratic_equations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If one root of x² + px + 12 = 0 is 4 and the roots of x² + px + q = 0 are equal, find q.",
+    "options": ["1/4", "9/4", "49/4", "16/4"],
+    "correct_answer": "49/4",
+    "topic": "quadratic_equations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Solve: x⁴ - 5x² + 4 = 0",
+    "options": ["x = ±1, ±2", "x = ±2, ±4", "x = ±1, ±4", "x = ±2, ±3"],
+    "correct_answer": "x = ±1, ±2",
+    "topic": "quadratic_equations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If α and β are roots of x² - 6x + 8 = 0, form the equation whose roots are 2α and 2β.",
+    "options": [
+      "x² - 12x + 32 = 0",
+      "x² - 6x + 16 = 0",
+      "x² + 12x - 32 = 0",
+      "x² + 6x + 32 = 0"
+    ],
+    "correct_answer": "x² - 12x + 32 = 0",
+    "topic": "quadratic_equations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If the roots of the equation (a² + b²)x² - 2(ac + bd)x + (c² + d²) = 0 are equal, which condition must hold?",
+    "options": ["ad = bc", "ab = cd", "ac = bd", "a/b = c/d"],
+    "correct_answer": "ad = bc",
+    "topic": "quadratic_equations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "The sum of a number and its reciprocal is 10/3. What are the possible values of the number?",
+    "options": ["1/3 and 3", "2/3 and 3/2", "1/4 and 4", "2 and 1/2"],
+    "correct_answer": "1/3 and 3",
+    "topic": "quadratic_equations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If α and β are roots of x² - 3x + 2 = 0, find the value of α³ + β³.",
+    "options": ["7", "9", "11", "15"],
+    "correct_answer": "9",
+    "topic": "quadratic_equations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "For the quadratic x² - px + q = 0, if the roots differ by 1, what is the relationship between p and q?",
+    "options": ["p² = 4q + 1", "p² = 4q - 1", "p² + 4q = 1", "p² - 4q = 1"],
+    "correct_answer": "p² - 4q = 1",
+    "topic": "quadratic_equations",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the 10th term of the AP: 3, 7, 11, 15, …?",
+    "options": ["37", "39", "41", "43"],
+    "correct_answer": "39",
+    "topic": "progressions",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Find the sum of the first 5 terms of the AP: 2, 4, 6, 8, 10.",
+    "options": ["25", "28", "30", "32"],
+    "correct_answer": "30",
+    "topic": "progressions",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the common ratio of the GP: 3, 6, 12, 24, …?",
+    "options": ["2", "3", "4", "6"],
+    "correct_answer": "2",
+    "topic": "progressions",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Find the 5th term of the GP: 2, 6, 18, 54, …",
+    "options": ["108", "162", "216", "324"],
+    "correct_answer": "162",
+    "topic": "progressions",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "The first term of an AP is 10 and the common difference is -2. What is the 6th term?",
+    "options": ["0", "1", "2", "4"],
+    "correct_answer": "0",
+    "topic": "progressions",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "The sum of first n terms of an AP is 4n² + 5n. What is the common difference?",
+    "options": ["4", "6", "7", "8"],
+    "correct_answer": "8",
+    "topic": "progressions",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Insert 3 arithmetic means between 5 and 21.",
+    "options": ["8, 11, 14", "9, 13, 17", "10, 13, 16", "7, 11, 15"],
+    "correct_answer": "9, 13, 17",
+    "topic": "progressions",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "The 3rd term of a GP is 12 and the 6th term is 96. Find the first term.",
+    "options": ["2", "3", "4", "6"],
+    "correct_answer": "3",
+    "topic": "progressions",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "How many terms of the AP 3, 5, 7, 9, … must be taken to get the sum 120?",
+    "options": ["8", "9", "10", "11"],
+    "correct_answer": "10",
+    "topic": "progressions",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Find the sum of an infinite GP with first term 5 and common ratio 1/3.",
+    "options": ["6.25", "7.5", "7.75", "8"],
+    "correct_answer": "7.5",
+    "topic": "progressions",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "The sum of an AP is 24 and its product is 945. If there are 3 terms, find the three terms.",
+    "options": ["3, 8, 13", "5, 8, 11", "7, 8, 9", "6, 8, 10"],
+    "correct_answer": "5, 8, 11",
+    "topic": "progressions",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "The sum of the first n terms of a GP is 31 and the sum of alternate terms (1st, 3rd, 5th …) is 21. Find the common ratio.",
+    "options": ["1/2", "1/3", "2/3", "3/5"],
+    "correct_answer": "1/3",
+    "topic": "progressions",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If the AM and GM of two positive numbers are 5 and 4 respectively, what are the two numbers?",
+    "options": ["2 and 8", "3 and 7", "1 and 9", "4 and 6"],
+    "correct_answer": "2 and 8",
+    "topic": "progressions",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "The pth term of an AP is q and the qth term is p. What is the (p+q)th term?",
+    "options": ["p + q", "0", "p - q", "q - p"],
+    "correct_answer": "0",
+    "topic": "progressions",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A GP has its sum to infinity as 5 and the sum of the squares of its terms to infinity as 25/3. Find the common ratio.",
+    "options": ["1/2", "2/3", "1/3", "3/5"],
+    "correct_answer": "2/3",
+    "topic": "progressions",
+    "difficulty": "Hard"
+  },
+  {
     "question": "A, B, C, D, and E have five different cars (Audi, BMW, Honda, Ford, Tesla) and live in five different cities. A has Tesla but doesn't live in Delhi or Pune. B lives in Mumbai and has Audi. The person in Pune has Ford. D lives in Bangalore. E has BMW. In which city does the person with Tesla live?",
     "options": ["Bangalore", "Chennai", "Delhi", "Pune"],
     "correct_answer": "Chennai",
@@ -64,364 +924,624 @@
   },
   {
     "question": "Statements: I. Only a few apples are mangoes. II. All mangoes are grapes. \nConclusions: 1. Some grapes are not apples is a possibility. 2. All apples can be mangoes.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only 1 follows",
     "topic": "advanced_syllogism",
     "difficulty": "Hard"
   },
   {
     "question": "Statements: I. No coffee is tea. II. All tea is milk. III. Only a few milk is water. \nConclusions: 1. Some water being coffee is a possibility. 2. All milk can never be coffee.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Both 1 and 2 follow",
     "topic": "advanced_syllogism",
     "difficulty": "Hard"
   },
   {
     "question": "Statements: I. Some circles are squares. II. Only a few squares are triangles. III. No triangle is a hexagon. \nConclusions: 1. All squares can be triangles. 2. All triangles can be circles.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only 2 follows",
     "topic": "advanced_syllogism",
     "difficulty": "Hard"
   },
   {
     "question": "Statements: I. Only a few Red are Blue. II. Only a few Blue are Green. \nConclusions: 1. Some Red are not Blue. 2. Some Blue are not Green.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Both 1 and 2 follow",
     "topic": "advanced_syllogism",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. All A are B. II. Some B are C. III. No C is D. \nConclusions: 1. Some B are not D. 2. Some A are C is a possibility.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Both 1 and 2 follow",
     "topic": "advanced_syllogism",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. Only a few Keys are Locks. II. No Lock is Door. \nConclusions: 1. All Keys can be Doors. 2. Some Keys are not Doors.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only 2 follows",
     "topic": "advanced_syllogism",
     "difficulty": "Hard"
   },
   {
     "question": "Statements: I. Some pens are pencils. II. All pencils are erasers. III. Some erasers are cups. \nConclusions: 1. All pens can be erasers. 2. All cups can be pencils.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Both 1 and 2 follow",
     "topic": "advanced_syllogism",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. Only a few cats are dogs. II. Only a few dogs are rats. III. Only a few rats are cats. \nConclusions: 1. All dogs can be cats. 2. All cats can be rats.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Both 1 and 2 follow",
     "topic": "advanced_syllogism",
     "difficulty": "Hard"
   },
   {
     "question": "Statements: I. No Sunday is Monday. II. No Monday is Tuesday. \nConclusions: 1. Some Sundays are Tuesdays. 2. No Sunday is Tuesday.",
-    "options": ["Only 1 follows", "Only 2 follows", "Either 1 or 2 follows", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Either 1 or 2 follows",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Either 1 or 2 follows",
     "topic": "advanced_syllogism",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. All Gold are Silver. II. Only a few Silver are Platinum. III. No Gold is Diamond. \nConclusions: 1. Some Silver are not Diamond. 2. All Platinum can be Gold.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Both 1 and 2 follow",
     "topic": "advanced_syllogism",
     "difficulty": "Hard"
   },
   {
     "question": "How many students are there in the class? I. Rohan's rank is 10th from the top. II. Rohan's rank is 25th from the bottom.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "Both I and II together are sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Easy"
   },
   {
     "question": "How is J related to K? I. M is the sister of J and the daughter of K. II. J is the brother of M.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "Both I and II together are sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Medium"
   },
   {
     "question": "What is the code for 'apple' in a code language? I. 'apple is sweet' is written as 'ka pa ma'. II. 'orange is sour' is written as 'la pa ta'.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "Neither I nor II is sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Hard"
   },
   {
     "question": "Who among P, Q, R, S and T is the tallest? I. Q is taller than P and S. II. R is taller than Q but shorter than T.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "Both I and II together are sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Medium"
   },
   {
     "question": "On which day of the week was the exam held? I. The exam was held after Tuesday but before Saturday. II. The exam was held on an even-dated day of the month.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "Neither I nor II is sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Hard"
   },
   {
     "question": "In which direction is city A with respect to city B? I. City A is to the North of city C. II. City C is to the West of city B.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "Both I and II together are sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Medium"
   },
   {
     "question": "What is the value of 'x'? I. x² = 25. II. x is a positive integer.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "Both I and II together are sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Easy"
   },
   {
     "question": "How many sisters does Sunil have? I. Sunil's mother has three children. II. Sunil has only one brother.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "Both I and II together are sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Medium"
   },
   {
     "question": "Is 'n' an odd integer? I. n is a multiple of 3. II. (n + 1) is a multiple of 2.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "II alone is sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Hard"
   },
   {
     "question": "What is the area of a rectangle? I. The perimeter of the rectangle is 20 cm. II. The diagonal of the rectangle is √52 cm.",
-    "options": ["I alone is sufficient", "II alone is sufficient", "Both I and II together are sufficient", "Neither I nor II is sufficient"],
+    "options": [
+      "I alone is sufficient",
+      "II alone is sufficient",
+      "Both I and II together are sufficient",
+      "Neither I nor II is sufficient"
+    ],
     "correct_answer": "Both I and II together are sufficient",
     "topic": "data_sufficiency",
     "difficulty": "Hard"
   },
   {
     "question": "Statements: I. The prices of food grains have increased by 20%. II. There was a severe drought in the country last year.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of some common cause"
+    ],
     "correct_answer": "Statement II is the cause and I is its effect",
     "topic": "cause_effect",
     "difficulty": "Easy"
   },
   {
     "question": "Statements: I. The government has increased the tax on luxury cars. II. Sale of luxury cars has seen a significant dip this quarter.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of independent causes"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of independent causes"
+    ],
     "correct_answer": "Statement I is the cause and II is its effect",
     "topic": "cause_effect",
     "difficulty": "Easy"
   },
   {
     "question": "Statements: I. Police has increased patrolling in the city during late hours. II. There has been a drop in the number of petty crimes in the city.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of some common cause"
+    ],
     "correct_answer": "Statement I is the cause and II is its effect",
     "topic": "cause_effect",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. The literacy rate in the district has been increasing for the last few years. II. The district administration has conducted extensive literacy programs for the last five years.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of some common cause"
+    ],
     "correct_answer": "Statement II is the cause and I is its effect",
     "topic": "cause_effect",
     "difficulty": "Easy"
   },
   {
     "question": "Statements: I. Most of the steel producing companies in the country have made a huge profit. II. The government has drastically increased the import duty on steel.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of some common cause"
+    ],
     "correct_answer": "Statement II is the cause and I is its effect",
     "topic": "cause_effect",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. People have stopped using private vehicles for commuting to work. II. The prices of petrol and diesel have reached an all-time high.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of independent causes"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of independent causes"
+    ],
     "correct_answer": "Statement II is the cause and I is its effect",
     "topic": "cause_effect",
     "difficulty": "Easy"
   },
   {
     "question": "Statements: I. The quality of higher education in the country has been deteriorating. II. Many students are opting for foreign universities for their higher studies.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of some common cause"
+    ],
     "correct_answer": "Statement I is the cause and II is its effect",
     "topic": "cause_effect",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. The Reserve Bank of India has reduced the Repo Rate. II. Many banks have reduced their interest rates on home loans.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of independent causes"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of independent causes"
+    ],
     "correct_answer": "Statement I is the cause and II is its effect",
     "topic": "cause_effect",
     "difficulty": "Hard"
   },
   {
     "question": "Statements: I. The state government has decided to ban the use of plastic bags. II. The neighboring states have already banned the use of plastic bags.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of some common cause"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of some common cause"
+    ],
     "correct_answer": "Both statements are effects of some common cause",
     "topic": "cause_effect",
     "difficulty": "Hard"
   },
   {
     "question": "Statements: I. The price of gold has touched a new high in the international market. II. Demand for gold has remained steady in the domestic market.",
-    "options": ["Statement I is the cause and II is its effect", "Statement II is the cause and I is its effect", "Both statements are independent causes", "Both statements are effects of independent causes"],
+    "options": [
+      "Statement I is the cause and II is its effect",
+      "Statement II is the cause and I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of independent causes"
+    ],
     "correct_answer": "Both statements are effects of independent causes",
     "topic": "cause_effect",
     "difficulty": "Hard"
   },
   {
     "question": "Statement: 'Buy pure butter of brand X to ensure the health of your family,' - An advertisement.\nAssumptions: I. Other brands do not provide pure butter. II. Health can be improved by consuming pure butter.",
-    "options": ["Only assumption I is implicit", "Only assumption II is implicit", "Either I or II is implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only assumption I is implicit",
+      "Only assumption II is implicit",
+      "Either I or II is implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Only assumption II is implicit",
     "topic": "statement_assumptions",
     "difficulty": "Medium"
   },
   {
     "question": "Statement: 'Please do not use the lift while leaving the building in case of fire,' - A notice.\nAssumptions: I. People usually use lifts. II. Lifts may stop functioning during a fire.",
-    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only I is implicit",
+      "Only II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Both I and II are implicit",
     "topic": "statement_assumptions",
     "difficulty": "Easy"
   },
   {
     "question": "Statement: 'The government has decided to provide financial aid to farmers affected by the drought.'\nAssumptions: I. The government has enough funds for the aid. II. The aid will help the farmers recover from the loss.",
-    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only I is implicit",
+      "Only II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Both I and II are implicit",
     "topic": "statement_assumptions",
     "difficulty": "Easy"
   },
   {
     "question": "Statement: 'The school authority decided to increase the tuition fee by 20% from the next session.'\nAssumptions: I. The parents may still enroll their children. II. The school needs more funds for better infrastructure.",
-    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only I is implicit",
+      "Only II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Only I is implicit",
     "topic": "statement_assumptions",
     "difficulty": "Hard"
   },
   {
     "question": "Statement: 'If you want to study management, join institute X.'\nAssumptions: I. Institute X provides good management education. II. People generally listen to such advice.",
-    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only I is implicit",
+      "Only II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Both I and II are implicit",
     "topic": "statement_assumptions",
     "difficulty": "Medium"
   },
   {
     "question": "Statement: 'The bridge was closed for repair work.'\nAssumptions: I. Repair work cannot be done while vehicles are moving. II. The bridge is currently in a dangerous condition.",
-    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only I is implicit",
+      "Only II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Only I is implicit",
     "topic": "statement_assumptions",
     "difficulty": "Medium"
   },
   {
     "question": "Statement: 'In spite of the heavy rain, the match continued.'\nAssumptions: I. Matches are usually cancelled when it rains. II. Rain does not affect the performance of the players.",
-    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only I is implicit",
+      "Only II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Only I is implicit",
     "topic": "statement_assumptions",
     "difficulty": "Hard"
   },
   {
     "question": "Statement: 'Double your money in 6 months - An advertisement.'\nAssumptions: I. The offer is not genuine. II. People want their money to grow.",
-    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only I is implicit",
+      "Only II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Only II is implicit",
     "topic": "statement_assumptions",
     "difficulty": "Easy"
   },
   {
     "question": "Statement: 'The company has decided to hire 500 new employees.'\nAssumptions: I. The company is expanding its operations. II. 500 qualified candidates will be available for the job.",
-    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only I is implicit",
+      "Only II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Both I and II are implicit",
     "topic": "statement_assumptions",
     "difficulty": "Medium"
   },
   {
     "question": "Statement: 'Use of mobile phones is strictly prohibited inside the examination hall.'\nAssumptions: I. Students possess mobile phones. II. Mobile phones can be used to cheat in exams.",
-    "options": ["Only I is implicit", "Only II is implicit", "Both I and II are implicit", "Neither I nor II is implicit"],
+    "options": [
+      "Only I is implicit",
+      "Only II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
     "correct_answer": "Both I and II are implicit",
     "topic": "statement_assumptions",
     "difficulty": "Easy"
   },
   {
     "question": "Statement: Most people who quit smoking gain weight.\nConclusion: If one quits smoking, one will gain weight.",
-    "options": ["Conclusion follows", "Conclusion does not follow", "Partially follows", "None of these"],
+    "options": [
+      "Conclusion follows",
+      "Conclusion does not follow",
+      "Partially follows",
+      "None of these"
+    ],
     "correct_answer": "Conclusion does not follow",
     "topic": "statement_conclusion",
     "difficulty": "Medium"
   },
   {
     "question": "Statement: All students in my class are bright. Manish is not bright.\nConclusion: Manish is not a student of my class.",
-    "options": ["Conclusion follows", "Conclusion does not follow", "Probably true", "Data inadequate"],
+    "options": [
+      "Conclusion follows",
+      "Conclusion does not follow",
+      "Probably true",
+      "Data inadequate"
+    ],
     "correct_answer": "Conclusion follows",
     "topic": "statement_conclusion",
     "difficulty": "Easy"
   },
   {
     "question": "Statement: Morning walks are good for health.\nConclusion: All healthy people go for morning walks.",
-    "options": ["Conclusion follows", "Conclusion does not follow", "Data inadequate", "Probably false"],
+    "options": [
+      "Conclusion follows",
+      "Conclusion does not follow",
+      "Data inadequate",
+      "Probably false"
+    ],
     "correct_answer": "Conclusion does not follow",
     "topic": "statement_conclusion",
     "difficulty": "Easy"
   },
   {
     "question": "Statement: In a one-day cricket match, the total runs made by a team were 200. Out of these 160 runs were made by spinners.\nConclusions: I. 80% of the team consists of spinners. II. The opening batsmen were spinners.",
-    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "options": [
+      "Only I follows",
+      "Only II follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
     "correct_answer": "Neither I nor II follows",
     "topic": "statement_conclusion",
     "difficulty": "Medium"
   },
   {
     "question": "Statement: The T.V. staff has gone on an indefinite strike to protest against the dismissal of two of their colleagues.\nConclusions: I. The management should reinstate the dismissed employees. II. Strike is the only way to protest.",
-    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "options": [
+      "Only I follows",
+      "Only II follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
     "correct_answer": "Neither I nor II follows",
     "topic": "statement_conclusion",
     "difficulty": "Hard"
   },
   {
     "question": "Statement: Vegetable prices are soaring in the market.\nConclusions: I. Vegetables are becoming a rare commodity. II. People cannot eat vegetables anymore.",
-    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "options": [
+      "Only I follows",
+      "Only II follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
     "correct_answer": "Neither I nor II follows",
     "topic": "statement_conclusion",
     "difficulty": "Easy"
   },
   {
     "question": "Statement: Only good singers are invited to the conference. No one without sweet voice is a good singer.\nConclusions: I. All invited singers have sweet voices. II. Those who do not have sweet voices are not invited.",
-    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "options": [
+      "Only I follows",
+      "Only II follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
     "correct_answer": "Both I and II follow",
     "topic": "statement_conclusion",
     "difficulty": "Medium"
   },
   {
     "question": "Statement: Prime age groups are more prone to stress-related diseases.\nConclusion: Old people do not have stress.",
-    "options": ["Conclusion follows", "Conclusion does not follow", "Data inadequate", "Probably true"],
+    "options": [
+      "Conclusion follows",
+      "Conclusion does not follow",
+      "Data inadequate",
+      "Probably true"
+    ],
     "correct_answer": "Conclusion does not follow",
     "topic": "statement_conclusion",
     "difficulty": "Easy"
   },
   {
     "question": "Statement: Population increase coupled with dwindling resources is going to be the scenario of many developing countries in days to come.\nConclusions: I. The population of developing countries will not continue to grow. II. It will be very difficult for the governments to manage the resources.",
-    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "options": [
+      "Only I follows",
+      "Only II follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
     "correct_answer": "Only II follows",
     "topic": "statement_conclusion",
     "difficulty": "Hard"
   },
   {
     "question": "Statement: The percentage of the profits of the company has gone up by 15% during the last year.\nConclusions: I. The company is doing well. II. The company has a good management.",
-    "options": ["Only I follows", "Only II follows", "Both I and II follow", "Neither I nor II follows"],
+    "options": [
+      "Only I follows",
+      "Only II follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
     "correct_answer": "Only I follows",
     "topic": "statement_conclusion",
     "difficulty": "Medium"
   },
   {
     "question": "Input: 45 12 33 67 21. Step 1: 67 45 12 33 21. Step 2: 67 45 33 12 21. If the machine follows a descending order sorting, what will be the final step for Input: 10 50 30 40 20?",
-    "options": ["50 40 30 20 10", "10 20 30 40 50", "50 40 10 30 20", "40 50 30 20 10"],
+    "options": [
+      "50 40 30 20 10",
+      "10 20 30 40 50",
+      "50 40 10 30 20",
+      "40 50 30 20 10"
+    ],
     "correct_answer": "50 40 30 20 10",
     "topic": "input_output",
     "difficulty": "Easy"
   },
   {
     "question": "Input: 'cat 42 dog 15 ant 89'. Step 1: '89 cat 42 dog 15 ant'. If the rule is 'Highest number moves to front, followed by lowest word', what is Step 2?",
-    "options": ["89 ant cat 42 dog 15", "89 42 cat dog 15 ant", "89 ant 15 cat 42 dog", "15 ant 89 cat 42 dog"],
+    "options": [
+      "89 ant cat 42 dog 15",
+      "89 42 cat dog 15 ant",
+      "89 ant 15 cat 42 dog",
+      "15 ant 89 cat 42 dog"
+    ],
     "correct_answer": "89 ant cat 42 dog 15",
     "topic": "input_output",
     "difficulty": "Medium"
@@ -435,7 +1555,12 @@
   },
   {
     "question": "Input: 18 25 36 49. Step 1: 9 7 9 13. What is the logic behind Step 1?",
-    "options": ["Square root", "Sum of digits", "Subtraction by 10", "Divided by 2"],
+    "options": [
+      "Square root",
+      "Sum of digits",
+      "Subtraction by 10",
+      "Divided by 2"
+    ],
     "correct_answer": "Sum of digits",
     "topic": "input_output",
     "difficulty": "Easy"
@@ -449,14 +1574,24 @@
   },
   {
     "question": "Input: 12 24 36 48. Step 1: 21 42 63 84. What is the transformation?",
-    "options": ["Adding 9", "Reversing digits", "Multiplying by 2", "Adding 10"],
+    "options": [
+      "Adding 9",
+      "Reversing digits",
+      "Multiplying by 2",
+      "Adding 10"
+    ],
     "correct_answer": "Reversing digits",
     "topic": "input_output",
     "difficulty": "Easy"
   },
   {
     "question": "Input: 'war 50 peace 20 love 30'. Step 1: '50 war peace 20 love 30'. Step 2: '50 love war peace 20 30'. What is the rule?",
-    "options": ["Number Descending, Word Ascending", "Number Ascending, Word Descending", "Word length", "Vowel count"],
+    "options": [
+      "Number Descending, Word Ascending",
+      "Number Ascending, Word Descending",
+      "Word length",
+      "Vowel count"
+    ],
     "correct_answer": "Number Descending, Word Ascending",
     "topic": "input_output",
     "difficulty": "Medium"
@@ -470,14 +1605,24 @@
   },
   {
     "question": "Input: 'all 12 best 18'. Step 1: '18 all 12 best'. Step 2: '18 all best 12'. Is the machine sorting words or numbers first?",
-    "options": ["Numbers (Desc)", "Words (Asc)", "Numbers (Asc)", "Words (Desc)"],
+    "options": [
+      "Numbers (Desc)",
+      "Words (Asc)",
+      "Numbers (Asc)",
+      "Words (Desc)"
+    ],
     "correct_answer": "Numbers (Desc)",
     "topic": "input_output",
     "difficulty": "Easy"
   },
   {
     "question": "If Step 2 of an input is '90 desk 15 house 22', what was the original input likely to be if the highest number always moves to the first position in each step?",
-    "options": ["desk 15 house 22 90", "15 90 desk house 22", "house 90 22 desk 15", "All of the above"],
+    "options": [
+      "desk 15 house 22 90",
+      "15 90 desk house 22",
+      "house 90 22 desk 15",
+      "All of the above"
+    ],
     "correct_answer": "All of the above",
     "topic": "input_output",
     "difficulty": "Hard"
@@ -540,7 +1685,12 @@
   },
   {
     "question": "On what dates of April 2001 did Wednesday fall?",
-    "options": ["4th, 11th, 18th, 25th", "5th, 12th, 19th, 26th", "1st, 8th, 15th, 22nd, 29th", "3rd, 10th, 17th, 24th"],
+    "options": [
+      "4th, 11th, 18th, 25th",
+      "5th, 12th, 19th, 26th",
+      "1st, 8th, 15th, 22nd, 29th",
+      "3rd, 10th, 17th, 24th"
+    ],
     "correct_answer": "4th, 11th, 18th, 25th",
     "topic": "scheduling_calendar",
     "difficulty": "Hard"
@@ -694,7 +1844,12 @@
   },
   {
     "question": "Which of the following diagrams best represents the relationship between: Men, Fathers, Doctors?",
-    "options": ["One circle inside another, and a third overlapping both", "Three separate circles", "Two intersecting circles inside a large one", "One circle inside another, both separate from the third"],
+    "options": [
+      "One circle inside another, and a third overlapping both",
+      "Three separate circles",
+      "Two intersecting circles inside a large one",
+      "One circle inside another, both separate from the third"
+    ],
     "correct_answer": "One circle inside another, and a third overlapping both",
     "topic": "venn_diagram",
     "difficulty": "Medium"
@@ -708,7 +1863,12 @@
   },
   {
     "question": "Identify the diagram that represents the relationship: Hospital, Nurse, Patient.",
-    "options": ["Two separate circles inside one large circle", "Three separate circles", "Three concentric circles", "Three intersecting circles"],
+    "options": [
+      "Two separate circles inside one large circle",
+      "Three separate circles",
+      "Three concentric circles",
+      "Three intersecting circles"
+    ],
     "correct_answer": "Two separate circles inside one large circle",
     "topic": "venn_diagram",
     "difficulty": "Easy"
@@ -722,7 +1882,12 @@
   },
   {
     "question": "Which diagram represents the relationship: Mammals, Cows, Crows?",
-    "options": ["One circle inside another, third one separate", "Three concentric circles", "Three intersecting circles", "Two intersecting circles inside one large circle"],
+    "options": [
+      "One circle inside another, third one separate",
+      "Three concentric circles",
+      "Three intersecting circles",
+      "Two intersecting circles inside one large circle"
+    ],
     "correct_answer": "One circle inside another, third one separate",
     "topic": "venn_diagram",
     "difficulty": "Easy"
@@ -736,7 +1901,12 @@
   },
   {
     "question": "Which diagram represents: Sun, Planets, Earth?",
-    "options": ["One circle inside another, third one separate", "Three separate circles", "Three concentric circles", "Two intersecting circles inside a large one"],
+    "options": [
+      "One circle inside another, third one separate",
+      "Three separate circles",
+      "Three concentric circles",
+      "Two intersecting circles inside a large one"
+    ],
     "correct_answer": "One circle inside another, third one separate",
     "topic": "venn_diagram",
     "difficulty": "Easy"
@@ -750,7 +1920,12 @@
   },
   {
     "question": "Which of the following represents the relationship: Proficient, English, Hindi?",
-    "options": ["Two intersecting circles inside a large one", "Three separate circles", "One circle inside another, third one separate", "Three concentric circles"],
+    "options": [
+      "Two intersecting circles inside a large one",
+      "Three separate circles",
+      "One circle inside another, third one separate",
+      "Three concentric circles"
+    ],
     "correct_answer": "Two intersecting circles inside a large one",
     "topic": "venn_diagram",
     "difficulty": "Hard"
@@ -764,70 +1939,120 @@
   },
   {
     "question": "Statements: I. All bags are pockets. II. All pockets are pouches. \nConclusions: 1. All bags are pouches. 2. All pouches are bags.",
-    "options": ["Only conclusion 1 follows", "Only conclusion 2 follows", "Either 1 or 2 follows", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only conclusion 1 follows",
+      "Only conclusion 2 follows",
+      "Either 1 or 2 follows",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only conclusion 1 follows",
     "topic": "syllogism",
     "difficulty": "Easy"
   },
   {
     "question": "Statements: I. Some cars are towns. II. Some towns are flowers. \nConclusions: 1. No car is flower. 2. Some cars are flowers.",
-    "options": ["Only conclusion 1 follows", "Only conclusion 2 follows", "Either 1 or 2 follows", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only conclusion 1 follows",
+      "Only conclusion 2 follows",
+      "Either 1 or 2 follows",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Either 1 or 2 follows",
     "topic": "syllogism",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. All plants are trees. II. No tree is a green. \nConclusions: 1. Some plants are green. 2. No plant is green.",
-    "options": ["Only conclusion 1 follows", "Only conclusion 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only conclusion 1 follows",
+      "Only conclusion 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only conclusion 2 follows",
     "topic": "syllogism",
     "difficulty": "Easy"
   },
   {
     "question": "Statements: I. Some actors are singers. II. All singers are dancers. \nConclusions: 1. Some actors are dancers. 2. No singer is actor.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only 1 follows",
     "topic": "syllogism",
     "difficulty": "Easy"
   },
   {
     "question": "Statements: I. All doors are floors. II. Some floors are tiles. \nConclusions: 1. Some doors are tiles. 2. Some tiles are floors.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only 2 follows",
     "topic": "syllogism",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. All goats are flowers. II. No flower is fruit. \nConclusions: 1. No goat is fruit. 2. Some flowers are goats.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Both 1 and 2 follow",
     "topic": "syllogism",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. All fans are bulbs. II. All bulbs are tube lights. III. Some tube lights are new. \nConclusions: 1. All fans are tube lights. 2. Some bulbs are new.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only 1 follows",
     "topic": "syllogism",
     "difficulty": "Medium"
   },
   {
     "question": "Statements: I. Some pearls are shells. II. All shells are boxes. \nConclusions: 1. Some pearls are boxes. 2. No box is pearl.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only 1 follows",
     "topic": "syllogism",
     "difficulty": "Easy"
   },
   {
     "question": "Statements: I. No pen is a pencil. II. No pencil is an eraser. \nConclusions: 1. No pen is an eraser. 2. Some erasers are pens.",
-    "options": ["Only 1 follows", "Only 2 follows", "Either 1 or 2 follows", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Either 1 or 2 follows",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Neither 1 nor 2 follows",
     "topic": "syllogism",
     "difficulty": "Hard"
   },
   {
     "question": "Statements: I. All red are blue. II. All blue are white. \nConclusions: 1. Some white are red. 2. All white are red.",
-    "options": ["Only 1 follows", "Only 2 follows", "Both 1 and 2 follow", "Neither 1 nor 2 follows"],
+    "options": [
+      "Only 1 follows",
+      "Only 2 follows",
+      "Both 1 and 2 follow",
+      "Neither 1 nor 2 follows"
+    ],
     "correct_answer": "Only 1 follows",
     "topic": "syllogism",
     "difficulty": "Easy"
@@ -1348,4 +2573,3 @@
     "difficulty": "Easy"
   }
 ]
-

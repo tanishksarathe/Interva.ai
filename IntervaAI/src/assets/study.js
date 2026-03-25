@@ -541,6 +541,1166 @@ Answer using final position or facing direction.`,
 };
 
 
+export const ratioAndProportion = {
+  meta: {
+    id: "ratio-and-proportion",
+    title: "Ratio and Proportion",
+    topic: "Mathematics",
+    difficulty: "Easy",
+    learningTime: "50 mins",
+    explanation:
+      "Learn how to compare quantities using ratios and solve proportional relationships, including direct and inverse variations, with shortcuts for aptitude problems.",
+  },
+
+  userstate: {
+    completedSections: 0,
+    totalSections: 13,
+    isCompleted: false,
+    isBookmarked: false,
+    confidenceRating: 0,
+  },
+
+  sections: [
+    {
+      id: 1,
+      type: "concept",
+      title: "What is Ratio?",
+      content: {
+        text: "A ratio is a comparison of two quantities expressed as a:b or a/b.",
+      },
+      icon: "info",
+      highlight: "Comparison of quantities",
+    },
+
+    {
+      id: 2,
+      type: "intuition",
+      title: "Real-Life Intuition",
+      content: {
+        text: "If there are 10 boys and 5 girls, the ratio is 10:5 = 2:1. This shows boys are twice the number of girls.",
+      },
+      icon: "lightbulb",
+    },
+
+    {
+      id: 3,
+      type: "concept",
+      title: "Simplifying Ratio",
+      content: {
+        text: "Divide both terms by their greatest common divisor (GCD). Example: 10:5 → 2:1.",
+      },
+      icon: "layers",
+    },
+
+    {
+      id: 4,
+      type: "concept",
+      title: "What is Proportion?",
+      content: {
+        text: "A proportion states that two ratios are equal: a:b = c:d.",
+      },
+      highlight: "Equality of ratios",
+    },
+
+    {
+      id: 5,
+      type: "formula",
+      title: "Cross Multiplication Rule",
+      content: {
+        text: "If a:b = c:d, then a × d = b × c.",
+      },
+      highlight: "Most used rule",
+    },
+
+    {
+      id: 6,
+      type: "concept",
+      title: "Direct Proportion",
+      content: {
+        text: "If one quantity increases, the other also increases in the same ratio. Example: more workers → more work done.",
+      },
+      highlight: "Increase → Increase",
+    },
+
+    {
+      id: 7,
+      type: "concept",
+      title: "Inverse Proportion",
+      content: {
+        text: "If one quantity increases, the other decreases. Example: more workers → less time required.",
+      },
+      highlight: "Increase → Decrease",
+    },
+
+    {
+      id: 8,
+      type: "concept",
+      title: "Dividing in a Given Ratio",
+      content: {
+        text: "If a quantity is divided in ratio x:y, parts = (x / (x+y)) × total and (y / (x+y)) × total.",
+      },
+    },
+
+    {
+      id: 9,
+      type: "concept",
+      title: "Compound Ratio",
+      content: {
+        text: "Multiply corresponding terms: (a:b) × (c:d) = ac : bd.",
+      },
+      highlight: "Multiply ratios",
+    },
+
+    {
+      id: 10,
+      type: "example",
+      title: "Example Problem",
+      content: {
+        text: "Divide 60 in ratio 2:1 → parts = 40 and 20.",
+      },
+      extraAction: {
+        label: "Practice Ratio Questions",
+        action: "practice_ratio_basic",
+      },
+    },
+
+    {
+      id: 11,
+      type: "example",
+      title: "Proportion Example",
+      content: {
+        text: "If 2:x = 4:8 → x = 4 using cross multiplication.",
+      },
+    },
+
+    {
+      id: 12,
+      type: "mistake",
+      title: "Common Mistakes",
+      content: {
+        text: "Not simplifying ratios, mixing direct and inverse proportion, and incorrect cross multiplication.",
+      },
+      icon: "warning",
+    },
+
+    {
+      id: 13,
+      type: "application",
+      title: "Applications in Real World",
+      content: {
+        text: "Used in mixing problems, scaling recipes, finance, business distribution, and data interpretation.",
+      },
+      icon: "rocket",
+    },
+  ],
+
+  personalInsight: {
+    placeholder: "Write your shortcut for solving ratio problems...",
+    message: "",
+    saved: false,
+  },
+};
+
+export const profitAndLoss = {
+  meta: {
+    id: "profit-and-loss",
+    title: "Profit and Loss",
+    topic: "Mathematics",
+    difficulty: "Easy",
+    learningTime: "60 mins",
+    explanation:
+      "Learn how to calculate profit, loss, discounts, marked price, and apply percentage-based shortcuts to solve aptitude problems efficiently.",
+  },
+
+  userstate: {
+    completedSections: 0,
+    totalSections: 14,
+    isCompleted: false,
+    isBookmarked: false,
+    confidenceRating: 0,
+  },
+
+  sections: [
+    {
+      id: 1,
+      type: "concept",
+      title: "Basic Definitions",
+      content: {
+        text: "Cost Price (CP) is the buying price, Selling Price (SP) is the selling price. Profit = SP - CP, Loss = CP - SP.",
+      },
+      icon: "info",
+      highlight: "Profit = SP - CP",
+    },
+
+    {
+      id: 2,
+      type: "formula",
+      title: "Profit Percentage",
+      content: {
+        text: "Profit% = (Profit / CP) × 100",
+      },
+    },
+
+    {
+      id: 3,
+      type: "formula",
+      title: "Loss Percentage",
+      content: {
+        text: "Loss% = (Loss / CP) × 100",
+      },
+    },
+
+    {
+      id: 4,
+      type: "concept",
+      title: "Selling Price Formulas",
+      content: {
+        text: "SP = CP × (1 + Profit%/100), SP = CP × (1 - Loss%/100)",
+      },
+      highlight: "Important shortcut",
+    },
+
+    {
+      id: 5,
+      type: "concept",
+      title: "Marked Price (MP) and Discount",
+      content: {
+        text: "Marked Price is the labeled price. Discount = MP - SP. Discount% = (Discount / MP) × 100.",
+      },
+      icon: "tag",
+    },
+
+    {
+      id: 6,
+      type: "formula",
+      title: "Successive Discounts",
+      content: {
+        text: "Net discount = a + b - (ab/100)",
+      },
+      highlight: "Shortcut formula",
+    },
+
+    {
+      id: 7,
+      type: "concept",
+      title: "Dishonest Dealer (Weight Trick)",
+      content: {
+        text: "If a seller uses less weight but charges full price, profit% = (error / correct weight) × 100.",
+      },
+      icon: "alert",
+    },
+
+    {
+      id: 8,
+      type: "concept",
+      title: "Profit Based on Selling Price",
+      content: {
+        text: "If profit% is given on SP, convert it to CP-based before solving.",
+      },
+      highlight: "Always use CP as base",
+    },
+
+    {
+      id: 9,
+      type: "example",
+      title: "Basic Example",
+      content: {
+        text: "CP = 100, SP = 120 → Profit = 20 → Profit% = 20%.",
+      },
+      extraAction: {
+        label: "Practice Profit Basics",
+        action: "practice_profit_loss_basic",
+      },
+    },
+
+    {
+      id: 10,
+      type: "example",
+      title: "Discount Example",
+      content: {
+        text: "MP = 500, Discount = 10% → SP = 450.",
+      },
+    },
+
+    {
+      id: 11,
+      type: "example",
+      title: "Successive Discount Example",
+      content: {
+        text: "10% and 20% discount → Net = 28% discount.",
+      },
+    },
+
+    {
+      id: 12,
+      type: "mistake",
+      title: "Common Mistakes",
+      content: {
+        text: "Using SP as base instead of CP, ignoring successive discount formula, and calculation mistakes in percentage.",
+      },
+      icon: "warning",
+    },
+
+    {
+      id: 13,
+      type: "application",
+      title: "Applications in Real World",
+      content: {
+        text: "Used in business pricing, e-commerce discounts, retail margins, and financial analysis.",
+      },
+      icon: "rocket",
+    },
+
+    {
+      id: 14,
+      type: "intuition",
+      title: "Quick Trick",
+      content: {
+        text: "Assume CP = 100 to simplify percentage-based problems quickly.",
+      },
+      highlight: "Most powerful shortcut",
+    },
+  ],
+
+  personalInsight: {
+    placeholder: "Write your shortcut for solving profit & loss problems...",
+    message: "",
+    saved: false,
+  },
+};
+
+
+export const percentages = {
+  meta: {
+    id: "percentages",
+    title: "Percentages",
+    topic: "Mathematics",
+    difficulty: "Easy",
+    learningTime: "45 mins",
+    explanation:
+      "Learn how to work with percentages, including conversions, increase/decrease, successive changes, and shortcuts for solving aptitude problems.",
+  },
+
+  userstate: {
+    completedSections: 0,
+    totalSections: 12,
+    isCompleted: false,
+    isBookmarked: false,
+    confidenceRating: 0,
+  },
+
+  sections: [
+    {
+      id: 1,
+      type: "concept",
+      title: "What is Percentage?",
+      content: {
+        text: "Percentage means 'per hundred'. It represents a number as a fraction of 100.",
+      },
+      icon: "info",
+      highlight: "x% = x/100",
+    },
+
+    {
+      id: 2,
+      type: "intuition",
+      title: "Real-Life Intuition",
+      content: {
+        text: "If you score 80 out of 100 marks, your percentage is 80%. It shows how much you achieved out of total.",
+      },
+      icon: "lightbulb",
+    },
+
+    {
+      id: 3,
+      type: "formula",
+      title: "Basic Formula",
+      content: {
+        text: "Percentage = (Part / Whole) × 100",
+      },
+      highlight: "Core formula",
+    },
+
+    {
+      id: 4,
+      type: "concept",
+      title: "Conversions",
+      content: {
+        text: "Fraction to %: multiply by 100. % to decimal: divide by 100. Example: 50% = 0.5, 1/4 = 25%.",
+      },
+      icon: "layers",
+    },
+
+    {
+      id: 5,
+      type: "formula",
+      title: "Percentage Increase",
+      content: {
+        text: "Increase% = (Increase / Original Value) × 100",
+      },
+    },
+
+    {
+      id: 6,
+      type: "formula",
+      title: "Percentage Decrease",
+      content: {
+        text: "Decrease% = (Decrease / Original Value) × 100",
+      },
+    },
+
+    {
+      id: 7,
+      type: "concept",
+      title: "Successive Percentage Change",
+      content: {
+        text: "Net change = a + b + (ab/100). Example: 10% increase then 20% increase → 32% net increase.",
+      },
+      highlight: "Shortcut formula",
+    },
+
+    {
+      id: 8,
+      type: "concept",
+      title: "Population / Value Change",
+      content: {
+        text: "New Value = Original × (1 ± x/100). Used in growth and decay problems.",
+      },
+      highlight: "Multiplication trick",
+    },
+
+    {
+      id: 9,
+      type: "example",
+      title: "Example Problem",
+      content: {
+        text: "Find 20% of 200 → (20/100) × 200 = 40.",
+      },
+      extraAction: {
+        label: "Practice Percentage Basics",
+        action: "practice_percentages_basic",
+      },
+    },
+
+    {
+      id: 10,
+      type: "example",
+      title: "Successive Change Example",
+      content: {
+        text: "Increase by 10% then decrease by 10% → net change = -1% (not zero).",
+      },
+    },
+
+    {
+      id: 11,
+      type: "mistake",
+      title: "Common Mistakes",
+      content: {
+        text: "Assuming equal increase and decrease cancel out, wrong base value selection, and calculation errors in successive changes.",
+      },
+      icon: "warning",
+    },
+
+    {
+      id: 12,
+      type: "application",
+      title: "Applications in Real World",
+      content: {
+        text: "Used in profit & loss, interest, statistics, data analysis, discounts, and exam scoring.",
+      },
+      icon: "rocket",
+    },
+  ],
+
+  personalInsight: {
+    placeholder: "Write your shortcut for solving percentage problems...",
+    message: "",
+    saved: false,
+  },
+};
+
+
+export const timeAndDistance = {
+  meta: {
+    id: "time-and-distance",
+    title: "Time and Distance",
+    topic: "Mathematics",
+    difficulty: "Medium",
+    learningTime: "60 mins",
+    explanation:
+      "Learn how to solve problems involving speed, time, and distance, including relative motion, trains, boats and streams, and shortcuts used in aptitude exams.",
+  },
+
+  userstate: {
+    completedSections: 0,
+    totalSections: 12,
+    isCompleted: false,
+    isBookmarked: false,
+    confidenceRating: 0,
+  },
+
+  sections: [
+    {
+      id: 1,
+      type: "concept",
+      title: "Basic Concept",
+      content: {
+        text: "Time, Distance, and Speed are related by the formula: Speed = Distance / Time.",
+      },
+      icon: "info",
+      highlight: "S = D / T",
+    },
+
+    {
+      id: 2,
+      type: "intuition",
+      title: "Real-Life Intuition",
+      content: {
+        text: "If you travel 60 km in 1 hour, your speed is 60 km/h. Increasing speed reduces time for the same distance.",
+      },
+      icon: "lightbulb",
+    },
+
+    {
+      id: 3,
+      type: "formula",
+      title: "Core Formulas",
+      content: {
+        text: "Distance = Speed × Time, Time = Distance / Speed",
+      },
+      highlight: "Fundamental relationships",
+    },
+
+    {
+      id: 4,
+      type: "concept",
+      title: "Unit Conversion",
+      content: {
+        text: "1 m/s = 3.6 km/h and 1 km/h = 5/18 m/s. Always convert units before solving.",
+      },
+      icon: "layers",
+    },
+
+    {
+      id: 5,
+      type: "concept",
+      title: "Relative Speed",
+      content: {
+        text: "When two objects move in the same direction, relative speed = difference of speeds. In opposite directions, relative speed = sum of speeds.",
+      },
+      highlight: "Same → subtract, Opposite → add",
+    },
+
+    {
+      id: 6,
+      type: "concept",
+      title: "Trains Concept",
+      content: {
+        text: "For trains, distance includes train length + object length (if crossing). Time = total distance / speed.",
+      },
+      icon: "train",
+    },
+
+    {
+      id: 7,
+      type: "concept",
+      title: "Boats and Streams",
+      content: {
+        text: "Downstream speed = (u + v), Upstream speed = (u - v), where u = boat speed in still water and v = stream speed.",
+      },
+      highlight: "u ± v concept",
+    },
+
+    {
+      id: 8,
+      type: "formula",
+      title: "Average Speed",
+      content: {
+        text: "Average Speed = Total Distance / Total Time. For equal distances: Avg speed = (2xy)/(x+y)",
+      },
+      highlight: "Important shortcut",
+    },
+
+    {
+      id: 9,
+      type: "example",
+      title: "Example Problem",
+      content: {
+        text: "A car travels 120 km in 2 hours → Speed = 120/2 = 60 km/h.",
+      },
+      extraAction: {
+        label: "Practice Speed Questions",
+        action: "practice_time_distance_basic",
+      },
+    },
+
+    {
+      id: 10,
+      type: "example",
+      title: "Relative Speed Example",
+      content: {
+        text: "Two trains moving opposite at 40 km/h and 60 km/h → relative speed = 100 km/h.",
+      },
+    },
+
+    {
+      id: 11,
+      type: "mistake",
+      title: "Common Mistakes",
+      content: {
+        text: "Forgetting unit conversion, mixing up relative speed rules, ignoring train lengths, and incorrect average speed calculation.",
+      },
+      icon: "warning",
+    },
+
+    {
+      id: 12,
+      type: "application",
+      title: "Applications in Real World",
+      content: {
+        text: "Used in navigation systems, traffic analysis, logistics, physics problems, and competitive exams.",
+      },
+      icon: "rocket",
+    },
+  ],
+
+  personalInsight: {
+    placeholder: "Write your shortcut for solving time & distance questions...",
+    message: "",
+    saved: false,
+  },
+};
+
+
+
+export const progressions = {
+  meta: {
+    id: "progressions-ap-gp-hp",
+    title: "Progressions (AP, GP, HP)",
+    topic: "Mathematics",
+    difficulty: "Medium",
+    learningTime: "60 mins",
+    explanation:
+      "Understand Arithmetic, Geometric, and Harmonic Progressions, their formulas, properties, differences, and applications in problem solving.",
+  },
+
+  userstate: {
+    completedSections: 0,
+    totalSections: 12,
+    isCompleted: false,
+    isBookmarked: false,
+    confidenceRating: 0,
+  },
+
+  sections: [
+    {
+      id: 1,
+      type: "concept",
+      title: "What are Progressions?",
+      content: {
+        text: "A progression is a sequence of numbers following a specific pattern or rule. The most common types are AP, GP, and HP.",
+      },
+      icon: "info",
+      highlight: "Sequence with a pattern",
+    },
+
+    {
+      id: 2,
+      type: "concept",
+      title: "Arithmetic Progression (AP)",
+      content: {
+        text: "In AP, the difference between consecutive terms is constant. This constant is called the common difference (d).",
+      },
+      highlight: "Constant difference",
+    },
+
+    {
+      id: 3,
+      type: "formula",
+      title: "nth Term of AP",
+      content: {
+        text: "aₙ = a + (n - 1)d",
+      },
+    },
+
+    {
+      id: 4,
+      type: "formula",
+      title: "Sum of AP",
+      content: {
+        text: "Sₙ = n/2 [2a + (n - 1)d]",
+      },
+    },
+
+    {
+      id: 5,
+      type: "concept",
+      title: "Geometric Progression (GP)",
+      content: {
+        text: "In GP, each term is obtained by multiplying the previous term by a constant ratio (r).",
+      },
+      highlight: "Constant ratio",
+    },
+
+    {
+      id: 6,
+      type: "formula",
+      title: "nth Term of GP",
+      content: {
+        text: "aₙ = a × r^(n - 1)",
+      },
+    },
+
+    {
+      id: 7,
+      type: "formula",
+      title: "Sum of GP",
+      content: {
+        text: "Sₙ = a(1 - rⁿ) / (1 - r), for r ≠ 1",
+      },
+    },
+
+    {
+      id: 8,
+      type: "formula",
+      title: "Sum of Infinite GP",
+      content: {
+        text: "S = a / (1 - r), when |r| < 1",
+      },
+      highlight: "Only for converging GP",
+    },
+
+    {
+      id: 9,
+      type: "concept",
+      title: "Harmonic Progression (HP)",
+      content: {
+        text: "A sequence is in HP if the reciprocals of its terms form an AP.",
+      },
+      highlight: "HP = Reciprocal of AP",
+    },
+
+    {
+      id: 10,
+      type: "example",
+      title: "Example Problem",
+      content: {
+        text: "AP: Find 5th term of 2, 4, 6... → a = 2, d = 2 → a₅ = 2 + 4×2 = 10. GP: 2, 4, 8... → r = 2 → a₅ = 2×2⁴ = 32.",
+      },
+      extraAction: {
+        label: "Practice Progression Questions",
+        action: "practice_progressions_basic",
+      },
+    },
+
+    {
+      id: 11,
+      type: "mistake",
+      title: "Common Mistakes",
+      content: {
+        text: "Confusing AP and GP, using wrong formula for sum, ignoring condition |r| < 1 in infinite GP, and incorrect identification of sequence type.",
+      },
+      icon: "warning",
+    },
+
+    {
+      id: 12,
+      type: "application",
+      title: "Applications in Real World",
+      content: {
+        text: "Used in finance (interest, investments), population growth, physics, computer algorithms, and data modeling.",
+      },
+      icon: "rocket",
+    },
+  ],
+
+  personalInsight: {
+    placeholder: "Write your trick to identify AP vs GP instantly...",
+    message: "",
+    saved: false,
+  },
+};
+
+
+export const quadraticEquations = {
+  meta: {
+    id: "quadratic-equations",
+    title: "Quadratic Equations",
+    topic: "Mathematics",
+    difficulty: "Medium",
+    learningTime: "45 mins",
+    explanation:
+      "Learn how to solve quadratic equations using different methods, understand the discriminant, nature of roots, and practical applications.",
+  },
+
+  userstate: {
+    completedSections: 0,
+    totalSections: 10,
+    isCompleted: false,
+    isBookmarked: false,
+    confidenceRating: 0,
+  },
+
+  sections: [
+    {
+      id: 1,
+      type: "concept",
+      title: "What is a Quadratic Equation?",
+      content: {
+        text: "A quadratic equation is a polynomial equation of degree 2 in the form ax² + bx + c = 0, where a ≠ 0.",
+      },
+      icon: "info",
+      highlight: "Degree = 2",
+    },
+
+    {
+      id: 2,
+      type: "intuition",
+      title: "Graph Intuition",
+      content: {
+        text: "The graph of a quadratic equation is a parabola. It can open upwards or downwards depending on the value of 'a'.",
+      },
+      icon: "lightbulb",
+    },
+
+    {
+      id: 3,
+      type: "formula",
+      title: "Standard Form",
+      content: {
+        text: "ax² + bx + c = 0",
+      },
+      highlight: "General representation",
+    },
+
+    {
+      id: 4,
+      type: "formula",
+      title: "Quadratic Formula",
+      content: {
+        text: "x = [-b ± √(b² - 4ac)] / (2a)",
+      },
+      highlight: "Universal solving method",
+    },
+
+    {
+      id: 5,
+      type: "concept",
+      title: "Discriminant (D)",
+      content: {
+        text: "D = b² - 4ac. It determines the nature of the roots of the equation.",
+      },
+      icon: "layers",
+    },
+
+    {
+      id: 6,
+      type: "edge-case",
+      title: "Nature of Roots",
+      content: {
+        text: "If D > 0 → two distinct real roots. If D = 0 → equal roots. If D < 0 → complex roots.",
+      },
+      icon: "alert",
+    },
+
+    {
+      id: 7,
+      type: "formula",
+      title: "Sum and Product of Roots",
+      content: {
+        text: "Sum = -b/a, Product = c/a",
+      },
+      highlight: "Useful for shortcuts",
+    },
+
+    {
+      id: 8,
+      type: "example",
+      title: "Example Problem",
+      content: {
+        text: "Solve x² - 5x + 6 = 0 → (x - 2)(x - 3) = 0 → roots are 2 and 3.",
+      },
+      extraAction: {
+        label: "Practice Factorization",
+        action: "practice_quadratic_factorization",
+      },
+    },
+
+    {
+      id: 9,
+      type: "mistake",
+      title: "Common Mistakes",
+      content: {
+        text: "Forgetting to divide by 2a in quadratic formula, sign errors in b² - 4ac, and incorrect factorization.",
+      },
+      icon: "warning",
+    },
+
+    {
+      id: 10,
+      type: "application",
+      title: "Applications in Real World",
+      content: {
+        text: "Used in physics (projectile motion), optimization problems, economics, and computer graphics.",
+      },
+      icon: "rocket",
+    },
+  ],
+
+  personalInsight: {
+    placeholder: "Write your shortcut for solving quadratics...",
+    message: "",
+    saved: false,
+  },
+};
+
+
+export const probability = {
+  meta: {
+    id: "probability",
+    title: "Probability",
+    topic: "Mathematics",
+    difficulty: "Medium",
+    learningTime: "50 mins",
+    explanation:
+      "Understand how to measure uncertainty using probability, including formulas, types of events, conditional probability, and real-world applications.",
+  },
+
+  userstate: {
+    completedSections: 0,
+    totalSections: 10,
+    isCompleted: false,
+    isBookmarked: false,
+    confidenceRating: 0,
+  },
+
+  sections: [
+    {
+      id: 1,
+      type: "concept",
+      title: "What is Probability?",
+      content: {
+        text: "Probability measures the likelihood of an event occurring. It ranges from 0 (impossible) to 1 (certain).",
+      },
+      icon: "info",
+      highlight: "0 ≤ P(E) ≤ 1",
+    },
+
+    {
+      id: 2,
+      type: "intuition",
+      title: "Real-Life Intuition",
+      content: {
+        text: "If you toss a fair coin, the chance of getting heads is 1 out of 2 → probability = 0.5.",
+      },
+      icon: "lightbulb",
+    },
+
+    {
+      id: 3,
+      type: "formula",
+      title: "Basic Probability Formula",
+      content: {
+        text: "P(E) = Number of favorable outcomes / Total number of outcomes",
+      },
+      highlight: "Classical probability formula",
+    },
+
+    {
+      id: 4,
+      type: "concept",
+      title: "Types of Events",
+      content: {
+        text: "Events can be independent (one does not affect the other), dependent (one affects the other), mutually exclusive (cannot happen together), or exhaustive (cover all possibilities).",
+      },
+      icon: "layers",
+    },
+
+    {
+      id: 5,
+      type: "formula",
+      title: "Addition Rule",
+      content: {
+        text: "P(A ∪ B) = P(A) + P(B) − P(A ∩ B)",
+      },
+      highlight: "Used when finding probability of A OR B",
+    },
+
+    {
+      id: 6,
+      type: "formula",
+      title: "Multiplication Rule",
+      content: {
+        text: "P(A ∩ B) = P(A) × P(B) (for independent events)",
+      },
+      highlight: "Used when events are independent",
+    },
+
+    {
+      id: 7,
+      type: "formula",
+      title: "Conditional Probability",
+      content: {
+        text: "P(A|B) = P(A ∩ B) / P(B)",
+      },
+      highlight: "Probability of A given B has occurred",
+    },
+
+    {
+      id: 8,
+      type: "example",
+      title: "Example Problem",
+      content: {
+        text: "A die is rolled. Probability of getting an even number = 3/6 = 1/2. (2, 4, 6 are favorable outcomes)",
+      },
+      extraAction: {
+        label: "Try Dice Problems",
+        action: "practice_probability_dice",
+      },
+    },
+
+    {
+      id: 9,
+      type: "mistake",
+      title: "Common Mistakes",
+      content: {
+        text: "Confusing independent and dependent events, forgetting to subtract intersection in addition rule, and miscounting total outcomes.",
+      },
+      icon: "warning",
+    },
+
+    {
+      id: 10,
+      type: "application",
+      title: "Applications in Real World",
+      content: {
+        text: "Used in machine learning, risk analysis, finance, game theory, and decision-making systems.",
+      },
+      icon: "rocket",
+    },
+  ],
+
+  personalInsight: {
+    placeholder: "Write your shortcut to solve probability questions...",
+    message: "",
+    saved: false,
+  },
+};
+
+
+export const permutationsAndCombinations = {
+  meta: {
+    id: "permutations-and-combinations",
+    title: "Permutations and Combinations",
+    topic: "Mathematics",
+    difficulty: "Medium",
+    learningTime: "45 mins",
+    explanation:
+      "Learn how to count arrangements and selections efficiently using permutations and combinations, along with formulas, edge cases, and problem-solving strategies.",
+  },
+
+  userstate: {
+    completedSections: 0,
+    totalSections: 8,
+    isCompleted: false,
+    isBookmarked: false,
+    confidenceRating: 0,
+  },
+
+  sections: [
+    {
+      id: 1,
+      type: "concept",
+      title: "What are Permutations and Combinations?",
+      content: {
+        text: "Permutations deal with arrangements where order matters, while combinations deal with selections where order does not matter.",
+      },
+      icon: "info",
+      highlight: "Order matters vs Order doesn't matter",
+    },
+
+    {
+      id: 2,
+      type: "intuition",
+      title: "Real-Life Intuition",
+      content: {
+        text: "If you are selecting a team of 3 people from 10, order does not matter → combination. But if you are assigning ranks (1st, 2nd, 3rd), order matters → permutation.",
+      },
+      icon: "lightbulb",
+    },
+
+    {
+      id: 3,
+      type: "formula",
+      title: "Permutation Formula",
+      content: {
+        text: "nPr = n! / (n - r)! where n is total items and r is items selected.",
+      },
+      highlight: "Used when order matters",
+    },
+
+    {
+      id: 4,
+      type: "formula",
+      title: "Combination Formula",
+      content: {
+        text: "nCr = n! / (r! * (n - r)!)",
+      },
+      highlight: "Used when order does NOT matter",
+    },
+
+    {
+      id: 5,
+      type: "edge-case",
+      title: "Important Edge Cases",
+      content: {
+        text: "nC0 = 1, nCn = 1, nC1 = n, nP0 = 1. Also, nCr = nC(n-r).",
+      },
+      icon: "alert",
+    },
+
+    {
+      id: 6,
+      type: "example",
+      title: "Example Problem",
+      content: {
+        text: "How many ways to choose 2 students from 5? Answer: 5C2 = 10. If arranging them → 5P2 = 20.",
+      },
+      extraAction: {
+        label: "Try Similar Problem",
+        action: "practice_combination_basic",
+      },
+    },
+
+    {
+      id: 7,
+      type: "mistake",
+      title: "Common Mistakes",
+      content: {
+        text: "Students often confuse when to use permutation vs combination. Always check if order matters.",
+      },
+      icon: "warning",
+    },
+
+    {
+      id: 8,
+      type: "application",
+      title: "Applications in Real World",
+      content: {
+        text: "Used in probability, data science, cryptography, scheduling problems, and competitive programming.",
+      },
+      icon: "rocket",
+    },
+  ],
+
+  personalInsight: {
+    placeholder: "Write your own trick to remember nCr vs nPr...",
+    message: "",
+    saved: false,
+  },
+};
+
+
 export const seriesAlphabetsNumbers = {
   meta: {
     id: "series-alphabets-numbers",

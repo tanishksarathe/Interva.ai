@@ -242,13 +242,7 @@ const DataStructures = () => {
         {/* Left Section Problem */}
         <div className="w-5/12 flex flex-col justify-center items-center h-full">
           <ProblemCard
-            title={questions[count].title}
-            difficulty={questions[count].difficulty}
-            statement={questions[count].statement}
-            input={questions[count].input}
-            output={questions[count].output}
-            constraints={questions[count].constraints}
-            sequenceExample={questions[count].sequenceExample}
+           questions={questions} count={count}
           />
          
         </div>
