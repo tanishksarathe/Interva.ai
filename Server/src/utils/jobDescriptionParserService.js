@@ -65,9 +65,9 @@ strings |
 mathematics_and_number_theory |
 searching_algorithms |
 sorting_algorithms |
-recursion |
-backtracking |
-stack |
+Recursion |
+Backtracking |
+Stack |
 queue |
 linked_list |
 two_pointer_technique |

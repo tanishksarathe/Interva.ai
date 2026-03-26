@@ -151,7 +151,7 @@ const DashboardN = () => {
       {/* Charts Main Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Trend Chart (Line Chart) */}
-        <div className="lg:col-span-2 bg-slate-900/40 border border-slate-800 rounded-3xl p-6 backdrop-blur-sm">
+        <div className="lg:col-span-2 bg-slate-900/40 border border-slate-800 rounded-3xl p-6">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
               <TrendingUp size={18} className="text-indigo-500" /> Percentile

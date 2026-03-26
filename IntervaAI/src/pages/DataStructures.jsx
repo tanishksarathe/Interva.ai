@@ -1,92 +1,41 @@
 import React, { useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
-import { Cog } from "lucide-react";
+import {
+  ArrowUpDown,
+  Brain,
+  Cog,
+  Compass,
+  GitCompare,
+  Layers,
+  ListOrdered,
+  Network,
+  Puzzle,
+  Shapes,
+  Shuffle,
+} from "lucide-react";
 import ProblemCard from "../components/ProblemCard";
 import api from "../config/API";
 import EvaluationPanel from "../components/modals/EvaluationPanel";
 import toast from "react-hot-toast";
 
 const DataStructures = () => {
-
-   const questions = [
-    {
-      id: 1,
-      title: "Print the Fibonacci Sequence",
-      statement: [
-        "Write a program that prints the first N numbers of the Fibonacci sequence.",
-        "The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones, starting from 0 and 1.",
-      ],
-      sequenceExample: "0, 1, 1, 2, 3, 5, 8, 13, 21, ...",
-      constraints: ["1 ≤ N ≤ 50", "Use efficient time and space complexity"],
-      input: "N = 5",
-      output: "0 1 1 2 3",
-      difficulty: "Easy",
-      topic: "Arrays",
-    },
-    {
-      id: 2,
-      title: "Check Palindrome String",
-      statement: [
-        "Write a program to check whether a given string is a palindrome.",
-        "A palindrome is a string that reads the same forward and backward.",
-      ],
-      sequenceExample: "madam → palindrome",
-      constraints: [
-        "1 ≤ length of string ≤ 10^5",
-        "Ignore spaces and case sensitivity",
-      ],
-      input: 's = "madam"',
-      output: "true",
-      difficulty: "Easy",
-      topic: "Strings",
-    },
-    {
-      id: 3,
-      title: "Find the Maximum Element",
-      statement: [
-        "Given an array of integers, find the maximum element.",
-        "Return the largest value present in the array.",
-      ],
-      sequenceExample: "[3, 7, 2, 9, 5] → 9",
-      constraints: ["1 ≤ array length ≤ 10^5", "-10^9 ≤ element ≤ 10^9"],
-      input: "arr = [3, 7, 2, 9, 5]",
-      output: "9",
-      difficulty: "Easy",
-      topic: "Arrays",
-    },
-    {
-      id: 4,
-      title: "Reverse an Array",
-      statement: [
-        "Write a program to reverse the elements of an array.",
-        "The reversed array should contain elements in opposite order.",
-      ],
-      sequenceExample: "[1, 2, 3, 4] → [4, 3, 2, 1]",
-      constraints: ["1 ≤ array length ≤ 10^5", "Do it in-place if possible"],
-      input: "arr = [1, 2, 3, 4]",
-      output: "[4, 3, 2, 1]",
-      difficulty: "Easy",
-      topic: "Arrays",
-    },
-    {
-      id: 5,
-      title: "Sum of First N Natural Numbers",
-      statement: [
-        "Write a program to calculate the sum of the first N natural numbers.",
-        "The result should be the total sum from 1 to N.",
-      ],
-      sequenceExample: "N = 5 → 1+2+3+4+5 = 15",
-      constraints: ["1 ≤ N ≤ 10^7", "Optimize for large N"],
-      input: "N = 5",
-      output: "15",
-      difficulty: "Easy",
-      topic: "Math",
-    },
+  const topics = [
+    { name: "Arrays", icon: Shuffle, value: "arrays" },
+    { name: "Tree", icon: Network, value: "trees" },
+    { name: "Backtracking", icon: Compass, value: "Backtracking" },
+    { name: "Recursion", icon: ArrowUpDown, value: "Recursion" },
+    { name: "Graph", icon: GitCompare, value: "graphs" },
+    { name: "Stack", icon: Layers, value: "stack" },
+    { name: "Linked List", icon: ListOrdered, value: "linked_list" },
+    { name: "Queue", icon: Brain, value: "queue" },
+    { name: "Two Pointer", icon: Shapes, value: "two_pointer_technique" },
+    { name: "Strings", icon: Puzzle, value: "strings" },
   ];
 
-  
+  const [questions, setQuestions] = useState([]);
+
   const [codeOut, setCodeOut] = useState();
-  
+
   const [count, setCount] = useState(0);
   const [custom, setCustom] = useState({
     language: "java",
@@ -101,11 +50,13 @@ const DataStructures = () => {
 
   const fetchDSAQuestions = async () => {
     try {
-      const res = await api.get(`${import.meta.env.VITE_PRACTICE_TOPICS_DSA}/${encoded}`);
+      const res = await api.get(
+        `${import.meta.env.VITE_PRACTICE_TOPICS_DSA}/${encoded.toLowerCase()}`,
+      );
 
       console.log("DSA", res?.data?.data);
 
-      setSelectedTopic(res?.data?.data);
+      setQuestions(res?.data?.data);
     } catch (error) {
       console.log(error);
     }
@@ -143,11 +94,63 @@ const DataStructures = () => {
   };
 
   useEffect(() => {
-    // fetchDSAQuestions();
+    fetchDSAQuestions();
   }, [selectedTopic]);
 
   return (
     <>
+      <div className="min-h-screen bg-[#0f172a] rounded-2xl px-10 py-12 text-slate-100">
+        {/* Header */}
+        <header className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-indigo-300">
+            DSA Practice Topics
+          </h1>
+          <p className="mt-2 text-slate-400">
+            Select a topic to begin your practice
+          </p>
+        </header>
+
+        {/* Grid */}
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {topics.map(({ name, icon: Icon, value }) => {
+            const isActive = selectedTopic === name;
+
+            return (
+              <div
+                key={name}
+                onClick={() => setSelectedTopic(value)}
+                className={`cursor-pointer rounded-2xl border p-6 backdrop-blur-xl transition-all duration-200
+                ${
+                  isActive
+                    ? "bg-linear-to-br from-indigo-500 to-indigo-600 text-white border-indigo-400 shadow-xl shadow-indigo-500/30 scale-[1.03]"
+                    : "bg-slate-800/50 border-white/10 hover:-translate-y-1 hover:border-indigo-400 hover:bg-indigo-500/10"
+                }`}
+              >
+                <div className="flex flex-col items-center gap-4 text-center">
+                  <Icon
+                    size={32}
+                    className={isActive ? "text-white" : "text-indigo-300"}
+                  />
+                  <span className="font-medium">{name}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Selected Topic */}
+        {selectedTopic && (
+          <div className="mt-12 text-center text-slate-400">
+            Selected Topic:&nbsp;
+            <span className="font-semibold text-indigo-300">
+              {selectedTopic}
+            </span>
+          </div>
+        )}
+      </div>
+
+        <div className="my-5"></div>
+
       <div className="flex h-screen">
         {/* Right Section Editor */}
         <div className="w-7/12 flex flex-col p-2">
@@ -216,38 +219,35 @@ const DataStructures = () => {
               }}
             />
             <div className="flex justify-end gap-4 my-3 items-center">
-            <button
-              onClick={() => {
-                if (count > 0) {
-                  setCount(count - 1);
-                }
-              }}
-              className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow-[0_5px_5px_#000] active:translate-y-1.25 active:shadow-none transition-all"
-            >
-              Previous
-            </button>
-            <button
-              onClick={() => {
-                if (count < questions.length - 1) {
-                  setCount(count + 1);
-                }
-              }}
-              className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow-[0_5px_5px_#000] active:translate-y-1.25 active:shadow-none transition-all"
-            >
-              Next
-            </button>
-          </div>
+              <button
+                onClick={() => {
+                  if (count > 0) {
+                    setCount(count - 1);
+                  }
+                }}
+                className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow-[0_5px_5px_#000] active:translate-y-1.25 active:shadow-none transition-all"
+              >
+                Previous
+              </button>
+              <button
+                onClick={() => {
+                  if (count < questions.length - 1) {
+                    setCount(count + 1);
+                  }
+                }}
+                className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow-[0_5px_5px_#000] active:translate-y-1.25 active:shadow-none transition-all"
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
         {/* Left Section Problem */}
         <div className="w-5/12 flex flex-col justify-center items-center h-full">
-          <ProblemCard
-           questions={questions} count={count}
-          />
-         
+          <ProblemCard questions={questions} count={count} />
         </div>
-         
       </div>
+
       <div>{codeOut && <EvaluationPanel codeout={codeOut} />}</div>
     </>
   );
