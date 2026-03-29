@@ -6,7 +6,6 @@ import Dashboard from "./pages/Dashboard";
 import Practice from "./pages/Practice";
 import JobInternship from "./pages/JobInternship";
 import ResumeAnalyze from "./pages/ResumeAnalyze";
-import PremiumPayment from "./pages/PremiumPayment";
 import MockInterview from "./pages/MockInterview";
 import Resources from "./pages/Resources";
 import DashboardN from "./pages/DashboardN";
@@ -68,10 +67,6 @@ const routes = createBrowserRouter([
   {
     path: "/previous-tests",
     element: <PreviousTestsPage />,
-  },
-  {
-    path: "/prepay",
-    element: <PremiumPayment />,
   },
   {
     path: "/dashboard",

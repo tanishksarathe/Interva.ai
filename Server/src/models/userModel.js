@@ -15,6 +15,15 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    premium:{
+      type: Boolean,
+      default: false,
+    },
+    payment:{
+      orderId: String,
+      paymentId: String,
+      signature: String,
+    },
     role:{
       type: String,
       enum:["student","admin"],

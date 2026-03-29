@@ -29,11 +29,14 @@ import blackLogo from "../assets/blackLogo.png";
 import { useAuth } from "../config/AuthContext";
 import EditProfileModal from "../components/ProfileComponents/EditProfileModal";
 import UserImage from "../assets/user/userimage.png";
+import PremiumPayment from "../components/modals/PremiumPayment";
 
 const Dashboard = () => {
   const { user } = useAuth();
 
   const [openEditModal, setOpenEditModal] = useState(false);
+
+  const [openPayment, setPaymentOpen] = useState(false);
 
   const location = useLocation();
 
@@ -89,6 +92,7 @@ const Dashboard = () => {
   const handleEditProfile = () => {};
 
   return (
+    <>
     <div className="bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200">
       <div className="flex justify-between pt-2 backdrop-blur-3xl">
         <Link onClick={() => navigate("/")}>
@@ -186,9 +190,12 @@ const Dashboard = () => {
                 </div>
               )}
             </NavLink>
-            <NavLink className={`flex gap-2 rounded-2xl py-1 px-3`}>
+            <button 
+            type="button"
+            onClick={()=> setPaymentOpen(true)}
+            className={`flex gap-2 rounded-2xl py-1 px-3`}>
               Premium <Sparkles />
-            </NavLink>
+            </button>
           </ul>
 
           <div>
@@ -311,6 +318,10 @@ const Dashboard = () => {
         <Outlet />
       </div>
     </div>
+    {
+      openPayment && <PremiumPayment onClose={() => setPaymentOpen(false)} />
+    }
+    </>
   );
 };
 

@@ -84,6 +84,56 @@ body {
 
 */
 
+/* Main Container */
+.animated-border-box {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  background-color: #1e293b;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: sans-serif;
+  overflow: hidden; /* Bahar nikalta hua gradient chhupane ke liye */
+}
+
+/* Chalti hui border wali layer */
+.animated-border-box::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: conic-gradient(#3b82f6, #8b5cf6, #ec4899, #3b82f6);
+  animation: rotate 4s linear infinite;
+}
+
+/* Inner Content Box (Border thickness control karne ke liye) */
+.animated-border-box::after {
+  content: "Varta Chat App"; /* Aap apna text yahan likhein */
+  position: absolute;
+  inset: 4px; /* Ye border ki motai (thickness) hai */
+  background: #1e293b;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 1;
+}
+
+/* Rotation Animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out both;
 }

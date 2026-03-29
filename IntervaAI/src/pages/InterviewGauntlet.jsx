@@ -46,6 +46,7 @@ const InterviewGauntlet = () => {
         details = {
           questionIds: assesement?.ques_bank?.apti,
           type: "apti",
+          premium: assesement?.isPremium || false,
           testId: assesement._id,
           timelimit: assesement?.timelimit?.apti,
         };
@@ -56,6 +57,7 @@ const InterviewGauntlet = () => {
         details = {
           questionIds: assesement?.ques_bank?.dsa,
           type: "dsa",
+          premium: assesement?.isPremium || false,
           testId: assesement._id,
           timelimit: assesement?.timelimit?.dsa,
         };
@@ -66,9 +68,10 @@ const InterviewGauntlet = () => {
       case 2:
         details = {
           testId: assesement._id,
-          type: "basic",
+          type: assesement?.isPremium ? "hr" : "basic",
           timelimit: assesement?.timelimit?.hr,
           simulation: true,
+          premium: assesement?.isPremium || false,
         };
         navigate("/interview-page", { state: { details } });
         break;

@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import InterviewRouter from './src/routes/interviewRouter.js'
 import AuthRouter from "./src/routes/authRouter.js";
+import paymentRouter from "./src/routes/paymentRouter.js";
 import adminRouter from './src/routes/adminRouter.js'
 import userRouter from "./src/routes/userRouter.js";
 import ServiceRouter from "./src/routes/serviceRoutes.js";
@@ -31,6 +32,7 @@ app.use("/auth", AuthRouter);
 app.use("/service", ServiceRouter);
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
+app.use("/payment", paymentRouter);
 app.use("/interview", InterviewRouter)
 
 const PORT = process.env.PORT || 3000;

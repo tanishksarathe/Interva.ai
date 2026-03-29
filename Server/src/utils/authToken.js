@@ -11,11 +11,13 @@ export const genToken = async (user, res) => {
       expiresIn: "1d",
     });
 
-    res.cookie("monaco", token, {
+    console.log("Generated Token : ", token);
+
+    res.cookie("jwt", token, {
       maxAge: 1000 * 60 * 60 * 60,
       httpOnly: true,
       secure: true, // true in production
-      sameSite: "none",
+      sameSite: "none", // production = none, development = lax
     });
     
   } catch (error) {

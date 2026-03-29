@@ -42,6 +42,10 @@ const aptiTestSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
+    isPremium: {
+      type: Boolean,
+      default: false,
+    },
     topics: {
       dsa: {
         type: [String],

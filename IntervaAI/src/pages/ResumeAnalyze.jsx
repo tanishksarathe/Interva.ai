@@ -126,7 +126,7 @@ const ResumeAnalyze = () => {
             {arr.map((item, idx) => (
               <img
                 key={`a-${idx}`}
-                src={`/src/assets/resumeAssets/resume(${item}).jpg`}
+                src={`/resumeAssets/resume(${item}).jpg`}
                 className="h-100 w-90 shadow-xl rounded-2xl mx-3"
                 alt="resume"
               />

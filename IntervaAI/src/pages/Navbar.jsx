@@ -7,9 +7,12 @@ import { useAuth } from "../config/AuthContext";
 import Login from "./Login&SignUp/Login";
 import Register from "./Login&SignUp/Register";
 import api from '../config/API'
+import PremiumPayment from "../components/modals/PremiumPayment";
 
 const Navbar = () => {
   const [onClose, setOnClose] = useState(false);
+
+  const [paymentOpen, setPaymentOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -49,7 +52,9 @@ const Navbar = () => {
           </button>
         </section>
         <section className="flex justify-center items-center gap-6" id="silo">
-          <button className="py-2 flex gap-1 px-3 border rounded-3xl border-y-indigo-500">
+          <button 
+            onClick={() => setPaymentOpen(!paymentOpen)}
+          className="py-2 flex gap-1 px-3 border rounded-3xl border-y-indigo-500">
             Premium <Sparkles fill="indigo" />
           </button>
           {!login && (
@@ -93,6 +98,10 @@ const Navbar = () => {
             setOpenRegister={setOpenRegister}
             setOpenLogin={setOpenLogin}
           />
+        )}
+
+        {paymentOpen && (
+          <PremiumPayment onClose={() => setPaymentOpen(false)}/>
         )}
       </div>
     </>

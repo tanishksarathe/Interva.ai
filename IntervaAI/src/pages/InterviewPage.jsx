@@ -13,10 +13,10 @@ import AssessmentTimer from "../components/AssessmentTimer.jsx";
 import { useAuth } from "../config/AuthContext.jsx";
 
 const interviewOptions = [
-  { name: "Basic Interview", val: BasicInterviewQuestions, role: "basic" },
-  { name: "HR Round", val: hrRoundQuestions, role: "hr" },
-  { name: "Technical Round", val: technicalRoundQuestions, role: "tr" },
-  { name: "Managerial Round", val: managerialRoundQuestions, role: "mr" },
+  { name: "Basic Interview", val: BasicInterviewQuestions, role: "basic", i:10 },
+  { name: "HR Round", val: hrRoundQuestions, role: "hr", i:20 },
+  { name: "Technical Round", val: technicalRoundQuestions, role: "tr", i:20 },
+  { name: "Managerial Round", val: managerialRoundQuestions, role: "mr", i:15 },
 ];
 
 const InterviewPage = () => {
@@ -86,6 +86,13 @@ const InterviewPage = () => {
     setStartTime(Date.now());
   }, []);
 
+// ------------- for shuffling questions if premium -------------
+
+  const getRandomQuestions = (arr, count) => {
+  const shuffled = [...arr].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+};
+
   // ─── Init: simulation preset ──────────────────────────────────────────────
   useEffect(() => {
     if (details && isSimulation) {
@@ -93,7 +100,10 @@ const InterviewPage = () => {
         interviewOptions.find((o) => o.role === details.type) ??
         interviewOptions[0];
       setInterviewTypeLabel(match.name);
-      setInterviewQuestions(match.val || []);
+
+      const randomizedQuestions = getRandomQuestions(match.val || [], match.i);
+
+      setInterviewQuestions(randomizedQuestions);
       setRole(match.role);
       setFinalDetails((prev) => ({
         ...prev,

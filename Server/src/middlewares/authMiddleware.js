@@ -3,13 +3,11 @@ import User from "../models/userModel.js";
 
 export const protect = async (req, res, next) => {
   try {
-    const gotCookie = req.cookies.monaco;
-
-    console.log("Cookies that we get from user : ", gotCookie);
+    const gotCookie = req?.cookies?.jwt;
 
     const decrypted = await jwt.verify(gotCookie, process.env.JWT_SECRET_KEY);
 
-    console.log(decrypted);
+    // console.log(decrypted);
 
     if (!decrypted) {
       const error = new Error("Unauthorized User");

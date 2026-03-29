@@ -117,6 +117,7 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
     const newTest = await AptiTest.create({
       userId: currentUser._id,
       topics,
+      isPremium: true,
       difficulty: diff,
       ques_bank,
       timelimit,
@@ -126,6 +127,157 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
     console.log("New Test : ", newTest);
 
     res.status(201).json({ message: "Simulation Locked", data: newTest });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const createLocalInterview = async (req, res, next) => {
+  const { level } = req.body;
+
+  console.log("Level received in createLocalInterview controller: ", level);
+
+  try {
+    // const currentUser = req.user;
+
+    const currentUser = {
+      _id: "697f9e32bfb728a2fe30804a",
+    };
+
+    let numberOfAptiQues;
+    let numberOfDsaQues;
+    let timelimit;
+    let maxMarks;
+
+    if (level == "Easy") {
+      numberOfDsaQues = 1;
+      numberOfAptiQues = 10;
+      timelimit = {
+        dsa: 25,
+        apti: 15,
+        hr: 10,
+      };
+      maxMarks = {
+        dsa: 40,
+        apti: 20,
+        hr: 20,
+      };
+    } else if (level == "Medium") {
+      numberOfDsaQues = 2;
+      numberOfAptiQues = 15;
+      timelimit = {
+        apti: 25,
+        dsa: 60,
+        hr: 15,
+      };
+      maxMarks = {
+        dsa: 80,
+        apti: 30,
+        hr: 20,
+      };
+    }
+
+    const aptiQuestionsSet = await InterviewQuestion.aggregate([
+      {
+        $match: {
+          topic: {
+            $in: [
+              "percentages",
+              "coding_decoding",
+              "direction_sense",
+              "profit_and_loss",
+              "blood_relations",
+              "syllogism",
+              "ratio_and_proportion",
+              "analogy",
+            ],
+          },
+          difficulty: level,
+        },
+      },
+      {
+        $sample: { size: Number(numberOfAptiQues) },
+      },
+    ]);
+
+    const dsaQuestionsSet = await DSA.aggregate([
+      {
+        $match: {
+          topic: {
+            $in: [
+              "arrays",
+              "two_pointer_technique",
+              "sorting_algorithms",
+              "binary_search",
+              "strings",
+            ],
+          },
+          difficulty: level,
+        },
+      },
+      {
+        $sample: { size: Number(numberOfDsaQues) },
+      },
+    ]);
+
+    const aptiIDS = await aptiQuestionsSet.map((q) => q._id);
+    const dsaIDS = await dsaQuestionsSet.map((q) => q._id);
+
+    const topics = {
+      dsa: [
+        "arrays",
+        "two_pointer_technique",
+        "sorting_algorithms",
+        "binary_search",
+        "strings",
+      ],
+      apti: [
+        "percentages",
+        "coding_decoding",
+        "direction_sense",
+        "profit_and_loss",
+        "blood_relations",
+        "syllogism",
+        "ratio_and_proportion",
+        "analogy",
+      ],
+      hr: [],
+    };
+
+    const ques_bank = {
+      dsa: dsaIDS,
+      apti: aptiIDS,
+    };
+
+    const newTest = await AptiTest.create({
+      userId: currentUser._id,
+      topics,
+      isPremium: false,
+      difficulty: level,
+      ques_bank,
+      timelimit,
+      maxMarks,
+    });
+
+    res.status(201).json({ message: "Local Interview Created", data: newTest });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteTest = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const deletedTest = await AptiTest.findByIdAndDelete(id);
+
+    if (!deletedTest) {
+      const error = new Error("Test not found");
+      error.statusCode = 404;
+      return next(error);
+    }
+
+    res.status(200).json({ message: "Test Deleted Successfully" });
   } catch (error) {
     next(error);
   }
@@ -433,9 +585,8 @@ export const createInterviewSummary = async (req, res, next) => {
           },
           { new: true },
         );
-      } else if (["hr", "basic"].includes(detailSubmitted.round)) {
-
-        console.log("Else if block")
+      } else if (["hr", "basic", "mr", "tr"].includes(detailSubmitted.round)) {
+        console.log("Else if block");
 
         const hrSummary = await updateHRInterviewSummary(
           detailSubmitted,
@@ -535,21 +686,16 @@ const updateHRInterviewSummary = async (
   existingSummary,
   currentTest,
 ) => {
-
-  console.log("Update Interview Summary method")
+  console.log("Update Interview Summary method");
 
   try {
-  
-  
-
     const updatedTest = await AptiTest.findByIdAndUpdate(
       detailSubmitted.testId,
       { $inc: { activeRound: 1 } },
       { new: true },
     );
 
-
-    console.log("Finally Updating the HR round details")
+    console.log("Finally Updating the HR round details");
 
     // payloads
 
@@ -641,28 +787,25 @@ const updateHRInterviewSummary = async (
   }
 };
 
-
-export const getInterviewReports = async(req, res, next) =>{
-
+export const getInterviewReports = async (req, res, next) => {
   try {
-
     const currentUser = req.user._id;
 
-    const response = await InterviewSummary.find({ userId:currentUser }).sort({ createdAt: -1 });
+    const response = await InterviewSummary.find({ userId: currentUser }).sort({
+      createdAt: -1,
+    });
 
-    if(!response || response.length === 0){
+    if (!response || response.length === 0) {
       const error = new Error("No interview summary found for the user");
       error.statusCode = 404;
       return next(error);
     }
 
     res.status(200).json({
-      message : "Interview summary fetched successfully",
-      data : response,
+      message: "Interview summary fetched successfully",
+      data: response,
     });
-
   } catch (error) {
     next(error);
   }
-
-}
+};

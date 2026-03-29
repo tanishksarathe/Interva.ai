@@ -10,6 +10,9 @@ import {
   Code2,
   UserCircle2,
   Tag,
+  X,
+  Trash,
+  Trash2,
 } from "lucide-react";
 import api from "../../config/API";
 import toast from "react-hot-toast";
@@ -55,6 +58,18 @@ const PreviousTestsPage = () => {
     }
   };
 
+  const handleDelete = async (testId) => {
+  
+    try {
+      const res = await api.delete(`${import.meta.env.VITE_DELETE_TEST}/${testId}`);
+      toast.success("Test deleted successfully");
+      fetchPreviousTests(); // Refresh the list
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Unknown Error");
+    }
+
+  }
+
   useEffect(() => {
     fetchPreviousTests();
   }, []);
@@ -93,9 +108,12 @@ const PreviousTestsPage = () => {
           {tests.map((test, index) => (
             <div
               key={test._id || index}
-              className="group relative bg-slate-900/40 border border-slate-800 rounded-[2rem] overflow-hidden hover:border-indigo-500/50 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(79,70,229,0.15)] animate-in fade-in zoom-in-95 duration-700"
+              className={`group relative bg-slate-900/40 ${test?.isPremium? "border-2 border-violet-800  hover:border-amber-400":"border border-slate-800  hover:border-indigo-500/50" } rounded-[2rem] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(79,70,229,0.15)] animate-in fade-in zoom-in-95 duration-700`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
+              <button 
+              onClick={() => handleDelete(test._id)}
+              className="p-3 absolute right-0"><Trash2 color="red" size={20}/></button>
               {/* Card Header */}
               <div className="p-6 md:p-8">
                 <div className="flex justify-between items-start mb-6">
@@ -110,9 +128,9 @@ const PreviousTestsPage = () => {
                       {formatDate(test.createdAt)}
                     </div>
                   </div>
-                  <button className="text-slate-600 hover:text-white transition-colors">
-                    <Tag size={20} />
-                  </button>
+                  <p className={`${test?.isPremium ? "font-semibold text-amber-400" : "text-slate-400"} transition-colors flex gap-2`}>
+                    {test?.isPremium ? "Premium" : "Standard"}
+                  </p>
                 </div>
 
                 {/* Main Stats Grid */}
@@ -190,7 +208,7 @@ const PreviousTestsPage = () => {
 
                 {/* Action Button */}
                 <button
-                  className="w-full group/btn relative flex items-center justify-center gap-3 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-black tracking-widest transition-all active:scale-95 shadow-lg shadow-indigo-900/20"
+                  className={`w-full group/btn relative flex items-center justify-center gap-3 py-4 ${test?.isPremium ? "bg-violet-600 hover:bg-violet-900" :"bg-indigo-600 hover:bg-indigo-800"}-500 text-white rounded-2xl font-black tracking-widest transition-all active:scale-95 shadow-lg shadow-indigo-900/20`}
                   onClick={() => navigate(`/interview-gauntlet/${test._id}`)}
                 >
                   <RotateCcw
