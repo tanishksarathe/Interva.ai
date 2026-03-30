@@ -17,6 +17,9 @@ import ProblemCard from "../components/ProblemCard";
 import api from "../config/API";
 import EvaluationPanel from "../components/modals/EvaluationPanel";
 import toast from "react-hot-toast";
+import { validateUserCode } from "../utils/codeValidator.js";
+import { runUserCode } from "../utils/runCode.js";
+import { useAuth } from "../config/AuthContext";
 
 const DataStructures = () => {
   const topics = [
@@ -32,17 +35,45 @@ const DataStructures = () => {
     { name: "Strings", icon: Puzzle, value: "strings" },
   ];
 
+  const getInstructions = (lang) => {
+    const content = `Instructions for the Challenge
+Single Function: You have to write only a single function that returns the final answer named solve.
+No External Imports: Do not import any external library and do not write code for taking input.
+Input Handling: You can directly use the function arguments for processing, and return the final answer.
+Structure: You may have multiple helping functions inside your code but the main function should return the final answer.
+
+function solve(input) {
+   Your code here
+  return answer;
+}
+
+Destructuring: Be careful while writing code; your code must destructure the test case inputs, as you have a single object input.
+Getting Started: Clear your playground if you want after reading this and start writing code.
+All the best!`;
+
+    return lang === "python" ? `""" ${content} """` : `/* ${content} */`;
+  };
+
+  const { user } = useAuth();
+
   const [questions, setQuestions] = useState([]);
 
   const [codeOut, setCodeOut] = useState();
 
   const [count, setCount] = useState(0);
   const [custom, setCustom] = useState({
-    language: "java",
+    language: "javascript",
     theme: "vs-dark",
-    code: "",
+    code: getInstructions("javascript"),
     question: "Write the code for fibonacci sequence",
   });
+
+  useEffect(() => {
+    setCustom((prev) => ({
+      ...prev,
+      code: getInstructions(prev.language),
+    }));
+  }, [custom.language]);
 
   const [selectedTopic, setSelectedTopic] = useState("Arrays");
 
@@ -72,6 +103,29 @@ const DataStructures = () => {
       setCodeOut(res?.data);
 
       toast.success("Evaluated");
+    } catch (error) {
+      toast.error(error);
+    }
+  };
+
+  const executeCode = async (e) => {
+    e.preventDefault();
+    try {
+      const testCases = questions[count]?.testCases;
+
+      const validator = await validateUserCode(custom?.code);
+
+      if (!validator.valid) {
+        toast.error("System Risk Detected, Please Review your code...");
+        return;
+      }
+
+      const response = await runUserCode(custom?.code, testCases);
+
+      console.log("Execution Result : ", response);
+
+      toast.success("Code executed successfully! Check the results panel.");
+      setCodeOut(response?.result);
     } catch (error) {
       toast.error(error);
     }
@@ -149,7 +203,7 @@ const DataStructures = () => {
         )}
       </div>
 
-        <div className="my-5"></div>
+      <div className="my-5"></div>
 
       <div className="flex h-screen">
         {/* Right Section Editor */}
@@ -168,19 +222,25 @@ const DataStructures = () => {
                 <option value="" disabled hidden>
                   --Select your language(Java Default)--
                 </option>
-                <option value="java">Java (Default)</option>
-                <option value="cpp">C++</option>
-                <option value="c">C</option>
-                <option value="python">Python</option>
-                <option value="javascript">JavaScript</option>
-                <option value="typescript">TypeScript</option>
-                <option value="go">Go</option>
-                <option value="rust">Rust</option>
+                <option value="javascript">JavaScript (Default) </option>
+                {user?.premium && (
+                  <>
+                    <option value="java">Java</option>
+                    <option value="cpp">C++</option>
+                    <option value="c">C</option>
+                    <option value="python">Python</option>
+                    <option value="typescript">TypeScript</option>
+                    <option value="go">Go</option>
+                    <option value="rust">Rust</option>
+                  </>
+                )}
               </select>
             </div>
 
             <button
-              onClick={handleRun}
+              onClick={
+                custom.language === "javascript" ? executeCode : handleRun
+              }
               className="text-white font-bold text-sm border rounded-xl bg-red-600 px-3 py-1"
             >
               Run
@@ -248,7 +308,7 @@ const DataStructures = () => {
         </div>
       </div>
 
-      <div>{codeOut && <EvaluationPanel codeout={codeOut} />}</div>
+      <div className="p-10">{codeOut && <EvaluationPanel codeout={codeOut} />}</div>
     </>
   );
 };
