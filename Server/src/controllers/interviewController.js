@@ -133,9 +133,11 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
 };
 
 export const createLocalInterview = async (req, res, next) => {
-  const { finalDetails } = req.body;
+  const  finalDetails  = req.body;
 
-  console.log("Level received in createLocalInterview controller: ", finalDetails.level);
+  // console.log("Received details for local interview creation: ", finalDetails);
+
+  // console.log("Level received in createLocalInterview controller: ", finalDetails.level);
 
   try {
     const currentUser = req.user;

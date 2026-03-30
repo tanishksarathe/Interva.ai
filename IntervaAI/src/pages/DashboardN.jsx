@@ -94,6 +94,15 @@ const DashboardN = () => {
 
   const COLORS = ["#6366f1", "#10b981", "#f59e0b"];
 
+
+  if(details.length === 0){
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#0b0f1a] text-slate-300 font-sans">   
+        <p className="text-lg text-slate-500">No interview attempts found. Start your first mock interview now!</p>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-[#0b0f1a] text-slate-300 p-6 font-sans">
       {/* Header Area */}

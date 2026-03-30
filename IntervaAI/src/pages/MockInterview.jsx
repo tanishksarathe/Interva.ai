@@ -21,12 +21,14 @@ const MockInterview = () => {
       level: selectedLevel,
     };
 
+    // console.log("Final details being sent for local interview creation: ", finalDetails);
+
     try {
       const res = await api.post(
         `${import.meta.env.VITE_CREATE_LOCAL_INTERVIEW}`,
         finalDetails,
       );
-      
+
       console.log("Local Interview Creation Response : ", res?.data?.data);
 
       navigate(`/interview-gauntlet/${res?.data?.data?._id}`);
