@@ -516,7 +516,7 @@ All the best!`;
                   </span>
                   <div className="flex items-baseline justify-center gap-1">
                     <span className="text-5xl font-black text-emerald-400">
-                      {result}
+                      {result.toFixed(2)}
                     </span>
                     <span className="text-slate-500 font-bold">PTS</span>
                   </div>

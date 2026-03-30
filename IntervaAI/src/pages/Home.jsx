@@ -27,7 +27,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-[#f8fafc] text-[#1e293b] overflow-x-hidden">
+    <div className="bg-[#f8fafc] text-[#1e293c] overflow-x-hidden">
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-screen bg-gradient-to-br from-[#fce7f3] via-[#dbeafe] to-[#e0e7ff] flex flex-col">
         <Navbar />
@@ -36,20 +36,20 @@ const Home = () => {
           {/* Left Content */}
           <div className="w-full lg:w-1/2 space-y-6" data-aos="fade-right">
             <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-sm">
-              <Star size={16} fill="#6366f1" className="text-[#6366f1]" />
-              <span className="text-sm font-bold text-[#6366f1]">
+              <Star size={16} fill="#6366f1" className="text-[#020617]" />
+              <span className="text-sm font-bold text-[#020617]">
                 Top Rated AI Interview Platform
               </span>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] text-[#1e293b]">
+            <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] text-[#1e296d]">
               Ace Your Next <br />
-              <span className="text-[#6366f1]">Interview</span> with AI
+              <span className="text-[#020617]">Interview</span> with AI
             </h1>
 
             <p className="text-lg text-[#334155] max-w-lg leading-relaxed">
               Hey{" "}
-              <span className="font-bold text-[#6366f1]">
+              <span className="font-bold text-[#020617]">
                 {user ? user.fullname : "Future Achiever"}
               </span>
               , practice realistic interviews and get instant feedback to land
@@ -57,10 +57,10 @@ const Home = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <button className="px-8 py-4 bg-[#6366f1] text-white rounded-2xl font-bold shadow-lg hover:bg-[#4f46e5] transition-all transform hover:-translate-y-1">
+              <button className="px-8 py-4 bg-[#020617] text-white rounded-2xl font-bold shadow-lg hover:bg-[#4f46e5] transition-all transform hover:-translate-y-1">
                 Start Mock Interview
               </button>
-              <button className="px-8 py-4 bg-white text-[#1e293b] border border-gray-200 rounded-2xl font-bold flex items-center gap-2 hover:bg-gray-50 transition-all">
+              <button className="px-8 py-4 bg-white text-[#1e293c] border border-gray-200 rounded-2xl font-bold flex items-center gap-2 hover:bg-gray-50 transition-all">
                 <CirclePlay size={20} /> Watch Demo
               </button>
             </div>
@@ -77,7 +77,7 @@ const Home = () => {
                   />
                 ))}
               </div>
-              <p className="text-sm font-semibold text-[#6366f1]">
+              <p className="text-sm font-semibold text-[#020617]">
                 18,000+ Students Trust Interva.ai
               </p>
             </div>
@@ -90,9 +90,9 @@ const Home = () => {
           >
             <div className="absolute inset-0 bg-indigo-400/20 blur-[100px] rounded-full scale-75 animate-pulse"></div>
             <img
-              src="undraw_video-call_i5de.svg"
+              src="ssss.png"
               alt="Hero Illustration"
-              className="relative z-10 w-full max-w-md drop-shadow-2xl"
+              className="relative z-10 w-full rounded-2xl  max-w-md drop-shadow-2xl"
             />
           </div>
         </div>
@@ -124,14 +124,14 @@ const Home = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Section Header */}
           <div className="text-center mb-20" data-aos="fade-up">
-            <h4 className="text-[#6366f1] font-black tracking-[0.3em] uppercase text-xs mb-4">
+            <h4 className="text-[#020617] font-black tracking-[0.3em] uppercase text-xs mb-4">
               The Workflow
             </h4>
-            <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1e293b] leading-tight">
+            <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1e293c] leading-tight">
               From Preparation to{" "}
-              <span className="text-[#6366f1]">Placement</span>
+              <span className="text-[#020617]">Placement</span>
             </h2>
-            <div className="h-1.5 w-24 bg-[#6366f1] mx-auto mt-6 rounded-full"></div>
+            <div className="h-1.5 w-24 bg-[#020617] mx-auto mt-6 rounded-full"></div>
           </div>
 
           {/* The Bento Grid Flow */}
@@ -140,14 +140,14 @@ const Home = () => {
             <div
               data-aos="fade-up"
               data-aos-delay="0"
-              className="lg:col-span-2 group relative p-1 rounded-[2.5rem] bg-gradient-to-br from-indigo-100 to-transparent hover:from-[#6366f1] transition-all duration-500"
+              className="lg:col-span-2 group relative p-1 rounded-[2.5rem] bg-gradient-to-br from-indigo-100 to-transparent hover:from-[#020617] transition-all duration-500"
             >
               <div className="bg-white rounded-[2.4rem] p-8 h-full flex flex-col justify-between">
                 <div>
                   <span className="text-5xl font-black text-indigo-50 opacity-10 group-hover:opacity-100 group-hover:text-indigo-100 transition-all absolute top-6 right-8">
                     01
                   </span>
-                  <h3 className="text-2xl font-bold text-[#1e293b] mb-4">
+                  <h3 className="text-2xl font-bold text-[#1e293c] mb-4">
                     Smart Resume Analysis
                   </h3>
                   <p className="text-gray-500 leading-relaxed">
@@ -157,7 +157,7 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="mt-8 flex items-center gap-4">
-                  <div className="px-4 py-2 bg-indigo-50 text-[#6366f1] text-xs font-bold rounded-full">
+                  <div className="px-4 py-2 bg-indigo-50 text-[#020617] text-xs font-bold rounded-full">
                     ATS Optimization
                   </div>
                   <div className="px-4 py-2 bg-pink-50 text-pink-500 text-xs font-bold rounded-full">
@@ -171,13 +171,13 @@ const Home = () => {
             <div
               data-aos="fade-up"
               data-aos-delay="100"
-              className="group relative p-1 rounded-[2.5rem] bg-indigo-50 hover:bg-[#6366f1] transition-all duration-500"
+              className="group relative p-1 rounded-[2.5rem] bg-indigo-50 hover:bg-[#020617] transition-all duration-500"
             >
               <div className="bg-white rounded-[2.4rem] p-8 h-full">
                 <span className="text-4xl font-black text-gray-100 group-hover:text-indigo-100 transition-all block mb-6">
                   02
                 </span>
-                <h3 className="text-xl font-bold text-[#1e293b] mb-3">
+                <h3 className="text-xl font-bold text-[#1e293c] mb-3">
                   Target Your Role
                 </h3>
                 <p className="text-sm text-gray-400">
@@ -191,13 +191,13 @@ const Home = () => {
             <div
               data-aos="fade-up"
               data-aos-delay="200"
-              className="group relative p-1 rounded-[2.5rem] bg-indigo-50 hover:bg-[#6366f1] transition-all duration-500"
+              className="group relative p-1 rounded-[2.5rem] bg-indigo-50 hover:bg-[#020617] transition-all duration-500"
             >
               <div className="bg-white rounded-[2.4rem] p-8 h-full">
                 <span className="text-4xl font-black text-gray-100 group-hover:text-indigo-100 transition-all block mb-6">
                   03
                 </span>
-                <h3 className="text-xl font-bold text-[#1e293b] mb-3">
+                <h3 className="text-xl font-bold text-[#1e293c] mb-3">
                   AI Mock Session
                 </h3>
                 <p className="text-sm text-gray-400">
@@ -211,14 +211,14 @@ const Home = () => {
             <div
               data-aos="fade-up"
               data-aos-delay="300"
-              className="lg:col-span-4 group relative p-1 rounded-[2.5rem] bg-gradient-to-r from-indigo-50 via-white to-indigo-50 hover:from-[#6366f1] hover:to-[#4f46e5] transition-all duration-700"
+              className="lg:col-span-4 group relative p-1 rounded-[2.5rem] bg-gradient-to-r from-indigo-50 via-white to-indigo-50 hover:from-[#020617] hover:to-[#4f46e5] transition-all duration-700"
             >
               <div className="bg-white rounded-[2.4rem] p-8 flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="flex-1">
-                  <span className="text-xs font-bold text-[#6366f1] uppercase tracking-widest mb-2 block">
+                  <span className="text-xs font-bold text-[#020617] uppercase tracking-widest mb-2 block">
                     Final Step
                   </span>
-                  <h3 className="text-3xl font-bold text-[#1e293b] mb-4">
+                  <h3 className="text-3xl font-bold text-[#1e293c] mb-4">
                     Deep Performance Analytics
                   </h3>
                   <p className="text-gray-500 max-w-xl">
@@ -228,7 +228,7 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="flex-shrink-0">
-                  <button className="px-10 py-4 bg-[#1e293b] text-white rounded-2xl font-bold hover:bg-[#6366f1] transition-all shadow-xl group-hover:shadow-indigo-500/20">
+                  <button className="px-10 py-4 bg-[#1e293c] text-white rounded-2xl font-bold hover:bg-[#020617] transition-all shadow-xl group-hover:shadow-indigo-500/20">
                     Explore Analytics 04
                   </button>
                 </div>
@@ -241,7 +241,7 @@ const Home = () => {
       {/* --- ADVANCED FEATURES GRID --- */}
       <section className="py-24 px-10 lg:px-24 bg-[#0f172a] relative overflow-hidden">
         {/* Background Decoration */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#6366f1]/10 blur-[120px] rounded-full -z-0"></div>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#020617]/10 blur-[120px] rounded-full -z-0"></div>
 
         <div className="relative z-10">
           <div
@@ -253,7 +253,7 @@ const Home = () => {
             </h4>
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               Smart Features for{" "}
-              <span className="text-[#6366f1]">AI-Driven</span> Success
+              <span className="text-[#020617]">AI-Driven</span> Success
             </h2>
             <p className="text-[#94a3b8] text-lg">
               Everything you need to bridge the gap between "Preparing" and
@@ -304,9 +304,9 @@ const Home = () => {
                 key={index}
                 data-aos="fade-up"
                 data-aos-delay={feature.delay}
-                className="group p-8 rounded-[32px] bg-[#1e293b]/50 border border-white/5 backdrop-blur-xl hover:border-[#6366f1]/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#6366f1]/10"
+                className="group p-8 rounded-[32px] bg-[#1e293c]/50 border border-white/5 backdrop-blur-xl hover:border-[#020617]/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#020617]/10"
               >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#6366f1] to-[#4f46e5] flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#020617] to-[#4f46e5] flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">
@@ -331,10 +331,10 @@ const Home = () => {
 
         <div className="max-w-7xl mx-auto px-10 lg:px-24 relative z-10">
           <div className="text-center mb-16" data-aos="fade-up">
-            <h4 className="text-[#6366f1] font-bold tracking-[0.2em] text-xs mb-4 uppercase">
+            <h4 className="text-[#020617] font-bold tracking-[0.2em] text-xs mb-4 uppercase">
               Success Stories
             </h4>
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1e293b]">
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1e293c]">
               What Our Users Say
             </h2>
             <p className="text-gray-500 mt-6 max-w-2xl mx-auto text-lg">
@@ -377,7 +377,7 @@ const Home = () => {
                 key={idx}
                 data-aos="fade-up"
                 data-aos-delay={testi.delay}
-                className="group relative p-8 rounded-[2.5rem] bg-[#f8fafc] border border-transparent hover:border-[#6366f1]/20 hover:bg-white hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500"
+                className="group relative p-8 rounded-[2.5rem] bg-[#f8fafc] border border-transparent hover:border-[#020617]/20 hover:bg-white hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500"
               >
                 {/* Quote Icon */}
                 <div className="absolute top-6 right-8 text-indigo-100 group-hover:text-indigo-500/20 transition-colors">
@@ -405,8 +405,8 @@ const Home = () => {
                     <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#1e293b]">{testi.name}</h4>
-                    <p className="text-xs font-bold text-[#6366f1] uppercase">
+                    <h4 className="font-bold text-[#1e293c]">{testi.name}</h4>
+                    <p className="text-xs font-bold text-[#020617] uppercase">
                       {testi.role} @ {testi.company}
                     </p>
                   </div>
@@ -485,7 +485,7 @@ const Home = () => {
         {/* Compact Glass Container */}
         <div className="bg-[#0f172a] rounded-[2rem] p-8 lg:p-12 relative overflow-hidden border border-white/5 shadow-2xl">
           {/* Subtle Background Glow */}
-          <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#6366f1]/20 blur-[80px] rounded-full animate-pulse"></div>
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#020617]/20 blur-[80px] rounded-full animate-pulse"></div>
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             {/* Left: Punchy Text */}
@@ -503,7 +503,7 @@ const Home = () => {
 
             {/* Right: Focused Action Area */}
             <div className="flex flex-col items-center lg:items-end gap-4 min-w-fit">
-              <button className="group relative px-10 py-4 bg-[#6366f1] text-white rounded-xl font-bold text-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-xl shadow-indigo-500/20">
+              <button className="group relative px-10 py-4 bg-[#020617] text-white rounded-xl font-bold text-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-xl shadow-indigo-500/20">
                 <span className="relative z-10 flex items-center gap-2">
                   Get Started{" "}
                   <CircleArrowOutUpRight

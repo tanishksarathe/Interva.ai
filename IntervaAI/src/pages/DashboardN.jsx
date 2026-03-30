@@ -35,7 +35,6 @@ import {
 import { useMemo } from "react";
 import { useAuth } from "../config/AuthContext";
 
-
 const DashboardN = () => {
   const [details, setDetails] = useState([]);
 
@@ -61,9 +60,9 @@ const DashboardN = () => {
       .map((d, index) => ({
         name: `Attempt ${index + 1}`,
         percentile: parseFloat(d.overallPercentile.toFixed(2)),
-        dsa: d.scores.dsa.score || d.scores.dsa,
-        apti: d.scores.apti,
-        hr: d.scores.hr,
+        dsa: d.scores?.dsa?.score ?? 0,
+        apti: d.scores?.apti ?? 0,
+        hr: d.scores?.hr ?? 0,
         date: new Date(d.createdAt).toLocaleDateString("en-US", {
           month: "short",
           day: "numeric",
@@ -94,13 +93,14 @@ const DashboardN = () => {
 
   const COLORS = ["#6366f1", "#10b981", "#f59e0b"];
 
-
-  if(details.length === 0){
+  if (details.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0b0f1a] text-slate-300 font-sans">   
-        <p className="text-lg text-slate-500">No interview attempts found. Start your first mock interview now!</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#0b0f1a] text-slate-300 font-sans">
+        <p className="text-lg text-slate-500">
+          No interview attempts found. Start your first mock interview now!
+        </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -151,7 +151,7 @@ const DashboardN = () => {
         />
         <StatCard
           label="Resume Score"
-          value={(user?.resume_score)? `${user.resume_score}%` : "Not Analyzed"}
+          value={user?.resume_score ? `${user.resume_score}%` : "Not Analyzed"}
           icon={FileUser}
           color="text-violet-400"
         />

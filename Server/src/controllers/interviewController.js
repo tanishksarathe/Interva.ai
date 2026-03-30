@@ -133,11 +133,14 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
 };
 
 export const createLocalInterview = async (req, res, next) => {
-  const  finalDetails  = req.body;
+  const finalDetails = req.body;
 
-  // console.log("Received details for local interview creation: ", finalDetails);
+  console.log("Received details for local interview creation: ", finalDetails);
 
-  // console.log("Level received in createLocalInterview controller: ", finalDetails.level);
+  console.log(
+    "Level received in createLocalInterview controller: ",
+    finalDetails.level,
+  );
 
   try {
     const currentUser = req.user;
@@ -259,6 +262,7 @@ export const createLocalInterview = async (req, res, next) => {
 
     res.status(201).json({ message: "Local Interview Created", data: newTest });
   } catch (error) {
+    console.log("Error in createLocalInterview controller: ", error);
     next(error);
   }
 };
@@ -719,20 +723,22 @@ const updateHRInterviewSummary = async (
     };
 
     // pending
+    let correctAnswers =
+      (detailSubmitted.score * detailSubmitted.totalQues) / 100 || 0;
+
     let performance = {
       ...existingSummary.performance,
       hr: {
         totalQuestions: detailSubmitted.totalQues,
-        correct: (detailSubmitted.score * detailSubmitted.totalQues) / 100 || 0,
-        wrong:
-          detailSubmitted.totalQues -
-            (detailSubmitted.score * detailSubmitted.totalQues) / 100 || 0,
+        correct: correctAnswers,
+        wrong: detailSubmitted.totalQues - correctAnswers,
         accuracy:
           detailSubmitted.totalQues > 0
-            ? (hrScore / detailSubmitted.totalQues) * 100
+            ? (correctAnswers / detailSubmitted.totalQues) * 100
             : 0,
       },
     };
+
     let timeAnalysis = {
       ...existingSummary.timeAnalysis,
       totalTimeTaken:

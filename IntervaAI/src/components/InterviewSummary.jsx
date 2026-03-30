@@ -156,13 +156,13 @@ const InterviewSummary = () => {
                   <div className="flex justify-between items-start mb-4">
                     <item.icon className="text-slate-500" size={20} />
                     <span className="text-[10px] font-bold text-slate-500 bg-slate-900 px-2 py-1 rounded">
-                      ACCURACY: {item?.perf?.accuracy}%
+                      ACCURACY: {item?.perf?.accuracy?.toFixed(1)}%
                     </span>
                   </div>
                   <h4 className="font-bold text-white mb-1">{item?.name}</h4>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-3xl font-black text-indigo-400">
-                      {item?.score}
+                      {item?.score?.toFixed(1)}
                     </span>
                     <span className="text-slate-600 font-bold text-sm">
                       / {item?.max}
