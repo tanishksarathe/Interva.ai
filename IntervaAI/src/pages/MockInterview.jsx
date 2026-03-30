@@ -17,11 +17,16 @@ const MockInterview = () => {
   const [selectedLevel, setSelectedLevel] = useState(null);
 
   const handleLocalInterview = async () => {
+    const finalDetails = {
+      level: selectedLevel,
+    };
 
     try {
       const res = await api.post(
-        `${import.meta.env.VITE_CREATE_LOCAL_INTERVIEW}`,{level: selectedLevel},
+        `${import.meta.env.VITE_CREATE_LOCAL_INTERVIEW}`,
+        finalDetails,
       );
+      
       console.log("Local Interview Creation Response : ", res?.data?.data);
 
       navigate(`/interview-gauntlet/${res?.data?.data?._id}`);
@@ -299,7 +304,7 @@ const MockInterview = () => {
                     <div className="absolute -bottom-10 -right-3 bg-white text-slate-900 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                       <button
                         onClick={() => {
-                          setSelectedLevel(item.level); 
+                          setSelectedLevel(item.level);
                           handleLocalInterview();
                         }}
                         className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-4 rounded-2xl font-medium"

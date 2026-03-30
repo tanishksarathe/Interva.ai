@@ -133,23 +133,19 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
 };
 
 export const createLocalInterview = async (req, res, next) => {
-  const { level } = req.body;
+  const { finalDetails } = req.body;
 
-  console.log("Level received in createLocalInterview controller: ", level);
+  console.log("Level received in createLocalInterview controller: ", finalDetails.level);
 
   try {
-    // const currentUser = req.user;
-
-    const currentUser = {
-      _id: "697f9e32bfb728a2fe30804a",
-    };
+    const currentUser = req.user;
 
     let numberOfAptiQues;
     let numberOfDsaQues;
     let timelimit;
     let maxMarks;
 
-    if (level == "Easy") {
+    if (finalDetails.level == "Easy") {
       numberOfDsaQues = 1;
       numberOfAptiQues = 10;
       timelimit = {
@@ -162,7 +158,7 @@ export const createLocalInterview = async (req, res, next) => {
         apti: 20,
         hr: 20,
       };
-    } else if (level == "Medium") {
+    } else if (finalDetails.level == "Medium") {
       numberOfDsaQues = 2;
       numberOfAptiQues = 15;
       timelimit = {
@@ -192,7 +188,7 @@ export const createLocalInterview = async (req, res, next) => {
               "analogy",
             ],
           },
-          difficulty: level,
+          difficulty: finalDetails.level,
         },
       },
       {
@@ -212,7 +208,7 @@ export const createLocalInterview = async (req, res, next) => {
               "strings",
             ],
           },
-          difficulty: level,
+          difficulty: finalDetails.level,
         },
       },
       {
@@ -253,7 +249,7 @@ export const createLocalInterview = async (req, res, next) => {
       userId: currentUser._id,
       topics,
       isPremium: false,
-      difficulty: level,
+      difficulty: finalDetails.level,
       ques_bank,
       timelimit,
       maxMarks,

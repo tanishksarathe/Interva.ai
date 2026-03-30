@@ -1,424 +1,536 @@
-import { Link } from "react-router-dom";
-import CardFive from "../components/CardFive";
-import CardFour from "../components/CardFour";
-import CardOne from "../components/CardOne";
-import CardThree from "../components/CardThree";
-import CardTwo from "../components/CardTwo";
-import TestiCard from "../components/TestiCard";
-import Navbar from "./Navbar";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
-  ArrowDownNarrowWide,
-  ChevronUp,
-  CircleArrowOutUpRight,
   CirclePlay,
-  Dot,
-  MailIcon,
-  MapPin,
-  PhoneForwarded,
   Star,
+  Dot,
+  CircleArrowOutUpRight,
+  ArrowDownNarrowWide,
+  CheckCircle2,
+  PhoneForwarded,
+  MapPin,
+  ChevronUp,
 } from "lucide-react";
-import Footer from "./Footer";
 import { useAuth } from "../config/AuthContext";
 
-const Home = () => {
+// Components
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
+
+const Home = () => {
   const { user } = useAuth();
 
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: false, mirror:true, easing: "ease-in-out" });
+  }, []);
+
   return (
-    <div className="bg-linear-to-br from-pink-100 via-blue-100 to-indigo-200 scroll-smooth">
-      <section id="hero">
+    <div className="bg-[#f8fafc] text-[#1e293b] overflow-x-hidden">
+      {/* --- HERO SECTION --- */}
+      <section className="relative min-h-screen bg-gradient-to-br from-[#fce7f3] via-[#dbeafe] to-[#e0e7ff] flex flex-col">
         <Navbar />
-      </section>
 
-      <section className="flex justify-center items-center flex-col h-lvh">
-        <div className="mt-10 leading-normal text-3xl text-center font-semibold">
-          Are you ready <span className="text-4xl font-bold text-indigo-700">{user ? user.fullname : ""}</span> to
-        </div>
-        <div className="leading-normal text-5xl w-[60%] text-center font-bold">
-          Ace Your Next Interview with <br /> AI-Powered Practice
-        </div>
-        <div className="w-[65%] text-center">
-          Practice realistic interviews with AI, get instance feedback on your
-          answers and boost your chances of landing your dream job.
-        </div>
+        <div className="flex-1 flex flex-col lg:flex-row items-center justify-between px-10 lg:px-24 py-10 gap-12">
+          {/* Left Content */}
+          <div className="w-full lg:w-1/2 space-y-6" data-aos="fade-right">
+            <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-sm">
+              <Star size={16} fill="#6366f1" className="text-[#6366f1]" />
+              <span className="text-sm font-bold text-[#6366f1]">
+                Top Rated AI Interview Platform
+              </span>
+            </div>
 
-        <div className="flex mt-10">
-          <div className="w-[25%] flex flex-col p-4 justify-start">
-            <div className="flex justify-around">
-              <div className="flex relative">
-                <img
-                  src="blackLogo.png"
-                  alt="audience"
-                  className="h-10 w-10 rounded-4xl border-white border-2"
-                />
-                <img
-                  src="blackLogo.png"
-                  alt="audience"
-                  className="h-10 w-10 absolute left-7 border-white border-2 rounded-4xl"
-                />
-                <img
-                  src="blackLogo.png"
-                  alt="audience"
-                  className="h-10 w-10 absolute left-13 border-white border-2 rounded-4xl"
-                />
-              </div>
-              <div className="flex flex-col">
-                <div className="flex justify-evenly">
-                  <Star size={15} fill="#FFBF00" />
-                  <Star size={15} fill="#FFBF00" />
-                  <Star size={15} fill="#FFBF00" />
-                  <Star size={15} fill="#FFBF00" />
-                  <Star size={15} fill="#FFBF00" />
-                </div>
-                <div className="font-bold text-sm">18,000 (reviews)</div>
-              </div>
-            </div>
-            <div className="pl-10 p-4">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis
-              tenetur laudantium similique!
-            </div>
-            <div className="pl-10 mt-2">
-              <button className="border rounded-xl px-3 py-2">
+            <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] text-[#1e293b]">
+              Ace Your Next <br />
+              <span className="text-[#6366f1]">Interview</span> with AI
+            </h1>
+
+            <p className="text-lg text-[#334155] max-w-lg leading-relaxed">
+              Hey{" "}
+              <span className="font-bold text-[#6366f1]">
+                {user ? user.fullname : "Future Achiever"}
+              </span>
+              , practice realistic interviews and get instant feedback to land
+              your dream job.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-4">
+              <button className="px-8 py-4 bg-[#6366f1] text-white rounded-2xl font-bold shadow-lg hover:bg-[#4f46e5] transition-all transform hover:-translate-y-1">
                 Start Mock Interview
               </button>
+              <button className="px-8 py-4 bg-white text-[#1e293b] border border-gray-200 rounded-2xl font-bold flex items-center gap-2 hover:bg-gray-50 transition-all">
+                <CirclePlay size={20} /> Watch Demo
+              </button>
+            </div>
+
+            {/* Social Proof */}
+            <div className="flex items-center gap-4 pt-6">
+              <div className="flex -space-x-3">
+                {[1, 2, 3, 4].map((i) => (
+                  <img
+                    key={i}
+                    src="blackLogo.png"
+                    className="w-10 h-10 rounded-full border-2 border-white bg-white p-1 object-contain"
+                    alt="logo"
+                  />
+                ))}
+              </div>
+              <p className="text-sm font-semibold text-[#6366f1]">
+                18,000+ Students Trust Interva.ai
+              </p>
             </div>
           </div>
 
-          <div className="w-[50%] flex justify-center">
+          {/* Right Image (Minimalist & Floating) */}
+          <div
+            className="w-full lg:w-1/2 flex justify-center relative"
+            data-aos="zoom-in"
+          >
+            <div className="absolute inset-0 bg-indigo-400/20 blur-[100px] rounded-full scale-75 animate-pulse"></div>
             <img
               src="undraw_video-call_i5de.svg"
-              alt="screenicon"
-              className="h-80 w-fit"
+              alt="Hero Illustration"
+              className="relative z-10 w-full max-w-md drop-shadow-2xl"
             />
           </div>
-
-          <div className="w-[25%] flex flex-col justify-end gap-5">
-            <div className="font-bold text-xl">
-              Let's turn your <br /> preperation into success
-            </div>
-            <div className="">
-              Our top specialists help you create the project of your dreams
-            </div>
-            <div className="flex">
-              <button className="flex ml-2 px-3 py-2 rounded-xl gap-2 border">
-                <CirclePlay /> Watch Demo
-              </button>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section
-        className="flex justify-between px-15 items-center mt-20"
-        id="companies"
-      >
-        <div className="flex relative items-center">
-          <img
-            src="blackLogo.png"
-            alt="audience"
-            className="h-10 w-10 rounded-4xl border-white border-2"
-          />
-          <img
-            src="blackLogo.png"
-            alt="audience"
-            className="h-10 w-10 absolute left-7 border-white border-2 rounded-4xl"
-          />
-          <img
-            src="blackLogo.png"
-            alt="audience"
-            className="h-10 w-10 absolute left-13 border-white border-2 rounded-4xl"
-          />
-          <img
-            src="blackLogo.png"
-            alt="audience"
-            className="h-10 w-10 absolute left-19 border-white border-2 rounded-4xl"
-          />
-          <span className="h-10 w-10 flex text-sm justify-center items-center bg-white absolute left-25 border-black font-semibold border-2 rounded-4xl">
-            20k
-          </span>
-          <span className="font-semibold w-40 text-md absolute left-37">
-            Students Enrolled
-          </span>
-        </div>
-
-        <div className="flex gap-10">
-          <img
-            src="src\assets\image copy 4.png"
-            alt="meta"
-            className="h-15 w-30"
-          />
-          <img src="src/assets/image.png" alt="amazon" className="h-15 w-30" />
-          <img
-            src="src/assets/image copy 2.png"
-            alt="apple"
-            className="h-15 w-30"
-          />
-          <img
-            src="src/assets/image copy 5.png"
-            alt="netflix"
-            className="h-15 w-30"
-          />
-          <img
-            src="src/assets/image copy.png"
-            alt="google"
-            className="h-15 w-30"
-          />
-        </div>
-      </section>
-
-      <section className="flex mt-25 mx-20">
-        <div className="flex flex-col w-[50%]">
-          <div className="pr-10">
-            <div className="text-xl">How It Works</div>
-            <div className="text-4xl my-3 w-80 font-bold">
-              Simple Process, Powerful Results.
-            </div>
-            <div className="text-xl">
-              Get job-ready in just 4 easy steps - from choosing your role to
-              mastering real inetrview scenarios. Interva.ai, makes your
-              preperation Simple, Smart and Effective
-            </div>
-          </div>
-          <div className="mt-24">
+      {/* --- COMPANY LOGOS (Clean Marquee Style) --- */}
+      {/* <section className="py-12 bg-white border-y border-gray-100 flex flex-wrap justify-center items-center gap-12 px-10">
+        <span className="text-gray-400 font-bold uppercase tracking-widest text-xs w-full text-center mb-4">
+          Trusted by students at
+        </span>
+        {["meta", "amazon", "apple", "netflix", "google"].map(
+          (company, idx) => (
             <img
-              src="src/assets/image copy 6.png"
-              alt="professional"
-              className=""
+              key={idx}
+              src={`src/assets/image${idx === 0 ? " copy 4" : idx === 1 ? "" : " copy " + idx}.png`}
+              alt={company}
+              className="h-8 lg:h-10 grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"
             />
-          </div>
-        </div>
-        <div className="flex px-10 gap-5" id="cards">
-          <div className="flex flex-col gap-5">
-            <CardOne
-              logo="src/assets/image copy 2.png"
-              title="Add Resume"
-              step="Step 1"
-              desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro ipsam veritatis cumque magni pariatur! Reprehenderit."
-            />
-            <CardOne
-              logo="src/assets/image copy 2.png"
-              title="Add Resume"
-              step="Step 2"
-              desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro ipsam veritatis cumque magni pariatur! Reprehenderit."
-            />
-          </div>
-          <div className="flex flex-col gap-5 pt-20">
-            <CardOne
-              logo="src/assets/image copy 2.png"
-              title="Add Resume"
-              step="Step 3"
-              desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro ipsam veritatis cumque magni pariatur! Reprehenderit."
-            />
-            <CardOne
-              logo="src/assets/image copy 2.png"
-              title="Add Resume"
-              step="Step 4"
-              desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro ipsam veritatis cumque magni pariatur! Reprehenderit."
-            />
-          </div>
-        </div>
-      </section>
+          ),
+        )}
+      </section> */}
 
-      <section className="flex flex-col m-20 justify-center items-center">
-        <div>KEY FEATURES</div>
+      {/* --- HOW IT WORKS (Modern Split) --- */}
+      <section className="py-32 px-10 lg:px-24 bg-[#f8fafc] relative overflow-hidden">
+        {/* Background Decorative Circles */}
+        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-indigo-100/50 blur-[120px] rounded-full -z-0"></div>
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-pink-100/40 blur-[100px] rounded-full -z-0"></div>
 
-        <div className="font-bold text-4xl mt-5">
-          Smart Tools for AI-Powered Interview Practice
-        </div>
-
-        <div className="text-xl text-center mt-5">
-          Practice smarter, not harder - our AI-Powered tools simulate real
-          interview scenarios, give instance feedback, and help you improve with
-          every session.
-        </div>
-
-        <div className="flex flex-col gap-5 mt-10">
-          <div className="flex gap-5">
-            <CardTwo
-              image="blackLogo.png"
-              title="Career Vault"
-              desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dolores molestiae consectetur consequuntur"
-            />
-
-            <CardTwo
-              image="blackLogo.png"
-              title="The Prep Engine"
-              desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dolores molestiae consectetur consequuntur"
-            />
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-20" data-aos="fade-up">
+            <h4 className="text-[#6366f1] font-black tracking-[0.3em] uppercase text-xs mb-4">
+              The Workflow
+            </h4>
+            <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1e293b] leading-tight">
+              From Preparation to{" "}
+              <span className="text-[#6366f1]">Placement</span>
+            </h2>
+            <div className="h-1.5 w-24 bg-[#6366f1] mx-auto mt-6 rounded-full"></div>
           </div>
 
-          <div className="flex gap-5">
-            <CardThree
-              image="blackLogo.png"
-              title="The Prep Engine"
-              desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dolores molestiae consectetur consequuntur"
-            />
-            <CardThree
-              image="blackLogo.png"
-              title="The Prep Engine"
-              desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dolores molestiae consectetur consequuntur"
-            />
-            <CardThree
-              image="blackLogo.png"
-              title="The Prep Engine"
-              desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dolores molestiae consectetur consequuntur"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="flex flex-col m-20">
-        <div className="text-center">
-          <div>OUR BLOGS</div>
-
-          <div className="font-bold text-4xl mt-5">
-            Dive Into Our Top Career Insights
-          </div>
-
-          <div className="text-xl text-center mt-5">
-            Explore expert guides and actionable tips to help you prepare
-            smarter, inerview confidently,and land your dream job faster.
-          </div>
-        </div>
-
-        <div className="my-20 flex justify-around">
-          <CardFour
-            boxa="Interview Prep"
-            boxb="8 Mins Read"
-            title="Mastering AI-Powered Mock Interviews for Real Results"
-            desc="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati esse quae cumque facere consectetur ducimus fuga inventore necessitatibus dolore facilis. Vero ratione ipsam dicta culpa assumenda magnam pariatur maxime aut."
-            img="blackLogo.png"
-          />
-
-          <div className="flex flex-col gap-2">
-            <CardFive
-              boxa="Interview Prep"
-              boxb="8 Mins Read"
-              title="Method for Interview Success"
-              img="blackLogo.png"
-            />
-
-            <CardFive
-              boxa="Interview Prep"
-              boxb="8 Mins Read"
-              title="Turning Feedback into Growth"
-              img="blackLogo.png"
-            />
-
-            <div className="border-2 rounded-2xl p-5">
-              <img
-                src="blackLogo.png"
-                alt="image"
-                className={`rounded-xl h-20 w-100`}
-              />
-              <div className="flex justify-between items-center w-100 p-5">
-                <div className="flex gap-2">
-                  <span className="border text-sm p-1">Interview Prep</span>
-                  <span className="flex border text-sm p-1">
-                    <Dot />8 Mins Read
-                  </span>
-                </div>
-
+          {/* The Bento Grid Flow */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {/* STEP 1: RESUME */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="0"
+              className="lg:col-span-2 group relative p-1 rounded-[2.5rem] bg-gradient-to-br from-indigo-100 to-transparent hover:from-[#6366f1] transition-all duration-500"
+            >
+              <div className="bg-white rounded-[2.4rem] p-8 h-full flex flex-col justify-between">
                 <div>
-                  <CircleArrowOutUpRight />
+                  <span className="text-5xl font-black text-indigo-50 opacity-10 group-hover:opacity-100 group-hover:text-indigo-100 transition-all absolute top-6 right-8">
+                    01
+                  </span>
+                  <h3 className="text-2xl font-bold text-[#1e293b] mb-4">
+                    Smart Resume Analysis
+                  </h3>
+                  <p className="text-gray-500 leading-relaxed">
+                    Upload your resume and let our AI sync it with
+                    industry-standard Job Descriptions to find your perfect
+                    match score.
+                  </p>
+                </div>
+                <div className="mt-8 flex items-center gap-4">
+                  <div className="px-4 py-2 bg-indigo-50 text-[#6366f1] text-xs font-bold rounded-full">
+                    ATS Optimization
+                  </div>
+                  <div className="px-4 py-2 bg-pink-50 text-pink-500 text-xs font-bold rounded-full">
+                    Skill Mapping
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div className="text-xl mb-3 font-semibold">
-                Overcoming Interview Anxiety with AI Tools
+            {/* STEP 2: ROLE */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="100"
+              className="group relative p-1 rounded-[2.5rem] bg-indigo-50 hover:bg-[#6366f1] transition-all duration-500"
+            >
+              <div className="bg-white rounded-[2.4rem] p-8 h-full">
+                <span className="text-4xl font-black text-gray-100 group-hover:text-indigo-100 transition-all block mb-6">
+                  02
+                </span>
+                <h3 className="text-xl font-bold text-[#1e293b] mb-3">
+                  Target Your Role
+                </h3>
+                <p className="text-sm text-gray-400">
+                  Select from SDE, Data Analyst, or PM roles to tailor your
+                  interview questions.
+                </p>
               </div>
-              <div>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit,
-                rem?
+            </div>
+
+            {/* STEP 3: MOCK */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="200"
+              className="group relative p-1 rounded-[2.5rem] bg-indigo-50 hover:bg-[#6366f1] transition-all duration-500"
+            >
+              <div className="bg-white rounded-[2.4rem] p-8 h-full">
+                <span className="text-4xl font-black text-gray-100 group-hover:text-indigo-100 transition-all block mb-6">
+                  03
+                </span>
+                <h3 className="text-xl font-bold text-[#1e293b] mb-3">
+                  AI Mock Session
+                </h3>
+                <p className="text-sm text-gray-400">
+                  Experience a high-pressure, voice-based technical interview
+                  simulation.
+                </p>
+              </div>
+            </div>
+
+            {/* STEP 4: FEEDBACK (Full Width Bottom or Right) */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="300"
+              className="lg:col-span-4 group relative p-1 rounded-[2.5rem] bg-gradient-to-r from-indigo-50 via-white to-indigo-50 hover:from-[#6366f1] hover:to-[#4f46e5] transition-all duration-700"
+            >
+              <div className="bg-white rounded-[2.4rem] p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="flex-1">
+                  <span className="text-xs font-bold text-[#6366f1] uppercase tracking-widest mb-2 block">
+                    Final Step
+                  </span>
+                  <h3 className="text-3xl font-bold text-[#1e293b] mb-4">
+                    Deep Performance Analytics
+                  </h3>
+                  <p className="text-gray-500 max-w-xl">
+                    Receive a detailed breakdown of your technical accuracy,
+                    fluency, and sentiment analysis. AI generates your
+                    personalized roadmap to master your weak areas.
+                  </p>
+                </div>
+                <div className="flex-shrink-0">
+                  <button className="px-10 py-4 bg-[#1e293b] text-white rounded-2xl font-bold hover:bg-[#6366f1] transition-all shadow-xl group-hover:shadow-indigo-500/20">
+                    Explore Analytics 04
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="testimonials" className="flex flex-col m-20">
-        <div className="text-center">
-          <div>TESTIMONIALS</div>
+      {/* --- ADVANCED FEATURES GRID --- */}
+      <section className="py-24 px-10 lg:px-24 bg-[#0f172a] relative overflow-hidden">
+        {/* Background Decoration */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#6366f1]/10 blur-[120px] rounded-full -z-0"></div>
 
-          <div className="font-bold text-4xl mt-5">What Our Users Say</div>
-
-          <div className="text-xl text-center mt-5">
-            Real stories from professionals who boosted confidence, improved
-            their interview skills and landed their dream jobs with Interva.ai
-          </div>
-        </div>
-
-        <div className="flex gap-5 my-20">
-          <TestiCard
-            name="Tanishk Sarathe"
-            comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dicta."
-            company="Google"
-            position="Software Engineer"
-          />
-          <TestiCard
-            name="Tanishk Sarathe"
-            comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dicta."
-            company="Google"
-            position="Software Engineer"
-          />
-          <TestiCard
-            name="Tanishk Sarathe"
-            comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dicta."
-            company="Google"
-            position="Software Engineer"
-          />
-        </div>
-      </section>
-
-      <section id="cta" className="flex flex-col m-20">
-        <div className="relative z-2">
-          <img
-            src="src/assets/image copy 8.png"
-            alt="cta"
-            className="w-270 h-80 rounded-2xl"
-          />
-
-          <div className="text-4xl absolute top-12 right-20 font-bold text-white">
-            Unlock Your Dream Role - One Session Away
-          </div>
-          <div className="text-xl absolute bottom-[20%] text-white right-20 font-light ">
-            Join Intervaai's AI-Powered interview simulator and step into your
-            next opportunity with confidence.
-          </div>
-
-          <button className="px-5 py-3 border absolute text-white rounded-xl top-35 z-3 right-30">
-            Get Started
-          </button>
-        </div>
-      </section>
-
-      <section id="evrythingyouknow" className="flex flex-col m-20">
-        <div className="text-center m-20">
-          <div>FAQs</div>
-
-          <div className="font-bold text-4xl mt-5">
-            Everything You Need to Know
-          </div>
-
-          <div className="text-xl text-center mt-5">
-            Learn how Interva.ai help you prepare smarter
-          </div>
-        </div>
-
-        <div>
-          <div className="flex flex-col">
-            <div className="flex justify-between text-white bg-gray-800 p-4 rounded-t-2xl">
-              <p className="text-2xl font-semibold">
-                Is my data and recording are private ?
-              </p>
-              <button>
-                <ArrowDownNarrowWide color="white" />
-              </button>
-            </div>
-            <p className="border bg-gray-400 p-4 text-xl font-light rounded-b-2xl mt-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
-              perspiciatis?
+        <div className="relative z-10">
+          <div
+            className="text-center max-w-3xl mx-auto mb-20"
+            data-aos="fade-up"
+          >
+            <h4 className="text-[#a5b4fc] font-bold tracking-widest uppercase text-sm mb-4">
+              Precision Tools
+            </h4>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+              Smart Features for{" "}
+              <span className="text-[#6366f1]">AI-Driven</span> Success
+            </h2>
+            <p className="text-[#94a3b8] text-lg">
+              Everything you need to bridge the gap between "Preparing" and
+              "Getting Hired" in one unified platform.
             </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "AI Voice Assistant",
+                desc: "Real-time voice-based mock interviews with speech-to-text evaluation and fluency analysis.",
+                icon: <PhoneForwarded className="text-white" />,
+                delay: 0,
+              },
+              {
+                title: "Smart Resume Scorer",
+                desc: "Upload your resume and get an ATS compatibility score against specific Job Descriptions (JD).",
+                icon: <MapPin className="text-white" />, // Placeholder icon from your imports
+                delay: 100,
+              },
+              {
+                title: "DSA Prep Engine",
+                desc: "Integrated Monaco Editor to practice coding rounds with real-time AI logic verification.",
+                icon: <CirclePlay className="text-white" />,
+                delay: 200,
+              },
+              {
+                title: "Adaptive Roadmaps",
+                desc: "Dynamic career paths that update based on your strengths and weaknesses in mock tests.",
+                icon: <ArrowDownNarrowWide className="text-white" />,
+                delay: 300,
+              },
+              {
+                title: "Performance Analytics",
+                desc: "Deep-dive charts and metrics to track your progress across Aptitude, DSA, and HR rounds.",
+                icon: <ChevronUp className="text-white" />,
+                delay: 400,
+              },
+              {
+                title: "Company Specific Prep",
+                desc: "Practice using previous year patterns and questions from top tech giants like TCS, Google, and Meta.",
+                icon: <CircleArrowOutUpRight className="text-white" />,
+                delay: 500,
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={feature.delay}
+                className="group p-8 rounded-[32px] bg-[#1e293b]/50 border border-white/5 backdrop-blur-xl hover:border-[#6366f1]/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#6366f1]/10"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#6366f1] to-[#4f46e5] flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-[#94a3b8] leading-relaxed text-sm">
+                  {feature.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- TESTIMONIALS: THE VOICE OF SUCCESS --- */}
+      <section
+        id="testimonials"
+        className="py-24 bg-white relative overflow-hidden"
+      >
+        {/* Soft background accents */}
+        <div className="absolute top-1/2 left-0 w-72 h-72 bg-blue-50 blur-[100px] rounded-full -z-0"></div>
+
+        <div className="max-w-7xl mx-auto px-10 lg:px-24 relative z-10">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h4 className="text-[#6366f1] font-bold tracking-[0.2em] text-xs mb-4 uppercase">
+              Success Stories
+            </h4>
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1e293b]">
+              What Our Users Say
+            </h2>
+            <p className="text-gray-500 mt-6 max-w-2xl mx-auto text-lg">
+              Join thousands of students who transformed their interview anxiety
+              into career-defining job offers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sanjana Vishwakarma",
+                role: "SDE Intern",
+                company: "Google",
+                img: "blackLogo.png",
+                content:
+                  "Interva.ai's voice assistant felt so real. It helped me clear my technical rounds with 100% confidence. The AI feedback is a game changer!",
+                delay: 0,
+              },
+              {
+                name: "Tanishk Sarathe",
+                role: "Full Stack Dev",
+                company: "Meta",
+                img: "blackLogo.png",
+                content:
+                  "The Resume Analyzer pointed out exactly what was missing in my profile. I got shortlisted in my dream company within a week!",
+                delay: 100,
+              },
+              {
+                name: "Aryan Gupta",
+                role: "Data Analyst",
+                company: "TCS",
+                img: "blackLogo.png",
+                content:
+                  "The structured multi-round preparation (Apti + DSA + HR) is brilliant. It’s like having a personal mentor 24/7.",
+                delay: 200,
+              },
+            ].map((testi, idx) => (
+              <div
+                key={idx}
+                data-aos="fade-up"
+                data-aos-delay={testi.delay}
+                className="group relative p-8 rounded-[2.5rem] bg-[#f8fafc] border border-transparent hover:border-[#6366f1]/20 hover:bg-white hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500"
+              >
+                {/* Quote Icon */}
+                <div className="absolute top-6 right-8 text-indigo-100 group-hover:text-indigo-500/20 transition-colors">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V12C14.017 12.5523 13.5693 13 13.017 13H11.017C10.4647 13 10.017 12.5523 10.017 12V9C10.017 6.79086 11.8079 5 14.017 5H19.017C21.2261 5 23.017 6.79086 23.017 9V15C23.017 18.866 19.883 22 16.017 22H14.017V21ZM1 15V9C1 6.79086 2.79086 5 5 5H10C12.2091 5 14 6.79086 14 9V12C14 12.5523 13.5523 13 13 13H11C10.4477 13 10 12.5523 10 12V9C10 8.44772 9.55228 8 9 8H5C4.44772 8 4 8.44772 4 9V15C4 15.5523 4.44772 16 5 16H8C8.55228 16 9 15.5523 9 15V12C9 11.4477 9.44772 11 10 11H12C12.5523 11 13 11.4477 13 12V15C13 18.866 9.86599 22 6 22H4V21L4 18C4 16.8954 4.89543 16 6 16H9C9.55228 16 10 15.5523 10 15V12"></path>
+                  </svg>
+                </div>
+
+                <p className="text-gray-500 leading-relaxed italic mb-8 relative z-10">
+                  "{testi.content}"
+                </p>
+
+                <div className="flex items-center gap-4">
+                  <div className="relative">
+                    <img
+                      src={testi.img}
+                      alt={testi.name}
+                      className="w-12 h-12 rounded-full border-2 border-white shadow-md bg-white p-1"
+                    />
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#1e293b]">{testi.name}</h4>
+                    <p className="text-xs font-bold text-[#6366f1] uppercase">
+                      {testi.role} @ {testi.company}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white border-y border-gray-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-10">
+          {/* Heading */}
+          <div className="flex items-center gap-4 mb-10 opacity-50">
+            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-gray-300"></div>
+            <span className="text-gray-500 font-black uppercase tracking-[0.3em] text-[10px] whitespace-nowrap">
+              Empowering Students From Global Tech Giants
+            </span>
+            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-gray-300"></div>
+          </div>
+
+          {/* Logos Container with Animation */}
+          <div className="relative flex overflow-x-hidden group">
+            <div className="flex animate-marquee whitespace-nowrap items-center gap-20 py-4">
+              {[
+                { name: "Meta", src: "src/assets/image copy 4.png" },
+                { name: "Amazon", src: "src/assets/image.png" },
+                { name: "Apple", src: "src/assets/image copy 2.png" },
+                { name: "Netflix", src: "src/assets/image copy 5.png" },
+                { name: "Google", src: "src/assets/image copy.png" },
+              ]
+                .concat([
+                  { name: "Meta", src: "src/assets/image copy 4.png" },
+                  { name: "Amazon", src: "src/assets/image.png" },
+                  { name: "Apple", src: "src/assets/image copy 2.png" },
+                  { name: "Netflix", src: "src/assets/image copy 5.png" },
+                  { name: "Google", src: "src/assets/image copy.png" },
+                ])
+                .map((company, idx) => (
+                  <img
+                    key={idx}
+                    src={company.src}
+                    alt={company.name}
+                    className="h-8 lg:h-10  hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer transform hover:scale-110"
+                  />
+                ))}
+            </div>
+
+            {/* Side Fades for Smooth Look */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+          </div>
+        </div>
+
+        {/* CSS for Marquee Animation */}
+        <style jsx>{`
+          @keyframes marquee {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          .animate-marquee {
+            animation: marquee 30s linear infinite;
+          }
+          .group:hover .animate-marquee {
+            animation-play-state: paused;
+          }
+        `}</style>
+      </section>
+
+      {/* --- CTA SECTION (Glass Card) --- */}
+      <section className="px-6 lg:px-24 py-16" data-aos="zoom-in">
+        {/* Compact Glass Container */}
+        <div className="bg-[#0f172a] rounded-[2rem] p-8 lg:p-12 relative overflow-hidden border border-white/5 shadow-2xl">
+          {/* Subtle Background Glow */}
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#6366f1]/20 blur-[80px] rounded-full animate-pulse"></div>
+
+          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+            {/* Left: Punchy Text */}
+            <div className="text-center lg:text-left space-y-3 max-w-xl">
+              <h2 className="text-3xl lg:text-4xl font-black text-white leading-tight">
+                Ready to Lead Your <br />
+                <span className="text-[#a5b4fc]">Dream Career?</span>
+              </h2>
+              <p className="text-[#94a3b8] text-sm lg:text-base leading-relaxed">
+                Simulate real interviews, get instant AI feedback, and{" "}
+                <br className="hidden lg:block" />
+                bridge the gap to your next big opportunity today.
+              </p>
+            </div>
+
+            {/* Right: Focused Action Area */}
+            <div className="flex flex-col items-center lg:items-end gap-4 min-w-fit">
+              <button className="group relative px-10 py-4 bg-[#6366f1] text-white rounded-xl font-bold text-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-xl shadow-indigo-500/20">
+                <span className="relative z-10 flex items-center gap-2">
+                  Get Started{" "}
+                  <CircleArrowOutUpRight
+                    size={20}
+                    className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                  />
+                </span>
+                {/* Shine effect */}
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              </button>
+
+              {/* Minimal Social Proof */}
+              <div className="flex items-center gap-3 opacity-60">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3].map((i) => (
+                    <img
+                      key={i}
+                      src="blackLogo.png"
+                      className="w-5 h-5 rounded-full border border-[#0f172a] bg-white p-0.5"
+                    />
+                  ))}
+                </div>
+                <p className="text-[10px] text-white font-medium tracking-widest uppercase">
+                  Join 18k+ Students
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

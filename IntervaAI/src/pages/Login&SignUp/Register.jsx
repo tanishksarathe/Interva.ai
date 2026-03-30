@@ -53,7 +53,7 @@ const Register = ({ setOpenRegister, setOpenLogin }) => {
 
   return (
     <>
-      <div className="fixed bg-black/80 inset-0 flex items-center justify-center">
+      <div className="fixed bg-black/80 inset-0 flex items-center justify-center z-20 backdrop-blur-lg">
         <div className="w-full max-w-md rounded-2xl bg-(--surface-card) backdrop-blur-xl border border-white/10 shadow-2xl p-8 animate-fade-in">
           <button
             className="absolute text-white top-0 right-0 p-2"
