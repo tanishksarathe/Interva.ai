@@ -105,7 +105,7 @@ const Navbar = () => {
                     onClick={() => setOpenLogin(true)}
                     className="px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-all"
                   >
-                    Sign In
+                    Log In
                   </button>
                   <button
                     onClick={() => setOpenRegister(true)}

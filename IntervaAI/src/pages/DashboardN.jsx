@@ -46,7 +46,7 @@ const DashboardN = () => {
       setDetails(response?.data?.data);
     } catch (error) {
       console.log(error);
-      toast.error("Error while fetching details");
+      // toast.error("Error while fetching details");
     }
   };
 
