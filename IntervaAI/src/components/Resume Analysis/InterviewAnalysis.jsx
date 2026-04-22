@@ -73,7 +73,7 @@ const InterviewAnalysis = (props) => {
           <div className="max-w-7xl mx-auto space-y-8">
             {/* --- SECTION 1: THE CORE SIGNAL --- */}
             <header className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-              <div className="lg:col-span-3 bg-(--bgclr) rounded-[3rem] p-10 text-white shadow-2xl relative overflow-hidden group border border-white/20">
+              <div className="lg:col-span-3 bg-(--bgclr) rounded-[3rem] p-10 text-black shadow-2xl relative overflow-hidden group border border-white/20">
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-6">
                     <span className="px-5 py-1.5 rounded-full bg-black/20 backdrop-blur-md text-[10px] font-black border border-white/20 uppercase tracking-[0.2em]">
@@ -178,7 +178,7 @@ const InterviewAnalysis = (props) => {
                     </span>
                   </div>
                 </div>
-                <div className="p-5 bg-(--text-primary) rounded-4xl text-white">
+                <div className="p-5 bg-(--text-primary) rounded-4xl text-indigo-600">
                   <p className="text-[10px] font-black uppercase text-(--accent) mb-3 tracking-widest">
                     Psychological Pattern
                   </p>
@@ -248,7 +248,7 @@ const InterviewAnalysis = (props) => {
                   >
                     <div className="flex flex-col lg:flex-row gap-8 items-start lg:items-center">
                       <div className="flex items-center gap-6 lg:w-1/4">
-                        <div className="w-12 h-12 bg-(--text-primary) text-white rounded-2xl flex items-center justify-center font-black text-xl shadow-lg">
+                        <div className="w-12 h-12 bg-(--text-primary) text-black/20 rounded-2xl flex items-center justify-center font-black text-xl shadow-lg">
                           {q.question_number}
                         </div>
                         <div>
@@ -360,7 +360,7 @@ const InterviewAnalysis = (props) => {
                 </div>
               </div>
 
-              <div className="bg-(--text-primary) text-white rounded-[3rem] p-10 shadow-2xl relative overflow-hidden">
+              <div className="bg-(--text-primary) text-indigo-600 rounded-[3rem] p-10 shadow-2xl relative overflow-hidden">
                 <h3 className="text-2xl font-black mb-8 flex items-center gap-3 text-(--accent)">
                   <TrendingUp /> Growth Path
                 </h3>
@@ -400,7 +400,7 @@ const InterviewAnalysis = (props) => {
               </div>
 
               <div className="lg:w-1/3 space-y-8 relative z-10">
-                <div className="p-10 bg-(--text-primary) text-white rounded-[3rem] shadow-2xl text-center group cursor-pointer">
+                <div className="p-10 bg-(--text-primary) text-black rounded-[3rem] shadow-2xl text-center group cursor-pointer">
                   <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-(--accent)">
                     Composite EQ Match
                   </p>

@@ -210,6 +210,7 @@ const Dashboard = () => {
                 type="button"
                 onClick={() => setPaymentOpen(true)}
                 className={`flex gap-2 rounded-2xl py-1 px-3`}
+                disabled={user?.premium}
               >
                 Premium <Sparkles />
               </button>
@@ -233,7 +234,7 @@ const Dashboard = () => {
                 </div>
 
                 {menu.profilers && (
-                  <div className="flex z-9 rounded-2xl pt-5 text-white absolute top-17 right-10 h-100 overflow-y-scroll backdrop-blur-3xl">
+                  <div className="flex z-9999 rounded-2xl pt-5 text-white absolute top-17 right-10 h-100 overflow-y-scroll backdrop-blur-3xl">
                     <div className="max-w-md w-full h-fit rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-xl p-6 text-white">
                       {/* Header */}
                       <div className="flex items-center justify-between">

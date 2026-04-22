@@ -128,9 +128,8 @@ const PremiumPayment = ({ onClose }) => {
               </h2>
 
               {[
-                "AI Mock Interviews (Apti + DSA + HR)",
+                "AI Mock Interviews (Apti + DSA + HR), all Levels Unlocked",
                 "Advanced Resume Analysis & Score",
-                "Personalized Career Roadmap",
                 "Detailed Performance Analytics",
                 "Company-Specific Preparation",
                 "Priority AI Evaluation Engine",

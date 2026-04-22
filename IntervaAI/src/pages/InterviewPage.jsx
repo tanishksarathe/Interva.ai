@@ -597,7 +597,7 @@ const InterviewPage = () => {
                 <h2 className="text-xl font-semibold mb-6 text-indigo-300">
                   Live Transcript
                 </h2>
-                <div className="flex-1 overflow-y-auto space-y-6 pr-2">
+                <div className="flex-1 overflow-y-scroll space-y-6 pr-2">
                   {conversation.map((item, index) => (
                     <div
                       key={index}

@@ -93,7 +93,8 @@ const Navbar = () => {
             <button
               onClick={() => setPaymentOpen(!paymentOpen)}
               className="flex items-center gap-2 px-4 py-1.5 bg-indigo-500/5 border border-indigo-500/20 rounded-md text-[9px] font-black uppercase tracking-widest text-indigo-400 hover:bg-indigo-500 hover:text-white transition-all shadow-lg shadow-indigo-950/20"
-            >
+              disabled={user.premium}
+ >
               {user?.premium ? "Pro":"Access Pro"}<Sparkles size={12} strokeWidth={3} />
             </button>
 

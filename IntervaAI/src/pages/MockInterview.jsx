@@ -352,17 +352,18 @@ const MockInterview = () => {
             <div className="flex items-center justify-between text-center">
               <div className="flex-1">
                 <div className="text-indigo-400 font-semibold mb-2">1</div>
+                <h4 className="font-medium">Aptitude & Reasoning</h4>
+                <p className="text-xs text-slate-400 mt-1">Speed & accuracy</p>
+              </div>
+
+              <div className="flex-1">
+                <div className="text-indigo-400 font-semibold mb-2">2</div>
                 <h4 className="font-medium">DSA Round</h4>
                 <p className="text-xs text-slate-400 mt-1">
                   Algorithms & problem solving
                 </p>
               </div>
 
-              <div className="flex-1">
-                <div className="text-indigo-400 font-semibold mb-2">2</div>
-                <h4 className="font-medium">Aptitude & Reasoning</h4>
-                <p className="text-xs text-slate-400 mt-1">Speed & accuracy</p>
-              </div>
 
               <div className="flex-1">
                 <div className="text-indigo-400 font-semibold mb-2">3</div>

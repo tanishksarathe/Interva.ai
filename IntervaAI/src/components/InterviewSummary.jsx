@@ -15,7 +15,7 @@ import {
   CheckCircle2,
   XCircle,
 } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const InterviewSummary = () => {
   const { state } = useLocation();
@@ -26,6 +26,7 @@ const InterviewSummary = () => {
 
   const conversation = state?.conversation;
 
+  const navigate = useNavigate();
   // Helpers for formatting
   const formatDate = (dateStr) =>
     new Date(dateStr).toLocaleDateString("en-IN", {
@@ -337,10 +338,18 @@ const InterviewSummary = () => {
       {/* Action Floating Button (Hidden on Print) */}
       <button
         onClick={() => window.print()}
-        className="fixed bottom-8 right-8 bg-indigo-600 hover:bg-indigo-500 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-90 print:hidden"
+        className="fixed bottom-30 right-8 bg-indigo-600 hover:bg-indigo-500 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-90 print:hidden"
       >
         <Download size={24} />
       </button>
+      
+      <button
+        onClick={() => navigate("/dashboard")}
+        className="fixed bottom-8 right-8 bg-indigo-600 hover:bg-indigo-500 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-90 print:hidden"
+      >
+        Finish
+      </button>
+
     </div>
   );
 };

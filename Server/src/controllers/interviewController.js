@@ -69,10 +69,28 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
 
     const analyzedTopics = await topicsAnalyzeWithJD(jobdesc);
 
+    const mergedAptitudetopics = [
+      ...new Set([
+        ...(analyzedTopics?.aptitude_topics || []),
+        "syllogism",
+        "seating_arrangement",
+        "advanced_puzzles",
+      ]),
+    ];
+
+    const mergedDSAtopics = [
+      ...new Set([
+        ...(analyzedTopics?.aptitude_topics || []),
+        "trees",
+        "Backtracking",
+        "graphs",
+      ]),
+    ];
+
     const aptitudeQuestionsSet = await InterviewQuestion.aggregate([
       {
         $match: {
-          topic: { $in: analyzedTopics.aptitude_topics },
+          topic: { $in: mergedAptitudetopics },
           difficulty: diff,
         },
       },
@@ -86,7 +104,7 @@ export const mockTestGeneratorEngine = async (req, res, next) => {
     const dsaQuestionsSet = await DSA.aggregate([
       {
         $match: {
-          topic: { $in: analyzedTopics.dsa_topics },
+          topic: { $in: mergedDSAtopics },
           difficulty: diff,
         },
       },
